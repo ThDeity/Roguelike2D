@@ -1,0 +1,25 @@
+using UnityEngine;
+
+public class ColdBulletsCard : Card
+{
+    [SerializeField] private float _cdDebuff, _increaseTimeAndForce, _speedReduce, _time, _cd;
+
+    public void GiveOrize()
+    {
+        if (!StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out ColdBullets component))
+        {
+            component = StaticValues.PlayerAttackList[0].bullet.AddComponent<ColdBullets>();
+            component.speedReduce = _speedReduce;
+            component.time = _time;
+            component.cd = _cd;
+        }
+        else
+        {
+            component.speedReduce *= _increaseTimeAndForce;
+            component.time *= _increaseTimeAndForce;
+        }
+
+        SetAttackParam(1, 0, 1, _cdDebuff);
+        StaticValues.PassiveSkillsPanel.SetActive(false);
+    }
+}

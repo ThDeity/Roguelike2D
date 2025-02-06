@@ -1,0 +1,112 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.AI;
+
+[RequireComponent(typeof(NavMeshAgent))]
+public class Enemy : MonoBehaviour, IDamagable
+{
+    [SerializeField] protected float _attackDistance, _offset, _reloadTime;
+    [SerializeField] protected ValueSystem _bar = new ValueSystem();
+    public float maxHp;
+
+    protected Transform _transform;
+    protected NavMeshAgent _agent;
+    protected Animator _animator;
+    protected float _time, _currentHp;
+    protected DebuffsEffects _debuffs;
+
+    public Transform target;
+    public bool isCharmed;
+
+    protected float _damageTaking;
+    protected int _timeTaking;
+    public virtual void TakeDamage(float damage, int time)
+    {
+        if (time == 0)
+        {
+            _currentHp -= damage;
+            _bar.RemoveValue(damage);
+
+            if (_currentHp <= 0)
+                Destroy(gameObject);
+            else if (_currentHp > maxHp)
+                _currentHp = maxHp;
+        }
+        else
+        {
+            _damageTaking = damage;
+            _timeTaking = time;
+            StartCoroutine(nameof(TakingDamage));
+        }
+    }
+
+    private IEnumerator TakingDamage()
+    {
+        for (int i = 0; i < _timeTaking; i++)
+        {
+            float damage = _damageTaking / _timeTaking;
+            TakeDamage(damage, 0);
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    protected void OnDestroy() => SpawnEnemies.Enemies.Remove(gameObject);
+
+    public virtual float ChangeReloadCd(float change)
+    {
+        _reloadTime *= change;
+        return _reloadTime;
+    }
+
+    protected virtual void Start()
+    {
+        _debuffs = GetComponent<DebuffsEffects>();
+        _time = _reloadTime;
+        _transform = transform;
+        target = Player.PlayerObj.transform;
+        _animator = GetComponent<Animator>();
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false;
+        _bar.Setup(maxHp);
+
+        maxHp *= StaticValues.EnemyMaxHp;
+        _currentHp = maxHp;
+        _agent.speed *= StaticValues.EnemySpeed;
+    }
+
+    protected virtual void Update()
+    {
+        _time -= Time.deltaTime;
+
+        if (target != null)
+        {
+            Vector3 difference = target.position - _transform.position;
+            float roatZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, roatZ + _offset);
+        }
+        else if (isCharmed)
+            _debuffs.FindEnemy();
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        if (target != null && Vector2.Distance(target.position, _transform.position) > _attackDistance)
+        {
+            _agent.isStopped = false;
+            _agent.SetDestination(target.position);
+        }
+        else if (_time <= 0)
+        {
+            _agent.isStopped = true;
+            _animator.Play("Attack");
+            _time = _reloadTime;
+        }
+    }
+
+    protected virtual void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _attackDistance);
+    }
+}
