@@ -21,18 +21,25 @@ public class Square : Enemy
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
             _rigidbody2D.AddForce(_transform.right * _dashForce * Time.deltaTime, ForceMode2D.Impulse);
 
-        if (Vector2.Distance(target.transform.position, _transform.position) >= _dashRange && _dashCd <= 0)
+        if (!_isPlayerNear && Vector2.Distance(_currentPos, _transform.position) > _randomDistance)
+        {
+            _agent.isStopped = false;
+            _agent.SetDestination(_currentPos);
+        }
+        else if (!_isPlayerNear || target == null)
+            FindPoint();
+        else if (Vector2.Distance(target.position, _transform.position) >= _dashRange && _dashCd <= 0)
         {
             _animator.Play("Dash");
             _dashCd = _dashCdValue;
             _agent.speed = 0;
             _agent.enabled = false;
         }
-        else if (Vector2.Distance(target.transform.position, _transform.position) > _attackDistance && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
+        else if (Vector2.Distance(target.position, _transform.position) > _attackDistance && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
         {
             _agent.enabled = true;
             _agent.speed = _speed;
-            _agent.SetDestination(target.transform.position);
+            _agent.SetDestination(target.position);
         }
         else if (_time <= 0 && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
         {

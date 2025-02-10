@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 4991096829200812066}
   - component: {fileID: 6502552566397127136}
   - component: {fileID: 5720596813006145328}
+  - component: {fileID: -3771622065262315090}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Enemy
@@ -454,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfe2ec8b128f0a4b912219fe70c9227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 10
+  _attackDistance: 8
   _offset: 180
   _reloadTime: 0.7
   _bar:
@@ -571,6 +572,41 @@ MonoBehaviour:
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
   - {fileID: 2463234329937179597, guid: 62d5e808729071640917f188500ca05f, type: 3}
   - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
+--- !u!58 &-3771622065262315090
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060506578043150397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 7
 --- !u!1001 &1461655412903366643
 PrefabInstance:
   m_ObjectHideFlags: 0

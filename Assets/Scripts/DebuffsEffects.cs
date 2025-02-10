@@ -7,11 +7,10 @@ using UnityEngine.AI;
 public class DebuffsEffects : MonoBehaviour
 {
     [SerializeField] private bool _isEnemy;
-    private Enemy _enemy;
     private List<RangeAttack> _rangeAttacks;
     private Animator _animator;
+    private Enemy _enemy;
     NavMeshAgent agent;
-    private bool _isCharmed;
 
     [Tooltip("0 - дазл, 1 - заморозка, 2 - оглушение, 3 - щит")]
     [SerializeField] private List<GameObject> _effects;

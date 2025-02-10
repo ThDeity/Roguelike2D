@@ -9,6 +9,7 @@ public class StaticValues : MonoBehaviour
     public static string CurrentRoomType = "ActiveSkills";
     public static bool WasPrizeGotten;
 
+    public static List<Transform> EnemiesPoint = new List<Transform>();
     public static List<PlayerAttack> PlayerAttackList;
     public static PlayerMovement PlayerMovementObj;
     public static Transform PlayerTransform;
@@ -29,6 +30,10 @@ public class StaticValues : MonoBehaviour
         attacks = PlayerAttackList;
 
         RoomTypes = new List<string>() { "Parametres", "ActiveSkills", "PassiveSkills", "Enemy", "Default" };
+
+        GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+        foreach (GameObject p in points)
+            EnemiesPoint.Add(p.transform);
 
         ParamPanel = FindObjectOfType<Param>().gameObject;
         ParamPanel.SetActive(false);

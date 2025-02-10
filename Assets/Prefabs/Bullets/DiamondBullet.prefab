@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1762837089543798922}
   m_Layer: 0
   m_Name: DiamondBullet
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a29cc9f538ef484e96b1657a0719134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 1
   critChance: 10
   lifeTime: 2
   speed: 10

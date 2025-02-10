@@ -30,7 +30,7 @@ public class Player : MonoBehaviour, IDamagable
             _currentHp -= damage;
             _bar.RemoveValue(damage);
 
-            if (_currentHp <= 0 && lifesCount <= 0)
+            if (_currentHp <= 0 && lifesCount <= 0 && gameObject != null)
                 Destroy(gameObject);
             else if (_currentHp <= 0 && lifesCount > 0)
             {

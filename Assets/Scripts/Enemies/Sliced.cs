@@ -35,13 +35,13 @@ public class Sliced : Enemy
             _animator.Play("Attack");
             _time = _reloadTime;
         }
-        else if (target != null)
+        else if (Vector2.Distance(_currentPos, _transform.position) > _randomDistance)
         {
             _agent.isStopped = false;
-            _agent.SetDestination(target.position);
+            _agent.SetDestination(_currentPos);
         }
-        else if (SpawnEnemies.Enemies.Count > 1)
-            FindClosestEnemy();
+        else
+            FindPoint();
     }
 
     public void SetShields()

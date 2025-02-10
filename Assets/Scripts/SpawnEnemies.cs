@@ -19,8 +19,10 @@ public class SpawnEnemies : MonoBehaviour
 
     private Vector2 RandomPos()
     {
-        Vector2 pos = new Vector2(Random.Range(_xLeft, _xRight), Random.Range(_yUp, _yDown));
-        if (Physics2D.OverlapBox(pos, _boxSize, 0) == null)
+        Vector2 pos = new Vector2(Random.Range(_xLeft + transform.position.x, _xRight + transform.position.x),
+                                        Random.Range(_yUp + transform.position.y, _yDown + transform.position.y));
+        Collider2D collider = Physics2D.OverlapBox(pos, _boxSize, 0);
+        if (collider == null || collider.isTrigger)
             return pos;
         else
             return RandomPos();

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5932289460645485674}
   - component: {fileID: 8668091389300911166}
   - component: {fileID: -8448751792351787183}
+  - component: {fileID: 6027339075565564990}
   m_Layer: 0
   m_Name: HexagonTop
   m_TagString: Enemy
@@ -199,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13cb7a62e0c675f45b45e1fa428b9c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 8
+  _attackDistance: 10
   _offset: 0
   _reloadTime: 2.5
   _bar:
@@ -283,6 +284,41 @@ MonoBehaviour:
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
   - {fileID: 2463234329937179597, guid: 62d5e808729071640917f188500ca05f, type: 3}
   - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
+--- !u!58 &6027339075565564990
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313773208208694298}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5.5
 --- !u!1 &6140210819331174942
 GameObject:
   m_ObjectHideFlags: 0
