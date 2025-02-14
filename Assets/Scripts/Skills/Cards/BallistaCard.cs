@@ -16,7 +16,7 @@ public class BallistaCard : Skill
             skill.ballista.lifeTime *= _increaseParam;
             skill.ballista.maxHp *= _increaseParam;
             skill.ballista.radius *= _increaseParam;
-            skill.ballista.bullet.damage *= _increaseParam;
+            skill.ballista.persentOfDmg *= _increaseParam;
 
             return;
         }

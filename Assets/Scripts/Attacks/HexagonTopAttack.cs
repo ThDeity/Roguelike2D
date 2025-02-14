@@ -6,7 +6,7 @@ public class HexagonTopAttack : RangeAttack
     [SerializeField] protected float _longCd;
     [SerializeField] protected int _shotCount;
 
-    private IEnumerator Attacks()
+    public IEnumerator Attacks()
     {
         if (_time <= 0)
         {

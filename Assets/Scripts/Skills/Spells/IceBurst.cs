@@ -18,8 +18,11 @@ public class IceBurst : Skill
     {
         _currentTime -= Time.deltaTime;
 
-        if (Input.GetMouseButton(1) && _currentTime <= 0 && _zone == null)
+        if (Input.GetMouseButtonDown(1) && _currentTime <= 0 && _zone == null)
+        {
             _zone = Instantiate(zone, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity).transform;
+            _isSkillCharged = true;
+        }
 
         if (_zone != null)
         {
@@ -27,7 +30,7 @@ public class IceBurst : Skill
             _zone.position = new Vector3(pos.x, pos.y, 0);
         }
 
-        if (Input.GetMouseButtonUp(1) && _currentTime <= 0)
+        if (_isSkillCharged && Input.GetMouseButtonUp(1) && _currentTime <= 0)
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(_zone.position, radius);
             Instantiate(effects, _zone.position, effects.transform.rotation);
@@ -41,7 +44,17 @@ public class IceBurst : Skill
             StartCoroutine(StartTimer((int) reloadTime));
             _currentTime = reloadTime;
 
+            _isSkillCharged = false;
             Destroy(_zone.gameObject);
+        }
+    }
+
+    public override void OnRollStarted()
+    {
+        if (_zone != null)
+        {
+            Destroy(_zone.gameObject);
+            _isSkillCharged = false;
         }
     }
 

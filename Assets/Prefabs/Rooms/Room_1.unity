@@ -540,7 +540,9 @@ PrefabInstance:
       value: 0.21520111
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5974224200502398446, guid: 67acbf1b607cdd24898f80ca534e4bdc, type: 3}
+    - {fileID: 3200747042980488881, guid: 67acbf1b607cdd24898f80ca534e4bdc, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67acbf1b607cdd24898f80ca534e4bdc, type: 3}
@@ -596,6 +598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NavMesh
       objectReference: {fileID: 0}
+    - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: e5b7e3c65e0cdde44800bbfc3f390885, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

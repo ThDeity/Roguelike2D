@@ -160,6 +160,7 @@ MonoBehaviour:
   reloadTime: 0.75
   offset: -90
   lifeTime: 10
+  persentOfDmg: 0.8
   bullet: {fileID: 3043431237874535504, guid: 24a374732d100574d9f0db6621b0c007, type: 3}
   _point: {fileID: 5029053600946489901}
 --- !u!61 &1138714342565280787

@@ -2,10 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Skill : MonoBehaviour
+public class Skill : MonoBehaviour, Roll
 {
     private Text _timer;
     public Sprite skillSprite;
+    protected bool _isSkillCharged;
+
+    public virtual void OnRollStarted() { _isSkillCharged = false; }
 
     public virtual void GivePrize(Sprite skillSklot)
     {
@@ -18,7 +21,7 @@ public class Skill : MonoBehaviour
         if (skillSprite != null)
             StaticValues.ActiveSkillsPanel.GetComponent<ActiveSkill>().skillSlot.sprite = skillSprite;
 
-        _timer = StaticValues.ActiveSkillsPanel.GetComponent<ActiveSkill>().skillSlot.GetComponentInChildren<Text>();
+        _timer = StaticValues.SkillsTimer.GetComponent<Text>();
         _timer.enabled = false;
     }
 

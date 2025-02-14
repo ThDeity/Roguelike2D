@@ -13,8 +13,11 @@ public class BallistaSkill : Skill
     {
         _currentTime -= Time.deltaTime;
 
-        if (Input.GetMouseButton(1) && _currentTime <= 0 && _zone == null)
+        if (Input.GetMouseButtonDown(1) && _currentTime <= 0 && _zone == null)
+        {
             _zone = Instantiate(zone, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity).transform;
+            _isSkillCharged = true;
+        }
 
         if (_zone != null)
         {
@@ -22,7 +25,7 @@ public class BallistaSkill : Skill
             _zone.position = new Vector3(pos.x, pos.y, 0);
         }
 
-        if (Input.GetMouseButtonUp(1) && _currentTime <= 0)
+        if (_isSkillCharged && Input.GetMouseButtonUp(1) && _currentTime <= 0)
         {
             Instantiate(ballista.gameObject, _zone.position, Quaternion.identity);
 
@@ -30,6 +33,16 @@ public class BallistaSkill : Skill
             _currentTime = reloadTime;
 
             Destroy(_zone.gameObject);
+            _isSkillCharged = false;
+        }
+    }
+
+    public override void OnRollStarted()
+    {
+        if (_zone != null)
+        {
+            Destroy(_zone.gameObject);
+            _isSkillCharged = false;
         }
     }
 }

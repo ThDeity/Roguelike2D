@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2362572750747478742}
   - component: {fileID: 4349301400078459032}
   m_Layer: 6
-  m_Name: SteadyShot
+  m_Name: Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buffSpeed: 2
-  _debuffCd: 1.7
-  _buffMxHp: 1.5
-  _buffMaxDistance: 1.45
+  _debuffSpeed: 0.6
+  _buffMxHp: 1.1
+  _reloadCd: 2.5
+  _buff: 1.1

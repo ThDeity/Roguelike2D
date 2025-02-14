@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &903151051340324873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4743,6 +4743,7 @@ GameObject:
   - component: {fileID: 4698034948480750364}
   - component: {fileID: 5830443716157108556}
   - component: {fileID: 7623385637526556988}
+  - component: {fileID: 7316456626396320437}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4932,6 +4933,22 @@ MonoBehaviour:
   Explosion: {fileID: 0}
   lifesCount: 0
   hpAfterDeath: 0.75
+--- !u!114 &7316456626396320437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8876215208900679854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333daa3db96558a4e9dae2ae797fbe20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillSprite: {fileID: 21300000, guid: 324d601ede7779f4d9089703b83748b7, type: 3}
+  zone: {fileID: 8867089238020802048, guid: d5c3cbf98c463664a9a5f23d9105b602, type: 3}
+  ballista: {fileID: 244262821863087915, guid: 59f51d9e07b0a834fb12571a340354fd, type: 3}
+  reloadTime: 8
 --- !u!1 &8995256673764502498
 GameObject:
   m_ObjectHideFlags: 0

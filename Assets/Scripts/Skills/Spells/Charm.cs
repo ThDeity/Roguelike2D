@@ -14,9 +14,12 @@ public class Charm : Skill
         _currentTime -= Time.deltaTime;
 
         if (_currentTime <= 0 && Input.GetMouseButtonDown(1))
+        {
             _zone = Instantiate(zone.gameObject, transform).GetComponent<CharmSector>();
+            _isSkillCharged = true;
+        }
 
-        if (_zone != null && Input.GetMouseButtonUp(1))
+        if (_isSkillCharged && Input.GetMouseButtonUp(1))
         {
             int enemies = 0;
             foreach(var effect in _zone.effects)
@@ -31,6 +34,16 @@ public class Charm : Skill
             _currentTime = reloadTime;
 
             Destroy(_zone.gameObject);
+            _isSkillCharged = false;
+        }
+    }
+
+    public override void OnRollStarted()
+    {
+        if (_zone != null)
+        {
+            Destroy(_zone.gameObject);
+            _isSkillCharged = false;
         }
     }
 }

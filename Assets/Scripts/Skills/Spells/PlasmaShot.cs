@@ -23,15 +23,28 @@ public class PlasmaShot : Skill
         _currentTime -= Time.deltaTime;
 
         if (Input.GetMouseButtonDown(1) && _currentTime <= 0)
+        {
             _zone = Instantiate(zone, transform).transform;
+            _isSkillCharged = true;
+        }
 
-        if (Input.GetMouseButtonUp(1) && _zone != null)
+        if (_isSkillCharged && Input.GetMouseButtonUp(1) && _zone != null)
         {
             _currentTime = reloadTime;
             StartCoroutine(StartTimer((int)reloadTime));
 
             Instantiate(bullet.gameObject, _point.position, transform.rotation);
             Destroy(_zone.gameObject);
+            _isSkillCharged = false;
+        }
+    }
+
+    public override void OnRollStarted()
+    {
+        if (_zone != null)
+        {
+            Destroy(_zone.gameObject);
+            _isSkillCharged = false;
         }
     }
 }

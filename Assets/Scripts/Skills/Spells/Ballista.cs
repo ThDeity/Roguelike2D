@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Ballista : MonoBehaviour, IDamagable
 {
-    public float maxHp, radius, reloadTime, offset, lifeTime;
+    public float maxHp, radius, reloadTime, offset, lifeTime, persentOfDmg;
     public Bullet bullet;
 
     [SerializeField] private Transform _point;
@@ -16,6 +16,7 @@ public class Ballista : MonoBehaviour, IDamagable
         _animator = GetComponent<Animator>();
         _currentHp = maxHp;
         Destroy(gameObject, lifeTime);
+        bullet.damage = StaticValues.PlayerAttackList[0].bullet.GetComponent<Bullet>().damage * persentOfDmg;
     }
 
     private float _damageTaking, _timeTaking;

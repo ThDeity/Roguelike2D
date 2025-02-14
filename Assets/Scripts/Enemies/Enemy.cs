@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     protected float _damageTaking;
     protected int _timeTaking;
+    protected GameObject _hpBar;
     public virtual void TakeDamage(float damage, int time)
     {
         if (time == 0)
@@ -42,6 +43,15 @@ public class Enemy : MonoBehaviour, IDamagable
             _timeTaking = time;
             StartCoroutine(nameof(TakingDamage));
         }
+
+        if (!_isPlayerNear)
+        {
+            _isPlayerNear = true;
+            _rotateToObj = target;
+        }
+
+        if (!_hpBar.activeInHierarchy)
+            _hpBar.SetActive(true);
     }
 
     private IEnumerator TakingDamage()
@@ -94,6 +104,9 @@ public class Enemy : MonoBehaviour, IDamagable
         target = Player.PlayerObj.transform;
         _points = StaticValues.EnemiesPoint;
         FindPoint();
+
+        _hpBar = transform.GetComponentInChildren<Canvas>().gameObject;
+        _hpBar.SetActive(false);
 
         maxHp *= StaticValues.EnemyMaxHp;
         _currentHp = maxHp;

@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StaticValues : MonoBehaviour
 {
     public static List<string> RoomTypes {  get; private set; }
-    public static GameObject ParamPanel, EnemyParamPanel, PassiveSkillsPanel, ActiveSkillsPanel;
+    public static GameObject ParamPanel, EnemyParamPanel, PassiveSkillsPanel, ActiveSkillsPanel, SkillsTimer;
     public static string CurrentRoomType = "ActiveSkills";
     public static bool WasPrizeGotten;
 
@@ -45,6 +46,8 @@ public class StaticValues : MonoBehaviour
         PassiveSkillsPanel.SetActive(false);
 
         ActiveSkillsPanel = FindObjectOfType<ActiveSkill>().gameObject;
+        SkillsTimer = ActiveSkillsPanel.GetComponent<ActiveSkill>().skillSlot.GetComponentInChildren<Text>().gameObject;
+        SkillsTimer.SetActive(false);
         ActiveSkillsPanel.SetActive(false);
     }
 }

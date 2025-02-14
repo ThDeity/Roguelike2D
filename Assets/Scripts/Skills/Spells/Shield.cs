@@ -27,7 +27,7 @@ public class Shield : Skill, Roll
         }
     }
 
-    public void OnRollStarted() => OnRoll();
+    public override void OnRollStarted() => OnRoll();
 
     public void OnRollFinished() => OnRoll(false);
 
