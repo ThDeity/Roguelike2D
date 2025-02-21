@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour, IDamagable
             _hpBar.SetActive(true);
     }
 
-    private IEnumerator TakingDamage()
+    protected IEnumerator TakingDamage()
     {
         for (int i = 0; i < _timeTaking; i++)
         {
@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
 
-    protected void OnDestroy() => SpawnEnemies.Enemies.Remove(gameObject);
+    protected virtual void OnDestroy() => SpawnEnemies.Enemies.Remove(gameObject);
 
     public virtual float ChangeReloadCd(float change)
     {
@@ -140,13 +140,18 @@ public class Enemy : MonoBehaviour, IDamagable
         else if (target != null && Vector2.Distance(target.position, _transform.position) > _attackDistance)
         {
             _agent.isStopped = false;
-            _agent.SetDestination(target.position);
+            _agent.destination = target.position;
         }
         else if (_time <= 0)
         {
             _agent.isStopped = true;
             _animator.Play("Attack");
             _time = _reloadTime;
+        }
+        else
+        {
+            _agent.isStopped = false;
+            _agent.destination = target.position;
         }
     }
 

@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnemy: 1
+  _effectsScale: {x: 0.5, y: 0.5}
   _effects:
   - {fileID: 7525262866447704441, guid: 0afb168133122ed48845b3261bc73445, type: 3}
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
@@ -300,7 +301,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 4
 --- !u!1 &2729221208660766365
 GameObject:
   m_ObjectHideFlags: 0

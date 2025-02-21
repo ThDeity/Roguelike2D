@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,12 +9,13 @@ public class Explosion : MonoBehaviour
 
     public void Shockwave()
     {
-        Instantiate(explosionObj, transform);
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+        if (explosionObj != null)
+            Instantiate(explosionObj, transform);
 
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach (Collider2D collider in colliders)
         {
-            if (collider.attachedRigidbody != null && collider.tag != "Player")
+            if (collider.attachedRigidbody != null && collider.tag != tag)
             {
                 Vector3 forceVector = -(transform.position - collider.transform.position).normalized;
                 forceVector.z = 0;
@@ -22,14 +24,15 @@ public class Explosion : MonoBehaviour
                 float a = (radius - distance)/ distance;
 
                 collider.TryGetComponent(out IDamagable component);
-                if (component != null && collider.tag != "Player")
-                {
+                if (component != null)
                     component.TakeDamage(damage, 0);
-                    collider.GetComponent<NavMeshAgent>().Warp(forceVector * a);
-                }
-                else
-                    collider.attachedRigidbody.MovePosition(forceVector * a);
 
+                collider.TryGetComponent(out NavMeshAgent agent);
+                if (agent != null)
+                    agent.Warp(forceVector * a);
+                else
+                    collider.attachedRigidbody.AddForce(forceVector * a * time);
+                    //collider.attachedRigidbody.MovePosition(forceVector * a);
             }
         }
     }
@@ -40,7 +43,7 @@ public class Explosion : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.attachedRigidbody != null)
+            if (collider.attachedRigidbody != null && collider.tag != tag)
             {
                 Vector3 forceVector = forceSign * (transform.position - collider.transform.position);
                 forceVector.z = 0;

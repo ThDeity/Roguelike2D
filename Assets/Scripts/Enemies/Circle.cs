@@ -15,7 +15,8 @@ public class Circle : Enemy
 
     protected void Explosion()
     {
-        Instantiate(_explosion, _transform.position, _transform.rotation);
+        GameObject exp = Instantiate(_explosion, _transform.position, _transform.rotation);
+        exp.tag = tag;
         Destroy(gameObject);
     }
 

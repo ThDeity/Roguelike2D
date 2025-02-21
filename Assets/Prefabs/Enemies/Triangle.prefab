@@ -142,7 +142,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.847, y: 0, z: 0}
-  m_LocalScale: {x: 0.12936923, y: 0.12936923, z: 0.12936923}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5120907415157714284}
@@ -442,7 +442,7 @@ MonoBehaviour:
   - {fileID: 6491381031104839967}
   - {fileID: 4066527374825975581}
   - {fileID: 3033706378686460645}
-  _increaseSpeed: 1.3
+  _increaseSpeed: 0.8
 --- !u!114 &3092033047413997758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackDistance: 8
   _offset: 180
-  _reloadTime: 0.7
+  _reloadTime: 0.9
   _bar:
     ValueChanged:
       m_PersistentCalls:
@@ -477,7 +477,7 @@ MonoBehaviour:
   maxHp: 5
   target: {fileID: 0}
   isCharmed: 0
-  _specialReload: 1.6
+  _specialReload: 1.8
   _pointOfRay: {fileID: 811836061350233835}
 --- !u!60 &4991096829200812066
 PolygonCollider2D:
@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnemy: 1
+  _effectsScale: {x: 0.5, y: 0.5}
   _effects:
   - {fileID: 7525262866447704441, guid: 0afb168133122ed48845b3261bc73445, type: 3}
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
@@ -606,7 +607,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 7
+  m_Radius: 4.5
 --- !u!1001 &1461655412903366643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -689,7 +690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.6735
+      value: 0.636
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

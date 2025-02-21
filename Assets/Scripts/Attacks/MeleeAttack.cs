@@ -14,9 +14,9 @@ public class MeleeAttack : MonoBehaviour
         }
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IDamagable enemy) && collision.tag != transform.tag)
+        if (collision.TryGetComponent(out IDamagable enemy) && collision.tag != tag)
         {
             float damage = Random.Range(0, 100) <= _critChance ? _damage * 2 : _damage;
             enemy.TakeDamage(damage, 0);

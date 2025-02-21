@@ -39,7 +39,11 @@ public class ShieldForEnemy : MonoBehaviour, IDamagable
         }
     }
 
-    private void OnDestroy() => GetComponentInParent<Collider2D>().enabled = true;
+    private void OnDestroy()
+    {
+        if (transform.GetComponentInParent<Collider2D>() != null)
+            GetComponentInParent<Collider2D>().enabled = true;
+    }
 
     private void Start()
     {

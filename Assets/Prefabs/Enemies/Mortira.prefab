@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 695770937607718785}
   - component: {fileID: -6832080187495865232}
   - component: {fileID: 8060018369325100935}
+  - component: {fileID: 2981786131523445266}
   m_Layer: 0
   m_Name: Mortira
   m_TagString: Enemy
@@ -81,12 +82,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 71f0d21891ce60c4299d553c8f9ce9fe, type: 3}
+  m_Sprite: {fileID: 591241121, guid: 71f0d21891ce60c4299d553c8f9ce9fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.4, y: 17.54}
+  m_Size: {x: 8.93, y: 13.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -128,8 +129,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.4, y: 17.54}
-    newSize: {x: 12.4, y: 17.54}
+    oldSize: {x: 8.93, y: 13.04}
+    newSize: {x: 8.93, y: 13.04}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -146,7 +147,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7153875530711016401}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 6.2
+  m_Radius: 4.22
   m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
@@ -155,8 +156,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 17.54
-  m_BaseOffset: 8.77
+  m_Height: 12.88
+  m_BaseOffset: 7.04
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1086946389715161686
@@ -232,7 +233,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 56
+  m_Radius: 40
 --- !u!50 &-6832080187495865232
 Rigidbody2D:
   serializedVersion: 4
@@ -281,6 +282,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2981786131523445266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153875530711016401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c931862138aea8645984268eeb4c2c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnemy: 1
+  _effectsScale: {x: 4, y: 5.6}
+  _effects:
+  - {fileID: 7525262866447704441, guid: 0afb168133122ed48845b3261bc73445, type: 3}
+  - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
+  - {fileID: 2463234329937179597, guid: 62d5e808729071640917f188500ca05f, type: 3}
+  - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
 --- !u!1001 &2485214314659446616
 PrefabInstance:
   m_ObjectHideFlags: 0

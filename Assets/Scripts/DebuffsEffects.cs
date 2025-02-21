@@ -6,8 +6,9 @@ using UnityEngine.AI;
 
 public class DebuffsEffects : MonoBehaviour
 {
-    [SerializeField] private bool _isEnemy;
     private List<RangeAttack> _rangeAttacks;
+    [SerializeField] private bool _isEnemy;
+    [SerializeField] private Vector2 _effectsScale;
     private Animator _animator;
     private Enemy _enemy;
     NavMeshAgent agent;
@@ -30,7 +31,7 @@ public class DebuffsEffects : MonoBehaviour
     private GameObject SetEffect(int index)
     {
         Transform t = Instantiate(_effects[index], transform).transform;
-        t.localScale *= transform.localScale.x;
+        t.localScale = _effectsScale;
 
         return t.gameObject;
     }
@@ -108,10 +109,14 @@ public class DebuffsEffects : MonoBehaviour
         }
     }
 
+    private bool _isDazzled;
     public void Dazzle(float time) => StartCoroutine(DazzleCoroutine(time));
 
     private IEnumerator DazzleCoroutine(float time)
     {
+        if (_isDazzled) yield break;
+        _isDazzled = true;
+
         GameObject effect = SetEffect(0);
 
         float speed;
@@ -126,12 +131,15 @@ public class DebuffsEffects : MonoBehaviour
         }
         else
         {
-            speed = StaticValues.PlayerMovementObj.speed;
-            StaticValues.PlayerMovementObj.speed = 0;
+            StaticValues.PlayerMovementObj.ChangeSpeed(0);
+            StaticValues.PlayerMovementObj.GetComponent<Rigidbody2D>().mass *= 1000;
+            StaticValues.PlayerAttackList.ForEach(x => x.enabled = false);
 
             yield return new WaitForSeconds(time);
 
-            StaticValues.PlayerMovementObj.speed = speed;
+            StaticValues.PlayerAttackList.ForEach(x => x.enabled = true);
+            StaticValues.PlayerMovementObj.GetComponent<Rigidbody2D>().mass /= 1000;
+            StaticValues.PlayerMovementObj.ChangeSpeed(0, false);
         }
         Destroy(effect);
     }

@@ -41,4 +41,10 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
         }
     }
+
+    protected void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, _bulletVector * maxDistance);
+    }
 }

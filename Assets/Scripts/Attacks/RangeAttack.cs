@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RangeAttack : MonoBehaviour
@@ -7,14 +6,13 @@ public class RangeAttack : MonoBehaviour
     public GameObject bullet;
     public float _time { protected set; get; }
     public Transform _point;
-    protected List<GameObject> _bullets = new List<GameObject>();
 
     protected virtual void Start()
     {
         _time = reloadTime;
 
-        Bullet projectile = bullet.GetComponent<Bullet>();
-        if (transform.tag == "Enemy")
+        bullet.TryGetComponent(out Bullet projectile);
+        if (transform.tag == "Enemy" && projectile != null)
         {
             projectile.damage = projectile.damage * StaticValues.EnemyDamage;
             projectile.critChance = (int)Mathf.Round((float)projectile.critChance * StaticValues.EnemyCrit);
