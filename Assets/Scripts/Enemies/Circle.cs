@@ -20,7 +20,7 @@ public class Circle : Enemy
         Destroy(gameObject);
     }
 
-    public override void TakeDamage(float damage, int time)
+    public override void TakeDamage(float damage, float time)
     {
         Explosion();
         Destroy(gameObject);

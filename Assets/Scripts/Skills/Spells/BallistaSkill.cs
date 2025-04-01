@@ -4,10 +4,17 @@ public class BallistaSkill : Skill
 {
     public GameObject zone;
     public Ballista ballista;
-    public float reloadTime;
+    public float reloadTime, hpOfPlayer;
 
     private float _currentTime;
     private Transform _zone;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        ballista.maxHp = hpOfPlayer * StaticValues.PlayerObj.ChangeMxHp(1);
+    }
 
     private void Update()
     {

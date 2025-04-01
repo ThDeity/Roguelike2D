@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4209155507723298244}
   - component: {fileID: 4134397143834794084}
   - component: {fileID: 7732799235486295172}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hook
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3211119484856847379}
   - component: {fileID: 688340872595520749}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Chain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 7091624003267343786}
   - component: {fileID: 1522700254699336349}
   - component: {fileID: 5913065073251376596}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hexagon Pointed-Top
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -533,6 +533,7 @@ MonoBehaviour:
   maxHp: 5
   target: {fileID: 0}
   isCharmed: 0
+  isBoss: 0
   _isAttack: 0
 --- !u!1001 &2822855509970258363
 PrefabInstance:
@@ -542,9 +543,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 669654924657561420}
     m_Modifications:
+    - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -625,6 +634,10 @@ PrefabInstance:
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

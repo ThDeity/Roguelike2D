@@ -8,6 +8,7 @@ TagManager:
   - Param
   - Somebody
   - Point
+  - Default
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
+  - Void
+  - EnemyDash
   - 
   - 
   - 

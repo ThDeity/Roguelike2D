@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
+using System.Collections;
 
 public class Slime : Enemy
 {
@@ -10,7 +11,7 @@ public class Slime : Enemy
 
     public int countOfSeparates;
 
-    public override void TakeDamage(float damage, int time)
+    public override void TakeDamage(float damage, float time)
     {
         if (time == 0)
         {
@@ -29,9 +30,11 @@ public class Slime : Enemy
         }
         else
         {
+            _isTakingDmg = true;
             _damageTaking = damage;
             _timeTaking = time;
-            StartCoroutine(nameof(TakingDamage));
+
+            StartCoroutine(TakingDamage(time));
         }
 
         if (!_isPlayerNear)

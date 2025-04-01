@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5515847805477274048}
   - component: {fileID: 3598207135201668774}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SlimeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2705302738904364937}
   - component: {fileID: 9041146905375356215}
   - component: {fileID: 2713071005930114550}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SlimeBullet
   m_TagString: Enemy
   m_Icon: {fileID: 0}

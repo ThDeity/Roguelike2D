@@ -5,7 +5,7 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] protected float _damage;
     [SerializeField] protected int _critChance;
 
-    protected void Start()
+    protected virtual void Start()
     {
         if (transform.tag == "Enemy")
         {

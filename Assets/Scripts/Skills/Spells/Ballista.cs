@@ -19,8 +19,9 @@ public class Ballista : MonoBehaviour, IDamagable
         bullet.damage = StaticValues.PlayerAttackList[0].bullet.GetComponent<Bullet>().damage * persentOfDmg;
     }
 
-    private float _damageTaking, _timeTaking;
-    public void TakeDamage(float damage, int time)
+    private bool _isTakingDmg;
+    protected float _damageTaking, _timeTaking;
+    public void TakeDamage(float damage, float time)
     {
         if (time == 0)
         {
@@ -28,28 +29,23 @@ public class Ballista : MonoBehaviour, IDamagable
 
             if (_currentHp <= 0)
                 Destroy(gameObject);
-            else if (_currentHp > maxHp)
-                _currentHp = maxHp;
         }
         else
         {
+            _isTakingDmg = true;
             _damageTaking = damage;
             _timeTaking = time;
-            StartCoroutine(TakingDamage());
 
-            _damageTaking = 0;
-            _timeTaking = 0;
+            StartCoroutine(TakingDamage(time));
         }
     }
 
-    private IEnumerator TakingDamage()
+    private IEnumerator TakingDamage(float time)
     {
-        for (int i = 0; i < (int)_timeTaking; i++)
-        {
-            float damage = _damageTaking / _timeTaking;
-            TakeDamage(damage, 0);
-            yield return new WaitForSeconds(1);
-        }
+        yield return new WaitForSeconds(time);
+
+        _isTakingDmg = false;
+        _damageTaking = 0;
     }
 
     private Enemy _currentEnemy;
@@ -91,6 +87,9 @@ public class Ballista : MonoBehaviour, IDamagable
     private void Update()
     {
         _currentCd -= Time.deltaTime;
+
+        if (_isTakingDmg)
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
 
         if (_currentEnemy != null)
         {   

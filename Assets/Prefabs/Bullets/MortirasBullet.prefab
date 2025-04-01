@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9013785406191433560}
   - component: {fileID: 4707538491802345760}
   - component: {fileID: 6069351003333693052}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MortirasBullet
   m_TagString: Enemy
   m_Icon: {fileID: 0}

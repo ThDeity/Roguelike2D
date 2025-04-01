@@ -95,6 +95,7 @@ MonoBehaviour:
   timeBtwDamage: 0.15
   lifeTime: 3
   timeOfTakingDmg: 2
+  _tag: Player
 --- !u!1 &7657154916313124513
 GameObject:
   m_ObjectHideFlags: 0

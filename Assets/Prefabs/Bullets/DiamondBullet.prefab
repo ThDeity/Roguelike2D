@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2261315622671362879}
   - component: {fileID: 2793605652034767692}
   - component: {fileID: 1762837089543798922}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DiamondBullet
   m_TagString: Enemy
   m_Icon: {fileID: 0}

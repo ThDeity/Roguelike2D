@@ -4,7 +4,7 @@ public class BallistaCard : Skill
 {
     [SerializeField] private Ballista _ballista;
     [SerializeField] private GameObject _zone;
-    [SerializeField] private float _reloadTime, _increaseParam;
+    [SerializeField] private float _reloadTime, _increaseParam, _hpOfPlayer;
 
     public override void GivePrize(Sprite skillSlot)
     {
@@ -18,15 +18,18 @@ public class BallistaCard : Skill
             skill.ballista.radius *= _increaseParam;
             skill.ballista.persentOfDmg *= _increaseParam;
 
+            skill.hpOfPlayer *= _increaseParam;
+
             return;
         }
         else if (values.playerPrefab.TryGetComponent(out Skill component))
             DestroyImmediate(component, true);
 
         BallistaSkill ballista = values.playerPrefab.AddComponent<BallistaSkill>();
+        ballista.reloadTime = _reloadTime;
+        ballista.hpOfPlayer = _hpOfPlayer;
+        ballista.skillSprite = skillSlot;
         ballista.ballista = _ballista;
         ballista.zone = _zone;
-        ballista.reloadTime = _reloadTime;
-        ballista.skillSprite = skillSlot;
     }
 }

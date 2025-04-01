@@ -459,7 +459,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: dbf3309d6e83a7b48b7d1b74457f76d7, type: 2}
+      objectReference: {fileID: 23800000, guid: 995a7adf53af19c469080c5d383a99a2, type: 2}
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_OverrideVoxelSize
       value: 0
@@ -872,7 +872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1308355134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,6 +1031,7 @@ MonoBehaviour:
   - {fileID: 9221463161419547699, guid: 30d55a9bbf9f5d743b8ce9fa6b73ae88, type: 3}
   - {fileID: 3735469584425601890, guid: 1f347bab8c50d294b9f9d256d2d3598b, type: 3}
   - {fileID: 6494871196735553430, guid: 6a3eef83687436046a178b566ec4b5d5, type: 3}
+  _rooms: 2
   _portal: {fileID: 4041158132433937218, guid: ca2c9d02532ce104abcc2d5f43db8c76, type: 3}
   _portalsPoints:
   - {fileID: 1789759884}
@@ -1146,11 +1147,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2621393320533122272, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.044088
+      value: 12.55
       objectReference: {fileID: 0}
     - target: {fileID: 2621393320533122272, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.005128
+      value: -7.32
       objectReference: {fileID: 0}
     - target: {fileID: 2621393320533122272, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1183,6 +1184,10 @@ PrefabInstance:
     - target: {fileID: 2621393320533122272, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623385637526556988, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: _barLine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8323718609993476291, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_IsActive
@@ -1293,7 +1298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1826778550
 MonoBehaviour:
   m_ObjectHideFlags: 0

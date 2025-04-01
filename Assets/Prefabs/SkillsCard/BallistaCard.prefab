@@ -230,3 +230,4 @@ MonoBehaviour:
   _zone: {fileID: 8867089238020802048, guid: d5c3cbf98c463664a9a5f23d9105b602, type: 3}
   _reloadTime: 8
   _increaseParam: 1.3
+  _hpOfPlayer: 0.3

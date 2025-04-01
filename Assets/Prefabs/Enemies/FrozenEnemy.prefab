@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3918481740554801884}
   - component: {fileID: 6033327532257124603}
   - component: {fileID: 750009955680123127}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FrozenEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -264,6 +264,7 @@ MonoBehaviour:
   maxHp: 4.65
   target: {fileID: 0}
   isCharmed: 0
+  isBoss: 0
 --- !u!1 &2952005085448716211
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820399057816842437}
   - component: {fileID: 4240514662025742801}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 634679659661208256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7961804147716381128}
   - component: {fileID: 5785117521787113230}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,6 +483,10 @@ PrefabInstance:
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_Name
       value: Spike (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_TagString
@@ -573,6 +578,10 @@ PrefabInstance:
       value: Spike (7)
       objectReference: {fileID: 0}
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -660,6 +669,10 @@ PrefabInstance:
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_Name
       value: Spike (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_TagString
@@ -751,6 +764,10 @@ PrefabInstance:
       value: Spike (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -838,6 +855,10 @@ PrefabInstance:
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_Name
       value: Spike (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_TagString
@@ -929,6 +950,10 @@ PrefabInstance:
       value: Spike (5)
       objectReference: {fileID: 0}
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -1013,9 +1038,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7867569300802741552}
     m_Modifications:
+    - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -1097,6 +1130,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1129,6 +1166,10 @@ PrefabInstance:
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_Name
       value: Spike (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_TagString
@@ -1218,6 +1259,10 @@ PrefabInstance:
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_Name
       value: Spike
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4226910956136730851, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
       propertyPath: m_TagString

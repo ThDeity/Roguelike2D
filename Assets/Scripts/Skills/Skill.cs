@@ -18,22 +18,21 @@ public class Skill : MonoBehaviour, Roll
 
     protected virtual void Start()
     {
+        _timer = StaticValues.SkillsTimer.GetComponent<Text>();
+
         if (skillSprite != null)
             StaticValues.ActiveSkillsPanel.GetComponent<ActiveSkill>().skillSlot.sprite = skillSprite;
-
-        _timer = StaticValues.SkillsTimer.GetComponent<Text>();
-        _timer.enabled = false;
     }
 
     protected IEnumerator StartTimer(int time)
     {
-        _timer.enabled = true;
+        _timer.gameObject.SetActive(true);
         for (int i = time; i > 0; i--)
         {
             _timer.text = i.ToString();
             yield return new WaitForSeconds(1);
         }
 
-        _timer.enabled = false;
+        _timer.gameObject.SetActive(false);
     }
 }

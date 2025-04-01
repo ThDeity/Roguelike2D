@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField] protected ValueSystem _bar = new ValueSystem();
     [SerializeField] private float _hpMax;
-    private float _currentHp;
+    [SerializeField] private float _currentHp;
 
     public bool IsExploding;
     public GameObject Explosion;
@@ -19,8 +20,9 @@ public class Player : MonoBehaviour, IDamagable
 
     private List<OnTakeDmg> _onTakeDmgList;
 
-    protected float _damageTaking, _timeTaking;
-    public void TakeDamage(float damage, int time)
+    private bool _isTakingDmg;
+    private float _dmg, _time;
+    public void TakeDamage(float damage, float time)
     {
         if (damage > 0)
             _onTakeDmgList.ForEach(x => x.OnTakeDmg());
@@ -45,23 +47,20 @@ public class Player : MonoBehaviour, IDamagable
         }
         else
         {
-            _damageTaking = damage;
-            _timeTaking = time;
-            StartCoroutine(TakingDamage());
+            _isTakingDmg = true;
+            _dmg = damage;
+            _time = time;
 
-            _damageTaking = 0;
-            _timeTaking = 0;
+            StartCoroutine(TakingDamage(time));
         }
     }
 
-    private IEnumerator TakingDamage()
+    private IEnumerator TakingDamage(float time)
     {
-        for (int i = 0; i < (int) _timeTaking; i++)
-        {
-            float damage = _damageTaking / _timeTaking;
-            TakeDamage(damage, 0);
-            yield return new WaitForSeconds(1);
-        }
+        yield return new WaitForSeconds(time);
+
+        _isTakingDmg = false;
+        _dmg = 0;
     }
 
     private void Awake()
@@ -71,6 +70,12 @@ public class Player : MonoBehaviour, IDamagable
         _currentHp = _hpMax;
 
         _onTakeDmgList = GetComponents<OnTakeDmg>().ToList();
+    }
+
+    private void Update()
+    {
+        if (_isTakingDmg)
+            TakeDamage(_dmg / _time * Time.deltaTime, 0);
     }
 
     public float ChangeMxHp(float hpChange)

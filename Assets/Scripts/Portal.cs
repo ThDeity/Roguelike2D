@@ -5,16 +5,17 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     [SerializeField] private Transform _point;
+    [SerializeField] private int _roomsPerArea;
     [SerializeField] private List<string> _sceneList = new List<string>();
 
-    [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default")]
+    [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes = new List<GameObject>();
     
     int index;
     GameObject icon;
     private void Awake()
     {
-        index = Random.Range(0, StaticValues.RoomTypes.Count - 1);
+        index = StaticValues.RoomsBeforeBoss % _roomsPerArea != 0 ? Random.Range(0, StaticValues.RoomTypes.Count - 1) : 5;
         icon = Instantiate(_prizes[index], _point.position, Quaternion.identity);
         gameObject.SetActive(false);
         icon.SetActive(false);
@@ -26,8 +27,16 @@ public class Portal : MonoBehaviour
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
         {
-            StaticValues.CurrentRoomType = StaticValues.RoomTypes[index];
-            SceneManager.LoadScene(_sceneList[Random.Range(0, _sceneList.Count - 1)]);
+            if (StaticValues.RoomsBeforeBoss % _roomsPerArea != 0)
+            {
+                StaticValues.CurrentRoomType = StaticValues.RoomTypes[index];
+                SceneManager.LoadScene(_sceneList[Random.Range(0, _sceneList.Count - 1)]);
+            }
+            else
+            {
+                StaticValues.CurrentRoomType = StaticValues.RoomTypes[index];
+                SceneManager.LoadScene((StaticValues.RoomsBeforeBoss / _roomsPerArea).ToString() + "_Boss");
+            }
         }
     }
 }

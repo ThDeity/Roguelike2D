@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8084296298828809124}
   - component: {fileID: 8174425272282572576}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SlimeSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2579444625371476169}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2872810008534770726}
   - component: {fileID: 467130079038087137}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slime_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 2547104564156460378}
   - component: {fileID: 207712741624949750}
   - component: {fileID: 4126161934553219236}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -438,6 +438,7 @@ MonoBehaviour:
   maxHp: 4
   target: {fileID: 0}
   isCharmed: 0
+  isBoss: 0
   _pointsToSeparate:
   - {fileID: 722388657784086319}
   - {fileID: 2579444625371476169}
@@ -468,7 +469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6691475914061411343}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PointToShot
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -499,7 +500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 722388657784086319}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -531,7 +532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3107418180349086485}
   - component: {fileID: 6788558589803881354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slime_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,9 +614,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8991629691135850047}
     m_Modifications:
+    - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -708,6 +717,10 @@ PrefabInstance:
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

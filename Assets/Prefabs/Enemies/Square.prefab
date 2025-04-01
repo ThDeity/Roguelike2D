@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4111271380885861509}
   - component: {fileID: 8895103894097894273}
   - component: {fileID: 5727499655824876961}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 3450531449599363180}
   - component: {fileID: 3785592984655341811}
   - component: {fileID: 237597741684070798}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Knife (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4218704531830835161}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 5684923539849390856}
   - component: {fileID: 6381329890489384714}
   - component: {fileID: 8059487920408287065}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -565,6 +565,7 @@ MonoBehaviour:
   maxHp: 3.85
   target: {fileID: 0}
   isCharmed: 0
+  isBoss: 0
   _dashForce: 800
   _dashCd: 3
   _speed: 3.7
@@ -631,9 +632,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1956593509247021501}
     m_Modifications:
+    - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -714,6 +723,10 @@ PrefabInstance:
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

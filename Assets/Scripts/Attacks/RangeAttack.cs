@@ -21,5 +21,7 @@ public class RangeAttack : MonoBehaviour
 
     public virtual void Shot() => Instantiate(bullet, _point.position, transform.rotation);
 
+    public virtual void ShotFromPoint() => Instantiate(bullet, _point.position, _point.rotation);
+
     protected virtual void FixedUpdate() => _time -= Time.deltaTime;
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ValueBar : MonoBehaviour
 {
-    [SerializeField] private Transform _lineBar;
+    public Transform _lineBar;
 
     public void SetValue(float value)
     {

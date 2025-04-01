@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5926048286622331410}
   - component: {fileID: 1887399331590269486}
   - component: {fileID: 1969976087983172445}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Suricken
   m_TagString: Enemy
   m_Icon: {fileID: 0}

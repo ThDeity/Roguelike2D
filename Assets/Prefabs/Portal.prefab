@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _point: {fileID: 5611414982612481270}
+  _roomsPerArea: 2
   _sceneList:
   - Room_1
   - Room_2
@@ -155,6 +156,7 @@ MonoBehaviour:
   - {fileID: 217634076463268240, guid: 2bf8ce036ddbe4545aaf9092f4797817, type: 3}
   - {fileID: 2771237672113716869, guid: f95c64ab9f2d4bb43bfdeda7340f1d38, type: 3}
   - {fileID: 2438282150182307597, guid: 8871caf0a13903a41897992d76709caf, type: 3}
+  - {fileID: 4852512520356977812, guid: c53eb9b2213b0014b861259ccd52708f, type: 3}
 --- !u!95 &6155362683243453800
 Animator:
   serializedVersion: 5

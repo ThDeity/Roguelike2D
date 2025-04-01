@@ -5,8 +5,6 @@ public class ColdBullets : MonoBehaviour
     public float time, speedReduce, cd;
     private float _currentCd;
 
-    private void Start() => _currentCd = cd;
-
     private void Update() => _currentCd -= Time.deltaTime;
 
     private void OnTriggerEnter2D(Collider2D collision)

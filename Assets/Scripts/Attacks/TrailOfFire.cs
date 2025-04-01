@@ -4,6 +4,7 @@ public class TrailOfFire : MonoBehaviour
 {
     public float damage, timeBtwDamage, lifeTime;
     public int timeOfTakingDmg;
+    [SerializeField] private string _tag;
     private float _currentTime;
 
     private void Start() => Destroy(gameObject, lifeTime);
@@ -12,7 +13,7 @@ public class TrailOfFire : MonoBehaviour
     {
         if (collision.TryGetComponent(out IDamagable component))
         {
-            if (!collision.CompareTag("Player") && _currentTime <= 0)
+            if (!collision.CompareTag(_tag) && _currentTime <= 0)
             {
                 component.TakeDamage(damage, timeOfTakingDmg);
                 _currentTime = timeBtwDamage;

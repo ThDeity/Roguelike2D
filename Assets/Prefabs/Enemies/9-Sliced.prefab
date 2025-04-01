@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4839910867313737533}
   - component: {fileID: 657921567413664466}
   - component: {fileID: 4444090296818843904}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 9-Sliced
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -174,6 +174,7 @@ MonoBehaviour:
   maxHp: 4
   target: {fileID: 0}
   isCharmed: 0
+  isBoss: 0
   _timeOfShield: 5.5
 --- !u!95 &4839910867313737533
 Animator:
@@ -268,9 +269,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7917096665074661508}
     m_Modifications:
+    - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -351,6 +360,10 @@ PrefabInstance:
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

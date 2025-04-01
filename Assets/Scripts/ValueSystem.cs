@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class ValueSystem
 {
-    [SerializeField] private ValueEvent ValueChanged = new ValueEvent();
+    [SerializeField] private ValueEvent ValueChanged = new();
     private float _value;
     private float _valueMax;
 

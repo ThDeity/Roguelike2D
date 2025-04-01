@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6067873041127565999}
   - component: {fileID: 3154637876417506790}
   - component: {fileID: 4450297220895207995}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Summoner
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -243,6 +243,7 @@ MonoBehaviour:
   maxHp: 4
   target: {fileID: 0}
   isCharmed: 0
+  isBoss: 0
   _bomb: {fileID: 2439388574841558707, guid: 96b19505428d16e498aa679889330f37, type: 3}
   _pointsToSummoning:
   - {fileID: 59460996374841641}
@@ -276,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 59460996374841641}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -307,7 +308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9070314605485491463}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -339,7 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4968121646955478751}
   - component: {fileID: 5417483954190088839}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,9 +422,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8842286570665538259}
     m_Modifications:
+    - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -504,6 +513,10 @@ PrefabInstance:
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

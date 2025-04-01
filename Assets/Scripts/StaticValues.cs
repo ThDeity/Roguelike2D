@@ -22,6 +22,7 @@ public class StaticValues : MonoBehaviour
 
     public static float EnemyMaxHp = 1, EnemySpeed = 1, EnemyDamage = 1, EnemyCount = 1, EnemyCrit = 1;
 
+    public static int RoomsBeforeBoss;
     private void Awake()
     {
         PlayerObj = FindObjectOfType<Player>();
@@ -30,9 +31,11 @@ public class StaticValues : MonoBehaviour
         PlayerAttackList = PlayerObj.transform.GetChild(0).GetComponentsInChildren<PlayerAttack>().ToList();
         attacks = PlayerAttackList;
 
-        RoomTypes = new List<string>() { "Parametres", "ActiveSkills", "PassiveSkills", "Enemy", "Default" };
+        RoomTypes = new List<string>() { "Parametres", "ActiveSkills", "PassiveSkills", "Enemy", "Default", "Boss" };
+        RoomsBeforeBoss = RoomsBeforeBoss > 0 ? RoomsBeforeBoss + 1 : 1;
 
         GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+        EnemiesPoint.Clear();
         foreach (GameObject p in points)
             EnemiesPoint.Add(p.transform);
 

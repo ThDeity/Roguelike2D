@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private float _time, _dashTimeCd, _currentSpeed;
     private Vector2 _velocity, _dashVector;
     private Rigidbody2D _rigidbody2D;
-    private Collider2D _collider;
     public float speed, dashCd, dashTime;
 
     public int rollsCount;
@@ -21,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _rolls = GetComponentsInChildren<Roll>().ToList();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _collider = GetComponent<Collider2D>();
         _time = 0;
         _currentSpeed = speed;
         _dashTimeCd = 0;
@@ -59,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             _time = dashTime;
             _rolls.ForEach(r => r.OnRollStarted());
 
-            _collider.enabled = false;
+            gameObject.layer = LayerMask.NameToLayer("Void");
             yield return new WaitForSeconds(dashTime);
 
             if (i != rollsCount - 1)
@@ -71,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         speed = _speedBeforeDash;
-        _collider.enabled = true;
+        gameObject.layer = LayerMask.NameToLayer("Player");
 
         _rolls.ForEach(r => r.OnRollFinished());
     }

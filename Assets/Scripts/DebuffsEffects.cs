@@ -6,15 +6,17 @@ using UnityEngine.AI;
 
 public class DebuffsEffects : MonoBehaviour
 {
+    [SerializeField] private Vector2 _effectsScale;
     private List<RangeAttack> _rangeAttacks;
     [SerializeField] private bool _isEnemy;
-    [SerializeField] private Vector2 _effectsScale;
     private Animator _animator;
     private Enemy _enemy;
     NavMeshAgent agent;
 
     [Tooltip("0 - дазл, 1 - заморозка, 2 - оглушение, 3 - щит")]
     [SerializeField] private List<GameObject> _effects;
+
+    private bool _isClear;
 
     private void Start()
     {
@@ -141,16 +143,26 @@ public class DebuffsEffects : MonoBehaviour
             StaticValues.PlayerMovementObj.GetComponent<Rigidbody2D>().mass /= 1000;
             StaticValues.PlayerMovementObj.ChangeSpeed(0, false);
         }
+
         Destroy(effect);
+        _isDazzled = false;
     }
 
-    public void Freezing(float time, float force, float damage = 0, bool isEnableAnim = false) => StartCoroutine(FreezingCoroutine(time, force, damage, isEnableAnim));
+    bool _isFrozen;
+    public void Freezing(float time, float force, float damage = 0, bool isEnableAnim = false)
+    {
+        if (_isFrozen) return;
+
+        StartCoroutine(FreezingCoroutine(time, force, damage, isEnableAnim));
+    }
 
     private IEnumerator FreezingCoroutine(float time, float force, float damage, bool isEnableAnim = false)
     {
         GameObject effect = SetEffect(1);
 
+        _isFrozen = true;
         float speed, cd = 1, newCd;
+        gameObject.GetComponent<IDamagable>().TakeDamage(damage, 0);
         if (_isEnemy)
         {
             speed = agent.speed;
@@ -184,7 +196,7 @@ public class DebuffsEffects : MonoBehaviour
             StaticValues.PlayerMovementObj.speed = speed;
         }
 
-        gameObject.GetComponent<IDamagable>().TakeDamage(damage, 0);
+        _isFrozen = false;
         Destroy(effect);
     }
 
@@ -201,11 +213,15 @@ public class DebuffsEffects : MonoBehaviour
 
         _enemy.enabled = false;
         _rangeAttacks.ForEach(attack => attack.enabled = false);
-        _animator.enabled = false;
+
+        if (_animator != null)
+            _animator.enabled = false;
 
         yield return new WaitForSeconds(time);
 
-        _animator.enabled = true;
+        if (_animator != null)
+            _animator.enabled = true;
+
         _rangeAttacks.ForEach(attack => attack.enabled = true);
         _enemy.enabled = true;
 

@@ -20,12 +20,13 @@ public class Enemy : MonoBehaviour, IDamagable
     protected bool _isPlayerNear;
 
     public Transform target;
-    public bool isCharmed;
+    public bool isCharmed, isBoss;
 
-    protected float _damageTaking;
-    protected int _timeTaking;
+    protected float _damageTaking, _timeTaking;
     protected GameObject _hpBar;
-    public virtual void TakeDamage(float damage, int time)
+
+    protected bool _isTakingDmg;
+    public virtual void TakeDamage(float damage, float time)
     {
         if (time == 0)
         {
@@ -39,9 +40,11 @@ public class Enemy : MonoBehaviour, IDamagable
         }
         else
         {
+            _isTakingDmg = true;
             _damageTaking = damage;
             _timeTaking = time;
-            StartCoroutine(nameof(TakingDamage));
+
+            StartCoroutine(TakingDamage(time));
         }
 
         if (!_isPlayerNear)
@@ -50,18 +53,16 @@ public class Enemy : MonoBehaviour, IDamagable
             _rotateToObj = target;
         }
 
-        if (!_hpBar.activeInHierarchy)
+        if (_hpBar != null && !_hpBar.activeInHierarchy)
             _hpBar.SetActive(true);
     }
 
-    protected IEnumerator TakingDamage()
+    protected IEnumerator TakingDamage(float time)
     {
-        for (int i = 0; i < _timeTaking; i++)
-        {
-            float damage = _damageTaking / _timeTaking;
-            TakeDamage(damage, 0);
-            yield return new WaitForSeconds(1);
-        }
+        yield return new WaitForSeconds(time);
+
+        _isTakingDmg = false;
+        _damageTaking = 0;
     }
 
     protected virtual void OnDestroy() => SpawnEnemies.Enemies.Remove(gameObject);
@@ -105,8 +106,11 @@ public class Enemy : MonoBehaviour, IDamagable
         _points = StaticValues.EnemiesPoint;
         FindPoint();
 
-        _hpBar = transform.GetComponentInChildren<Canvas>().gameObject;
-        _hpBar.SetActive(false);
+        if (!isBoss && _hpBar == null)
+        {
+            _hpBar = transform.GetComponentInChildren<Canvas>().gameObject;
+            _hpBar.SetActive(false);
+        }
 
         maxHp *= StaticValues.EnemyMaxHp;
         _currentHp = maxHp;

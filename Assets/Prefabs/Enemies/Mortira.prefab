@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -6832080187495865232}
   - component: {fileID: 8060018369325100935}
   - component: {fileID: 2981786131523445266}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mortira
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -194,6 +194,7 @@ MonoBehaviour:
   maxHp: 4
   target: {fileID: 0}
   isCharmed: 0
+  isBoss: 0
   _timeBtwShot: 0.8
   _timeToDmg: 0.5
   _damage: 3
@@ -314,6 +315,10 @@ PrefabInstance:
       value: MortirasBullet
       objectReference: {fileID: 0}
     - target: {fileID: 4251911163140471354, guid: bc8c5f382a32f9b4085cd3157afd21f3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4251911163140471354, guid: bc8c5f382a32f9b4085cd3157afd21f3, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -383,9 +388,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5100959487759781606}
     m_Modifications:
+    - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -478,6 +491,10 @@ PrefabInstance:
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

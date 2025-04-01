@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 811836061350233835}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PointOfRay
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066527374825975581}
   - component: {fileID: 1917567881941022926}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Suricken (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6491381031104839967}
   - component: {fileID: 767463825429111034}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Suricken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3033706378686460645}
   - component: {fileID: 6542421835983679791}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Suricken (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 6502552566397127136}
   - component: {fileID: 5720596813006145328}
   - component: {fileID: -3771622065262315090}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Triangle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -477,6 +477,7 @@ MonoBehaviour:
   maxHp: 5
   target: {fileID: 0}
   isCharmed: 0
+  isBoss: 0
   _specialReload: 1.8
   _pointOfRay: {fileID: 811836061350233835}
 --- !u!60 &4991096829200812066
@@ -620,9 +621,17 @@ PrefabInstance:
       propertyPath: _lineBar
       value: 
       objectReference: {fileID: 1472764017371689141}
+    - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -703,6 +712,10 @@ PrefabInstance:
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2554023834082062955, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}

@@ -4,8 +4,9 @@ using UnityEngine;
 public class SpawnPrize : MonoBehaviour
 {
     [SerializeField] private Transform _prizePoint;
-    [Tooltip("0 - parametres, 1 - active skills, 2 - passive skills, 3 - enemy's param")]
+    [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes;
+    [SerializeField] private int _rooms;
 
     [SerializeField] private GameObject _portal;
     [Tooltip("At least 3 points")]
@@ -14,12 +15,23 @@ public class SpawnPrize : MonoBehaviour
 
     private void Start()
     {
-        int numberOfPortals = Random.Range(1, 3);
-        for (int i = 0; i < numberOfPortals; i++)
+        if (StaticValues.RoomsBeforeBoss % _rooms != 0)
         {
-            GameObject portal = Instantiate(_portal, _portalsPoints[i]);
+            int numberOfPortals = Random.Range(1, 3);
+            for (int i = 0; i < numberOfPortals; i++)
+            {
+                GameObject portal = Instantiate(_portal, _portalsPoints[i]);
+                _portals.Add(portal);
+            }
+        }
+        else
+        {
+            GameObject portal = Instantiate(_portal, _portalsPoints[0]);
             _portals.Add(portal);
         }
+
+        if (StaticValues.CurrentRoomType == "Boss")
+            StaticValues.RoomsBeforeBoss -= 1;
     }
 
     private void Update()
@@ -52,6 +64,9 @@ public class SpawnPrize : MonoBehaviour
                 break;
             case "Enemy":
                 InstantiatePrize(3);
+                break;
+            case "Boss":
+                InstantiatePrize(4);
                 break;
             default:
                 StaticValues.WasPrizeGotten = true;

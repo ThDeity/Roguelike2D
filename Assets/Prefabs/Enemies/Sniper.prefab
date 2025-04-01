@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 862828219336393642}
   - component: {fileID: 9117331585805864670}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 7941898325458064145}
   - component: {fileID: 7479771407577373871}
   - component: {fileID: 7058658762579040651}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sniper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -249,6 +249,7 @@ MonoBehaviour:
   maxHp: 2.8
   target: {fileID: 0}
   isCharmed: 0
+  isBoss: 0
   _pointOfRay: {fileID: 862828219336393642}
 --- !u!50 &2349717198676366457
 Rigidbody2D:
@@ -395,9 +396,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8905987141053056428}
     m_Modifications:
+    - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -478,6 +487,10 @@ PrefabInstance:
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

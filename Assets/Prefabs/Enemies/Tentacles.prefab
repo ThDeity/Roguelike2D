@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 768934634180797127}
   - component: {fileID: 1552587433760850065}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 190249556773502353}
   - component: {fileID: 1896932628517744385}
   - component: {fileID: 4660159181564514276}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tentacle_0 (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 5466694822746646482}
   - component: {fileID: 4340177443632096286}
   - component: {fileID: 7129170820593939950}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tentacle_0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 221831741931433289}
   - component: {fileID: 5122915788984835657}
   - component: {fileID: 3120941581583773456}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tentacles
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -630,6 +630,7 @@ MonoBehaviour:
   maxHp: 4.5
   target: {fileID: 0}
   isCharmed: 0
+  isBoss: 0
   _tentacle1: {fileID: 1572484064873650985}
   _tentacle2: {fileID: 9188720913775747064}
   _secondOffset: 0
@@ -641,9 +642,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7406746013580267844}
     m_Modifications:
+    - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -736,6 +745,10 @@ PrefabInstance:
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
