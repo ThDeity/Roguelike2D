@@ -91,7 +91,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &5680587930391034739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   critChance: 0
-  lifeTime: 20
+  lifeTime: 8
   timeTakingDmg: 0
 --- !u!1 &8711085461162635650
 GameObject:

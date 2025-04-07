@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c72bbd090d1a340b9a7942a5f71398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: You're just freezing everything around you.
   _interval: 5
   _freezingTime: 1.3
   _damage: 1.25

@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.2, y: 5.5, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8232857182148823390}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &2734006003529366006
@@ -144,12 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61fb08303cd9fd499042061af1834d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _point: {fileID: 5611414982612481270}
-  _roomsPerArea: 2
-  _sceneList:
-  - Room_1
-  - Room_2
-  - Room_3
+  _buttonIcon: {fileID: 4905889868995709452, guid: 9c971a60bea149b4bb2b02a5f8a4a090, type: 3}
+  _roomsPerArea: 8
+  _roomsCount: 5
+  _pointForPrize: {fileID: 5611414982612481270}
+  _pointForButton: {fileID: 8232857182148823390}
   _prizes:
   - {fileID: 665770201956683095, guid: 3e7ece9114a5d834894582bafc44396c, type: 3}
   - {fileID: 1778931439940986692, guid: 0922887f1113d5a4c9398070e045874f, type: 3}
@@ -178,3 +178,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &4156691387413725949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8232857182148823390}
+  m_Layer: 0
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8232857182148823390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4156691387413725949}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.599, y: -0.442, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5611414982612481270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

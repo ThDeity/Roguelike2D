@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class ActiveSkill : MonoBehaviour
+public class ActiveSkill : Prize
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
     private GameObject _activeSkillsPanel;

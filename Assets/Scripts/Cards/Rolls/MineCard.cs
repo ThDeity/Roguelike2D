@@ -5,6 +5,12 @@ public class MineCard : Card
     [SerializeField] private GameObject _mine;
     [SerializeField] private float _rollDebuff, _mineSizeBuff;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Mine Roll \n +{_rollDebuff} Roll CD";
+    }
+
     public void GivePrize()
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out MineRoll mineRoll))

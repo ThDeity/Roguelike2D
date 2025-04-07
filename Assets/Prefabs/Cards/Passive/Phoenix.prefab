@@ -225,5 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0113e83cd28255541951b6608bb0cb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: Have you read about Lazarus? You can do the same now
   _hpDebuff: 0.75
   _hpPersentAfterDeath: 0.6

@@ -27,6 +27,14 @@ public class Mortira : Enemy
         }
     }
 
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        if (_currentZone != null )
+            Destroy(_currentZone.gameObject );
+    }
+
     protected override void Update()
     {
         _time -= Time.deltaTime;

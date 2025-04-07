@@ -5,6 +5,12 @@ public class FrozenBurstCard : Card
     [SerializeField] private float _interval, _freezingTime, _damage, _radius, _force, _increaseParam;
     [SerializeField] private GameObject _burst;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Frozen Burst \n +{_interval}s Interval \n +{_radius}m Radius \n +{_damage}% DMG";
+    }
+
     public void GivePrize()
     {
         if (!StaticValues.PlayerObj.TryGetComponent(out FrozenBurst burst))

@@ -6,6 +6,12 @@ public class SpikesCard : Card
     [SerializeField] private int _spikesCount, _spikesCountPlus;
     [SerializeField] private float _buff, _interval, _radius;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Spikes \n {_interval}s Interval \n +{_spikesCount} Spikes";
+    }
+
     public void GivePrize()
     {
         if (!StaticValues.PlayerObj.TryGetComponent(out Spikes component))

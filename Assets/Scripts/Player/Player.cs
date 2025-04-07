@@ -1,14 +1,14 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField] protected ValueSystem _bar = new ValueSystem();
     [SerializeField] private float _hpMax;
-    [SerializeField] private float _currentHp;
+    public float currentHp { private set; get; }
 
     public bool IsExploding;
     public GameObject Explosion;
@@ -18,32 +18,44 @@ public class Player : MonoBehaviour, IDamagable
 
     public static Player PlayerObj;
 
-    private List<OnTakeDmg> _onTakeDmgList;
+    public static float DamageOnStart;
 
-    private bool _isTakingDmg;
+    private List<OnTakeDmg> _onTakeDmgList = new List<OnTakeDmg>();
+
+    private bool _isTakingDmg = false;
     private float _dmg, _time;
     public void TakeDamage(float damage, float time)
     {
-        if (damage > 0)
+        if (damage > 0 && _onTakeDmgList.Count > 0)
             _onTakeDmgList.ForEach(x => x.OnTakeDmg());
 
-        if (time == 0)
+        if (time <= 0)
         {
-            _currentHp -= damage;
-            _bar.RemoveValue(damage);
+            currentHp -= damage;
+            if (currentHp > _hpMax)
+                currentHp = _hpMax;
 
-            if (_currentHp <= 0 && lifesCount <= 0 && gameObject != null)
-                Destroy(gameObject);
-            else if (_currentHp <= 0 && lifesCount > 0)
+            if (damage > 0)
+                _bar.RemoveValue(damage);
+            else
+                _bar.AddValue(-damage);
+
+            if (currentHp <= 0 && lifesCount <= 0 && gameObject != null)
             {
-                _currentHp = _hpMax * hpAfterDeath;
-                _bar.AddValue(_currentHp);
+                Destroy(gameObject);
+
+                SceneManager.LoadScene("Menu");
+            }
+            else if (currentHp <= 0 && lifesCount > 0)
+            {
+                currentHp = _hpMax * hpAfterDeath;
+                _bar.AddValue(currentHp);
                 lifesCount--;
 
                 FindObjectOfType<StaticValues>().playerPrefab.GetComponent<Player>().lifesCount = lifesCount;
             }
-            else if (_currentHp > _hpMax)
-                _currentHp = _hpMax;
+            else if (currentHp > _hpMax)
+                currentHp = _hpMax;
         }
         else
         {
@@ -63,11 +75,39 @@ public class Player : MonoBehaviour, IDamagable
         _dmg = 0;
     }
 
+    protected static ValueSystem Bar;
+    protected static float HpMax, HpAfterDeath;
+    public void Reset2()
+    {
+        Debug.Log(_bar.ToString());
+
+        currentHp = _hpMax = HpMax;
+        IsExploding = false;
+        Explosion = null;
+
+        lifesCount = 0;
+        hpAfterDeath = 0;
+
+        DamageOnStart = 0;
+
+        _bar.Setup(_hpMax);
+        PlayerObj = GetComponent<Player>();
+    }
+
     private void Awake()
     {
+        if (Bar == null)
+        {
+            Bar = _bar;
+            HpMax = _hpMax;
+        }
+
         PlayerObj = GetComponent<Player>();
         _bar.Setup(_hpMax);
-        _currentHp = _hpMax;
+        currentHp = _hpMax;
+
+        TakeDamage(DamageOnStart, 0);
+        DamageOnStart = 0;
 
         _onTakeDmgList = GetComponents<OnTakeDmg>().ToList();
     }
@@ -82,7 +122,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         _hpMax *= hpChange;
         transform.localScale *= hpChange;
-        _currentHp *= hpChange;
+        currentHp *= hpChange;
         _bar.SetupMax(_hpMax);
 
         return _hpMax;

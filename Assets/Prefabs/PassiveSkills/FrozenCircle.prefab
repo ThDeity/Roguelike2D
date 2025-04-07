@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8765666799364349526}
   - component: {fileID: 3192008147187796499}
   - component: {fileID: 2524103554275913303}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FrozenCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

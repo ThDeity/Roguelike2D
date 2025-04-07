@@ -4,6 +4,12 @@ public class SlideCard : Card
 {
     [SerializeField] private float _buffSpeed, _debuffSpeed, _buffMxHp, _reloadCd, _buff;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Slide \n +{(_buffSpeed - 1) * 100}% Speed \n +{(_buffMxHp - 1) * 100}% HP \n -{(_debuffSpeed - 1) * 100}% Speed while attacking\n -{(_reloadCd - 1) * 100}% Reload";
+    }
+
     public void GivePrize()
     {
         StaticValues.PlayerObj.ChangeMxHp(_buffMxHp);

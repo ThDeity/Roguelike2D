@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PassiveSkill : MonoBehaviour
+public class PassiveSkill : Prize
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
     private GameObject _passiveSkillsPanel;

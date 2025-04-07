@@ -5,6 +5,12 @@ public class SawCard : Card
     [SerializeField] private Saw _saw;
     [SerializeField] private float _rollCdDebuff, _sizeBuff, _intervalBuff;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Saw Roll \n +{_rollCdDebuff} Roll CD";
+    }
+
     public void GivePrize()
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out SawRoll sawRoll))

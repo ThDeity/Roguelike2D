@@ -20,8 +20,11 @@ public class IceBurstCard : Skill
 
             return;
         }
-        else if (FindObjectOfType<StaticValues>().playerPrefab.TryGetComponent(out Skill component))
+        else if (values.playerPrefab.TryGetComponent(out Skill component))
+        {
+            component.ResetAll();
             DestroyImmediate(component, true);
+        }
 
         IceBurst iceBurst = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<IceBurst>();
         iceBurst.zone = _zone;

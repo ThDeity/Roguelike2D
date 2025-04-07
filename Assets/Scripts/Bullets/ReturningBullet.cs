@@ -4,13 +4,14 @@ using UnityEngine;
 public class ReturningBullet : MeleeAttack
 {
     public float _timeOfReturning, _maxSpeed, _minSpeed, _timeOfStopping;
-    [SerializeField] protected Vector2 _bulletVector;
     protected float _speed, _currentTime;
+    protected Vector2 _bulletVector;
 
     protected override void Start()
     {
         base.Start();
-        
+
+        _bulletVector = transform.right;
         _speed = _minSpeed;
         Destroy(gameObject, _timeOfReturning * 2 + _timeOfStopping);
         DOTween.To(() => _speed, x => _speed = x, _maxSpeed, _timeOfReturning);

@@ -4,6 +4,12 @@ public class DazzleCard : Card
 {
     [SerializeField] private float _cdDebuff, _time, _increaseParam, _cd;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Dazzle \n -{(_cdDebuff - 1) * 100}% Reload \n {_time}s Of Dazzle";
+    }
+
     public void GivePrize()
     {
         SetAttackParam(1,0,1,_cdDebuff);

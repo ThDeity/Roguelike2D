@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd1a6aedc4710646862c50076c11533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: You try to hide from your enemies, even though they see you. However, you
+    are invincible. For a while)
   _color: {r: 1, g: 1, b: 1, a: 0.3529412}
   _interval: 6
   _timeOf: 3.5

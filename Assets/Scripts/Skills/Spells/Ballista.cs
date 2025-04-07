@@ -11,8 +11,26 @@ public class Ballista : MonoBehaviour, IDamagable
     private float _currentHp, _currentCd;
 
     private Animator _animator;
+
+    protected static float MaxHp, Radius, ReloadTime, Offset, LifeTime, PersentOfDmg;
+    protected static Bullet Projectile;
+    protected static Transform Point;
     private void Start()
     {
+        if (MaxHp == 0)
+        {
+            MaxHp = maxHp;
+            Radius = radius;
+            ReloadTime = reloadTime;
+            Offset = offset;
+            LifeTime = lifeTime;
+            PersentOfDmg = persentOfDmg;
+
+            Projectile = bullet;
+
+            Point = _point;
+        }
+
         _animator = GetComponent<Animator>();
         _currentHp = maxHp;
         Destroy(gameObject, lifeTime);
@@ -57,6 +75,20 @@ public class Ballista : MonoBehaviour, IDamagable
 
         if (_currentEnemy == null)
             FindEnemy();
+    }
+
+    public void Reset()
+    {
+        maxHp = MaxHp;
+        radius = Radius;
+        reloadTime = ReloadTime;
+        offset = Offset;
+        lifeTime = LifeTime;
+        persentOfDmg = PersentOfDmg;
+
+        bullet = Projectile;
+
+        _point = Point;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

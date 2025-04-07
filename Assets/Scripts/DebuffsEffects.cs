@@ -16,8 +16,6 @@ public class DebuffsEffects : MonoBehaviour
     [Tooltip("0 - дазл, 1 - заморозка, 2 - оглушение, 3 - щит")]
     [SerializeField] private List<GameObject> _effects;
 
-    private bool _isClear;
-
     private void Start()
     {
         if(_isEnemy)
@@ -34,6 +32,9 @@ public class DebuffsEffects : MonoBehaviour
     {
         Transform t = Instantiate(_effects[index], transform).transform;
         t.localScale = _effectsScale;
+
+        if (!_isEnemy)
+            t.localScale *= transform.localScale.x;
 
         return t.gameObject;
     }
@@ -97,6 +98,7 @@ public class DebuffsEffects : MonoBehaviour
         if (_isEnemy)
         {
             transform.tag = "Somebody";
+            gameObject.layer = LayerMask.NameToLayer("Player");
             _enemy.ChangeReloadCd(increaseParam);
             _enemy.isCharmed = true;
 
@@ -106,6 +108,7 @@ public class DebuffsEffects : MonoBehaviour
 
             _enemy.isCharmed = false;
             transform.tag = "Enemy";
+            gameObject.layer = LayerMask.NameToLayer("Enemy");
             _enemy.ChangeReloadCd(1 /  increaseParam);
             _enemy.target = StaticValues.PlayerObj.transform;
         }

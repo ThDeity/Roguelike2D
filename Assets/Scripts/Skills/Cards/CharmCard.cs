@@ -22,7 +22,10 @@ public class CharmCard : Skill
             return;
         }
         else if (values.playerPrefab.TryGetComponent(out Skill component))
+        {
+            component.ResetAll();
             DestroyImmediate(component, true);
+        }
 
         Charm charm = values.playerPrefab.AddComponent<Charm>();
         charm.zone = _zone;

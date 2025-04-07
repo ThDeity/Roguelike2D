@@ -16,6 +16,31 @@ public class PlayerMovement : MonoBehaviour
 
     private  List<Roll> _rolls = new List<Roll>();
 
+    protected static float Speed, DashCd, DashTime, Offset, DashSpeed;
+    protected static int RollsCount;
+    public void Reset()
+    {
+        _offset = Offset;
+        _dashSpeed = DashSpeed;
+        speed = Speed;
+        dashCd = DashCd;
+        dashTime = DashTime;
+        rollsCount = RollsCount;
+    }
+
+    private void Awake()
+    {
+        if (DashSpeed == 0)
+        {
+            Offset = _offset;
+            DashSpeed = _dashSpeed;
+            Speed = speed;
+            DashCd = dashCd;
+            DashTime = dashTime;
+            RollsCount = 1;
+        }
+    }
+
     private void Start()
     {
         _rolls = GetComponentsInChildren<Roll>().ToList();

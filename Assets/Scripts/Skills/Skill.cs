@@ -16,6 +16,8 @@ public class Skill : MonoBehaviour, Roll
         StaticValues.ActiveSkillsPanel.SetActive(false);
     }
 
+    public virtual void ResetAll() { }
+
     protected virtual void Start()
     {
         _timer = StaticValues.SkillsTimer.GetComponent<Text>();

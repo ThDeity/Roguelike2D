@@ -6,7 +6,7 @@ public class SpawnPrize : MonoBehaviour
     [SerializeField] private Transform _prizePoint;
     [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes;
-    [SerializeField] private int _rooms;
+    protected static int Rooms = 8;
 
     [SerializeField] private GameObject _portal;
     [Tooltip("At least 3 points")]
@@ -15,7 +15,7 @@ public class SpawnPrize : MonoBehaviour
 
     private void Start()
     {
-        if (StaticValues.RoomsBeforeBoss % _rooms != 0)
+        if (StaticValues.RoomsBeforeBoss % Rooms != Rooms - 1 || StaticValues.RoomsBeforeBoss % Rooms != 0)
         {
             int numberOfPortals = Random.Range(1, 3);
             for (int i = 0; i < numberOfPortals; i++)

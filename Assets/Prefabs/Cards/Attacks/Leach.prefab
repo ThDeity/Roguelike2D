@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8502528a0a3022d459df2d05cecd4235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: Extremely tenacious bloodsucker
   _lifeSteal: 10
   _mxHpBuff: 1.25
 --- !u!1 &5630398388755147201

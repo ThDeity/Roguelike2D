@@ -17,7 +17,7 @@ public class BossOfControling : Enemy
     {
         base.TakeDamage(damage, time);
 
-        if (_currentHp <= maxHp * _hpToCopy && !_wasCopied)
+        if (_currentHp <= maxHp * _hpToCopy && !_wasCopied && _currentHp > 0)
         {
             foreach (var p in _pointToCopy)
             {
@@ -151,5 +151,13 @@ public class BossOfControling : Enemy
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _radius);
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        FindObjectOfType<SpawnPrize>().GivePrize();
+        StaticValues.WasPrizeGotten = true;
     }
 }

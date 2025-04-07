@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d124c6421bddb459039b958af09e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: You temporarily become stronger after taking damage. Whether out of rage
+    or fear, who knows
   _buffTime: 5
   _interval: 9.5
   _buff: 1.5

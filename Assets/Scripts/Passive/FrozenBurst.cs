@@ -16,8 +16,8 @@ public class FrozenBurst : MonoBehaviour
 
         if (_currentTime <= 0)
         {
-            Instantiate(burst, transform);
-            List<Collider2D> enemies = Physics2D.OverlapCircleAll(transform.position, radius).ToList();
+            GameObject burstObj = Instantiate(burst, transform);
+            List<Collider2D> enemies = Physics2D.OverlapCircleAll(transform.position, radius, gameObject.layer).ToList();
 
             foreach (Collider2D enemy in enemies)
             {

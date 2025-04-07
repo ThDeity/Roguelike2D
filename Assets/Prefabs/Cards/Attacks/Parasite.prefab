@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33406fc4779a034ca01f61a364458de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: Well, what can I say... You're going to be a nasty parasite.
   _lifeSteal: 10
   _mxHpBuff: 1.2
   _dmgBuff: 1.25

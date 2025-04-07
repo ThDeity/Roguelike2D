@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3fffe6a49614947b5782dc9edbf092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: You bring enemies into the camp when you hit
   _cdDebuff: 1.15
   _time: 0.85
   _increaseParam: 1.3

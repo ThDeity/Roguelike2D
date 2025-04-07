@@ -8,16 +8,12 @@ public class HexagonTopAttack : RangeAttack
 
     public IEnumerator Attacks()
     {
-        if (_time <= 0)
+        for (int i = 0; i < _shotCount - 1; i++)
         {
-            for (int i = 0; i < _shotCount - 1; i++)
-            {
-                Shot();
-                yield return new WaitForSeconds(reloadTime);
-            }
-
             Shot();
-            _time = _longCd;
+            yield return new WaitForSeconds(reloadTime);
         }
+
+        Shot();
     }
 }

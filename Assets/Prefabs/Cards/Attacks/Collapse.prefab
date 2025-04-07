@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c768092e53a291543a5d08adb8c78f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: Your bullets split when they hit
   _buffDmg: 1.2
   _debuffSpeed: 0.85
   _debuffCd: 1.2

@@ -12,8 +12,21 @@ public class Shield : Skill, Roll
 
     Collider2D _shield, _collider;
 
+    protected static float ReloadTime, ActiveTime;
+    public override void ResetAll()
+    {
+        reloadTime = ReloadTime;
+        activeTime = ActiveTime;
+    }
+
     protected override void Start()
     {
+        if (ReloadTime == 0)
+        {
+            ReloadTime = reloadTime;
+            ActiveTime = activeTime;
+        }
+
         _collider = GetComponent<Collider2D>();
         shield.transform.localScale *= transform.localScale.x;
     }

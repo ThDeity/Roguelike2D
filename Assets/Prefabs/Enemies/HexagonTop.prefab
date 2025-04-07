@@ -155,10 +155,10 @@ Animator:
   m_GameObject: {fileID: 1313773208208694298}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 872aa463e148ac54799c329078647fbb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6e5f3d91edd4a40488b527ab12963a5b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -187,7 +187,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &5932289460645485674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   reloadTime: 0.3
   bullet: {fileID: 4964344986121749257, guid: bc136b7f5da4ac94f9168943391bb851, type: 3}
   _point: {fileID: 6374177824051723395}
-  _longCd: 1.3
+  _longCd: 1.9
   _shotCount: 3
 --- !u!50 &8668091389300911166
 Rigidbody2D:
@@ -244,8 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c931862138aea8645984268eeb4c2c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isEnemy: 1
   _effectsScale: {x: 0.6, y: 0.42}
+  _isEnemy: 1
   _effects:
   - {fileID: 7525262866447704441, guid: 0afb168133122ed48845b3261bc73445, type: 3}
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackDistance: 7.5
   _offset: 0
-  _reloadTime: 2.5
+  _reloadTime: 1.3
   _bar:
     ValueChanged:
       m_PersistentCalls:

@@ -9,6 +9,33 @@ public class Charm : Skill
     private float _currentTime;
     private CharmSector _zone;
 
+    protected static Vector2 ZoneScale;
+    protected static float ReloadTime, TimeOfCharming, IncreaseParam;
+    protected int MaxEnemies;
+    public override void ResetAll()
+    {
+        zone.transform.localScale = ZoneScale;
+
+        reloadTime = ReloadTime;
+        timeOfCharming = TimeOfCharming;
+        increaseParam = IncreaseParam;
+        maxEnemies = MaxEnemies;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        if (MaxEnemies == 0)
+        {
+            ZoneScale = zone.transform.localScale;
+            ReloadTime = reloadTime;
+            TimeOfCharming = timeOfCharming;
+            IncreaseParam = increaseParam;
+            MaxEnemies = maxEnemies;
+        }
+    }
+
     private void Update()
     {
         _currentTime -= Time.deltaTime;

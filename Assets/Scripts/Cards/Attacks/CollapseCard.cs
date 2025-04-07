@@ -6,6 +6,12 @@ public class CollapseCard : Card
     [SerializeField] private int _bulletsCount;
     [SerializeField] private GameObject _bullet;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Collapse \n +{(_buffDmg - 1) * 100}% DMG \n -{(_debuffCd - 1) * 100}% Reload \n +{_bulletsCount} Bullets\n -{_debuffSpeed - 1}% Bullet Speed \n +{(_buffSize - 1) * 100}% Size";
+    }
+
     public void GivePrize()
     {
         if (!StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out Collapse collapse))

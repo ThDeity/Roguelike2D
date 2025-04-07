@@ -5,6 +5,12 @@ public class FireRollCard : Card
     [SerializeField] private TrailOfFire _trail;
     [SerializeField] private float _rollCdDebuff, _radiusBuff;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Fire Roll \n +{_rollCdDebuff} Roll CD";
+    }
+
     public void GivePrize()
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out FireRoll fireRoll))

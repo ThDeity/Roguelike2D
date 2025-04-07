@@ -5,6 +5,12 @@ public class RadarShotCard : Card
     [SerializeField] private float _hpBuff, _rollCdDebuff, _radiusBuff;
     [SerializeField] private RadarShot _radarShot;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Radar Shot Roll \n +{_rollCdDebuff} Roll CD \n +{(_radarShot.damageBoost - 1) * 100}% Radar DMG from your DMG";
+    }
+
     public void GivePrize()
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out RadarShotRoll radarShotRoll))

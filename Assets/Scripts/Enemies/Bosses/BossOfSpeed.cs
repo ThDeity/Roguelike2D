@@ -1,4 +1,3 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +5,9 @@ using UnityEngine;
 
 public class BossOfSpeed : Enemy
 {
-    [SerializeField] private float _timeOfCircle, _hpToSleep, _timeOfSleep, _radius, _dashTime, _dashSpeed, _timeBtwDashes, _timeBtwWawes, _timeBtwMelleeAttack;
+    [SerializeField] private float _timeOfCircle, _hpToSleep, _timeOfSleep, _radius, _dashTime, _dashSpeed, _timeBtwDashes, _timeBtwWawes, _timeBtwMelleeAttack, _trailTime, _trailDmg;
     [SerializeField] private int _indexOfAttack, _numOfRolls, _numOfBullets, _numOfWawes;
-    [SerializeField] private GameObject _zoneOfCircle, _bullet, _dashAttack;
+    [SerializeField] private GameObject _zoneOfCircle, _bullet, _fireTrail;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [Tooltip("Называть в той последовательности, в которой будет атака")]
     [SerializeField] private List<string> _animNames;
@@ -26,7 +25,6 @@ public class BossOfSpeed : Enemy
         if (_currentHp <= maxHp * _hpToSleep && !_wasSleeping)
         {
             _wasSleeping = _isSleeping = true;
-            gameObject.SetActive(false);
 
             if (gameObject != null)
                 StartCoroutine(Sleep());
@@ -36,9 +34,13 @@ public class BossOfSpeed : Enemy
     private IEnumerator Sleep()
     {
         _spriteRenderer.color = _sleepColor;
+        _animator.enabled = false;
+        _agent.enabled = false;
 
         yield return new WaitForSeconds(_timeOfSleep);
         _isSleeping = false;
+        _animator.enabled = true;
+        _agent.enabled = true;
 
         _spriteRenderer.color = Color.white;
     }
@@ -53,9 +55,13 @@ public class BossOfSpeed : Enemy
 
     protected virtual IEnumerator SetCell(GameObject _zone)
     {
+        if (_agent.isActiveAndEnabled)
+            _agent.isStopped = true;
         GameObject zone = Instantiate(_zone, _transform);
 
         yield return new WaitForSeconds(_timeOfCircle);
+        if (_agent.isActiveAndEnabled)
+            _agent.isStopped = false;
 
         if (zone.TryGetComponent(out Collider2D collider2D))
             collider2D.enabled = true;
@@ -76,31 +82,44 @@ public class BossOfSpeed : Enemy
     }
 
     private float time;
+    private Vector2 _start, _end;
     private IEnumerator DashCoroutine()
     {
+        if(target == null) yield break;
+
         _isRolling = true;
 
-        time = _dashTime;
-        Vector2 _point;
         for (int i = 0; i < _numOfRolls; i++)
         {
             _agent.enabled = false;
-            _dashAttack.SetActive(true);
             gameObject.layer = LayerMask.NameToLayer("EnemyDash");
 
             yield return new WaitForSeconds(time);
 
             _isRolling = false;
             _agent.enabled = true;
-            _dashAttack.SetActive(false);
-            _transform.localScale = Vector2.one;
             gameObject.layer = LayerMask.NameToLayer("Enemy");
+            _end = _transform.position;
 
-            _animator.Play("Dash");
+            Transform t = Instantiate(_fireTrail.gameObject, _start, Quaternion.identity).transform;
+            t.tag = tag;
+            t.GetComponent<TrailOfFire>().lifeTime = _trailTime;
+            t.GetComponent<TrailOfFire>().damage = _trailDmg;
+            t.gameObject.layer = LayerMask.NameToLayer("Enemy");
+            float distance = Vector2.Distance(_start, _end);
+
+            t.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(transform.position.y - t.position.y, transform.position.x - t.position.x) * Mathf.Rad2Deg - 90);
+            t.localScale = new Vector2(t.localScale.x * 3, t.localScale.y * distance);
+
             yield return new WaitForSeconds(_timeBtwDashes);
 
+            if (target == null) yield break;
+
+            _isRolling = true;
             _dashVector = (target.position - _transform.position).normalized;
-            RaycastHit2D hit = Physics2D.Raycast(_transform.position, _dashVector, _dashSpeed * _dashTime, 0); 
+
+            RaycastHit2D hit = Physics2D.Raycast(_transform.position, _dashVector, _dashSpeed * _dashTime, 0);
+            Vector2 _point;
             if (hit.collider != null)
                 _point = hit.point;
             else
@@ -108,14 +127,22 @@ public class BossOfSpeed : Enemy
             time = Vector2.Distance(_point, _transform.position) / _dashSpeed;
         }
 
-        _animator.Play("Idle");
         _agent.enabled = true;
     }
 
     private Vector2 _dashVector;
     public void Dash()
     {
-        _animator.Play("Dash");
+        _start = _transform.position; 
+
+        RaycastHit2D hit = Physics2D.Raycast(_transform.position, _dashVector, _dashSpeed * _dashTime, 0);
+        Vector2 _point;
+        if (hit.collider != null)
+            _point = hit.point;
+        else
+            _point = (Vector2)_transform.position + (_dashVector * _dashSpeed * _dashTime);
+        time = Vector2.Distance(_point, _transform.position) / _dashSpeed;
+
         StartCoroutine(DashCoroutine());
         _dashVector = (target.position - _transform.position).normalized;
 
@@ -124,19 +151,25 @@ public class BossOfSpeed : Enemy
 
     public virtual IEnumerator Shot()
     {
-        float delta = 0, angle = 360 / _numOfBullets;
+        if (_agent.isActiveAndEnabled)
+            _agent.isStopped = true;
+
+        _time += _timeBtwWawes * _numOfWawes;
         _bullet.tag = tag;
 
         for (int j = 0; j < _numOfWawes; j++)
         {
             for (int i = 0; i < _numOfBullets; i++)
             {
-                Instantiate(_bullet, _transform.position, Quaternion.Euler(0, 0, angle));
-                angle += delta;
+                Transform bullet = Instantiate(_bullet, _transform.position, Quaternion.identity).transform;
+                bullet.localEulerAngles = new Vector3(0,0,Random.Range(0, 360));
             }
 
             yield return new WaitForSeconds(_timeBtwWawes);
         }
+
+        if (_agent.isActiveAndEnabled)
+            _agent.isStopped = false;
     }
 
     public virtual IEnumerator AliveStatues()
@@ -179,8 +212,6 @@ public class BossOfSpeed : Enemy
             if (isCharmed)
                 _debuffs.FindEnemy();
         }
-        else if (target == null && !_isSleeping)
-            FindPoint();
     }
 
     protected override void FixedUpdate()
@@ -215,15 +246,21 @@ public class BossOfSpeed : Enemy
             if (_isRolling)
                 _rigidbody2D.velocity = Time.deltaTime * _dashSpeed * _transform.up;
         }
-        else if (target == null && Vector2.Distance(_currentPos, _transform.position) > _randomDistance && !_isRolling)
+        else if (!_isSleeping && target == null && Vector2.Distance(_currentPos, _transform.position) > _randomDistance && !_isRolling)
             _agent.SetDestination(_currentPos);
-        else if (!_isRolling)
+        else if (!_isSleeping && !_isRolling)
             FindPoint();
     }
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        Destroy(_hpBar);
+
+        _statues.ForEach(x => Destroy(x.gameObject));
+        GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
+        GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
+
+        FindObjectOfType<SpawnPrize>().GivePrize();
+        StaticValues.WasPrizeGotten = true;
     }
 }

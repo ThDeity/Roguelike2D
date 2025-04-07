@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fa7797378669d49ad7433549246674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: With each bounce, your bullet will become stronger and more dangerous.
   _debuffCd: 1.1
   _bonusDmgPerBounce: 0.25
   _bonusBounces: 2

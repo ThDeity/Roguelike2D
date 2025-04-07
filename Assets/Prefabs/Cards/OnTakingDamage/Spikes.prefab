@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554d267f6abd80a4898bc0797648361f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: An eye for an eye. Or a spike for a spike?
   _spike: {fileID: 2585478744108051439, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
   _spikesCount: 8
   _spikesCountPlus: 1

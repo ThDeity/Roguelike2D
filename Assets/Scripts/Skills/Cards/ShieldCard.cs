@@ -18,8 +18,11 @@ public class ShieldCard : Skill
 
             return;
         }
-        else if (FindObjectOfType<StaticValues>().playerPrefab.TryGetComponent(out Skill component))
+        else if (values.playerPrefab.TryGetComponent(out Skill component))
+        {
+            component.ResetAll();
             DestroyImmediate(component, true);
+        }
 
         Shield shield = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<Shield>();
         shield.reloadTime = _reloadTime;

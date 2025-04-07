@@ -5,6 +5,12 @@ public class GhostCard : Card
     [SerializeField] private Color _color;
     [SerializeField] private float _interval, _timeOf, _buff;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Ghost \n {_timeOf}s Time \n {_interval}s Interval";
+    }
+
     public void GivePrize()
     {
         if (!StaticValues.PlayerObj.TryGetComponent(out Ghost component))

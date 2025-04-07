@@ -225,5 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80256054d3e54b42aef87f50b931261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: Fragile but extremely dangerous
   _buffDmg: 1.8
   _debufHp: 0.5

@@ -9,6 +9,15 @@ public class BallistaSkill : Skill
     private float _currentTime;
     private Transform _zone;
 
+    protected static float ReloadTime, HpOfPlayer;
+    public override void ResetAll()
+    {
+        zone.transform.localScale = Vector2.one;
+        ballista.Reset();
+        reloadTime = ReloadTime;
+        hpOfPlayer = HpOfPlayer;
+    }
+
     protected override void Start()
     {
         base.Start();

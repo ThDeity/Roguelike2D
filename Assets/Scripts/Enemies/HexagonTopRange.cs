@@ -11,7 +11,8 @@ public class HexagonTopRange : Enemy
     }
     protected override void FixedUpdate()
     {
-        RaycastHit2D hit = Physics2D.Raycast(_pointOfRay.position, _transform.right, _attackDistance);
+        RaycastHit2D hit = Physics2D.Raycast(_pointOfRay.position, _transform.right, _attackDistance, 0);
+        RaycastHit2D hit2 = Physics2D.Raycast(_pointOfRay.position, _transform.right, _attackDistance, 9);
 
         if (!_isPlayerNear && Vector2.Distance(_currentPos, _transform.position) > _randomDistance)
         {
@@ -25,7 +26,7 @@ public class HexagonTopRange : Enemy
             _agent.isStopped = false;
             _agent.SetDestination(target.position);
         }
-        else if (hit.collider != null && hit.collider.transform == target)
+        else if (hit.collider == null && hit2.collider == null)
         {
             _agent.isStopped = true;
 

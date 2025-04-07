@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c931862138aea8645984268eeb4c2c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isEnemy: 1
   _effectsScale: {x: 0.85, y: 0.85}
+  _isEnemy: 1
   _effects:
   - {fileID: 7525262866447704441, guid: 0afb168133122ed48845b3261bc73445, type: 3}
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
@@ -229,7 +229,7 @@ NavMeshAgent:
   m_Height: 1.5
   m_BaseOffset: 0.7
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &750009955680123127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackDistance: 4.4
   _offset: 0
-  _reloadTime: 0.85
+  _reloadTime: 1
   _bar:
     ValueChanged:
       m_PersistentCalls:

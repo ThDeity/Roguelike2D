@@ -6,6 +6,12 @@ public class RiccochetCard : Card
     [SerializeField] private float _buffBulletSpeed, _buffMaxDistance, _debuffDmg, _debuffCd;
     [SerializeField] private int _bounceCount;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Riccochet \n +{(_buffBulletSpeed - 1) * 100}% Bullet Speed \n +{(_buffMaxDistance - 1) * 100}% Max distance \n -{(1 - _debuffDmg) * 100}% DMG\n -{(_debuffCd - 1) * 100}% Reload \n +{_bounceCount} Riccochets";
+    }
+
     public void GivePrize()
     {
         if (!StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out Ricoshet rico))

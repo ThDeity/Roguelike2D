@@ -8,10 +8,33 @@ public class IceBurst : Skill
     private float _currentTime;
     private Transform _zone;
 
+    protected static Vector2 ZoneScale;
+    protected static float ReloadTime, FreezingTime, Radius, Force, Damage;
+    public override void ResetAll()
+    {
+        zone.transform.localScale = ZoneScale;
+
+        reloadTime = ReloadTime;
+        freezingTime = FreezingTime;
+        radius = Radius;
+        force = Force;
+        damage = Damage;
+    }
+
     protected override void Start()
     {
         base.Start();
         zone.transform.localScale = Vector2.one * 2 * radius;
+
+        if (ReloadTime == 0)
+        {
+            ZoneScale = zone.transform.localScale;
+            ReloadTime = reloadTime;
+            FreezingTime = freezingTime;
+            Radius = radius;
+            Force = force;
+            Damage = damage;
+        }    
     }
 
     private void Update()

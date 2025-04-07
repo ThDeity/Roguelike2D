@@ -234,7 +234,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &2439388574841558707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +271,7 @@ MonoBehaviour:
   isCharmed: 0
   isBoss: 0
   _explosion: {fileID: 3037545466010291589, guid: da22a1c1b6e6d5d40a697ba6a37b1856, type: 3}
+  _damage: 4
   _bomb: {fileID: 5827309471849527785}
 --- !u!58 &8702625523466893276
 CircleCollider2D:
@@ -367,8 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c931862138aea8645984268eeb4c2c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isEnemy: 1
   _effectsScale: {x: 0.5, y: 0.5}
+  _isEnemy: 1
   _effects:
   - {fileID: 7525262866447704441, guid: 0afb168133122ed48845b3261bc73445, type: 3}
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}

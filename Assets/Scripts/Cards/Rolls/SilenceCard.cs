@@ -5,6 +5,12 @@ public class SilenceCard : Card
     [SerializeField] private float _hpDebuff, _rollCdDebuff, _radiusBuff;
     [SerializeField] private Silence _silence;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Silence Roll \n +{_rollCdDebuff} Roll CD \n -{(1 - _hpDebuff) * 100}% HP";
+    }
+
     public void GivePrize()
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out SilenceRoll silenceRoll))

@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f2d238e469d4c4192ea96eae986cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: You will hit the weakest points, but it will take you a very long time
+    to find them.
   _buffDmg: 2
   _debuffCd: 1.3
 --- !u!1 &7808117317993036828

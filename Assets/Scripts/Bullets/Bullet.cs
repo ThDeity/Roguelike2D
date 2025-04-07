@@ -3,11 +3,43 @@ using UnityEngine;
 [RequireComponent (typeof(Collider2D), typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
-    public float damage, critChance, lifeTime, speed, lifeSteal, maxDistance, lifeTimeRange;
+    public float damage, critChance, lifeTime, speed, lifeSteal, maxDistance, lifeTimeRange, timeTakingDmg;
     [SerializeField] protected Vector2 _bulletVector;
     protected Rigidbody2D _rigidbody2D;
-    public int timeTakingDmg;
     public bool isDrillAmmo;
+
+    protected static float Damage, Crit, LifeTime, Speed, LifeSteal, MaxDistance, TimeTakingDmg;
+    protected static Vector2 BulletVector;
+    public void Reset()
+    {
+        damage = Damage;
+        critChance = Crit;
+        lifeTime = LifeTime;
+        speed = Speed;
+        lifeSteal = LifeSteal;
+        maxDistance = MaxDistance;
+        timeTakingDmg = TimeTakingDmg;
+
+        _bulletVector = BulletVector;
+
+        isDrillAmmo = false;
+    }
+
+    protected virtual void Awake()
+    {
+        if (tag == "Player" && Damage == 0)
+        {
+            Damage = damage;
+            Crit = critChance;
+            LifeTime = lifeTime;
+            Speed = speed;
+            LifeSteal = lifeSteal;
+            MaxDistance = maxDistance;
+            TimeTakingDmg = timeTakingDmg;
+
+            BulletVector = _bulletVector;
+        }
+    }
 
     protected virtual void Start()
     {
@@ -30,7 +62,9 @@ public class Bullet : MonoBehaviour
         {
             damage *= Random.Range(0, 100) <= critChance ? 2 : 1;
             currentEnemy.TakeDamage(damage, timeTakingDmg);
-            StaticValues.PlayerObj.TakeDamage(-damage * lifeSteal, timeTakingDmg);
+
+            if (tag == "Player")
+                StaticValues.PlayerObj.TakeDamage(-damage * lifeSteal, timeTakingDmg);
         }
 
         if (bullet == null)
@@ -40,11 +74,5 @@ public class Bullet : MonoBehaviour
             else if (!isDrillAmmo && currentEnemy != null)
                 Destroy(gameObject);
         }
-    }
-
-    protected void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, _bulletVector * maxDistance);
     }
 }

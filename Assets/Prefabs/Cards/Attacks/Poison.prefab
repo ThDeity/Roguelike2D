@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee67b7ef6378594d8f4aee3a6f47697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: Poisoning and killing. But it takes time.
   _dmgBuff: 1.5
   _cdDebuff: 1.2
   _timeOfTakingDmg: 3

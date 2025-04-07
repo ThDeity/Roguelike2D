@@ -5,11 +5,11 @@ public class ExplosionZone : MonoBehaviour
     [Tooltip("1 будет сильнее второго")]
     [SerializeField] private float _firstDmg, _secondDmg;
     [SerializeField] private int _timeOfTakingDmg;
-    [SerializeField] private bool _isExplosion;
+    [SerializeField] private SaveZone _saveZone;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != tag && _isExplosion && collision.TryGetComponent(out IDamagable component))
+        if (collision.tag != tag && collision.TryGetComponent(out IDamagable component) && !_saveZone.collisions.Contains(collision))
         {
             component.TakeDamage(_firstDmg, 0);
             component.TakeDamage(_secondDmg, _timeOfTakingDmg);

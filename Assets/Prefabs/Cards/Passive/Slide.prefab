@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812d72b0d9c83f040a0a4c7eebb7b00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: The speed is much higher, but much less during the attack (
   _buffSpeed: 2
   _debuffSpeed: 0.6
   _buffMxHp: 1.1

@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0f3d299c9ac02449db1bc5946491ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: 'In the beginning, you "HIT", and then they BANG '
   _explosion: {fileID: 3037545466010291589, guid: da22a1c1b6e6d5d40a697ba6a37b1856, type: 3}
   _explosionBuff: 1.2
 --- !u!1 &8496558993858872875

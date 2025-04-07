@@ -1,9 +1,15 @@
 using UnityEngine;
 
-public class ExplodingMobsCard : MonoBehaviour
+public class ExplodingMobsCard : Card
 {
     [SerializeField] private GameObject _explosion;
     [SerializeField] private float _explosionBuff;
+
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Exploding Mobs \n";
+    }
 
     public void GivePrize()
     {

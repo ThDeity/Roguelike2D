@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7038836517012118510}
   - component: {fileID: 4377758185584525793}
   - component: {fileID: 3948526009037670085}
-  - component: {fileID: -8626947365254928452}
+  - component: {fileID: -6716352210561781772}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Player
@@ -116,7 +116,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8626947365254928452
+--- !u!114 &-6716352210561781772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,18 +158,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5707264133003760165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7021391881dcc3d43bf5d0a7d0a6762c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a29cc9f538ef484e96b1657a0719134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  critChance: 1
+  damage: 100
+  critChance: 0
   lifeTime: 0
-  speed: 17
+  speed: 12
   lifeSteal: 0
-  maxDistance: 13
+  maxDistance: 12
   lifeTimeRange: 0
-  _bulletVector: {x: 0, y: 0}
   timeTakingDmg: 0
+  _bulletVector: {x: -1, y: 0}
   isDrillAmmo: 0
-  riccochetsCount: 1
-  damageIncreasePerBounce: 0.25

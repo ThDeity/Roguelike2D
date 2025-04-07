@@ -23,7 +23,10 @@ public class BallistaCard : Skill
             return;
         }
         else if (values.playerPrefab.TryGetComponent(out Skill component))
+        {
+            component.ResetAll();
             DestroyImmediate(component, true);
+        }
 
         BallistaSkill ballista = values.playerPrefab.AddComponent<BallistaSkill>();
         ballista.reloadTime = _reloadTime;

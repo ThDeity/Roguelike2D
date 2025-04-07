@@ -21,8 +21,11 @@ public class PlasmaShotCard : Skill
 
             return;
         }
-        else if (FindObjectOfType<StaticValues>().playerPrefab.TryGetComponent(out Skill component))
+        else if (values.playerPrefab.TryGetComponent(out Skill component))
+        {
+            component.ResetAll();
             DestroyImmediate(component, true);
+        }
 
         PlasmaShot shot = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<PlasmaShot>();
         shot.dmgIncrease = _dmgIncrease;

@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59b881cc961b414bb36b39093d5392a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: You can freeze enemies
   _cdDebuff: 1.05
   _increaseTimeAndForce: 1.1
   _speedReduce: 0.6

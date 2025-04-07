@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyParam : MonoBehaviour
+public class EnemyParam : Prize
 {
     private GameObject _paramPanel;
 

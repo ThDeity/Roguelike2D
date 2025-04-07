@@ -4,6 +4,12 @@ public class ColdBulletsCard : Card
 {
     [SerializeField] private float _cdDebuff, _increaseTimeAndForce, _speedReduce, _time, _cd;
 
+    protected override void Start()
+    {
+        base.Start();
+        _description.text = $"Cold Bullets \n -{(_cdDebuff - 1) * 100}% Reload \n +{(1 - _speedReduce) * 100}% Speed Reduce";
+    }
+
     public void GiveOrize()
     {
         if (!StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out ColdBullets component))

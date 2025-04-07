@@ -10,9 +10,28 @@ public class PlasmaShot : Skill
     private Transform _zone;
 
     private float _currentTime;
+
+    protected static Vector2 BulletScale;
+    protected static float ReloadTime, DmgIncrease;
+    public override void ResetAll()
+    {
+        bullet.transform.localScale = BulletScale;
+
+        reloadTime = ReloadTime;
+        dmgIncrease = DmgIncrease;
+    }
+
     protected override void Start()
     {
         base.Start();
+
+        if (reloadTime == 0)
+        {
+            BulletScale = bullet.transform.localScale;
+
+            ReloadTime = reloadTime;
+            DmgIncrease = dmgIncrease;
+        }
 
         _point = transform.GetChild(0).transform;
         bullet.damage = StaticValues.PlayerAttackList[0].bullet.GetComponent<Bullet>().damage * dmgIncrease;

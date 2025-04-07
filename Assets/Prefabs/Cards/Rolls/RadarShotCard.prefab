@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e6ddae0940a384fad34b0a8e7610c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: You take a shot at a random opponent nearby
   _hpBuff: 1.1
   _rollCdDebuff: 0.1
   _radiusBuff: 1.15
