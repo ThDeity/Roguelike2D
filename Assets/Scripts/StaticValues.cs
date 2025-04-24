@@ -51,16 +51,12 @@ public class StaticValues : MonoBehaviour
 
             if (CurrentRoomType == "Boss" && WasPrizeGotten)
             {
-                EnemyMaxHp += 0.5f;
-                EnemySpeed += 0.5f;
-                EnemyDamage += 0.5f;
-                EnemyCount += 0.5f;
-                EnemyCrit += 0.5f;
+                EnemyMaxHp = EnemySpeed = EnemyDamage = EnemyCount = EnemyCrit += 1;
 
                 playerPrefab.transform.localScale = Vector2.one;
             }
 
-            RoomsBeforeBoss = RoomsBeforeBoss > 0 ? RoomsBeforeBoss + 1 : 1;
+            RoomsBeforeBoss = RoomsBeforeBoss > 0 ? RoomsBeforeBoss + 1 : 0;
 
             GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
             EnemiesPoint.Clear();
@@ -93,7 +89,7 @@ public class StaticValues : MonoBehaviour
             DestroyImmediate(script, true);
         }
 
-        CurrentRoomType = "PassiveSkills";
+        CurrentRoomType = "ActiveSkills";
         foreach (var name in RoomTypes)
         {
             if (CurrentRoomTypes.ContainsKey(name))

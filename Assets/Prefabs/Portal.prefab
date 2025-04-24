@@ -146,8 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonIcon: {fileID: 4905889868995709452, guid: 9c971a60bea149b4bb2b02a5f8a4a090, type: 3}
+  _currentArea: {fileID: 0}
   _roomsPerArea: 2
   _roomsCount: 5
+  _index: 0
   _pointForPrize: {fileID: 5611414982612481270}
   _pointForButton: {fileID: 8232857182148823390}
   _prizes:
@@ -157,6 +159,24 @@ MonoBehaviour:
   - {fileID: 2771237672113716869, guid: f95c64ab9f2d4bb43bfdeda7340f1d38, type: 3}
   - {fileID: 2438282150182307597, guid: 8871caf0a13903a41897992d76709caf, type: 3}
   - {fileID: 4852512520356977812, guid: c53eb9b2213b0014b861259ccd52708f, type: 3}
+  _areas0:
+  - {fileID: 6731133431547022203, guid: 67acbf1b607cdd24898f80ca534e4bdc, type: 3}
+  - {fileID: 7080975013292075689, guid: 9ee3add3391035d47b7e9db5480a2446, type: 3}
+  - {fileID: 4395997692643372821, guid: 82043c8556324a840b1e4b170423802d, type: 3}
+  - {fileID: 7592805287939673135, guid: b8e7481b70e98504589db1f379b4f6a7, type: 3}
+  - {fileID: 5491253056952581241, guid: 9dc2f3fdc358357428046c5b7a893611, type: 3}
+  _areas1:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _areas2:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &6155362683243453800
 Animator:
   serializedVersion: 5

@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3225124171637287940}
   - component: {fileID: 7354580697685189680}
-  - component: {fileID: -5937205358467827741}
+  - component: {fileID: -5731070440771685972}
   m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
@@ -240,7 +240,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5937205358467827741
+--- !u!114 &-5731070440771685972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfe42d42c485c94195450995bfa2bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 0.33
+  reloadTime: 0.36300004
   bullet: {fileID: 5707264133003760165, guid: 0b937e1b1abdc4f43860e9350df7e5e7, type: 3}
   _point: {fileID: 0}
   _offset: 180
@@ -5384,7 +5384,8 @@ GameObject:
   - component: {fileID: 4698034948480750364}
   - component: {fileID: 8940801902187945244}
   - component: {fileID: 5826909062119527502}
-  - component: {fileID: 4145490280880275968}
+  - component: {fileID: -1779081608108538500}
+  - component: {fileID: -1946635147359911054}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5576,7 +5577,7 @@ MonoBehaviour:
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
   - {fileID: 2463234329937179597, guid: 62d5e808729071640917f188500ca05f, type: 3}
   - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
---- !u!114 &4145490280880275968
+--- !u!114 &-1779081608108538500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5594,6 +5595,26 @@ MonoBehaviour:
   dashCd: 0.6
   dashTime: 0.25
   rollsCount: 1
+--- !u!114 &-1946635147359911054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8876215208900679854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7229e392326dc2146a25708a9e892c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillSprite: {fileID: 21300000, guid: 19e4d0a6e84333543bf30c5199ff1525, type: 3}
+  zone: {fileID: 5954042546461210915, guid: 5d9c10299153cce45b97bef3cb8656a5, type: 3}
+  effects: {fileID: 2084809507604174448, guid: 7d185d80c4efb864292144718edd2863, type: 3}
+  reloadTime: 5
+  freezingTime: 1.25
+  radius: 3.5
+  force: 1
+  damage: 4
 --- !u!1 &8995256673764502498
 GameObject:
   m_ObjectHideFlags: 0

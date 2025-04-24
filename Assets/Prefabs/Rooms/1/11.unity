@@ -123,67 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &147029860
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.22718
-      objectReference: {fileID: 0}
-    - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.6399279
-      objectReference: {fileID: 0}
-    - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.045959022
-      objectReference: {fileID: 0}
-    - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161324349189046140, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_Name
-      value: NavMesh
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 08ecf28822a441f4889b0258afe43e06, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
 --- !u!1001 &1809229494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,10 +262,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7068421866524375540, guid: 4825459e1ae13bc4c967d5cc7eaeba7f, type: 3}
     - target: {fileID: 1325519254281302831, guid: c8dc8d0efe3552b409206d5e6bab9d5f, type: 3}
-      propertyPath: _enemiesObj.Array.data[3]
-      value: 
-      objectReference: {fileID: 7068421866524375540, guid: 4825459e1ae13bc4c967d5cc7eaeba7f, type: 3}
-    - target: {fileID: 1325519254281302831, guid: c8dc8d0efe3552b409206d5e6bab9d5f, type: 3}
       propertyPath: _enemiesObj.Array.data[4]
       value: 
       objectReference: {fileID: 1659243069814612424, guid: 0f0102dac15216748942a2a4e4630ecb, type: 3}
@@ -334,13 +269,9 @@ PrefabInstance:
       propertyPath: _enemiesObj.Array.data[5]
       value: 
       objectReference: {fileID: 1659243069814612424, guid: 0f0102dac15216748942a2a4e4630ecb, type: 3}
-    - target: {fileID: 1325519254281302831, guid: c8dc8d0efe3552b409206d5e6bab9d5f, type: 3}
-      propertyPath: _enemiesObj.Array.data[6]
-      value: 
-      objectReference: {fileID: 1110484879881881949, guid: c2aede47d6a832949b4f5fcb2ae86da3, type: 3}
     - target: {fileID: 3671146272757301358, guid: c8dc8d0efe3552b409206d5e6bab9d5f, type: 3}
       propertyPath: m_Name
-      value: Area2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6074457272207331318, guid: c8dc8d0efe3552b409206d5e6bab9d5f, type: 3}
       propertyPath: m_Color.b
@@ -405,5 +336,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1809229494}
   - {fileID: 6261562314357495715}
-  - {fileID: 147029860}
   - {fileID: 2056829519}

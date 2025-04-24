@@ -11,7 +11,7 @@ public class SpawnEnemies : MonoBehaviour
 
     public static List<GameObject> Enemies = new List<GameObject>();
 
-    private void Awake()
+    private void Start()
     {
         Spawn();
         StaticValues.WasPrizeGotten = false;

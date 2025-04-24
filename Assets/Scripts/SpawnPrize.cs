@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.AI;
 using UnityEngine;
 
 public class SpawnPrize : MonoBehaviour
@@ -15,8 +16,16 @@ public class SpawnPrize : MonoBehaviour
 
     private HashSet<int> _types = new HashSet<int>();
     int _index;
-    private void Start()
+    private void Awake()
     {
+        NavMeshBuilder.ClearAllNavMeshes();
+        NavMeshBuilder.BuildNavMesh();
+
+        GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+        StaticValues.EnemiesPoint.Clear();
+        foreach (GameObject p in points)
+            StaticValues.EnemiesPoint.Add(p.transform);
+
         if (StaticValues.RoomsBeforeBoss % Rooms != Rooms - 1 || StaticValues.RoomsBeforeBoss % Rooms != 0)
         {
             int numberOfPortals = Random.Range(1, 3);
