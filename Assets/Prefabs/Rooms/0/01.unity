@@ -646,7 +646,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b937e1b1abdc4f43860e9350df7e5e7, type: 3}
---- !u!1001 &1409897493
+--- !u!1001 &1359544904
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -656,11 +656,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2621393320533122272, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.284256
       objectReference: {fileID: 0}
     - target: {fileID: 2621393320533122272, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.0052695
       objectReference: {fileID: 0}
     - target: {fileID: 2621393320533122272, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -986,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 6494871196735553430, guid: 6a3eef83687436046a178b566ec4b5d5, type: 3}
     - target: {fileID: 2553256576767343697, guid: 67acbf1b607cdd24898f80ca534e4bdc, type: 3}
       propertyPath: _waves
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2553256576767343697, guid: 67acbf1b607cdd24898f80ca534e4bdc, type: 3}
       propertyPath: m_Enabled
@@ -994,7 +994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2553256576767343697, guid: 67acbf1b607cdd24898f80ca534e4bdc, type: 3}
       propertyPath: _enemiesPerWave
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2553256576767343697, guid: 67acbf1b607cdd24898f80ca534e4bdc, type: 3}
       propertyPath: _enemiesObj.Array.size
@@ -1177,4 +1177,4 @@ SceneRoots:
   - {fileID: 459560846}
   - {fileID: 1233540617}
   - {fileID: 1243006344}
-  - {fileID: 1409897493}
+  - {fileID: 1359544904}

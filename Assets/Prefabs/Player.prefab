@@ -106,7 +106,7 @@ RectTransform:
   m_GameObject: {fileID: 111616795610439899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 0, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6982292729874454971}
@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3225124171637287940}
   - component: {fileID: 7354580697685189680}
-  - component: {fileID: -5937205358467827741}
+  - component: {fileID: 9098498987957604215}
   m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
@@ -240,7 +240,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5937205358467827741
+--- !u!114 &9098498987957604215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5384,7 +5384,9 @@ GameObject:
   - component: {fileID: 4698034948480750364}
   - component: {fileID: 8940801902187945244}
   - component: {fileID: 5826909062119527502}
-  - component: {fileID: 4145490280880275968}
+  - component: {fileID: 2816288349038287994}
+  - component: {fileID: -2183631354255682736}
+  - component: {fileID: 5738613647169782327}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5402,7 +5404,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6753760919824340554}
@@ -5552,7 +5554,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  _hpMax: 7.5
+  _hpMax: 9.375
   IsExploding: 0
   Explosion: {fileID: 0}
   lifesCount: 0
@@ -5576,7 +5578,7 @@ MonoBehaviour:
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
   - {fileID: 2463234329937179597, guid: 62d5e808729071640917f188500ca05f, type: 3}
   - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
---- !u!114 &4145490280880275968
+--- !u!114 &2816288349038287994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5591,9 +5593,39 @@ MonoBehaviour:
   _offset: 180
   _dashSpeed: 20
   speed: 5
-  dashCd: 0.6
+  dashCd: 0.85
   dashTime: 0.25
   rollsCount: 1
+--- !u!114 &-2183631354255682736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8876215208900679854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a3b6013b3cfcf4ebb740ec33ac0d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reloadTime: 2.5
+  increaseSpeed: 2
+  decreaseSpeed: 0.6
+--- !u!114 &5738613647169782327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8876215208900679854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15df2567a825b084d99f7ebd0a7a6d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  intervalBtwDmg: 0
+  lifesteal: {fileID: 2690818645152509053, guid: 2a17735d4ce22b94eac29647df68ff14, type: 3}
 --- !u!1 &8995256673764502498
 GameObject:
   m_ObjectHideFlags: 0

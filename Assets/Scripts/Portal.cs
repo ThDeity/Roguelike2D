@@ -1,6 +1,7 @@
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class Portal : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Portal : MonoBehaviour
     GameObject _icon, _buttonE;
     private void Awake()
     {
+        mainMenuSceneIndex = SceneManager.GetActiveScene().buildIndex;
         _buttonE = Instantiate(_buttonIcon, _pointForButton.position, Quaternion.identity);
         _buttonIcon.SetActive(false);
     }
@@ -45,27 +47,88 @@ public class Portal : MonoBehaviour
             _buttonE.gameObject.SetActive(false);
     }
 
-    bool _isDamaged;
-    private void OnTriggerStay2D(Collider2D collision)
+    private int mainMenuSceneIndex;
+
+    IEnumerator loadScene(int index)
     {
-        if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
+        AsyncOperation scene = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+
+        scene.allowSceneActivation = false;
+
+        while (scene.progress < 0.9f)
         {
-            float damage = StaticValues.PlayerObj.ChangeMxHp(1) - StaticValues.PlayerObj.currentHp;
-            if (damage > 0 && !_isDamaged)
+            Debug.Log("Loading scene " + index + " Progress: " + scene.progress);
+            yield return null;
+        }
+
+        scene.allowSceneActivation = true;
+
+        while (!scene.isDone)
+            yield return null;
+
+        OnSceneLoaded(index);
+    }
+
+    void OnSceneLoaded(int loadedSceneIndex)
+    {
+        Debug.Log("Scene " + loadedSceneIndex + " fully loaded");
+
+        Scene loadedScene = SceneManager.GetSceneByBuildIndex(loadedSceneIndex);
+
+        if (loadedScene.IsValid())
+        {
+            Debug.Log("Setting scene " + loadedScene.name + " as active");
+
+            SceneManager.MoveGameObjectToScene(StaticValues.PlayerObj.gameObject, loadedScene);
+
+            SceneManager.SetActiveScene(loadedScene);
+
+            StartCoroutine(UnloadMenuScene());
+        }
+        else
+        {
+            Debug.LogError("Loaded scene is not valid!");
+        }
+    }
+
+    IEnumerator UnloadMenuScene()
+    {
+        // Даем время на стабилизацию
+        yield return new WaitForSeconds(0.1f);
+
+        Scene menuScene = SceneManager.GetSceneByBuildIndex(mainMenuSceneIndex);
+        if (menuScene.IsValid() && menuScene.isLoaded)
+        {
+            Debug.Log("Unloading menu scene");
+            AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(mainMenuSceneIndex);
+
+            while (!unloadOperation.isDone)
             {
-                Player.DamageOnStart = damage;
-                _isDamaged = true;
+                yield return null;
             }
 
+            Debug.Log("Menu scene unloaded successfully");
+
+            // Очистка ресурсов после выгрузки сцены
+            //Resources.UnloadUnusedAssets();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && Input.GetKeyDown(KeyCode.E))
+        {
             if (StaticValues.RoomsBeforeBoss % _roomsPerArea != 0)
             {
                 StaticValues.CurrentRoomType = StaticValues.RoomTypes[_index];
-                SceneManager.LoadScene($"{StaticValues.RoomsBeforeBoss / _roomsPerArea}{Random.Range(0, _roomsCount)}");
+                
+                StartCoroutine(loadScene(Random.Range(1, _roomsCount + 1) + 6 * (StaticValues.RoomsBeforeBoss / _roomsPerArea)));
             }
             else
             {
                 StaticValues.CurrentRoomType = StaticValues.RoomTypes[5];
-                SceneManager.LoadScene((StaticValues.RoomsBeforeBoss / _roomsPerArea).ToString() + "_Boss");
+                Scene s = SceneManager.GetSceneByName(((StaticValues.RoomsBeforeBoss / _roomsPerArea).ToString()) + "_Boss");
+                //StartCoroutine(loadScene(s));
             }
         }
     }

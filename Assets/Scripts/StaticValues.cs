@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -83,6 +84,82 @@ public class StaticValues : MonoBehaviour
         }
     }
 
+    private int mainMenuSceneIndex = 0;
+
+    IEnumerator loadScene(int index)
+    {
+        // Загружаем новую сцену в аддитивном режиме
+        AsyncOperation scene = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+        scene.allowSceneActivation = false;
+
+        // Ждем завершения загрузки (до 90%, так как allowSceneActivation = false)
+        while (scene.progress < 0.9f)
+        {
+            Debug.Log("Loading scene " + index + " Progress: " + scene.progress);
+            yield return null;
+        }
+
+        // Разрешаем активацию сцены
+        scene.allowSceneActivation = true;
+
+        // Ждем полной загрузки сцены
+        while (!scene.isDone)
+        {
+            yield return null;
+        }
+
+        OnSceneLoaded(index);
+    }
+
+    void OnSceneLoaded(int loadedSceneIndex)
+    {
+        Debug.Log("Scene " + loadedSceneIndex + " fully loaded");
+
+        // Получаем только что загруженную сцену
+        Scene loadedScene = SceneManager.GetSceneByBuildIndex(loadedSceneIndex);
+
+        if (loadedScene.IsValid())
+        {
+            Debug.Log("Setting scene " + loadedScene.name + " as active");
+
+            // Переносим UI объект в новую сцену
+            SceneManager.MoveGameObjectToScene(PlayerObj.gameObject, loadedScene);
+
+            // Устанавливаем новую сцену как активную
+            SceneManager.SetActiveScene(loadedScene);
+
+            // Выгружаем сцену меню
+            StartCoroutine(UnloadMenuScene());
+        }
+        else
+        {
+            Debug.LogError("Loaded scene is not valid!");
+        }
+    }
+
+    IEnumerator UnloadMenuScene()
+    {
+        // Даем время на стабилизацию
+        yield return new WaitForSeconds(0.1f);
+
+        Scene menuScene = SceneManager.GetSceneByBuildIndex(mainMenuSceneIndex);
+        if (menuScene.IsValid() && menuScene.isLoaded)
+        {
+            Debug.Log("Unloading menu scene");
+            AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(mainMenuSceneIndex);
+
+            while (!unloadOperation.isDone)
+            {
+                yield return null;
+            }
+
+            Debug.Log("Menu scene unloaded successfully");
+
+            // Очистка ресурсов после выгрузки сцены
+            //Resources.UnloadUnusedAssets();
+        }
+    }
+
     public void Restart()
     {
         foreach (var script in playerPrefab.GetComponents<MonoBehaviour>())
@@ -124,6 +201,6 @@ public class StaticValues : MonoBehaviour
 
         RoomsBeforeBoss = 0;
 
-        SceneManager.LoadScene(1);
+        StartCoroutine(loadScene(1));
     }
 }

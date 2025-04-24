@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7038836517012118510}
   - component: {fileID: 4377758185584525793}
   - component: {fileID: 3948526009037670085}
-  - component: {fileID: -7892999043450711562}
+  - component: {fileID: 2826200935424395842}
+  - component: {fileID: -1355732825477842148}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Player
@@ -149,7 +150,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-7892999043450711562
+--- !u!114 &2826200935424395842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,3 +172,15 @@ MonoBehaviour:
   timeTakingDmg: 0
   _bulletVector: {x: -1, y: 0}
   isDrillAmmo: 0
+--- !u!114 &-1355732825477842148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707264133003760165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d2985546c045e428ec02dc15f5df8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

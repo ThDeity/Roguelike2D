@@ -102,7 +102,7 @@ public class Enemy : MonoBehaviour, IDamagable
         _agent.updateUpAxis = false;
         _bar.Setup(maxHp);
 
-        target = Player.PlayerObj.transform;
+        target = StaticValues.PlayerTransform;
         _points = StaticValues.EnemiesPoint;
         FindPoint();
 
