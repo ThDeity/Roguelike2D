@@ -5,41 +5,33 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     [SerializeField] private GameObject _buttonIcon;
-    [SerializeField] private int _roomsPerArea, _roomsCount;
+    [SerializeField] private int _roomsPerArea, _roomsCount, _index;
     [SerializeField] private Transform _pointForPrize, _pointForButton;
 
     [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes = new List<GameObject>();
     
-    public static HashSet<string> Types = new HashSet<string>();
-
-    int _index;
     GameObject _icon, _buttonE;
     private void Awake()
     {
-        if (Types.Count == 0)
-        {
-            while (Types.Count != FindObjectsOfType<Portal>().Length)
-            {
-                _index = StaticValues.RoomsBeforeBoss % _roomsPerArea != 0 ? Random.Range(0, StaticValues.RoomTypes.Count - 2) : 5;
-
-                if (Types.Contains(StaticValues.RoomTypes[_index]) || StaticValues.CurrentRoomTypes[StaticValues.RoomTypes[_index]] == 0)
-                    continue;
-
-                Types.Add(StaticValues.RoomTypes[_index]);
-                StaticValues.CurrentRoomTypes[StaticValues.RoomTypes[_index]] -= 1;
-            }
-        }
-
         _buttonE = Instantiate(_buttonIcon, _pointForButton.position, Quaternion.identity);
         _buttonIcon.SetActive(false);
+    }
 
-        _icon = Instantiate(_prizes[_index], _pointForPrize.position, Quaternion.identity);
+    public void SetPrize(int index)
+    {
+        _index = index;
+
+        _icon = Instantiate(_prizes[index], _pointForPrize.position, Quaternion.identity);
         gameObject.SetActive(false);
         _icon.SetActive(false);
     }
 
-    private void OnEnable() => _icon.SetActive(true);
+    private void OnEnable()
+    {
+        if (_icon != null)
+            _icon.SetActive(true);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -68,7 +60,7 @@ public class Portal : MonoBehaviour
             if (StaticValues.RoomsBeforeBoss % _roomsPerArea != 0)
             {
                 StaticValues.CurrentRoomType = StaticValues.RoomTypes[_index];
-                SceneManager.LoadScene($"{StaticValues.RoomsBeforeBoss / _roomsPerArea}{Random.Range(0, _roomsCount - 1)}");
+                SceneManager.LoadScene($"{StaticValues.RoomsBeforeBoss / _roomsPerArea}{Random.Range(0, _roomsCount)}");
             }
             else
             {

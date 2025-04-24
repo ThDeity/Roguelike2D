@@ -293,6 +293,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8876215208900679854, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -309,6 +313,18 @@ PrefabInstance:
     - target: {fileID: 5117217367532278765, guid: 882189649c6f2064f97e3f83a70db09d, type: 3}
       propertyPath: m_Name
       value: Area3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264666134698442254, guid: 882189649c6f2064f97e3f83a70db09d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264666134698442254, guid: 882189649c6f2064f97e3f83a70db09d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.2507565
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264666134698442254, guid: 882189649c6f2064f97e3f83a70db09d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.22272162
       objectReference: {fileID: 0}
     - target: {fileID: 6145167464004204891, guid: 882189649c6f2064f97e3f83a70db09d, type: 3}
       propertyPath: m_LocalPosition.x

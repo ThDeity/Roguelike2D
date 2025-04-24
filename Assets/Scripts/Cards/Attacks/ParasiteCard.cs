@@ -8,7 +8,7 @@ public class ParasiteCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Parasite \n +{(_lifeSteal - 1) * 100}% Lifesteal \n +{(_mxHpBuff - 1) * 100}% HP \n +{(_dmgBuff - 1) * 100}% DMG\n -{(_cdDebuff - 1) * 100}% Reload";
+        _description.text = $"Parasite \n +{_lifeSteal * 100}% Lifesteal \n +{(_mxHpBuff - 1) * 100}% HP \n +{(_dmgBuff - 1) * 100}% DMG\n -{(_cdDebuff - 1) * 100}% Reload";
     }
 
     public void GivePrize()

@@ -89,6 +89,7 @@ public class Player : MonoBehaviour, IDamagable
         hpAfterDeath = 0;
 
         DamageOnStart = 0;
+        transform.localScale = Vector2.one;
 
         _bar.Setup(_hpMax);
         PlayerObj = GetComponent<Player>();

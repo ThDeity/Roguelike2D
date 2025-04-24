@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7038836517012118510}
   - component: {fileID: 4377758185584525793}
   - component: {fileID: 3948526009037670085}
-  - component: {fileID: -618515478694026264}
+  - component: {fileID: -7892999043450711562}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Player
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-618515478694026264
+--- !u!114 &-7892999043450711562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,12 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a29cc9f538ef484e96b1657a0719134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1.3
+  damage: 5
   critChance: 0
   lifeTime: 0
   speed: 12
   lifeSteal: 0
-  maxDistance: 12
+  maxDistance: 19
   lifeTimeRange: 0
   timeTakingDmg: 0
   _bulletVector: {x: -1, y: 0}

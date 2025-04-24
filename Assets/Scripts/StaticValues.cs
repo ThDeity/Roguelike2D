@@ -10,7 +10,7 @@ public class StaticValues : MonoBehaviour
     public static Dictionary<string, int> CurrentRoomTypes = new Dictionary<string, int>();
 
     public static GameObject ParamPanel, EnemyParamPanel, PassiveSkillsPanel, ActiveSkillsPanel, SkillsTimer;
-    public static string CurrentRoomType = "ActiveSkills";
+    public static string CurrentRoomType = "PassiveSkills";
     public static bool WasPrizeGotten;
 
     public static List<Transform> EnemiesPoint = new List<Transform>();
@@ -93,6 +93,15 @@ public class StaticValues : MonoBehaviour
             DestroyImmediate(script, true);
         }
 
+        CurrentRoomType = "PassiveSkills";
+        foreach (var name in RoomTypes)
+        {
+            if (CurrentRoomTypes.ContainsKey(name))
+                CurrentRoomTypes[name] = 3;
+            else
+                CurrentRoomTypes.Add(name, 3);
+        }
+
         playerPrefab.AddComponent<PlayerMovement>().Reset();
         playerPrefab.GetComponent<Player>().Reset2();
         playerPrefab.transform.localScale = Vector3.one;
@@ -112,6 +121,8 @@ public class StaticValues : MonoBehaviour
         }
 
         EnemyMaxHp = EnemySpeed = EnemyDamage = EnemyCount = EnemyCrit = 1;
+
+        RoomsBeforeBoss = 0;
 
         SceneManager.LoadScene(1);
     }

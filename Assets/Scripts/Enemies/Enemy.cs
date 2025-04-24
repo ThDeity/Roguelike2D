@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         _rotateToObj = _points[Random.Range(0, _points.Count - 1)];
         _currentPos = _rotateToObj.position;
-        _randomDistance = Random.Range(0.5f, Vector2.Distance(_currentPos, _transform.position) * 0.7f);
+        _randomDistance = Random.Range(0.5f, Vector2.Distance(_currentPos, _transform.position));
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -120,7 +120,10 @@ public class Enemy : MonoBehaviour, IDamagable
     protected virtual void Update()
     {
         _time -= Time.deltaTime;
-        
+
+        if (_isTakingDmg)
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+
         if (_rotateToObj != null)
         {
             Vector3 difference = _rotateToObj.position - _transform.position;

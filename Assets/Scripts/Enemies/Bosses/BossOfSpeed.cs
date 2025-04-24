@@ -182,6 +182,8 @@ public class BossOfSpeed : Enemy
         _statues.ForEach(statue => statue.Disable());
     }
 
+    private void Awake() => StaticValues.WasPrizeGotten = false;
+
     protected override void Start()
     {
         base.Start();
@@ -205,7 +207,6 @@ public class BossOfSpeed : Enemy
             float roatZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             _transform.rotation = Quaternion.Euler(0f, 0f, roatZ + _offset);
 
-            _time -= Time.deltaTime;
             if (_agent.isActiveAndEnabled)
                 _agent.SetDestination(target.position);
 

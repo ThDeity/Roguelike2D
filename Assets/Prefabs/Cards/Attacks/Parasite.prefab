@@ -226,7 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: Well, what can I say... You're going to be a nasty parasite.
-  _lifeSteal: 10
+  count: {fileID: 0}
+  _lifeSteal: 0.1
   _mxHpBuff: 1.2
   _dmgBuff: 1.25
   _cdDebuff: 1.3

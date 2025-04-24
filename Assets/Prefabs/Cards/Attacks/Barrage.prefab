@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: Your attack style is changing because now you have a shotgun!
+  count: {fileID: 0}
   _dmgDebuff: 0.6
   _cdDebuff: 1.4
   _anglesOffset: 18.2

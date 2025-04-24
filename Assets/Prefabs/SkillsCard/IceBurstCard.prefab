@@ -146,11 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8416d22132b894d9a6d30550b9471a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillSprite: {fileID: 0}
   _zone: {fileID: 5954042546461210915, guid: 5d9c10299153cce45b97bef3cb8656a5, type: 3}
   _effects: {fileID: 2084809507604174448, guid: 7d185d80c4efb864292144718edd2863, type: 3}
   _reloadTime: 5
   _freezingTime: 1.25
-  _radius: 2.5
+  _radius: 3.5
   _force: 1
   _damage: 4
   _improveSkill: 1.2

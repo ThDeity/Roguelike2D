@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,6 +10,9 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     protected Text _description, _realDescription;
     [SerializeField] protected string _title;
+    protected Button _button;
+
+    public Text count;
 
     protected virtual void Start()
     {

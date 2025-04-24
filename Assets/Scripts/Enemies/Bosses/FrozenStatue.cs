@@ -7,7 +7,7 @@ public class FrozenStatue : Enemy
     [SerializeField] private Transform _pointToShot;
     [SerializeField] private float _timeOfSleeping;
     [SerializeField] private Color _color;
-
+    [SerializeField] private bool _isNotShotFromPoint;
 
     private RangeAttack _rangeAttack;
     private SpriteRenderer _sprite;
@@ -40,7 +40,7 @@ public class FrozenStatue : Enemy
     {
         _time -= Time.deltaTime;
 
-        if (target != null)
+        if (target != null && !_isSleeping)
         {
             Vector3 difference = target.position - _transform.position;
             float roatZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
@@ -55,7 +55,10 @@ public class FrozenStatue : Enemy
     {
         if (!_isSleeping && _time <= 0)
         {
-            _rangeAttack.ShotFromPoint();
+            if (!_isNotShotFromPoint)
+                _rangeAttack.ShotFromPoint();
+            else
+                _animator.Play("Attack");
             _time = _reloadTime;
         }
     }
@@ -115,21 +118,25 @@ public class FrozenStatue : Enemy
             StartCoroutine(TakingDamage(time));
         }
 
-        if (_hpBar != null && !_hpBar.activeInHierarchy)
+        if (_hpBar != null && !_hpBar.activeInHierarchy && !_isSleeping)
             _hpBar.SetActive(true);
     }
 
     protected virtual IEnumerator Sleep()
     {
-        _sprite.color = _color;
         _collider.enabled = false;
         _hpBar.SetActive(false);
+        Debug.Log(_hpBar.activeInHierarchy);
+
+        _sprite.color = _color;
 
         yield return new WaitForSeconds(_timeOfSleeping);
 
         _isSleeping = false;
         _collider.enabled = true;
+
         _sprite.color = Color.white;
+
         _bar.AddValue(maxHp);
         _currentHp = maxHp;
     }

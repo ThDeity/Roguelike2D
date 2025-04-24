@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Prefabs/Rooms/3_Boss.unity
     guid: bc0a47b44829bb548b220dcc74e61b64
+  - enabled: 1
+    path: Assets/Prefabs/Rooms/Boss.unity
+    guid: 6dc3039e8f74c8d469e5ca86ed9f5c68
   m_configObjects: {}

@@ -17,7 +17,7 @@ public class Lifesteal : MonoBehaviour
 
     protected void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IDamagable enemy))
+        if (collision.TryGetComponent(out IDamagable enemy) && collision.tag != tag)
         {
             if (_currentTime <= 0)
             {

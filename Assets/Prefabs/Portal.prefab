@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonIcon: {fileID: 4905889868995709452, guid: 9c971a60bea149b4bb2b02a5f8a4a090, type: 3}
-  _roomsPerArea: 8
+  _roomsPerArea: 2
   _roomsCount: 5
   _pointForPrize: {fileID: 5611414982612481270}
   _pointForButton: {fileID: 8232857182148823390}

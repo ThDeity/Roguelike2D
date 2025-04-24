@@ -22,10 +22,10 @@ public class Implode : MonoBehaviour
                 forceVector.z = 0;
 
                 collider.TryGetComponent(out IDamagable component);
-                if (component != null && collider.tag != "Player")
+                if (component != null && collider.tag != "Player" && collider.TryGetComponent(out NavMeshAgent agent))
                 {
                     component.TakeDamage(damage, 0);
-                    collider.GetComponent<NavMeshAgent>().Warp(transform.position);
+                    agent.Warp(transform.position);
                 }
                 else
                     collider.attachedRigidbody.MovePosition(transform.position + forceVector * force);

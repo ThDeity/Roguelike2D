@@ -6,21 +6,23 @@ public class SpawnPrize : MonoBehaviour
     [SerializeField] private Transform _prizePoint;
     [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes;
-    protected static int Rooms = 8;
+    protected static int Rooms = 2;
 
     [SerializeField] private GameObject _portal;
     [Tooltip("At least 3 points")]
     [SerializeField] private List<Transform> _portalsPoints;
     private List<GameObject> _portals = new List<GameObject>();
 
+    private HashSet<int> _types = new HashSet<int>();
+    int _index;
     private void Start()
     {
         if (StaticValues.RoomsBeforeBoss % Rooms != Rooms - 1 || StaticValues.RoomsBeforeBoss % Rooms != 0)
         {
             int numberOfPortals = Random.Range(1, 3);
-            for (int i = 0; i < numberOfPortals; i++)
+            for (int y = 0; y < numberOfPortals; y++)
             {
-                GameObject portal = Instantiate(_portal, _portalsPoints[i]);
+                GameObject portal = Instantiate(_portal, _portalsPoints[y]);
                 _portals.Add(portal);
             }
         }
@@ -30,8 +32,21 @@ public class SpawnPrize : MonoBehaviour
             _portals.Add(portal);
         }
 
-        if (StaticValues.CurrentRoomType == "Boss")
-            StaticValues.RoomsBeforeBoss -= 1;
+        int i = 0;
+        while (_types.Count != _portals.Count)
+        {
+            _index = StaticValues.RoomsBeforeBoss % Rooms != 0 ? Random.Range(0, StaticValues.RoomTypes.Count - 2) : 5;
+
+            if (_types.Contains(_index) || StaticValues.CurrentRoomTypes[StaticValues.RoomTypes[_index]] == 0)
+                continue;
+
+            _portals[i].GetComponent<Portal>().SetPrize(_index);
+            _portals[i].SetActive(false);
+            i += 1;
+
+            _types.Add(_index);
+            StaticValues.CurrentRoomTypes[StaticValues.RoomTypes[_index]] -= 1;
+        }
     }
 
     private void Update()

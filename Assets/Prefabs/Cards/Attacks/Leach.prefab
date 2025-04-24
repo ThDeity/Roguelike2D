@@ -147,7 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: Extremely tenacious bloodsucker
-  _lifeSteal: 10
+  count: {fileID: 0}
+  _lifeSteal: 0.15
   _mxHpBuff: 1.25
 --- !u!1 &5630398388755147201
 GameObject:

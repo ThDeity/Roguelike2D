@@ -2,16 +2,22 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
 
 public class BossOfControling : Enemy
 {
-    [SerializeField] private float _timeBtwZoneActivation, _timeOfCell, _laserScale, _laserSpeedDebuff, _timeOfRotation, _offsetPlus, _hpToCopy, _radius;
-    [SerializeField] private int _countOfCells, indexOfAttack, _numOfLaserRotations;
-    [SerializeField] private GameObject _zoneOfCell, _laser, _copy;
-    [Tooltip("Называть в той последовательности, в которой будет атака")]
-    [SerializeField] private List<string> _animNames;
+    [SerializeField] private float _timeBtwZoneActivation, _timeOfCell, _laserScale, _laserSpeedDebuff, _timeOfRotation, _offsetPlus, _hpToCopy, _radius,
+                                                                                                                        _areaRadius, _timeBtwMelleeAttack;
+
+    [SerializeField] private int _countOfCells, _indexOfAttack, _numOfLaserRotations, _numOfLasers;
+    [SerializeField] private GameObject _zoneOfCell, _laser, _copy, _laserTrace;
     [SerializeField] private List<Transform> _pointToCopy;
 
+    [Tooltip("Называть в той последовательности, в которой будет атака")]
+    [SerializeField] private List<string> _animNames;
+
+
+    private float _currentTime;
     bool _wasCopied;
     public override void TakeDamage(float damage, float time)
     {
@@ -27,6 +33,18 @@ public class BossOfControling : Enemy
 
             _wasCopied = true;
             gameObject.SetActive(false);
+        }
+    }
+
+    public virtual void LasersAttack()
+    {
+        for (int i = 0; i < _numOfLasers; i++)
+        {
+            float x = Random.Range(-_areaRadius, _areaRadius);
+            float y = Mathf.Sqrt(_areaRadius * _areaRadius - x * x);
+            y = Random.Range(0, 2) == 0 ? -y : y;
+
+            Instantiate(_laserTrace, new Vector2(x, y), Quaternion.identity);
         }
     }
 
@@ -106,9 +124,12 @@ public class BossOfControling : Enemy
         }
     }
 
+    private void Awake() => StaticValues.WasPrizeGotten = false;
+
     protected override void Update()
     {
         _time -= Time.deltaTime;
+        _currentTime -= Time.deltaTime;
 
         if (_isLaser)
         {
@@ -129,21 +150,29 @@ public class BossOfControling : Enemy
 
     protected override void FixedUpdate()
     {
-        if (Vector2.Distance(_currentPos, _transform.position) > _randomDistance && !_isLaser)
+        var distanceBtwPlayer = target.position - _transform.position;
+
+        if (_currentTime <= 0 && distanceBtwPlayer.sqrMagnitude <= _attackDistance * _attackDistance && !_isLaser)
+        {
+            _animator.Play("MeleeAttack");
+            _currentTime = _timeBtwMelleeAttack;
+        }
+
+        if ((_currentPos - (Vector2)_transform.position).sqrMagnitude > _randomDistance * _randomDistance && !_isLaser)
             _agent.SetDestination(_currentPos);
         else if (!_isLaser)
             FindPoint();
         
         if (_time <= 0)
         {
-            _animator.Play(_animNames[indexOfAttack]);
+            _animator.Play(_animNames[_indexOfAttack]);
 
             if (_time <= 0)
                 _time = _reloadTime * Random.Range(0.6f, 1);
             else
                 _time += _reloadTime * Random.Range(0.6f, 1);
 
-            indexOfAttack = indexOfAttack > _animNames.Count - 2 ? 0 : indexOfAttack + 1;
+            _indexOfAttack = _indexOfAttack > _animNames.Count - 2 ? 0 : _indexOfAttack + 1;
         }
     }
 
@@ -151,13 +180,22 @@ public class BossOfControling : Enemy
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _radius);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _attackDistance);
     }
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
 
-        FindObjectOfType<SpawnPrize>().GivePrize();
-        StaticValues.WasPrizeGotten = true;
+        GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
+        GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
+
+        if (_currentHp <= 0)
+        {
+            FindObjectOfType<SpawnPrize>().GivePrize();
+            StaticValues.WasPrizeGotten = true;
+        }
     }
 }

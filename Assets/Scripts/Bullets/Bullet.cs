@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     public bool isDrillAmmo;
 
     protected static float Damage, Crit, LifeTime, Speed, LifeSteal, MaxDistance, TimeTakingDmg;
-    protected static Vector2 BulletVector;
+    protected static Vector2 BulletVector, BulletScale;
     public void Reset()
     {
         damage = Damage;
@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
         timeTakingDmg = TimeTakingDmg;
 
         _bulletVector = BulletVector;
+        transform.localScale = BulletScale;
 
         isDrillAmmo = false;
     }
@@ -38,6 +39,7 @@ public class Bullet : MonoBehaviour
             TimeTakingDmg = timeTakingDmg;
 
             BulletVector = _bulletVector;
+            BulletScale = transform.localScale;
         }
     }
 

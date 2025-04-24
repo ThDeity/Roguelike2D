@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 
 public class DebuffsEffects : MonoBehaviour
 {
@@ -43,6 +44,21 @@ public class DebuffsEffects : MonoBehaviour
     {
         if (StaticValues.PlayerObj.IsExploding)
             Instantiate(StaticValues.PlayerObj.Explosion, transform.position, Quaternion.identity);
+    }
+
+    public void Fading(float time, float persent) => StartCoroutine(FadingCoroutine(time, persent));
+
+    private IEnumerator FadingCoroutine(float time, float persent)
+    {
+        Light2D light = transform.GetComponentInChildren<Light2D>();
+        if (light == null) yield break;
+
+        float deltaScale = light.transform.localScale.x * (1 - persent);
+        light.transform.localScale = new Vector2(light.transform.localScale.x - deltaScale, light.transform.localScale.y - deltaScale);
+
+        yield return new WaitForSeconds(time);
+
+        light.transform.localScale = new Vector2(light.transform.localScale.x + deltaScale, light.transform.localScale.y + deltaScale);
     }
 
     public void FindEnemy()
@@ -168,19 +184,21 @@ public class DebuffsEffects : MonoBehaviour
         gameObject.GetComponent<IDamagable>().TakeDamage(damage, 0);
         if (_isEnemy)
         {
+            TryGetComponent(out Animator anim);
+
             speed = agent.speed;
             agent.speed *= 1 - force;
 
             cd = _enemy.ChangeReloadCd(1);
             newCd = _enemy.ChangeReloadCd(cd / time);
 
-            if (isEnableAnim)
-                GetComponent<Animator>().enabled = false;
+            if (isEnableAnim && anim != null)
+                anim.enabled = false;
 
             yield return new WaitForSeconds(time);
 
-            if (isEnableAnim)
-                GetComponent<Animator>().enabled = true;
+            if (isEnableAnim && anim != null)
+                anim.enabled = true;
 
             _enemy.ChangeReloadCd(cd / newCd);
             agent.speed = speed;
