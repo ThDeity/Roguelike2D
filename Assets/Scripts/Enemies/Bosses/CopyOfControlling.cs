@@ -33,7 +33,8 @@ public class CopyOfControlling : Enemy
     protected override void FindPoint()
     {
         _angle = Random.Range(_minAngle, _maxAngle);
-        _currentPos = _points[Random.Range(0, _points.Count - 1)].position;
+        if (_points[0] != null)
+            _currentPos = _points[Random.Range(0, _points.Count - 1)].position;
 
         float scale = Random.Range(_minScale, _maxScale);
         _lasers.ForEach(x => x.DOScaleX(0.3f * scale, Vector2.Distance(_currentPos, _transform.position) / _agent.speed));

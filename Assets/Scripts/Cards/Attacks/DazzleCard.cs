@@ -13,9 +13,16 @@ public class DazzleCard : Card
     public void GivePrize()
     {
         SetAttackParam(1,0,1,_cdDebuff);
+        StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out BulletsComponents components);
 
-        if (!StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out Dazzle component))
-            StaticValues.PlayerAttackList.ForEach(x => { x.bullet.AddComponent<Dazzle>().time = _time; x.bullet.AddComponent<Dazzle>().cd = _cd; });
+        components.SetActiveScripts();
+        StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out Dazzle component);
+
+        if (component.time == 0)
+        {
+            component.time = _time;
+            component.cd = _cd;
+        }
         else
             StaticValues.PlayerAttackList.ForEach(x => x.bullet.GetComponent<Dazzle>().time *= _increaseParam);
 

@@ -124,7 +124,12 @@ public class BossOfControling : Enemy
         }
     }
 
-    private void Awake() => StaticValues.WasPrizeGotten = false;
+    private void Awake()
+    {
+        StaticValues.WasPrizeGotten = false;
+        StaticValues.CurrentRoomType = "Boss";
+        _currentTime = _timeBtwMelleeAttack;
+    }
 
     protected override void Update()
     {

@@ -17,10 +17,10 @@ public class BarrageCard : Card
 
         if (!StaticValues.PlayerAttackList[0].gameObject.TryGetComponent(out Barrage barrage))
         {
-            barrage = FindObjectOfType<StaticValues>().playerPrefab.transform.GetChild(0).GetChild(0).gameObject.AddComponent<Barrage>();
-            PlayerAttack attack = FindObjectOfType<StaticValues>().playerPrefab.transform.GetChild(0).GetComponentsInChildren<PlayerAttack>()[0];
-            barrage = attack.GetComponent<Barrage>();
+            barrage = StaticValues.PlayerTransform.GetChild(0).GetChild(0).gameObject.AddComponent<Barrage>();
+            PlayerAttack attack = StaticValues.PlayerTransform.GetChild(0).GetComponentsInChildren<PlayerAttack>()[0];
 
+            barrage = attack.GetComponent<Barrage>();
             barrage.bullet = attack.bullet;
             barrage.reloadTime = attack.reloadTime;
             barrage.bulletsCount = _bulletsCount;

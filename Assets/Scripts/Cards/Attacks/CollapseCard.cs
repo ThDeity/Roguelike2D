@@ -14,17 +14,14 @@ public class CollapseCard : Card
 
     public void GivePrize()
     {
-        if (!StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out Collapse collapse))
+        StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out Collapse collapse);
+        if (collapse.bulletsCount == 0)
         {
-            foreach(var x in StaticValues.PlayerAttackList)
-            {
-                Collapse c = x.bullet.AddComponent<Collapse>();
-                c.bullet = _bullet;
-                c.bulletsCount = _bulletsCount;
-            }
+            collapse.bullet = _bullet;
+            collapse.bulletsCount = _bulletsCount;
         }
         else
-            StaticValues.PlayerAttackList.ForEach(x => x.bullet.GetComponent<Collapse>().bulletsCount += _bulletsCount);
+            collapse.bulletsCount += _bulletsCount;
 
         SetAttackParam(_buffDmg,0,_debuffSpeed,_debuffCd, 0,_debuffMaxDistance,_buffSize);
         StaticValues.PassiveSkillsPanel.SetActive(false);

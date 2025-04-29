@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonIcon: {fileID: 4905889868995709452, guid: 9c971a60bea149b4bb2b02a5f8a4a090, type: 3}
-  _currentArea: {fileID: 0}
   _roomsPerArea: 2
   _roomsCount: 5
   _index: 0
@@ -166,17 +165,21 @@ MonoBehaviour:
   - {fileID: 7592805287939673135, guid: b8e7481b70e98504589db1f379b4f6a7, type: 3}
   - {fileID: 5491253056952581241, guid: 9dc2f3fdc358357428046c5b7a893611, type: 3}
   _areas1:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3671146272757301358, guid: c8dc8d0efe3552b409206d5e6bab9d5f, type: 3}
+  - {fileID: 2270017672386729331, guid: ee77d4e26a2512b429c79f772b809549, type: 3}
+  - {fileID: 8481999997085703621, guid: 97ec53a71f6f7ee41af061019d1a2540, type: 3}
+  - {fileID: 8049118627661223265, guid: 12877ce084905e14f969c563ec6e1613, type: 3}
+  - {fileID: 4556715013580616057, guid: 8e4a3622be690a34480a2f263660a681, type: 3}
   _areas2:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5117217367532278765, guid: 882189649c6f2064f97e3f83a70db09d, type: 3}
+  - {fileID: 1299969972835022222, guid: bb8c7cca5e8be1140a38da744efe864a, type: 3}
+  - {fileID: 8850474471735546374, guid: 70e7d4fae768b354084ef1de43a6de57, type: 3}
+  - {fileID: 6400693982551219365, guid: 1159add9cfa384445bf64f335e1b47d3, type: 3}
+  - {fileID: 1784978493048758147, guid: 8154f0bbc1ede4849b5bc1ce1c89a155, type: 3}
+  _bosses:
+  - {fileID: 2091550497103331759, guid: 5c2284b1a20deba44907d9e663c51713, type: 3}
+  - {fileID: 8602321418203907428, guid: 1a3d8960033fad346b10515f365fa339, type: 3}
+  - {fileID: 4342176164901675099, guid: c1300f56f69db094da0a950f5f5f65d2, type: 3}
 --- !u!95 &6155362683243453800
 Animator:
   serializedVersion: 5

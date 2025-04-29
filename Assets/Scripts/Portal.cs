@@ -1,3 +1,4 @@
+using NavMeshPlus.Components;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,10 +18,11 @@ public class Portal : MonoBehaviour
 
     private List<List<GameObject>> _areas = new List<List<GameObject>>();
     private GameObject _icon, _buttonE, _currentArea;
+
+    private static int NumOfArea;
     private void Awake()
     {
         _currentArea = FindObjectOfType<SpawnPrize>().gameObject;
-        Debug.Log(StaticValues.RoomsBeforeBoss);
 
         _areas.Add(_areas0);
         _areas.Add(_areas1);
@@ -63,28 +65,35 @@ public class Portal : MonoBehaviour
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
         {
-            if (StaticValues.RoomsBeforeBoss % _roomsPerArea != 0 || StaticValues.RoomsBeforeBoss == 0 || StaticValues.CurrentRoomType == "Boss")
-            {
-                StaticValues.CurrentRoomType = StaticValues.RoomTypes[_index];
-                Destroy(_currentArea.gameObject);
+            var _surface = FindObjectOfType<NavMeshSurface>();
+            _surface.RemoveData();
 
-                StaticValues.RoomsBeforeBoss += 1;
-
-                int index = Random.Range(0, _areas[StaticValues.RoomsBeforeBoss / _roomsPerArea].Count);
-                _currentArea = Instantiate(_areas[StaticValues.RoomsBeforeBoss / _roomsPerArea][index]);
-
-                collision.transform.position = Vector2.zero;
-            }
-            else
+            Destroy(_currentArea.gameObject);
+            StaticValues.RoomsBeforeBoss += 1;
+            
+            if (StaticValues.RoomsBeforeBoss % _roomsPerArea == 0 && StaticValues.RoomsBeforeBoss != 0)
             {
                 StaticValues.CurrentRoomType = StaticValues.RoomTypes[5];
 
-                Destroy(_currentArea.gameObject);
-
-                _currentArea = Instantiate(_bosses[StaticValues.RoomsBeforeBoss / _roomsPerArea]);
-
-                collision.transform.position = Vector2.zero;
+                _currentArea = Instantiate(_bosses[NumOfArea]);
+                StaticValues.RoomsBeforeBoss = 0;
+                NumOfArea += 1;
             }
+            else if (StaticValues.RoomsBeforeBoss % _roomsPerArea != 0 || StaticValues.RoomsBeforeBoss == 0)
+            {
+                StaticValues.CurrentRoomType = StaticValues.RoomTypes[_index];
+
+                int index = Random.Range(0, _areas[NumOfArea].Count);
+                _currentArea = Instantiate(_areas[NumOfArea][index]);
+            }
+
+            GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+            StaticValues.EnemiesPoint.Clear();
+            foreach (GameObject p in points)
+                StaticValues.EnemiesPoint.Add(p.transform);
+
+            if (_currentArea.TryGetComponent(out SpawnPrize component))
+                collision.transform.position = component.playerPointSpawn == null ? Vector2.zero : component.playerPointSpawn.position;
         }
     }
 }

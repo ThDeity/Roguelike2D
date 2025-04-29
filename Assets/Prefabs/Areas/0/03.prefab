@@ -1207,7 +1207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b880a550262345541bfcf0174d8f3ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prizePoint: {fileID: 0}
+  playerPointSpawn: {fileID: 3886055253193469621}
+  _prizePoint: {fileID: 2481060736689445097}
   _prizes:
   - {fileID: 3746447450159159677, guid: 9caaf57c6ad0bf442922581e6acc7d93, type: 3}
   - {fileID: 9221463161419547699, guid: 30d55a9bbf9f5d743b8ce9fa6b73ae88, type: 3}
@@ -1599,6 +1600,11 @@ Transform:
 --- !u!4 &1442280318579930359 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1988317874829084891, guid: 9a9917b4f91fb804cbf1da3bf6f5094c, type: 3}
+  m_PrefabInstance: {fileID: 1122503362730867756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2481060736689445097 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3313964622969185477, guid: 9a9917b4f91fb804cbf1da3bf6f5094c, type: 3}
   m_PrefabInstance: {fileID: 1122503362730867756}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5702439548291458360 stripped

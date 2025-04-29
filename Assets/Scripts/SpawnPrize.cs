@@ -1,10 +1,11 @@
 using System.Collections.Generic;
-using UnityEditor.AI;
 using UnityEngine;
 
 public class SpawnPrize : MonoBehaviour
 {
+    public Transform playerPointSpawn;
     [SerializeField] private Transform _prizePoint;
+
     [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes;
     protected static int Rooms = 2;
@@ -12,20 +13,13 @@ public class SpawnPrize : MonoBehaviour
     [SerializeField] private GameObject _portal;
     [Tooltip("At least 3 points")]
     [SerializeField] private List<Transform> _portalsPoints;
+
     private List<GameObject> _portals = new List<GameObject>();
-
     private HashSet<int> _types = new HashSet<int>();
+
     int _index;
-    private void Awake()
+    private void Start()
     {
-        NavMeshBuilder.ClearAllNavMeshes();
-        NavMeshBuilder.BuildNavMesh();
-
-        GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
-        StaticValues.EnemiesPoint.Clear();
-        foreach (GameObject p in points)
-            StaticValues.EnemiesPoint.Add(p.transform);
-
         if (StaticValues.RoomsBeforeBoss % Rooms != Rooms - 1 || StaticValues.RoomsBeforeBoss % Rooms != 0)
         {
             int numberOfPortals = Random.Range(1, 3);
@@ -44,7 +38,7 @@ public class SpawnPrize : MonoBehaviour
         int i = 0;
         while (_types.Count != _portals.Count)
         {
-            _index = StaticValues.RoomsBeforeBoss % Rooms != 0 ? Random.Range(0, StaticValues.RoomTypes.Count - 2) : 5;
+            _index = ((StaticValues.RoomsBeforeBoss + 1) % Rooms != 0 || StaticValues.RoomsBeforeBoss == 0)? Random.Range(0, StaticValues.RoomTypes.Count - 2) : 5;
 
             if (_types.Contains(_index) || StaticValues.CurrentRoomTypes[StaticValues.RoomTypes[_index]] == 0)
                 continue;

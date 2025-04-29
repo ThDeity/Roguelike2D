@@ -259,6 +259,7 @@ Transform:
   - {fileID: 4389711713990122209}
   - {fileID: 2721617803416478003}
   - {fileID: 670563126585160895}
+  - {fileID: 60929222902427834}
   - {fileID: 971307964134484718}
   - {fileID: 6836713668139490035}
   - {fileID: 188545039071514260}
@@ -482,6 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b880a550262345541bfcf0174d8f3ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPointSpawn: {fileID: 670563126585160895}
   _prizePoint: {fileID: 3472069065863978216}
   _prizes:
   - {fileID: 3746447450159159677, guid: 9caaf57c6ad0bf442922581e6acc7d93, type: 3}
@@ -715,6 +717,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.9, y: -0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6033668970085326265}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6760504035315510785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60929222902427834}
+  m_Layer: 0
+  m_Name: Point (6)
+  m_TagString: Point
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &60929222902427834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6760504035315510785}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.49, y: -20.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -493,6 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b880a550262345541bfcf0174d8f3ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPointSpawn: {fileID: 3436475311928389748}
   _prizePoint: {fileID: 1004973513840676424}
   _prizes:
   - {fileID: 3746447450159159677, guid: 9caaf57c6ad0bf442922581e6acc7d93, type: 3}
