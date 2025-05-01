@@ -12,6 +12,9 @@ public class ColdBulletsCard : Card
 
     public void GiveOrize()
     {
+        StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out BulletsComponents components);
+        components.SetComponent(typeof(ColdBullets));
+
         StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out ColdBullets component);
         if (component.time == 0)
         {

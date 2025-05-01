@@ -15,7 +15,7 @@ public class ShockwaveCard : Card
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out ShockwaveRoll shockwaveRoll))
         {
-            shockwaveRoll = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<ShockwaveRoll>();
+            shockwaveRoll = StaticValues.PlayerObj.gameObject.AddComponent<ShockwaveRoll>();
             shockwaveRoll.damage = _damage;
             shockwaveRoll.radius = _radius;
             shockwaveRoll.explosionObj = _explosion;

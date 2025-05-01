@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
         rollsCount = RollsCount;
     }
 
+    public void CheckComponents() => _rolls = GetComponents<Roll>().ToList();
+
     private void Awake()
     {
         if (DashSpeed == 0)
@@ -43,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        _rolls = GetComponentsInChildren<Roll>().ToList();
+        _rolls = GetComponents<Roll>().ToList();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _time = 0;
         _currentSpeed = speed;

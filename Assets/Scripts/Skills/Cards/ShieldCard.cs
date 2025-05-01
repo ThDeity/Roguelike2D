@@ -9,22 +9,20 @@ public class ShieldCard : Skill
     {
         base.GivePrize(skillSlot);
 
-        StaticValues values = FindObjectOfType<StaticValues>();
-
-        if (values.playerPrefab.TryGetComponent(out Shield spell))
+        if (StaticValues.PlayerObj.TryGetComponent(out Shield spell))
         {
             spell.activeTime *= _improveSkill;
             spell.reloadTime *= _improveCd;
 
             return;
         }
-        else if (values.playerPrefab.TryGetComponent(out Skill component))
+        else if (StaticValues.PlayerObj.TryGetComponent(out Skill component))
         {
             component.ResetAll();
             DestroyImmediate(component, true);
         }
 
-        Shield shield = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<Shield>();
+        Shield shield = StaticValues.PlayerObj.gameObject.AddComponent<Shield>();
         shield.reloadTime = _reloadTime;
         shield.activeTime = _activeTime;
         shield.shield = _shield;

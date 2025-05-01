@@ -15,7 +15,7 @@ public class SilenceCard : Card
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out SilenceRoll silenceRoll))
         {
-            silenceRoll = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<SilenceRoll>();
+            silenceRoll = StaticValues.PlayerObj.gameObject.AddComponent<SilenceRoll>();
             silenceRoll.silence = _silence;
         }
         else

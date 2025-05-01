@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1965037381310138293}
   - component: {fileID: 6057451684471324536}
   - component: {fileID: 3156555811031108458}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: BossOfSpeed
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  maxHp: 70
+  maxHp: 180
   target: {fileID: 0}
   isCharmed: 0
   isBoss: 1
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 3193488448369887525}
   - component: {fileID: 2244589017726189460}
   - component: {fileID: 2042597743220514524}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Mandibles_0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437611595658990213}
   - component: {fileID: 7341945228583826798}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: 2_Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 8684226508354678094}
   - component: {fileID: 4784604684360250210}
   - component: {fileID: 1522525405180690365}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Mandibles_0 (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
@@ -621,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -717,7 +717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

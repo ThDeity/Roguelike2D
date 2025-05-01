@@ -95,6 +95,8 @@ public class Player : MonoBehaviour, IDamagable
         PlayerObj = GetComponent<Player>();
     }
 
+    public void CheckComponents() => _onTakeDmgList = GetComponents<OnTakeDmg>().ToList();
+
     private void Awake()
     {
         if (Bar == null)

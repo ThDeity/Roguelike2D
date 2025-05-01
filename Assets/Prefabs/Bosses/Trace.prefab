@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _critChance: 0
-  _timeOfChangingColor: 1.2
+  _timeOfChangingColor: 0.9
   _maxIntensity: 50
   _lifeTime: 0.1
   _spriteRenderer: {fileID: 5588040950475777344}

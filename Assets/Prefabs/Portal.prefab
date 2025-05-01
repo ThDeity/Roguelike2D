@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonIcon: {fileID: 4905889868995709452, guid: 9c971a60bea149b4bb2b02a5f8a4a090, type: 3}
-  _roomsPerArea: 2
+  _roomsPerArea: 6
   _roomsCount: 5
   _index: 0
   _pointForPrize: {fileID: 5611414982612481270}
@@ -180,6 +180,7 @@ MonoBehaviour:
   - {fileID: 2091550497103331759, guid: 5c2284b1a20deba44907d9e663c51713, type: 3}
   - {fileID: 8602321418203907428, guid: 1a3d8960033fad346b10515f365fa339, type: 3}
   - {fileID: 4342176164901675099, guid: c1300f56f69db094da0a950f5f5f65d2, type: 3}
+  - {fileID: 7507658902623431611, guid: c345c37a7db48e64f856b3da868ef34b, type: 3}
 --- !u!95 &6155362683243453800
 Animator:
   serializedVersion: 5

@@ -106,8 +106,8 @@ MonoBehaviour:
   lifeSteal: 0
   maxDistance: 12
   lifeTimeRange: 0
-  _bulletVector: {x: 1, y: 0}
   timeTakingDmg: 0
+  _bulletVector: {x: 1, y: 0}
   isDrillAmmo: 0
 --- !u!61 &2793605652034767692
 BoxCollider2D:

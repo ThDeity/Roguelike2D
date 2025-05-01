@@ -187,6 +187,7 @@ public class BossOfSpeed : Enemy
     protected override void Start()
     {
         base.Start();
+        StaticValues.CurrentRoomType = "Boss";
         _transform = transform;
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -261,7 +262,8 @@ public class BossOfSpeed : Enemy
         GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
 
-        FindObjectOfType<SpawnPrize>().GivePrize();
+        if (_currentHp <= 0)
+            FindObjectOfType<SpawnPrize>().GivePrize();
         StaticValues.WasPrizeGotten = true;
     }
 }

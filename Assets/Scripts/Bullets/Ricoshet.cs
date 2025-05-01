@@ -15,7 +15,19 @@ public class Ricoshet : Bullet
         _collider2D = GetComponent<Collider2D>();
     }
 
-    protected override void FixedUpdate() => _rigidbody2D.velocity = _bulletVector * speed;
+    protected override void FixedUpdate()
+    {
+        if (isActiveAndEnabled)
+            _rigidbody2D.velocity = _bulletVector * speed;
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+        _collider2D.isTrigger = true;
+    }
+
+    private void OnDisable() => Reset();
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
@@ -50,5 +62,9 @@ public class Ricoshet : Bullet
         }
     }
 
-    protected void OnTriggerExit2D(Collider2D collision) => _collider2D.isTrigger = false;
+    protected void OnTriggerExit2D(Collider2D collision)
+    {
+        if (isActiveAndEnabled)
+            _collider2D.isTrigger = false;
+    }
 }

@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
 
     protected static float Damage, Crit, LifeTime, Speed, LifeSteal, MaxDistance, TimeTakingDmg;
     protected static Vector2 BulletVector, BulletScale;
-    public void Reset()
+    public virtual void Reset()
     {
         damage = Damage;
         critChance = Crit;
@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         timeTakingDmg = TimeTakingDmg;
 
         _bulletVector = BulletVector;
-        transform.localScale = BulletScale;
+        transform.localScale = BulletScale != Vector2.zero ? BulletScale : new Vector2(0.3f, 0.3f);
 
         isDrillAmmo = false;
     }
@@ -56,7 +56,7 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.isTrigger) return;
+        if (collision.isTrigger || !isActiveAndEnabled) return;
 
         collision.TryGetComponent(out IDamagable currentEnemy);
         collision.TryGetComponent(out Bullet bullet);

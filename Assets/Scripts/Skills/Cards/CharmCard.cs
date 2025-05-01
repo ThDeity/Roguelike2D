@@ -10,24 +10,24 @@ public class CharmCard : Skill
     {
         base.GivePrize(skillSlot);
 
-        StaticValues values = FindObjectOfType<StaticValues>();
 
-        if (values.playerPrefab.TryGetComponent(out Charm skill))
+        if (StaticValues.PlayerObj.gameObject.TryGetComponent(out Charm skill))
         {
             skill.timeOfCharming *= _increaseParam;
             skill.maxEnemies++;
             skill.increaseParam *= _increaseParam;
             skill.zone.transform.localScale *= _increaseParam;
 
+            skill.reloadTime *= 0.9f;
             return;
         }
-        else if (values.playerPrefab.TryGetComponent(out Skill component))
+        else if (StaticValues.PlayerObj.gameObject.TryGetComponent(out Skill component))
         {
             component.ResetAll();
-            DestroyImmediate(component, true);
+            Destroy(component);
         }
 
-        Charm charm = values.playerPrefab.AddComponent<Charm>();
+        Charm charm = StaticValues.PlayerObj.gameObject.AddComponent<Charm>();
         charm.zone = _zone;
         charm.reloadTime = _reloadTime;
         charm.timeOfCharming = _timeOfCharming;

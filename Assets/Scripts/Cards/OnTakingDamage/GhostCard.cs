@@ -15,7 +15,7 @@ public class GhostCard : Card
     {
         if (!StaticValues.PlayerObj.TryGetComponent(out Ghost component))
         {
-            component = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<Ghost>();
+            component = StaticValues.PlayerObj.gameObject.AddComponent<Ghost>();
 
             component.timeOf = _timeOf;
             component.interval = _interval;

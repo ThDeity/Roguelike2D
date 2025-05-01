@@ -15,7 +15,7 @@ public class RadarShotCard : Card
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out RadarShotRoll radarShotRoll))
         {
-            radarShotRoll = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<RadarShotRoll>();
+            radarShotRoll = StaticValues.PlayerObj.gameObject.AddComponent<RadarShotRoll>();
             radarShotRoll.radarShot = _radarShot;
         }
         else

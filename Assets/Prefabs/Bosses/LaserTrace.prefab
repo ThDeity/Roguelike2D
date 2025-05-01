@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _areaRadius: 20
-  _timeBtwActivation: 1
+  _timeBtwActivation: 0.75
   _lifeTime: 1.8
   _point: {fileID: 175244708916145188, guid: d19e16e1b7fc47d489849320b9917f68, type: 3}
 --- !u!1001 &6254478058944405137

@@ -13,11 +13,11 @@ public class LifestealerCard : Card
 
     public void GivePrize()
     {
-        FindObjectOfType<StaticValues>().playerPrefab.TryGetComponent(out Lifesteal steal);
+        StaticValues.PlayerObj.gameObject.TryGetComponent(out Lifesteal steal);
 
         if (steal == null)
         {
-            steal = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<Lifesteal>();
+            steal = StaticValues.PlayerObj.gameObject.AddComponent<Lifesteal>();
             steal.lifesteal = _lifesteal;
         }
         else

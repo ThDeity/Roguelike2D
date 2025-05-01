@@ -15,7 +15,7 @@ public class FrozenBurstCard : Card
     {
         if (!StaticValues.PlayerObj.TryGetComponent(out FrozenBurst burst))
         {
-            burst = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<FrozenBurst>();
+            burst = StaticValues.PlayerObj.gameObject.AddComponent<FrozenBurst>();
             
             burst.interval = _interval;
             burst.timeOfFreezing = _freezingTime;

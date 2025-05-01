@@ -14,6 +14,9 @@ public class CollapseCard : Card
 
     public void GivePrize()
     {
+        StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out BulletsComponents components);
+        components.SetComponent(typeof(Collapse));
+
         StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out Collapse collapse);
         if (collapse.bulletsCount == 0)
         {

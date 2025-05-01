@@ -15,7 +15,7 @@ public class FireRollCard : Card
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out FireRoll fireRoll))
         {
-            fireRoll = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<FireRoll>();
+            fireRoll = StaticValues.PlayerObj.gameObject.AddComponent<FireRoll>();
             fireRoll.trail = _trail;
         }
         else

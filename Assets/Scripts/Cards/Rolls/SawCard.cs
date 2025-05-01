@@ -15,7 +15,7 @@ public class SawCard : Card
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out SawRoll sawRoll))
         {
-            sawRoll = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<SawRoll>();
+            sawRoll = StaticValues.PlayerObj.gameObject.AddComponent<SawRoll>();
 
             sawRoll.saw = _saw;
             SetRollParam(_saw.lifeTime);

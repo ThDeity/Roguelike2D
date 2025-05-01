@@ -16,7 +16,7 @@ public class SpikesCard : Card
     {
         if (!StaticValues.PlayerObj.TryGetComponent(out Spikes component))
         {
-            component = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<Spikes>();
+            component = StaticValues.PlayerObj.gameObject.AddComponent<Spikes>();
 
             component.spikesCount = _spikesCount;
             component.interval = _interval;

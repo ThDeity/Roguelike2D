@@ -10,8 +10,9 @@ public class Param : Prize
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
         {
-            StaticValues.WasPrizeGotten = true;
             _paramPanel.SetActive(true);
+
+            StaticValues.WasPrizeGotten = true;
             Destroy(gameObject);
         }
     }

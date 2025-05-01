@@ -1,4 +1,3 @@
-using NavMeshPlus.Components;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,9 +17,10 @@ public class Portal : MonoBehaviour
 
     private List<List<GameObject>> _areas = new List<List<GameObject>>();
     private GameObject _icon, _buttonE, _currentArea;
+    private bool _isPlayerNear, _wasPortal;
 
     private static int NumOfArea;
-    private void Awake()
+    private void Start()
     {
         _currentArea = FindObjectOfType<SpawnPrize>().gameObject;
 
@@ -30,6 +30,52 @@ public class Portal : MonoBehaviour
 
         _buttonE = Instantiate(_buttonIcon, _pointForButton.position, Quaternion.identity);
         _buttonIcon.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (_isPlayerNear && Input.GetKeyDown(KeyCode.E) && !_wasPortal)
+        {
+            _wasPortal = true;
+
+            foreach (Portal p in FindObjectsOfType<Portal>())
+            {
+                if (p != this)
+                    Destroy(p.gameObject);
+            }
+
+            Destroy(_currentArea.gameObject);
+            StaticValues.RoomsBeforeBoss += 1;
+
+            if (StaticValues.RoomsBeforeBoss % _roomsPerArea == 0 && StaticValues.RoomsBeforeBoss != 0)
+            {
+                StaticValues.CurrentRoomType = StaticValues.RoomTypes[5];
+
+                _currentArea = Instantiate(_bosses[NumOfArea]);
+                StaticValues.RoomsBeforeBoss = 0;
+                NumOfArea += 1;
+            }
+            else if (StaticValues.RoomsBeforeBoss % _roomsPerArea != 0 || StaticValues.RoomsBeforeBoss == 0)
+            {
+                StaticValues.CurrentRoomType = StaticValues.RoomTypes[_index];
+
+                int index = Random.Range(0, _areas[NumOfArea].Count - 1);
+                if (_areas[NumOfArea][index] != null)
+                    _currentArea = Instantiate(_areas[NumOfArea][index]);
+                else
+                    _currentArea = Instantiate(_bosses[_bosses.Count - 1]);
+            }
+
+            GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+            StaticValues.EnemiesPoint.Clear();
+            foreach (GameObject p in points)
+                StaticValues.EnemiesPoint.Add(p.transform);
+
+            if (_currentArea.TryGetComponent(out SpawnPrize component))
+                StaticValues.PlayerTransform.position = component.playerPointSpawn == null ? Vector2.zero : component.playerPointSpawn.position;
+
+            Destroy(gameObject);
+        }
     }
 
     public void SetPrize(int index)
@@ -49,51 +95,25 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.transform == StaticValues.PlayerTransform)
+        {
             _buttonE.gameObject.SetActive(true);
+            _isPlayerNear = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && _buttonE != null)
+        if (collision.transform == StaticValues.PlayerTransform && _buttonE != null)
+        {
             _buttonE.gameObject.SetActive(false);
+            _isPlayerNear = false;
+        }
     }
 
-    private void OnDestroy() => Destroy(_icon);
-
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnDestroy()
     {
-        if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
-        {
-            var _surface = FindObjectOfType<NavMeshSurface>();
-            _surface.RemoveData();
-
-            Destroy(_currentArea.gameObject);
-            StaticValues.RoomsBeforeBoss += 1;
-            
-            if (StaticValues.RoomsBeforeBoss % _roomsPerArea == 0 && StaticValues.RoomsBeforeBoss != 0)
-            {
-                StaticValues.CurrentRoomType = StaticValues.RoomTypes[5];
-
-                _currentArea = Instantiate(_bosses[NumOfArea]);
-                StaticValues.RoomsBeforeBoss = 0;
-                NumOfArea += 1;
-            }
-            else if (StaticValues.RoomsBeforeBoss % _roomsPerArea != 0 || StaticValues.RoomsBeforeBoss == 0)
-            {
-                StaticValues.CurrentRoomType = StaticValues.RoomTypes[_index];
-
-                int index = Random.Range(0, _areas[NumOfArea].Count);
-                _currentArea = Instantiate(_areas[NumOfArea][index]);
-            }
-
-            GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
-            StaticValues.EnemiesPoint.Clear();
-            foreach (GameObject p in points)
-                StaticValues.EnemiesPoint.Add(p.transform);
-
-            if (_currentArea.TryGetComponent(out SpawnPrize component))
-                collision.transform.position = component.playerPointSpawn == null ? Vector2.zero : component.playerPointSpawn.position;
-        }
+        Destroy(_icon);
+        Destroy(_buttonE);
     }
 }

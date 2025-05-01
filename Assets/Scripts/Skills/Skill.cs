@@ -21,6 +21,7 @@ public class Skill : MonoBehaviour, Roll
     protected virtual void Start()
     {
         _timer = StaticValues.SkillsTimer.GetComponent<Text>();
+        StaticValues.PlayerMovementObj.CheckComponents();
 
         if (skillSprite != null)
             StaticValues.ActiveSkillsPanel.GetComponent<ActiveSkill>().skillSlot.sprite = skillSprite;

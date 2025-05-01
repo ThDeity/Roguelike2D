@@ -955,7 +955,7 @@ MonoBehaviour:
   - {fileID: 6150336271840881764, guid: 96b19505428d16e498aa679889330f37, type: 3}
   - {fileID: 246435125922145391, guid: 9725d731453138246aa221f8aa6acfdc, type: 3}
   - {fileID: 246435125922145391, guid: 9725d731453138246aa221f8aa6acfdc, type: 3}
-  _waves: 3
+  _waves: 2
   _enemiesPerWave: 6
   _boxSize: {x: 0.5, y: 0.5}
 --- !u!114 &1817752254040947141

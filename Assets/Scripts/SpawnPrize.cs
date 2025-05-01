@@ -8,7 +8,7 @@ public class SpawnPrize : MonoBehaviour
 
     [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes;
-    protected static int Rooms = 2;
+    protected static int Rooms = 6;
 
     [SerializeField] private GameObject _portal;
     [Tooltip("At least 3 points")]
@@ -16,6 +16,8 @@ public class SpawnPrize : MonoBehaviour
 
     private List<GameObject> _portals = new List<GameObject>();
     private HashSet<int> _types = new HashSet<int>();
+
+    private static bool WasPrizeSpawn;
 
     int _index;
     private void Start()
@@ -25,13 +27,13 @@ public class SpawnPrize : MonoBehaviour
             int numberOfPortals = Random.Range(1, 3);
             for (int y = 0; y < numberOfPortals; y++)
             {
-                GameObject portal = Instantiate(_portal, _portalsPoints[y]);
+                GameObject portal = Instantiate(_portal, _portalsPoints[y].position, Quaternion.identity);
                 _portals.Add(portal);
             }
         }
         else
         {
-            GameObject portal = Instantiate(_portal, _portalsPoints[0]);
+            GameObject portal = Instantiate(_portal, _portalsPoints[0].position, Quaternion.identity);
             _portals.Add(portal);
         }
 
@@ -50,6 +52,7 @@ public class SpawnPrize : MonoBehaviour
             _types.Add(_index);
             StaticValues.CurrentRoomTypes[StaticValues.RoomTypes[_index]] -= 1;
         }
+        _types.Clear();
     }
 
     private void Update()
@@ -62,12 +65,19 @@ public class SpawnPrize : MonoBehaviour
     {
         for (int i = 0; i < _portals.Count; i++)
             _portals[i].SetActive(true);
+
+        StaticValues.WasPrizeGotten = false;
     }
 
     private void InstantiatePrize(int i) => Instantiate(_prizes[i], _prizePoint);
 
+    private void OnDestroy() => WasPrizeSpawn = false;
+
     public void GivePrize()
     {
+        if (WasPrizeSpawn) return;
+        WasPrizeSpawn = true;
+
         string type = StaticValues.CurrentRoomType;
         switch (type)
         {

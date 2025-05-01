@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5029053600946489901}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 244262821863087915}
   - component: {fileID: 1138714342565280787}
   - component: {fileID: 5484807865338789790}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ballista
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc7b2063b989834399c094a9abceabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
+  maxHp: 4.3945312
   radius: 10
   reloadTime: 0.75
   offset: -90
@@ -253,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8973721130039622226}
   - component: {fileID: 5080607961409956031}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8302561290942568457}
   - component: {fileID: 6654091128554923258}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

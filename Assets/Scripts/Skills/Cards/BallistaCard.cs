@@ -9,9 +9,8 @@ public class BallistaCard : Skill
     public override void GivePrize(Sprite skillSlot)
     {
         base.GivePrize(skillSlot);
-        StaticValues values = FindObjectOfType<StaticValues>();
 
-        if (values.playerPrefab.TryGetComponent(out BallistaSkill skill))
+        if (StaticValues.PlayerObj.gameObject.TryGetComponent(out BallistaSkill skill))
         {
             skill.ballista.lifeTime *= _increaseParam;
             skill.ballista.maxHp *= _increaseParam;
@@ -19,16 +18,17 @@ public class BallistaCard : Skill
             skill.ballista.persentOfDmg *= _increaseParam;
 
             skill.hpOfPlayer *= _increaseParam;
+            skill.reloadTime *= 0.9f;
 
             return;
         }
-        else if (values.playerPrefab.TryGetComponent(out Skill component))
+        else if (StaticValues.PlayerObj.gameObject.TryGetComponent(out Skill component))
         {
             component.ResetAll();
-            DestroyImmediate(component, true);
+            Destroy(component);
         }
 
-        BallistaSkill ballista = values.playerPrefab.AddComponent<BallistaSkill>();
+        BallistaSkill ballista = StaticValues.PlayerObj.gameObject.AddComponent<BallistaSkill>();
         ballista.reloadTime = _reloadTime;
         ballista.hpOfPlayer = _hpOfPlayer;
         ballista.skillSprite = skillSlot;

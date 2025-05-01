@@ -14,8 +14,8 @@ public class DazzleCard : Card
     {
         SetAttackParam(1,0,1,_cdDebuff);
         StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out BulletsComponents components);
+        components.SetComponent(typeof(Dazzle));
 
-        components.SetActiveScripts();
         StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out Dazzle component);
 
         if (component.time == 0)

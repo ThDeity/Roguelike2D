@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -22,8 +20,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     protected virtual void SetAttackParam(float dmg = 1, float lifeSteal = 0, float bulletSpeed = 1, float cd = 1, int timeOfTakingDmg = 0, float maxDistance = 1, float changeSize = 1)
     {
-        //FindObjectOfType<StaticValues>().attacks.ForEach(x => x.reloadTime *= cd);
-        List<PlayerAttack> attacks = FindObjectOfType<StaticValues>().playerPrefab.transform.GetChild(0).GetComponentsInChildren<PlayerAttack>().ToList();
+        List<PlayerAttack> attacks = StaticValues.PlayerTransform.GetChild(0).GetComponentsInChildren<PlayerAttack>().ToList();
         attacks.ForEach(x => x.reloadTime *= cd);
 
         foreach (var attack in StaticValues.PlayerAttackList)
@@ -43,8 +40,8 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     protected virtual void SetRollParam(float rollCdPlus = 0, float rollCdProduct = 1)
     {
-        FindObjectOfType<StaticValues>().playerPrefab.GetComponent<PlayerMovement>().dashCd += rollCdPlus;
-        FindObjectOfType<StaticValues>().playerPrefab.GetComponent<PlayerMovement>().dashCd *= rollCdProduct;
+        StaticValues.PlayerMovementObj.dashCd += rollCdPlus;
+        StaticValues.PlayerMovementObj.dashCd *= rollCdProduct;
 
         StaticValues.PassiveSkillsPanel.gameObject.SetActive(false);
     }
@@ -59,5 +56,11 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         _realDescription.enabled = false;
         _realDescription.text = "";
+    }
+
+    public void OnDisable()
+    {
+        StaticValues.PlayerObj.CheckComponents();
+        StaticValues.PlayerMovementObj.CheckComponents();
     }
 }

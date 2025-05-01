@@ -12,7 +12,7 @@ public class ExtraRoll : Card
 
     public void GivePrize()
     {
-        FindObjectOfType<StaticValues>().playerPrefab.GetComponent<PlayerMovement>().rollsCount++;
+        StaticValues.PlayerMovementObj.rollsCount++;
 
         SetRollParam(_rollCdDebuff);
     }

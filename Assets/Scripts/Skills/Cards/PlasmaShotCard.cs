@@ -10,9 +10,7 @@ public class PlasmaShotCard : Skill
     {
         base.GivePrize(skillSlot);
 
-        StaticValues values = FindObjectOfType<StaticValues>();
-
-        if (values.playerPrefab.TryGetComponent(out PlasmaShot spell))
+        if (StaticValues.PlayerObj.TryGetComponent(out PlasmaShot spell))
         {
             spell.dmgIncrease *= _improveSkill;
             spell.reloadTime *= _improveCd;
@@ -21,13 +19,13 @@ public class PlasmaShotCard : Skill
 
             return;
         }
-        else if (values.playerPrefab.TryGetComponent(out Skill component))
+        else if (StaticValues.PlayerObj.TryGetComponent(out Skill component))
         {
             component.ResetAll();
-            DestroyImmediate(component, true);
+            Destroy(component);
         }
 
-        PlasmaShot shot = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<PlasmaShot>();
+        PlasmaShot shot = StaticValues.PlayerObj.gameObject.AddComponent<PlasmaShot>();
         shot.dmgIncrease = _dmgIncrease;
         shot.reloadTime = _reloadTime;
         shot.bullet = _bullet;

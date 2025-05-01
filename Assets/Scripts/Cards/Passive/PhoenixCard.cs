@@ -12,7 +12,7 @@ public class PhoenixCard : Card
 
     public void GivePrize()
     {
-        Player player = FindObjectOfType<StaticValues>().playerPrefab.GetComponent<Player>();
+        Player player = StaticValues.PlayerObj;
 
         player.ChangeMxHp(_hpDebuff);
         player.hpAfterDeath = _hpPersentAfterDeath;

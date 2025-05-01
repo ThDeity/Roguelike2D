@@ -15,7 +15,7 @@ public class MineCard : Card
     {
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out MineRoll mineRoll))
         {
-            mineRoll = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<MineRoll>();
+            mineRoll = StaticValues.PlayerObj.gameObject.AddComponent<MineRoll>();
 
             mineRoll.mine = _mine;
             mineRoll.mine.GetComponent<Mine>().sizeBuff = 1;

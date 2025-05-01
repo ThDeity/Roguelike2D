@@ -916,7 +916,7 @@ MonoBehaviour:
   - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
   - {fileID: 8813475698137768401, guid: 5ecd4500c0151d3438798e81e87f0460, type: 3}
   - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
-  _waves: 1
+  _waves: 3
   _enemiesPerWave: 3
   _boxSize: {x: 0.5, y: 0.5}
 --- !u!1 &5586693377750639768
@@ -1391,7 +1391,7 @@ MonoBehaviour:
   - {fileID: 808640998594183105, guid: 6e4990176178e1e4f95c4d7d3f698742, type: 3}
   - {fileID: 8813475698137768401, guid: 5ecd4500c0151d3438798e81e87f0460, type: 3}
   - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
-  _waves: 1
+  _waves: 3
   _enemiesPerWave: 3
   _boxSize: {x: 0.5, y: 0.5}
 --- !u!1 &8552751109178260684

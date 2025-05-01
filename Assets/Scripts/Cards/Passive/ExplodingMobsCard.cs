@@ -13,7 +13,7 @@ public class ExplodingMobsCard : Card
 
     public void GivePrize()
     {
-        Player player = FindObjectOfType<StaticValues>().playerPrefab.GetComponent<Player>();
+        Player player = StaticValues.PlayerObj;
 
         if (!player.IsExploding)
         {

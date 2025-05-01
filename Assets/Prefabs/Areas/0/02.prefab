@@ -404,7 +404,7 @@ MonoBehaviour:
   - {fileID: 246435125922145391, guid: 9725d731453138246aa221f8aa6acfdc, type: 3}
   - {fileID: 246435125922145391, guid: 9725d731453138246aa221f8aa6acfdc, type: 3}
   _waves: 3
-  _enemiesPerWave: 4
+  _enemiesPerWave: 3
   _boxSize: {x: 0.5, y: 0.5}
 --- !u!1 &2401441748417134021
 GameObject:
@@ -1688,7 +1688,7 @@ MonoBehaviour:
   - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
   - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
   _waves: 3
-  _enemiesPerWave: 5
+  _enemiesPerWave: 4
   _boxSize: {x: 0.5, y: 0.5}
 --- !u!1001 &3672512771801454447
 PrefabInstance:

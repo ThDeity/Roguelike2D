@@ -16,7 +16,6 @@ public class BossOfControling : Enemy
     [Tooltip("Называть в той последовательности, в которой будет атака")]
     [SerializeField] private List<string> _animNames;
 
-
     private float _currentTime;
     bool _wasCopied;
     public override void TakeDamage(float damage, float time)
@@ -99,6 +98,7 @@ public class BossOfControling : Enemy
 
         _laser.transform.localScale = new Vector2(0.3f, 0.3f);
         _laser.SetActive(true);
+        Debug.Log(_laser.gameObject.activeSelf);
         _laser.transform.DOScaleX(_laser.transform.localScale.x * _laserScale, _timeOfLaser);
 
         StartCoroutine(Rotation());

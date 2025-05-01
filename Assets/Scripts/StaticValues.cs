@@ -100,10 +100,10 @@ public class StaticValues : MonoBehaviour
 
         playerPrefab.AddComponent<PlayerMovement>().Reset();
         playerPrefab.GetComponent<Player>().Reset2();
-        playerPrefab.transform.localScale = Vector3.one;
+        playerPrefab.transform.localScale = Vector2.one;
 
-        PlayerAttackList[0].bullet.GetComponents<MonoBehaviour>().ToList().ForEach(x => DestroyImmediate(x, true));
-        Bullet bull = PlayerAttackList[0].bullet.AddComponent<Bullet>();
+        PlayerAttackList[0].bullet.GetComponent<BulletsComponents>().Reset2();
+        Bullet bull = PlayerAttackList[0].bullet.GetComponent<Bullet>();
         bull.Reset();
 
         playerPrefab.transform.GetChild(0).GetChild(0).gameObject.GetComponents<PlayerAttack>().ToList().ForEach(x => DestroyImmediate(x, true));

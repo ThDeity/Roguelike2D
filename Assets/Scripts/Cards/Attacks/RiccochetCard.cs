@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 public class RiccochetCard : Card
@@ -14,27 +13,31 @@ public class RiccochetCard : Card
 
     public void GivePrize()
     {
-        if (!StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out Ricoshet rico))
+        StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out BulletsComponents components);
+        components.SetComponent(typeof(Ricoshet));
+
+        StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out Ricoshet rico);
+
+        if (rico.riccochetsCount == 0)
         {
             foreach (var a in StaticValues.PlayerAttackList)
             {
                 a.bullet.TryGetComponent(out Bullet bull);
-                Ricoshet x = a.bullet.AddComponent<Ricoshet>();
 
                 if (bull != null)
                 {
-                    x.speed = bull.speed;
-                    x.damage = bull.damage;
-                    x.lifeSteal = bull.lifeSteal;
-                    x.critChance = bull.critChance;
-                    x.maxDistance = bull.maxDistance;
-                    x.isDrillAmmo = bull.isDrillAmmo;
-                    x.lifeTimeRange = bull.lifeTimeRange;
-                    x.timeTakingDmg = bull.timeTakingDmg;
-                    x.riccochetsCount = _bounceCount;
-                    x.GetComponent<Collider2D>().isTrigger = false;
+                    rico.speed = bull.speed;
+                    rico.damage = bull.damage;
+                    rico.lifeSteal = bull.lifeSteal;
+                    rico.critChance = bull.critChance;
+                    rico.maxDistance = bull.maxDistance;
+                    rico.isDrillAmmo = bull.isDrillAmmo;
+                    rico.lifeTimeRange = bull.lifeTimeRange;
+                    rico.timeTakingDmg = bull.timeTakingDmg;
+                    rico.riccochetsCount = _bounceCount;
+                    rico.GetComponent<Collider2D>().isTrigger = false;
 
-                    DestroyImmediate(bull, true);
+                    bull.enabled = false;
                 }
             }
         }

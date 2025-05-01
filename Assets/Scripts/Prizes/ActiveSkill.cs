@@ -17,10 +17,10 @@ public class ActiveSkill : Prize
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E) && !StaticValues.WasPrizeGotten)
         {
-            StaticValues.WasPrizeGotten = true;
             _activeSkillsPanel.SetActive(true);
             _activeSkillsPanel.GetComponent<ActiveSkill>().ShowSkills();
 
+            StaticValues.WasPrizeGotten = true;
             Destroy(gameObject);
         }
     }

@@ -15,17 +15,20 @@ public class SpawnEnemies : MonoBehaviour
     {
         Spawn();
         StaticValues.WasPrizeGotten = false;
+        _enemiesPerWave = Mathf.CeilToInt(StaticValues.EnemyCount * _enemiesPerWave);
+        _waves = Mathf.CeilToInt(StaticValues.EnemyCount * _waves);
     }
 
-    private Vector2 RandomPos()
+    private Vector2 RandomPos(int count = 0)
     {
+        count += 1;
         Vector2 pos = new Vector2(Random.Range(_xLeft + transform.position.x, _xRight + transform.position.x),
                                         Random.Range(_yUp + transform.position.y, _yDown + transform.position.y));
         Collider2D collider = Physics2D.OverlapBox(pos, _boxSize, 0);
-        if (collider == null || collider.isTrigger)
+        if (collider == null || collider.isTrigger || count >= 5)
             return pos;
         else
-            return RandomPos();
+            return RandomPos(count);
     }
 
     private void RandomCreation(List<GameObject> list, GameObject smth)
@@ -52,17 +55,21 @@ public class SpawnEnemies : MonoBehaviour
     }
 
     bool _wasPrizeGotten = false;
-    private void FixedUpdate()
+    private void Update()
     {
         if (Enemies.Count == 0)
         {
             if (_waves > 0)
                 Spawn();
-            else if(_waves <= 0 && !_wasPrizeGotten && Enemies.Count <= 0)
-            {
-                FindObjectOfType<SpawnPrize>().GivePrize();
-                _wasPrizeGotten = true;
-            }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (Enemies.Count <= 0 && _waves <= 0 && !_wasPrizeGotten && !StaticValues.WasPrizeGotten)
+        {
+            FindObjectOfType<SpawnPrize>().GivePrize();
+            _wasPrizeGotten = true;
         }
     }
 

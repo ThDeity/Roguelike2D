@@ -9,24 +9,23 @@ public class IceBurstCard : Skill
     {
         base.GivePrize(skillSlot);
 
-        StaticValues values = FindObjectOfType<StaticValues>();
-
-        if (values.playerPrefab.TryGetComponent(out IceBurst spell))
+        if (StaticValues.PlayerObj.TryGetComponent(out IceBurst spell))
         {
             spell.freezingTime *= _improveSkill;
             spell.radius *= _improveSkill;
             spell.force *= _improveSkill;
             spell.damage *= _improveSkill;
 
+            spell.reloadTime *= 0.9f;
             return;
         }
-        else if (values.playerPrefab.TryGetComponent(out Skill component))
+        else if (StaticValues.PlayerObj.TryGetComponent(out Skill component))
         {
             component.ResetAll();
-            DestroyImmediate(component, true);
+            Destroy(component);
         }
 
-        IceBurst iceBurst = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<IceBurst>();
+        IceBurst iceBurst = StaticValues.PlayerObj.gameObject.AddComponent<IceBurst>();
         iceBurst.zone = _zone;
         iceBurst.reloadTime = _reloadTime;
         iceBurst.freezingTime = _freezingTime;

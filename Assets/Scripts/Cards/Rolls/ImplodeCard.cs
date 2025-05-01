@@ -18,7 +18,7 @@ public class ImplodeCard : Card
 
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out ImplodeRoll implodeRoll))
         {
-            implodeRoll = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<ImplodeRoll>();
+            implodeRoll = StaticValues.PlayerObj.gameObject.AddComponent<ImplodeRoll>();
             implodeRoll.implode = _implode;
         }
         else

@@ -15,5 +15,8 @@ public class FireRoll : MonoBehaviour, Roll
 
         t.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(transform.position.y - t.position.y, transform.position.x - t.position.x) * Mathf.Rad2Deg - 90);
         t.localScale = new Vector2(t.localScale.x, t.localScale.y * distance);
+
+        t.tag = tag;
+        t.gameObject.layer = gameObject.layer;
     }
 }

@@ -14,7 +14,7 @@ public class AdrenalineCard : Card
     {
         if (!StaticValues.PlayerObj.TryGetComponent(out Adrenaline component))
         {
-            component = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<Adrenaline>();
+            component = StaticValues.PlayerObj.gameObject.AddComponent<Adrenaline>();
 
             component.buff = _buff;
             component.buffCd = _buffCd;

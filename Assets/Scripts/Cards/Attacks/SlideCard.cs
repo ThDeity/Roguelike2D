@@ -13,16 +13,16 @@ public class SlideCard : Card
     public void GivePrize()
     {
         StaticValues.PlayerObj.ChangeMxHp(_buffMxHp);
-        FindObjectOfType<StaticValues>().playerPrefab.TryGetComponent(out Slide steal);
+        StaticValues.PlayerTransform.TryGetComponent(out Slide steal);
 
         if (steal == null)
         {
-            steal = FindObjectOfType<StaticValues>().playerPrefab.AddComponent<Slide>();
+            steal = StaticValues.PlayerTransform.gameObject.AddComponent<Slide>();
             steal.increaseSpeed = _buffSpeed;
             steal.decreaseSpeed = _debuffSpeed;
             steal.reloadTime = _reloadCd;
 
-            StaticValues.PlayerAttackList[ 0].bullet.AddComponent<ShotDetector>();
+            StaticValues.PlayerAttackList[ 0].bullet.GetComponent<BulletsComponents>().SetComponent(typeof(ShotDetector));
         }
         else
         {

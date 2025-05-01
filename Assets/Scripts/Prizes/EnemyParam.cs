@@ -11,8 +11,9 @@ public class EnemyParam : Prize
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
         {
             _paramPanel = StaticValues.EnemyParamPanel;
-            StaticValues.WasPrizeGotten = true;
             _paramPanel.SetActive(true);
+
+            StaticValues.WasPrizeGotten = true;
             Destroy(gameObject);
         }
     }

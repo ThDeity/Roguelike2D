@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7810105579562883021}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 387657006029099797}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -75,7 +75,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6817179249611639381}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5882689655502719358}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4278310930351264240}
   - component: {fileID: 7548764841249567145}
   - component: {fileID: 2589297909415647209}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Capsule (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 1935439877826933267}
   - component: {fileID: 3717184385861638612}
   - component: {fileID: 8591533829071294524}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Capsule (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8899500450216176267}
   - component: {fileID: 7229488929662966146}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Capsule (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7515411301871419416}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 5816414778507376851}
   - component: {fileID: 1056273793681677795}
   - component: {fileID: 5884217755599851289}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: BossOfControling
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -673,9 +673,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233bfcbd3419d4c4d9bc83741b3a6e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 0
+  _attackDistance: 7.5
   _offset: 0
-  _reloadTime: 5
+  _reloadTime: 4.5
   _bar:
     ValueChanged:
       m_PersistentCalls:
@@ -692,36 +692,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  maxHp: 5
+  maxHp: 190
   target: {fileID: 0}
   isCharmed: 0
   isBoss: 1
-  _timeBtwZoneActivation: 1.5
-  _timeOfCell: 1
-  _laserScale: 7
+  _timeBtwZoneActivation: 0.9
+  _timeOfCell: 0.7
+  _laserScale: 8
   _laserSpeedDebuff: 0.4
-  _timeOfRotation: 1
+  _timeOfRotation: 1.2
   _offsetPlus: 20
-  _hpToCopy: 0.9
-  _radius: 0
-  _areaRadius: 0
-  _countOfCells: 5
+  _hpToCopy: 0.5
+  _radius: 5
+  _areaRadius: 20
+  _timeBtwMelleeAttack: 6
+  _countOfCells: 12
   _indexOfAttack: 0
   _numOfLaserRotations: 5
-  _numOfLasers: 0
+  _numOfLasers: 14
   _zoneOfCell: {fileID: 6032540112087830281, guid: 5aeec1058b1d91d47b31f15373a630b4, type: 3}
   _laser: {fileID: 920311903928801914}
   _copy: {fileID: 6240722784591769304, guid: 93164ca7684b76a44a00573d40c4c088, type: 3}
-  _laserTrace: {fileID: 0}
-  _animNames:
-  - CellAttack
-  - LaserAttack
-  - CellsAttack
-  - ExplosionsAttack
+  _laserTrace: {fileID: 8931536695234291099, guid: 50e25194c8b452443bb89500897d00ae, type: 3}
   _pointToCopy:
   - {fileID: 5882689655502719358}
   - {fileID: 387657006029099797}
   - {fileID: 6817179249611639381}
+  _animNames:
+  - LaserAttack
+  - CellAttack
+  - LaserTraces
+  - CellsAttack
+  - ExplosionsAttack
 --- !u!1 &8899523742512061639
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6524817051719856170}
   - component: {fileID: 1220683734301207454}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,7 +822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5741809675581943126, guid: f326d2d046880ae429c169b2d00870ae, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5741809675581943126, guid: f326d2d046880ae429c169b2d00870ae, type: 3}
       propertyPath: m_IsActive
@@ -1005,9 +1007,13 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1555390142104432957, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Name
@@ -1015,7 +1021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8347826097286288434, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8631730281285973132, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Pivot.x
@@ -1111,7 +1117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8913480395427237060, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
