@@ -1,14 +1,21 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Circle : Enemy
 {
     [SerializeField] protected GameObject _explosion;
-    [SerializeField] protected float _damage;
+    [SerializeField] protected float _damage, _lifeTime;
+    [SerializeField] protected Color _color;
     [SerializeField] protected Bomb _bomb;
+
+    protected SpriteRenderer _spriteRenderer;
 
     protected override void Start()
     {
         base.Start();
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.DOColor(_color, _lifeTime);
 
         _damage *= StaticValues.EnemyDamage;
     }
@@ -24,8 +31,9 @@ public class Circle : Enemy
     protected void Explosion()
     {
         GameObject exp = Instantiate(_explosion, _transform.position, _transform.rotation);
-        exp.tag = tag;
         exp.GetComponent<Explosion>().damage = _damage;
+        exp.tag = tag;
+
         Destroy(gameObject);
     }
 

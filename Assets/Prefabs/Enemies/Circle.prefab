@@ -272,6 +272,8 @@ MonoBehaviour:
   isBoss: 0
   _explosion: {fileID: 3037545466010291589, guid: da22a1c1b6e6d5d40a697ba6a37b1856, type: 3}
   _damage: 4
+  _lifeTime: 5
+  _color: {r: 0, g: 0, b: 0, a: 1}
   _bomb: {fileID: 5827309471849527785}
 --- !u!58 &8702625523466893276
 CircleCollider2D:
