@@ -253,6 +253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 00
       objectReference: {fileID: 0}
+    - target: {fileID: 6731133431547022203, guid: 67acbf1b607cdd24898f80ca534e4bdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -268,11 +272,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2621393320533122272, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.22
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 2621393320533122272, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.52
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 2621393320533122272, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -309,6 +313,42 @@ PrefabInstance:
     - target: {fileID: 8876215208900679854, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940801902187945244, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: lifesCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940801902187945244, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: hpAfterDeath
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940801902187945244, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: _immortalTime
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940801902187945244, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: _restorePersent
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940801902187945244, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: _restoreHpPerSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940801902187945244, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: _colorAfterDeath.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940801902187945244, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: _colorAfterDeath.b
+      value: 0.2277056
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940801902187945244, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: _colorAfterDeath.g
+      value: 0.2277056
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940801902187945244, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
+      propertyPath: _colorAfterDeath.r
+      value: 0.4056604
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

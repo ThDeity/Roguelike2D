@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour, IDamagable
         _agent.updateUpAxis = false;
         _bar.Setup(maxHp);
 
-        target = Player.PlayerObj.transform;
+        target = StaticValues.PlayerMovementObj.transform;
         _points = StaticValues.EnemiesPoint;
         FindPoint();
 
@@ -138,7 +138,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     protected virtual void FixedUpdate()
     {
-        if (!_isPlayerNear && Vector2.Distance(_currentPos, _transform.position) > _randomDistance)
+        if (!_isPlayerNear && Vector2.Distance(_currentPos, _transform.position) > _randomDistance )
         {
             _agent.isStopped = false;
             _agent.SetDestination(_currentPos);
