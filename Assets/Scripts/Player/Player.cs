@@ -55,6 +55,7 @@ public class Player : MonoBehaviour, IDamagable
             else if (currentHp <= 0 && lifesCount > 0 && !_isDead)
             {
                 lifesCount -= 1;
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 GetComponent<Collider2D>().enabled = false;
                 StaticValues.PlayerMovementObj.enabled = false;
 

@@ -225,8 +225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f6fb441b23c20418cfb0df841428c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadTime: 12
-  _activeTime: 5
+  skillSprite: {fileID: 0}
+  _reloadTime: 10
+  _activeTime: 3.5
   _improveSkill: 1.2
-  _improveCd: 0.9
+  _improveCd: 0.95
   _shield: {fileID: 1916954004299628206, guid: 5cd8d802d7c9a904694c9bbce2bd3c21, type: 3}

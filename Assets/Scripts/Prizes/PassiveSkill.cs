@@ -35,13 +35,13 @@ public class PassiveSkill : Prize
             int number = Random.Range(0, allChances);
 
             if (number <= _usualChance)
-                cards = _usualSkills;
+                cards = new List<GameObject>(_usualSkills);
             else if (number <= _rareChance)
-                cards = _rareSkills;
+                cards = new List<GameObject>(_rareSkills);
             else if (number <= _epicChance)
-                cards = _epicSkills;
+                cards = new List<GameObject>(_epicSkills);
             else
-                cards = _legendarySkills;
+                cards = new List<GameObject>(_legendarySkills);
 
             int index = Random.Range(0, cards.Count - 1);
             Instantiate(cards[index], _slots[i]);

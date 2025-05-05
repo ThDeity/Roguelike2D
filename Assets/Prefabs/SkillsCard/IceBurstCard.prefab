@@ -149,12 +149,12 @@ MonoBehaviour:
   skillSprite: {fileID: 0}
   _zone: {fileID: 5954042546461210915, guid: 5d9c10299153cce45b97bef3cb8656a5, type: 3}
   _effects: {fileID: 2084809507604174448, guid: 7d185d80c4efb864292144718edd2863, type: 3}
-  _reloadTime: 5
+  _reloadTime: 8.5
   _freezingTime: 1.25
   _radius: 3.5
   _force: 1
-  _damage: 4
-  _improveSkill: 1.2
+  _damage: 3
+  _improveSkill: 1.15
 --- !u!1 &4409745070814784848
 GameObject:
   m_ObjectHideFlags: 0

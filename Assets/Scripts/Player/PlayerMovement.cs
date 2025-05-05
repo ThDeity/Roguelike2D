@@ -54,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void ChangeSpeed(float newSpeed, bool isChange = true) => speed = isChange ? _currentSpeed * newSpeed : _currentSpeed;
 
+    public void PlusSpeed(float newSpeed, bool isChange = true) => speed = isChange ? _currentSpeed + newSpeed : _currentSpeed;
+
     private void FixedUpdate()
     {
         _velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
@@ -103,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
-        if (_time > 0 || _dashTimeCd > 0) return;
+        if (_time > 0 || _dashTimeCd > 0 || speed == 0) return;
 
         _dashTimeCd = dashCd;
         _speedBeforeDash = speed;

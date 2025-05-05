@@ -4,6 +4,7 @@ public class LifestealerCard : Card
 {
     [SerializeField] private Lifesteal _lifesteal;
     [SerializeField] private float _sizeBuff, _intervalBuff;
+    [SerializeField] private int _count;
 
     protected override void Start()
     {
@@ -22,6 +23,7 @@ public class LifestealerCard : Card
         }
         else
         {
+            steal.enemiesCount = _count;
             steal.damage *= _sizeBuff;
             steal.transform.localScale *= _sizeBuff;
             steal.intervalBtwDmg *= _intervalBuff;

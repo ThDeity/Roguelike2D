@@ -146,10 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7bce5cde42de6040b5329e962c6c975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadTime: 18
+  skillSprite: {fileID: 0}
+  _reloadTime: 11
   _dmgIncrease: 1.8
-  _improveSkill: 1.25
-  _improveCd: 0.85
+  _improveSkill: 1.2
+  _improveCd: 0.9
   _bullet: {fileID: 104539572206820965, guid: 58504db9ce4ef1846aa50fb0bd30898e, type: 3}
   _zone: {fileID: 64777291432515811, guid: 7944618eeadcea044b184135e30d67e3, type: 3}
 --- !u!1 &7593204964601949356

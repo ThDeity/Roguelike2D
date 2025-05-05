@@ -33,7 +33,8 @@ public class ActiveSkill : Prize
             return;
         }
 
-        List<GameObject> list = _skills;
+        List<GameObject> list = new List<GameObject>(_skills);
+        Debug.Log(list.Count);
 
         foreach (Transform slot in _slots)
         {
@@ -42,6 +43,7 @@ public class ActiveSkill : Prize
 
             list.RemoveAt(index);
         }
+        Debug.Log(_skills.Count);
     }
 
     public void Escape() => _activeSkillsPanel.SetActive(false);

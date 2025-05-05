@@ -157,4 +157,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0.015
   intervalBtwDmg: 0.4
+  enemiesCount: 1
   lifesteal: {fileID: 0}

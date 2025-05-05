@@ -146,11 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8a92d5aa7ee354aa9defc6fbd77a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillSprite: {fileID: 0}
   _zone: {fileID: 3743651597751083266, guid: 6481dd6e30bfcb541a96a16bdac025fe, type: 3}
-  _reloadTime: 6
-  _timeOfCharming: 3.5
+  _reloadTime: 9
+  _timeOfCharming: 5
   _increaseParamEnemy: 1.5
-  _increaseParam: 1.3
+  _increaseParam: 1.2
   _maxEnemies: 3
 --- !u!1 &7951013123034218806
 GameObject:

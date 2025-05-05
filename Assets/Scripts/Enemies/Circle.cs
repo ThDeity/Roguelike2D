@@ -6,9 +6,9 @@ public class Circle : Enemy
     [SerializeField] protected GameObject _explosion;
     [SerializeField] protected float _damage, _lifeTime;
     [SerializeField] protected Color _color;
-    [SerializeField] protected Bomb _bomb;
 
     protected SpriteRenderer _spriteRenderer;
+    protected float _currentTime;
 
     protected override void Start()
     {
@@ -17,6 +17,7 @@ public class Circle : Enemy
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.DOColor(_color, _lifeTime);
 
+        _currentTime = _lifeTime;
         _damage *= StaticValues.EnemyDamage;
     }
 
@@ -24,7 +25,8 @@ public class Circle : Enemy
     {
         base.Update();
 
-        if (_bomb.isExplosion)
+        _currentTime -= Time.deltaTime;
+        if (_currentTime <= 0)
             Explosion();
     }
 
@@ -32,7 +34,9 @@ public class Circle : Enemy
     {
         GameObject exp = Instantiate(_explosion, _transform.position, _transform.rotation);
         exp.GetComponent<Explosion>().damage = _damage;
+
         exp.tag = tag;
+        exp.layer = gameObject.layer;
 
         Destroy(gameObject);
     }

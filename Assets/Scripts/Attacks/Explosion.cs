@@ -14,7 +14,7 @@ public class Explosion : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach (Collider2D collider in colliders)
         {
-            if (collider.attachedRigidbody != null && collider.tag != tag)
+            if (collider.attachedRigidbody != null && collider.tag != tag && collider.gameObject != gameObject)
             {
                 Vector3 forceVector = -(transform.position - collider.transform.position).normalized;
                 forceVector.z = 0;
