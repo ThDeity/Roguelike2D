@@ -61,14 +61,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 284856781, guid: 417770b32a76f9d4ea01e259272fd33d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillSprite: {fileID: 0}
+  _isCard: 1
   _zone: {fileID: 5954042546461210915, guid: 5d9c10299153cce45b97bef3cb8656a5, type: 3}
   _effects: {fileID: 2084809507604174448, guid: 7d185d80c4efb864292144718edd2863, type: 3}
   _reloadTime: 8.5

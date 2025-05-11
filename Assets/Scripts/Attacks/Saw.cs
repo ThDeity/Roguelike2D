@@ -15,7 +15,7 @@ public class Saw : MonoBehaviour
 
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IDamagable enemy))
+        if (collision.TryGetComponent(out IDamagable enemy) && collision.tag != tag && !collision.isTrigger)
         {
             if (_currentTime <= 0)
             {

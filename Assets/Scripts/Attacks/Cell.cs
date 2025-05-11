@@ -4,6 +4,12 @@ public class Cell : MonoBehaviour
 {
     [SerializeField] private float _timeOfDazzle, _dmg;
 
+    private void Start()
+    {
+        if (tag == "Enemy")
+            _dmg *= StaticValues.EnemyDamage;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag != tag && collision.TryGetComponent(out DebuffsEffects component))

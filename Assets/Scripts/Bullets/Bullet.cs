@@ -20,13 +20,15 @@ public class Bullet : MonoBehaviour
         maxDistance = MaxDistance;
         timeTakingDmg = TimeTakingDmg;
 
+        GetComponent<Collider2D>().isTrigger = true;
+
         _bulletVector = BulletVector;
         transform.localScale = BulletScale != Vector2.zero ? BulletScale : new Vector2(0.3f, 0.3f);
 
         isDrillAmmo = false;
     }
 
-    protected virtual void Awake()
+    protected virtual void Start()
     {
         if (tag == "Player" && Damage == 0)
         {
@@ -41,10 +43,13 @@ public class Bullet : MonoBehaviour
             BulletVector = _bulletVector;
             BulletScale = transform.localScale;
         }
-    }
 
-    protected virtual void Start()
-    {
+        if (tag == "Enemy")
+        {
+            damage *= StaticValues.EnemyDamage;
+            critChance *= StaticValues.EnemyCrit;
+        }
+
         lifeTime = maxDistance / speed;
         lifeTime += Random.Range(-lifeTimeRange, lifeTimeRange);
         _rigidbody2D = GetComponent<Rigidbody2D>();

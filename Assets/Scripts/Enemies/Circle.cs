@@ -1,21 +1,15 @@
-using DG.Tweening;
 using UnityEngine;
 
 public class Circle : Enemy
 {
     [SerializeField] protected GameObject _explosion;
     [SerializeField] protected float _damage, _lifeTime;
-    [SerializeField] protected Color _color;
 
-    protected SpriteRenderer _spriteRenderer;
     protected float _currentTime;
 
     protected override void Start()
     {
         base.Start();
-
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteRenderer.DOColor(_color, _lifeTime);
 
         _currentTime = _lifeTime;
         _damage *= StaticValues.EnemyDamage;

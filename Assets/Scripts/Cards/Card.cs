@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using TMPro;
 
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -10,10 +11,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] protected string _title;
     protected Button _button;
 
-    public Text count;
+    public TextMeshPro _titleMeshPro;
 
     protected virtual void Start()
     {
+        _titleMeshPro = GetComponent<TextMeshPro>();
+
         _description = GetComponentInChildren<Text>();
         _realDescription = StaticValues.PassiveSkillsPanel.GetComponentInChildren<Text>();
     }
@@ -62,5 +65,8 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         StaticValues.PlayerObj.CheckComponents();
         StaticValues.PlayerMovementObj.CheckComponents();
+
+        Destroy(transform.parent.GetChild(0).gameObject);
+        Destroy(gameObject);
     }
 }

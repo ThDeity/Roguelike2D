@@ -99,15 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a29cc9f538ef484e96b1657a0719134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.5
-  critChance: 8
+  damage: 2
+  critChance: 4
   lifeTime: 1.8
   speed: 13
   lifeSteal: 0
   maxDistance: 12
   lifeTimeRange: 0
-  _bulletVector: {x: -1, y: 0}
   timeTakingDmg: 0
+  _bulletVector: {x: -1, y: 0}
   isDrillAmmo: 0
 --- !u!50 &1887399331590269486
 Rigidbody2D:

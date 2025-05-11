@@ -7,6 +7,7 @@ public class Skill : MonoBehaviour, Roll
     private Text _timer;
     public Sprite skillSprite;
     protected bool _isSkillCharged;
+    [SerializeField] protected bool _isCard;
 
     public virtual void OnRollStarted() { _isSkillCharged = false; }
 
@@ -25,6 +26,12 @@ public class Skill : MonoBehaviour, Roll
 
         if (skillSprite != null)
             StaticValues.ActiveSkillsPanel.GetComponent<ActiveSkill>().skillSlot.sprite = skillSprite;
+    }
+
+    protected virtual void OnDisable()
+    {
+        if (_isCard)
+            Destroy(gameObject);
     }
 
     protected IEnumerator StartTimer(int time)

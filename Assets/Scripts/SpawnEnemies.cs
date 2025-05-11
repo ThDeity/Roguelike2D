@@ -44,7 +44,7 @@ public class SpawnEnemies : MonoBehaviour
         int enemiesCount = (int)(_enemiesPerWave * StaticValues.EnemyCount);
         foreach (var enemy in _enemiesObj)
         {
-            int count = Random.Range(1, enemiesCount);
+            int count = Random.Range(1, enemiesCount + 1);
             enemiesCount -= count;
 
             for (int i = 0; i < count; i++)

@@ -24,7 +24,7 @@ public class SpawnPrize : MonoBehaviour
     {
         if (StaticValues.RoomsBeforeBoss % Rooms != Rooms - 1 || StaticValues.RoomsBeforeBoss % Rooms != 0)
         {
-            int numberOfPortals = Random.Range(1, 3);
+            int numberOfPortals = Random.Range(1, 4);
             for (int y = 0; y < numberOfPortals; y++)
             {
                 GameObject portal = Instantiate(_portal, _portalsPoints[y].position, Quaternion.identity);
@@ -40,7 +40,7 @@ public class SpawnPrize : MonoBehaviour
         int i = 0;
         while (_types.Count != _portals.Count)
         {
-            _index = ((StaticValues.RoomsBeforeBoss + 1) % Rooms != 0 || StaticValues.RoomsBeforeBoss == 0)? Random.Range(0, StaticValues.RoomTypes.Count - 2) : 5;
+            _index = ((StaticValues.RoomsBeforeBoss + 1) % Rooms != 0 || StaticValues.RoomsBeforeBoss == 0)? Random.Range(0, StaticValues.RoomTypes.Count - 1) : 5;
 
             if (_types.Contains(_index) || StaticValues.CurrentRoomTypes[StaticValues.RoomTypes[_index]] == 0)
                 continue;
@@ -94,7 +94,7 @@ public class SpawnPrize : MonoBehaviour
                 InstantiatePrize(3);
                 break;
             case "Boss":
-                InstantiatePrize(4);
+                InstantiatePrize(5);
                 break;
             default:
                 StaticValues.WasPrizeGotten = true;

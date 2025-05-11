@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour, IDamagable
     protected Transform _rotateToObj;
     protected virtual void FindPoint()
     {
-        _rotateToObj = _points[Random.Range(0, _points.Count - 1)];
+        _rotateToObj = _points[Random.Range(0, _points.Count)];
         if (_rotateToObj != null)
             _currentPos = _rotateToObj.position;
         _randomDistance = Random.Range(0.5f, Vector2.Distance(_currentPos, _transform.position));

@@ -3,13 +3,16 @@ using UnityEngine;
 
 public class FrozenCircle : MonoBehaviour
 {
-    [SerializeField] private float _debuffSpeed, _time, _scale, _timeOfScale;
+    [SerializeField] private float _debuffSpeed, _time, _scale, _timeOfScale, _damage;
     private float _startScale, _currentTime;
 
     private void Start()
     {
         _currentTime = _timeOfScale;
         _startScale = transform.localScale.x;
+
+        if (tag == "Enemy")
+            _damage *= StaticValues.EnemyDamage;
 
         transform.DOScale(_scale * transform.localScale, _timeOfScale);
         Destroy(gameObject, _timeOfScale * 2);
@@ -28,6 +31,6 @@ public class FrozenCircle : MonoBehaviour
         if (collision.isTrigger) return;
 
         if (collision.tag != tag && collision.TryGetComponent(out DebuffsEffects effects))
-            effects.Freezing(_time, _debuffSpeed);
+            effects.Freezing(_time, _debuffSpeed, _damage);
     }
 }

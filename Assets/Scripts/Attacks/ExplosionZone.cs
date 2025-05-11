@@ -7,6 +7,15 @@ public class ExplosionZone : MonoBehaviour
     [SerializeField] private int _timeOfTakingDmg;
     [SerializeField] private SaveZone _saveZone;
 
+    private void Start()
+    {
+        if (tag == "Enemy")
+        {
+            _firstDmg *= StaticValues.EnemyDamage;
+            _secondDmg *= StaticValues.EnemyDamage;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag != tag && collision.TryGetComponent(out IDamagable component) && !_saveZone.collisions.Contains(collision))

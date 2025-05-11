@@ -21,6 +21,16 @@ public class IceBurst : Skill
         damage = Damage;
     }
 
+    public void Improve(float value)
+    {
+        freezingTime *= value;
+        radius *= value;
+        force *= value;
+        damage *= value;
+
+        zone.transform.localScale *= value;
+    }
+
     protected override void Start()
     {
         base.Start();

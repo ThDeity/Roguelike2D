@@ -1,6 +1,6 @@
 using DG.Tweening;
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.Rendering.Universal;
 
 public class Trace : MeleeAttack

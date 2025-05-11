@@ -1,20 +1,20 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.AI;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
 
 public class DebuffsEffects : MonoBehaviour
 {
-    [SerializeField] private Vector2 _effectsScale;
-    private List<RangeAttack> _rangeAttacks;
-    [SerializeField] private bool _isEnemy;
-    private Animator _animator;
-    private Enemy _enemy;
-    NavMeshAgent agent;
+    [SerializeField] protected Vector2 _effectsScale;
+    protected List<RangeAttack> _rangeAttacks;
+    [SerializeField] protected bool _isEnemy;
+    protected Animator _animator;
+    protected Enemy _enemy;
+    protected NavMeshAgent agent;
 
-    [Tooltip("0 - дазл, 1 - заморозка, 2 - оглушение, 3 - щит")]
+    [Tooltip("0 - дазл, 1 - заморозка, 2 - оглушение, 3 - щит, 4 - очарование")]
     [SerializeField] private List<GameObject> _effects;
 
     private void Start()
@@ -29,7 +29,7 @@ public class DebuffsEffects : MonoBehaviour
         _rangeAttacks = GetComponentsInChildren<RangeAttack>().ToList();
     }
 
-    private GameObject SetEffect(int index)
+    protected GameObject SetEffect(int index)
     {
         Transform t = Instantiate(_effects[index], transform).transform;
         t.localScale = _effectsScale;
@@ -40,9 +40,9 @@ public class DebuffsEffects : MonoBehaviour
         return t.gameObject;
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
-        if (StaticValues.PlayerObj.IsExploding)
+        if (StaticValues.PlayerObj.IsExploding && !gameObject.TryGetComponent(out Circle enemy))
             Instantiate(StaticValues.PlayerObj.Explosion, transform.position, Quaternion.identity);
     }
 
@@ -95,7 +95,7 @@ public class DebuffsEffects : MonoBehaviour
         StartCoroutine(ShieldCoroutine(time));
     }
 
-    private IEnumerator ShieldCoroutine(float time)
+    protected virtual IEnumerator ShieldCoroutine(float time)
     {
         GameObject effect = SetEffect(3);
         _isShield = true;
@@ -109,12 +109,14 @@ public class DebuffsEffects : MonoBehaviour
 
     public void Charming(float time, float increaseParam) => StartCoroutine(CharmingCoroutine(time, increaseParam));
 
-    private IEnumerator CharmingCoroutine(float time, float increaseParam)
+    protected virtual IEnumerator CharmingCoroutine(float time, float increaseParam)
     {
         if (_isEnemy)
         {
+            GameObject effect = SetEffect(4);
+
             transform.tag = "Somebody";
-            gameObject.layer = LayerMask.NameToLayer("Player");
+            gameObject.layer = LayerMask.NameToLayer("Water");
             _enemy.ChangeReloadCd(increaseParam);
             _enemy.isCharmed = true;
 
@@ -127,13 +129,14 @@ public class DebuffsEffects : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Enemy");
             _enemy.ChangeReloadCd(1 /  increaseParam);
             _enemy.target = StaticValues.PlayerObj.transform;
+            Destroy(effect);
         }
     }
 
-    private bool _isDazzled;
+    protected bool _isDazzled;
     public void Dazzle(float time) => StartCoroutine(DazzleCoroutine(time));
 
-    private IEnumerator DazzleCoroutine(float time)
+    protected virtual IEnumerator DazzleCoroutine(float time)
     {
         if (_isDazzled) yield break;
         _isDazzled = true;
@@ -167,19 +170,19 @@ public class DebuffsEffects : MonoBehaviour
         _isDazzled = false;
     }
 
-    bool _isFrozen;
+    public bool isFrozen { protected set; get; }
     public void Freezing(float time, float force, float damage = 0, bool isEnableAnim = false)
     {
-        if (_isFrozen) return;
+        if (isFrozen) return;
 
         StartCoroutine(FreezingCoroutine(time, force, damage, isEnableAnim));
     }
 
-    private IEnumerator FreezingCoroutine(float time, float force, float damage, bool isEnableAnim = false)
+    protected virtual IEnumerator FreezingCoroutine(float time, float force, float damage, bool isEnableAnim = false)
     {
         GameObject effect = SetEffect(1);
 
-        _isFrozen = true;
+        isFrozen = true;
         float speed, cd = 1, newCd;
         gameObject.GetComponent<IDamagable>().TakeDamage(damage, 0);
         if (_isEnemy)
@@ -217,7 +220,7 @@ public class DebuffsEffects : MonoBehaviour
             StaticValues.PlayerMovementObj.speed = speed;
         }
 
-        _isFrozen = false;
+        isFrozen = false;
         Destroy(effect);
     }
 
@@ -228,7 +231,7 @@ public class DebuffsEffects : MonoBehaviour
         StartCoroutine(GetSilence(time));
     }
 
-    private IEnumerator GetSilence(float time)
+    protected virtual IEnumerator GetSilence(float time)
     {
         GameObject effect = SetEffect(2);
 

@@ -11,10 +11,7 @@ public class IceBurstCard : Skill
 
         if (StaticValues.PlayerObj.TryGetComponent(out IceBurst spell))
         {
-            spell.freezingTime *= _improveSkill;
-            spell.radius *= _improveSkill;
-            spell.force *= _improveSkill;
-            spell.damage *= _improveSkill;
+            spell.Improve(_improveSkill);
 
             spell.reloadTime *= 0.9f;
             return;

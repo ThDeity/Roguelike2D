@@ -21,6 +21,8 @@ public class Shield : Skill, Roll
 
     protected override void Start()
     {
+        base.Start();
+
         if (ReloadTime == 0)
         {
             ReloadTime = reloadTime;

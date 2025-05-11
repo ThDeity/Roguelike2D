@@ -19,7 +19,11 @@ public class RangeAttack : MonoBehaviour
         }
     }
 
-    public virtual void Shot() => Instantiate(bullet, _point.position, transform.rotation);
+    public virtual void Shot()
+    {
+        GameObject b = Instantiate(bullet, _point.position, transform.rotation);
+        b.layer = gameObject.layer;
+    }
 
     public virtual void ShotFromPoint() => Instantiate(bullet, _point.position, _point.rotation);
 

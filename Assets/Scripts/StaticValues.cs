@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class StaticValues : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class StaticValues : MonoBehaviour
     public GameObject playerPrefab;
     public List<PlayerAttack> attacks = new List<PlayerAttack>();
 
-    public static float EnemyMaxHp = 1, EnemySpeed = 1, EnemyDamage = 1, EnemyCount = 1, EnemyCrit = 1;
+    public static float EnemyMaxHp, EnemySpeed, EnemyDamage, EnemyCount, EnemyCrit;
 
     public bool isMenu;
 
@@ -31,6 +32,9 @@ public class StaticValues : MonoBehaviour
     {
         if (!isMenu)
         {
+            if (EnemyMaxHp == 0)
+                EnemyMaxHp = EnemySpeed = EnemyDamage = EnemyCount = EnemyCrit = 1;
+
             PlayerObj = FindObjectOfType<Player>();
             PlayerTransform = PlayerObj.transform;
             PlayerMovementObj = PlayerObj.GetComponent<PlayerMovement>();
@@ -43,9 +47,9 @@ public class StaticValues : MonoBehaviour
                 foreach (var name in RoomTypes)
                 {
                     if (CurrentRoomTypes.ContainsKey(name))
-                        CurrentRoomTypes[name] = 3;
+                        CurrentRoomTypes[name] = 100;
                     else
-                        CurrentRoomTypes.Add(name, 3);
+                        CurrentRoomTypes.Add(name, 100);
                 }
             }
 
@@ -79,6 +83,12 @@ public class StaticValues : MonoBehaviour
         }
     }
 
+    public void SetDifficulty(float value)
+    {
+        EnemyMaxHp = EnemySpeed = EnemyDamage = EnemyCount = EnemyCrit = value;
+        Debug.Log(EnemyMaxHp);
+    }
+
     public void Restart()
     {
         foreach (var script in playerPrefab.GetComponents<MonoBehaviour>())
@@ -93,9 +103,9 @@ public class StaticValues : MonoBehaviour
         foreach (var name in RoomTypes)
         {
             if (CurrentRoomTypes.ContainsKey(name))
-                CurrentRoomTypes[name] = 3;
+                CurrentRoomTypes[name] = 100;
             else
-                CurrentRoomTypes.Add(name, 3);
+                CurrentRoomTypes.Add(name, 100);
         }
 
         playerPrefab.AddComponent<PlayerMovement>().Reset();
@@ -116,10 +126,11 @@ public class StaticValues : MonoBehaviour
             DestroyImmediate(playerPrefab.GetComponent<Skill>(), true);
         }
 
-        EnemyMaxHp = EnemySpeed = EnemyDamage = EnemyCount = EnemyCrit = 1;
-
         RoomsBeforeBoss = 0;
 
         SceneManager.LoadScene(1);
     }
+
+    public static void ResetStatics() =>
+        EnemyMaxHp = EnemySpeed = EnemyDamage = EnemyCount = EnemyCrit = 1;
 }

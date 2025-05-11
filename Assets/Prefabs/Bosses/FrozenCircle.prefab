@@ -260,3 +260,4 @@ MonoBehaviour:
   _time: 3
   _scale: 25
   _timeOfScale: 5
+  _damage: 2

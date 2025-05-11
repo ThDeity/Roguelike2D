@@ -126,7 +126,7 @@ public class BossOfDarkness : Enemy
     {
         for (int i = 0; i < _countOfBombs;  i++)
         {
-            Transform point = _points[Random.Range(0, _points.Count - 1)];
+            Transform point = _points[Random.Range(0, _points.Count)];
             _randomDistance = Random.Range(-_radius, _radius);
             Vector2 pos = new Vector2(_randomDistance + point.position.x, _randomDistance + point.position.y);
 
@@ -217,7 +217,7 @@ public class BossOfDarkness : Enemy
 
     protected virtual Vector2 GeneratePos()
     {
-        Transform point = _points[Random.Range(0, _points.Count - 1)];
+        Transform point = _points[Random.Range(0, _points.Count)];
         float rand = Random.Range(-_radius, _radius);
 
         return new Vector2(rand + point.position.x, rand + point.position.y);
@@ -293,6 +293,14 @@ public class BossOfDarkness : Enemy
 
     protected override void FindPoint()
     {
+        if (_points[0] == null)
+        {
+            GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+            StaticValues.EnemiesPoint.Clear();
+            foreach (GameObject p in points)
+                StaticValues.EnemiesPoint.Add(p.transform);
+        }
+
         base.FindPoint();
         _agent.speed = _minSpeed;
         _timeOfAcceleration = _randomDistance / _minSpeed;
@@ -348,6 +356,10 @@ public class BossOfDarkness : Enemy
         _enemyList = FindObjectsOfType<Enemy>().ToList();
         _enemyList.Remove(this);
         _enemyList.ForEach(enemy => enemy.gameObject.SetActive(false));
+
+        _maxSpeed *= StaticValues.EnemySpeed;
+        _minSpeed *= StaticValues.EnemySpeed;
+        StaticValues.CurrentRoomType = "Boss";
 
         _globalLight = GameObject.FindGameObjectWithTag("Finish").GetComponent<Light2D>();
         _renderer = _transform.GetComponentInChildren<SpriteRenderer>();

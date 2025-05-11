@@ -48,7 +48,7 @@ public class Player : MonoBehaviour, IDamagable
 
             if (currentHp <= 0 && lifesCount <= 0 && gameObject != null && !_isDead)
             {
-                Destroy(gameObject);
+                StaticValues.ResetStatics();
 
                 SceneManager.LoadScene("Menu");
             }
@@ -91,7 +91,7 @@ public class Player : MonoBehaviour, IDamagable
         _dmg = 0;
     }
 
-    private IEnumerator SetImmortal(float time)
+    public IEnumerator SetImmortal(float time)
     {
         _isImmortal = true;
 

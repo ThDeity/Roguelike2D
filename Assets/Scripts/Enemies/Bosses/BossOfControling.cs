@@ -24,6 +24,9 @@ public class BossOfControling : Enemy
 
         if (_currentHp <= maxHp * _hpToCopy && !_wasCopied && _currentHp > 0)
         {
+            GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
+            GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
+
             foreach (var p in _pointToCopy)
             {
                 CopyOfControlling copy = Instantiate(_copy, p.position, Quaternion.identity).GetComponent<CopyOfControlling>();
@@ -49,7 +52,15 @@ public class BossOfControling : Enemy
 
     protected virtual Vector2 GeneratePos()
     {
-        Transform point = _points[Random.Range(0, _points.Count - 1)];
+        if (_points[0] == null)
+        {
+            GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+            StaticValues.EnemiesPoint.Clear();
+            foreach (GameObject p in points)
+                StaticValues.EnemiesPoint.Add(p.transform);
+        }
+
+        Transform point = _points[Random.Range(0, _points.Count)];
         _randomDistance = Random.Range(-_radius, _radius);
 
         return new Vector2(_randomDistance + point.position.x, _randomDistance + point.position.y);
@@ -98,7 +109,6 @@ public class BossOfControling : Enemy
 
         _laser.transform.localScale = new Vector2(0.3f, 0.3f);
         _laser.SetActive(true);
-        Debug.Log(_laser.gameObject.activeSelf);
         _laser.transform.DOScaleX(_laser.transform.localScale.x * _laserScale, _timeOfLaser);
 
         StartCoroutine(Rotation());
@@ -150,7 +160,7 @@ public class BossOfControling : Enemy
         }
 
         if (isCharmed)
-            _debuffs.FindEnemy();
+            enabled = false;
     }
 
     protected override void FixedUpdate()

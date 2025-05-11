@@ -47,7 +47,15 @@ public class BossOfSpeed : Enemy
 
     protected virtual Vector2 GeneratePos()
     {
-        Transform point = _points[Random.Range(0, _points.Count - 1)];
+        if (_points[0] == null)
+        {
+            GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+            StaticValues.EnemiesPoint.Clear();
+            foreach (GameObject p in points)
+                StaticValues.EnemiesPoint.Add(p.transform);
+        }
+
+        Transform point = _points[Random.Range(0, _points.Count)];
         _randomDistance = Random.Range(-_radius, _radius);
 
         return new Vector2(_randomDistance + point.position.x, _randomDistance + point.position.y);

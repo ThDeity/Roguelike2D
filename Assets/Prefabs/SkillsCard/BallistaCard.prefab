@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 15}
-  m_SizeDelta: {x: 0, y: 30}
+  m_AnchoredPosition: {x: 0, y: 8.849995}
+  m_SizeDelta: {x: 0, y: 17.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1475441865813629716
 CanvasRenderer:
@@ -140,14 +140,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -904559014, guid: 417770b32a76f9d4ea01e259272fd33d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillSprite: {fileID: 0}
+  _isCard: 1
   _ballista: {fileID: 244262821863087915, guid: 59f51d9e07b0a834fb12571a340354fd, type: 3}
   _zone: {fileID: 8867089238020802048, guid: d5c3cbf98c463664a9a5f23d9105b602, type: 3}
   _reloadTime: 8.5

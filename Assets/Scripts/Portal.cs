@@ -52,6 +52,7 @@ public class Portal : MonoBehaviour
                 StaticValues.CurrentRoomType = StaticValues.RoomTypes[5];
 
                 _currentArea = Instantiate(_bosses[NumOfArea]);
+
                 StaticValues.RoomsBeforeBoss = 0;
                 NumOfArea += 1;
             }
@@ -59,7 +60,7 @@ public class Portal : MonoBehaviour
             {
                 StaticValues.CurrentRoomType = StaticValues.RoomTypes[_index];
 
-                int index = Random.Range(0, _areas[NumOfArea].Count - 1);
+                int index = Random.Range(0, _areas[NumOfArea].Count);
                 if (_areas[NumOfArea][index] != null)
                     _currentArea = Instantiate(_areas[NumOfArea][index]);
                 else
@@ -74,6 +75,7 @@ public class Portal : MonoBehaviour
             if (_currentArea.TryGetComponent(out SpawnPrize component))
                 StaticValues.PlayerTransform.position = component.playerPointSpawn == null ? Vector2.zero : component.playerPointSpawn.position;
 
+            StaticValues.PlayerObj.StartCoroutine(StaticValues.PlayerObj.SetImmortal(1.5f));
             Destroy(gameObject);
         }
     }

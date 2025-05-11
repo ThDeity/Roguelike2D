@@ -34,16 +34,14 @@ public class ActiveSkill : Prize
         }
 
         List<GameObject> list = new List<GameObject>(_skills);
-        Debug.Log(list.Count);
 
         foreach (Transform slot in _slots)
         {
-            int index = Random.Range(0, list.Count - 1);
+            int index = Random.Range(0, list.Count);
             Instantiate(list[index], slot);
 
             list.RemoveAt(index);
         }
-        Debug.Log(_skills.Count);
     }
 
     public void Escape() => _activeSkillsPanel.SetActive(false);

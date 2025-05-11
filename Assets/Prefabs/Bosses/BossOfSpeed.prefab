@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1965037381310138293}
   - component: {fileID: 6057451684471324536}
   - component: {fileID: 3156555811031108458}
+  - component: {fileID: -570981117703727735}
   m_Layer: 10
   m_Name: BossOfSpeed
   m_TagString: Enemy
@@ -205,6 +206,26 @@ CircleCollider2D:
   m_Offset: {x: 0.43, y: -0.27}
   serializedVersion: 2
   m_Radius: 4.0530405
+--- !u!114 &-570981117703727735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254085549047330932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4b3b052389f2c46b386aa25d38928f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsScale: {x: 3.25, y: 4}
+  _isEnemy: 0
+  _effects:
+  - {fileID: 7525262866447704441, guid: 0afb168133122ed48845b3261bc73445, type: 3}
+  - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
+  - {fileID: 2463234329937179597, guid: 62d5e808729071640917f188500ca05f, type: 3}
+  - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
+  - {fileID: 3715782767700863887, guid: 67da4e390d2582f43b2862522d41ecea, type: 3}
 --- !u!1 &3923425639181626393
 GameObject:
   m_ObjectHideFlags: 0

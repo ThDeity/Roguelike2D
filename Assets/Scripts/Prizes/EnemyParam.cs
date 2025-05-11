@@ -1,8 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyParam : Prize
 {
+    [SerializeField] private GameObject _panel;
+    [SerializeField] private string _happyText, _unhappyText;
+    
     private GameObject _paramPanel;
+    private int chance;
 
     private void Start() => _paramPanel = StaticValues.EnemyParamPanel;
 
@@ -18,33 +23,43 @@ public class EnemyParam : Prize
         }
     }
 
+    private void OnEnable() => chance = Random.Range(0, 2);
+
+    private void WriteResults()
+    {
+        _panel.SetActive(true);
+        _panel.GetComponentInChildren<Text>().text = chance == 0 ? _unhappyText : _happyText;
+
+        _paramPanel.SetActive(false);
+    }
+
     public void ChangeDamage(float damagePersent)
     {
-        StaticValues.EnemyDamage *= Random.Range(0, 1) == 0 ? 1 + damagePersent / 100 : 1 - damagePersent / 100;
-        _paramPanel.SetActive(false);
+        StaticValues.EnemyDamage *= chance == 0 ? 1 + damagePersent / 100 : 1 - damagePersent / 100;
+        WriteResults();
     }
 
     public void ChangeSpeed(float speedPersent)
     {
-        StaticValues.EnemySpeed *= Random.Range(0, 1) == 0 ? 1 + speedPersent / 100 : 1 - speedPersent / 100;
-        _paramPanel.SetActive(false);
+        StaticValues.EnemySpeed *= chance == 0 ? 1 + speedPersent / 100 : 1 - speedPersent / 100;
+        WriteResults();
     }
 
     public void ChangeCrit(int critPersent)
     {
-        StaticValues.EnemyCrit += Random.Range(0, 1) == 0 ? critPersent : -critPersent;
-        _paramPanel.SetActive(false);
+        StaticValues.EnemyCrit += chance == 0 ? critPersent : -critPersent;
+        WriteResults();
     }
 
     public void ChangeEnemyCount(float countChange)
     {
-        StaticValues.EnemyCount *= Random.Range(0, 1) == 0 ? 1 + countChange / 100 : 1 - countChange / 100;
-        _paramPanel.SetActive(false);
+        StaticValues.EnemyCount *= chance == 0 ? 1 + countChange / 100 : 1 - countChange / 100;
+        WriteResults();
     }
 
     public void ChangeMaxHp(float hpChange)
     {
-        StaticValues.EnemyCount *= Random.Range(0, 1) == 0 ? 1 + hpChange / 100 : 1 - hpChange / 100;
-        _paramPanel.SetActive(false);
+        StaticValues.EnemyCount *= chance == 0 ? 1 + hpChange / 100 : 1 - hpChange / 100;
+        WriteResults();
     }
 }
