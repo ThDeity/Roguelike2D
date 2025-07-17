@@ -717,6 +717,8 @@ MonoBehaviour:
   _waves: 3
   _enemiesPerWave: 6
   _boxSize: {x: 0.1, y: 0.1}
+  _currentWaves: 0
+  _wasPrizeGotten: 0
 --- !u!114 &5280873777591110485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,6 +745,7 @@ MonoBehaviour:
   - {fileID: 2009959405478514714}
   - {fileID: 4666837171954762197}
   - {fileID: 6467086260541476098}
+  _portals: []
 --- !u!68 &8280700758886815721
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1701,7 +1704,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: b6307a699c2226446bd189033b025a18, type: 2}
+      objectReference: {fileID: 23800000, guid: 13b827ce87c975b4fb02038dd55949f5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

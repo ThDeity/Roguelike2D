@@ -9,6 +9,7 @@ TagManager:
   - Somebody
   - Point
   - Default
+  - Area
   layers:
   - Default
   - TransparentFX

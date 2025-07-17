@@ -38,6 +38,9 @@ public class FrozenStatue : Enemy
 
     protected override void Update()
     {
+        if (_isTakingDmg)
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+
         _time -= Time.deltaTime;
 
         if (target != null && !_isSleeping)
@@ -112,10 +115,13 @@ public class FrozenStatue : Enemy
         else
         {
             _isTakingDmg = true;
-            _damageTaking = damage;
-            _timeTaking = time;
+            _damageTaking += damage;
+            _timeTaking += time;
 
-            StartCoroutine(TakingDamage(time));
+            if (_timeTaking > 0)
+                StopCoroutine(TakingDamage(time));
+            
+            StartCoroutine(TakingDamage(_timeTaking));
         }
 
         if (_hpBar != null && !_hpBar.activeInHierarchy && !_isSleeping)
@@ -139,5 +145,10 @@ public class FrozenStatue : Enemy
 
         _bar.AddValue(maxHp);
         _currentHp = maxHp;
+    }
+
+    protected override void OnDestroy()
+    {
+
     }
 }

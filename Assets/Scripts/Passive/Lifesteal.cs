@@ -23,6 +23,8 @@ public class Lifesteal : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.isTrigger) return;
+
         if (lifesteal != null)
         {
             damage = _currentLifesteal.damage;
@@ -36,12 +38,16 @@ public class Lifesteal : MonoBehaviour
 
     protected void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.isTrigger) return;
+
         if (collision.TryGetComponent(out IDamagable enemy) && _enemies.Contains(enemy))
             _enemies.Remove(enemy);
     }
 
     protected void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.isTrigger) return;
+
         if (collision.TryGetComponent(out IDamagable enemy) && collision.tag != tag && _enemies.Contains(enemy))
         {
             if (_currentTime <= 0)

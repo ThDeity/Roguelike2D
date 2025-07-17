@@ -35,9 +35,18 @@ public class Mortira : Enemy
             Destroy(_currentZone.gameObject );
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        _transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
     protected override void Update()
     {
         _time -= Time.deltaTime;
+
+        if (_isTakingDmg)
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
 
         if (isCharmed)
             _debuffs.FindEnemy();

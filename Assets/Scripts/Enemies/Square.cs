@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Square : Enemy
 {
-    [SerializeField] protected float _dashForce, _dashCd, _speed, _dashRange;
+    [SerializeField] protected float _dashForce, _dashCd, _dashRange;
     protected Rigidbody2D _rigidbody2D;
     protected float _dashCdValue;
 
@@ -21,32 +21,32 @@ public class Square : Enemy
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
             _rigidbody2D.AddForce(_transform.right * _dashForce * Time.deltaTime, ForceMode2D.Impulse);
 
-        if (!_isPlayerNear && Vector2.Distance(_currentPos, _transform.position) > _randomDistance)
+        if (_agent.isOnNavMesh || !_agent.isActiveAndEnabled)
         {
-            _agent.isStopped = false;
-            _agent.SetDestination(_currentPos);
-        }
-        else if (!_isPlayerNear || target == null)
-            FindPoint();
-        else if (Vector2.Distance(target.position, _transform.position) >= _dashRange && _dashCd <= 0)
-        {
-            _animator.Play("Dash");
-            _dashCd = _dashCdValue;
-            _agent.speed = 0;
-            _agent.enabled = false;
-        }
-        else if (Vector2.Distance(target.position, _transform.position) > _attackDistance && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
-        {
-            _agent.enabled = true;
-            _agent.speed = _speed;
-            _agent.SetDestination(target.position);
-        }
-        else if (_time <= 0 && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
-        {
-            _agent.speed = 0;
-            _agent.enabled = false;
-            _animator.Play("Attack");
-            _time = _reloadTime;
+            if (!_isPlayerNear && Vector2.Distance(_currentPos, _transform.position) > _randomDistance)
+            {
+                _agent.isStopped = false;
+                _agent.SetDestination(_currentPos);
+            }
+            else if (!_isPlayerNear || target == null)
+                FindPoint();
+            else if (Vector2.Distance(target.position, _transform.position) >= _dashRange && _dashCd <= 0)
+            {
+                _animator.Play("Dash");
+                _dashCd = _dashCdValue;
+                _agent.enabled = false;
+            }
+            else if (Vector2.Distance(target.position, _transform.position) > _attackDistance && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
+            {
+                _agent.enabled = true;
+                _agent.SetDestination(target.position);
+            }
+            else if (_time <= 0 && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
+            {
+                _agent.enabled = false;
+                _animator.Play("Attack");
+                _time = _reloadTime;
+            }
         }
     }
 

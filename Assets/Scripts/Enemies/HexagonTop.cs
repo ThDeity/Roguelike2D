@@ -16,6 +16,9 @@ public class HexagonTop : Enemy
     {
         _time -= Time.deltaTime;
 
+        if (_isTakingDmg)
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+
         if (_rotateToObj != null && !_isAttack)
         {
             Vector3 difference = _rotateToObj.position - _transform.position;

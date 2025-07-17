@@ -41,10 +41,13 @@ public class Enemy : MonoBehaviour, IDamagable
         else
         {
             _isTakingDmg = true;
-            _damageTaking = damage;
-            _timeTaking = time;
+            _damageTaking += damage;
+            _timeTaking += time;
 
-            StartCoroutine(TakingDamage(time));
+            if (_timeTaking > 0)
+                StopCoroutine(TakingDamage(time));
+
+            StartCoroutine(TakingDamage(_timeTaking));
         }
 
         if (!_isPlayerNear)
@@ -65,7 +68,7 @@ public class Enemy : MonoBehaviour, IDamagable
         _damageTaking = 0;
     }
 
-    protected virtual void OnDestroy() => SpawnEnemies.Enemies.Remove(gameObject);
+    protected virtual void OnDestroy() => FindObjectOfType<SpawnEnemies>().RemoveEnemy(gameObject);
 
     public virtual float ChangeReloadCd(float change)
     {
@@ -77,6 +80,8 @@ public class Enemy : MonoBehaviour, IDamagable
     protected Transform _rotateToObj;
     protected virtual void FindPoint()
     {
+        if (_points.Count == 0) return;
+
         _rotateToObj = _points[Random.Range(0, _points.Count)];
         if (_rotateToObj != null)
             _currentPos = _rotateToObj.position;
@@ -101,9 +106,9 @@ public class Enemy : MonoBehaviour, IDamagable
         _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
-        _bar.Setup(maxHp);
 
-        target = StaticValues.PlayerMovementObj.transform;
+        if (StaticValues.PlayerMovementObj != null)
+            target = StaticValues.PlayerMovementObj.transform;
         _points = StaticValues.EnemiesPoint;
         FindPoint();
 
@@ -114,6 +119,8 @@ public class Enemy : MonoBehaviour, IDamagable
         }
 
         maxHp *= StaticValues.EnemyMaxHp;
+
+        _bar.Setup(maxHp);
         _currentHp = maxHp;
         _agent.speed *= StaticValues.EnemySpeed;
     }
@@ -138,28 +145,31 @@ public class Enemy : MonoBehaviour, IDamagable
 
     protected virtual void FixedUpdate()
     {
-        if (!_isPlayerNear && Vector2.Distance(_currentPos, _transform.position) > _randomDistance )
+        if (_agent.isOnNavMesh)
         {
-            _agent.isStopped = false;
-            _agent.SetDestination(_currentPos);
-        }
-        else if (!_isPlayerNear || target == null)
-            FindPoint();
-        else if (target != null && Vector2.Distance(target.position, _transform.position) > _attackDistance)
-        {
-            _agent.isStopped = false;
-            _agent.destination = target.position;
-        }
-        else if (_time <= 0)
-        {
-            _agent.isStopped = true;
-            _animator.Play("Attack");
-            _time = _reloadTime;
-        }
-        else
-        {
-            _agent.isStopped = false;
-            _agent.destination = target.position;
+            if (!_isPlayerNear && Vector2.Distance(_currentPos, _transform.position) > _randomDistance)
+            {
+                _agent.isStopped = false;
+                _agent.SetDestination(_currentPos);
+            }
+            else if (!_isPlayerNear || target == null)
+                FindPoint();
+            else if (target != null && Vector2.Distance(target.position, _transform.position) > _attackDistance)
+            {
+                _agent.isStopped = false;
+                _agent.destination = target.position;
+            }
+            else if (_time <= 0)
+            {
+                _agent.isStopped = true;
+                _animator.Play("Attack");
+                _time = _reloadTime;
+            }
+            else
+            {
+                _agent.isStopped = false;
+                _agent.destination = target.position;
+            }
         }
     }
 

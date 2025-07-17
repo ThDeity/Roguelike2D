@@ -453,6 +453,8 @@ MonoBehaviour:
   _waves: 3
   _enemiesPerWave: 6
   _boxSize: {x: 0.1, y: 0.1}
+  _currentWaves: 0
+  _wasPrizeGotten: 0
 --- !u!114 &9094743711771779068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +481,7 @@ MonoBehaviour:
   - {fileID: 7128739491882298648}
   - {fileID: 4163997924235295959}
   - {fileID: 2356830742829576192}
+  _portals: []
 --- !u!68 &8972559632134230534
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1340,15 +1343,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.22718
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6399279
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.045959022
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1385,7 +1388,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 08ecf28822a441f4889b0258afe43e06, type: 2}
+      objectReference: {fileID: 23800000, guid: f385a67a22e47e84bb7e273ac29c66db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
+using System.Linq;
+using UnityEngine;
 
 public class StaticValues : MonoBehaviour
 {
@@ -19,6 +18,10 @@ public class StaticValues : MonoBehaviour
     public static PlayerMovement PlayerMovementObj;
     public static Transform PlayerTransform;
     public static Player PlayerObj;
+
+    private Transform[] areas0 = new Transform[5], areas1 = new Transform[5], areas2 = new Transform[5];
+    public static Transform[][] Areas = new Transform[3][];
+    public static Transform[] Bosses = new Transform[3];
 
     public GameObject playerPrefab;
     public List<PlayerAttack> attacks = new List<PlayerAttack>();
@@ -41,6 +44,27 @@ public class StaticValues : MonoBehaviour
             PlayerAttackList = PlayerObj.transform.GetChild(0).GetComponentsInChildren<PlayerAttack>().ToList();
             attacks = PlayerAttackList;
 
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("Area");
+            for (int y = 0; y < objects.Length; y++)
+            {
+                for (int i = 0; i < objects[y].transform.childCount; i++)
+                {
+                    if (objects[y].name == "0")
+                        areas0[i] = objects[y].transform.GetChild(i);
+                    else if (objects[y].name == "1")
+                        areas1[i] = objects[y].transform.GetChild(i);
+                    else if (objects[y].name == "2")
+                        areas2[i] = objects[y].transform.GetChild(i);
+                    else
+                        Bosses[i] = objects[y].transform.GetChild(i);
+
+                    objects[y].transform.GetChild(i).gameObject.SetActive(false);
+                }
+            }
+
+            Areas = new Transform[][] {  areas0, areas1, areas2 };
+            areas0 = areas1 = areas2 = null;
+
             RoomTypes = new List<string>() { "Parametres", "ActiveSkills", "PassiveSkills", "Enemy", "Default", "Boss" };
             if (CurrentRoomTypes.Count == 0 || CurrentRoomType == "Boss")
             {
@@ -55,17 +79,13 @@ public class StaticValues : MonoBehaviour
 
             if (CurrentRoomType == "Boss" && WasPrizeGotten)
             {
-                EnemyMaxHp = EnemySpeed = EnemyDamage = EnemyCount = EnemyCrit += 1;
+                EnemyMaxHp = EnemySpeed = EnemyDamage = EnemyCrit += 1;
+                EnemyCount += 0.5f;
 
                 playerPrefab.transform.localScale = Vector2.one;
             }
 
-            RoomsBeforeBoss = RoomsBeforeBoss > 0 ? RoomsBeforeBoss + 1 : 0;
-
-            GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
-            EnemiesPoint.Clear();
-            foreach (GameObject p in points)
-                EnemiesPoint.Add(p.transform);
+            RoomsBeforeBoss = 0;
 
             ParamPanel = FindObjectOfType<Param>().gameObject;
             ParamPanel.SetActive(false);
@@ -81,6 +101,14 @@ public class StaticValues : MonoBehaviour
             SkillsTimer.SetActive(false);
             ActiveSkillsPanel.SetActive(false);
         }
+    }
+
+    private void Start()
+    {
+        if (Areas != null && Areas.Length > 0 && Areas[0].Length > 0 && Areas[0] != null && Areas[0][0] != null)
+            Areas[0][0].gameObject.SetActive(true);
+        else
+            Areas = null;
     }
 
     public void SetDifficulty(float value)
@@ -127,6 +155,7 @@ public class StaticValues : MonoBehaviour
         }
 
         RoomsBeforeBoss = 0;
+        Portal.NumOfArea = 0;
 
         SceneManager.LoadScene(1);
     }

@@ -26,12 +26,22 @@ public class CopyOfControlling : Enemy
     {
         _time -= Time.deltaTime;
 
+        if (_isTakingDmg)
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+
         if (isCharmed)
             _debuffs.FindEnemy();
     }
 
     protected override void FindPoint()
     {
+        if (_points.Count == 0)
+        {
+            GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+            foreach (GameObject p in points)
+                _points.Add(p.transform);
+        }
+
         _angle = Random.Range(_minAngle, _maxAngle);
         if (_points[0] != null)
             _currentPos = _points[Random.Range(0, _points.Count - 1)].position;
@@ -55,7 +65,6 @@ public class CopyOfControlling : Enemy
 
     protected override void OnDestroy()
     {
-        base.OnDestroy();
         Copies.Remove(this);
 
         if (Copies.Count == 0 && boss != null)

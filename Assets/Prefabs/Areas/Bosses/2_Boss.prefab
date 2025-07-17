@@ -2648,6 +2648,7 @@ MonoBehaviour:
   - {fileID: 6198874069010982490}
   - {fileID: 946305539597727637}
   - {fileID: 1467514604386351938}
+  _portals: []
 --- !u!1 &9129674266066214659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2932,7 +2933,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: b7876015f5a18834a9d31bcc01c26104, type: 2}
+      objectReference: {fileID: 23800000, guid: 28c9f7e9d70e6d2498abe4dff952f6ba, type: 2}
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_OverrideVoxelSize
       value: 0

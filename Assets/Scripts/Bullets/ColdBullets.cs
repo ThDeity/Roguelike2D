@@ -13,7 +13,7 @@ public class ColdBullets : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out DebuffsEffects effect) && _currentCd <= 0 && cd > 0 && isActiveAndEnabled)
+        if (!collision.isTrigger && collision.TryGetComponent(out DebuffsEffects effect) && _currentCd <= 0 && cd > 0 && isActiveAndEnabled)
         {
             effect.Freezing(time, speedReduce);
             _currentCd = cd;

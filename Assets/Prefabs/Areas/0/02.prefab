@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 250854781977179828}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14, y: -8, z: 20}
+  m_LocalPosition: {x: 14, y: -8, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -252,6 +252,8 @@ MonoBehaviour:
   _waves: 3
   _enemiesPerWave: 3
   _boxSize: {x: 0.1, y: 0.1}
+  _currentWaves: 0
+  _wasPrizeGotten: 0
 --- !u!1 &2781988701540988785
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 2781988701540988785}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 12, z: 20}
+  m_LocalPosition: {x: 4, y: 12, z: 0}
   m_LocalScale: {x: 40, y: 20, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -666,6 +668,7 @@ MonoBehaviour:
   - {fileID: 880134645498787975}
   - {fileID: 6274073986184472904}
   - {fileID: 5651355705817097631}
+  _portals: []
 --- !u!68 &6194874903115947051
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1187,6 +1190,8 @@ MonoBehaviour:
   _waves: 3
   _enemiesPerWave: 4
   _boxSize: {x: 0.1, y: 0.1}
+  _currentWaves: 0
+  _wasPrizeGotten: 0
 --- !u!1001 &3672512771801454447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1197,15 +1202,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.996581
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.340909
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.2091675
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 117119360953838956, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1242,7 +1247,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 51a63ad87bf496e4a9570c23331b119d, type: 2}
+      objectReference: {fileID: 23800000, guid: 5829095cf3c231b4d97125e4ffd17088, type: 2}
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_OverrideVoxelSize
       value: 0

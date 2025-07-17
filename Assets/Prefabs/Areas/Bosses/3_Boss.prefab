@@ -734,6 +734,7 @@ MonoBehaviour:
   - {fileID: 5459032573009373363}
   - {fileID: 1217451787178604924}
   - {fileID: 691613623799281067}
+  _portals: []
 --- !u!68 &2456773980002501082
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -3041,7 +3042,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 6f7992fe2b4d7844e9d6997b180a4c2c, type: 2}
+      objectReference: {fileID: 23800000, guid: 2e3f0c74dca5f6f4782168159ae6dec4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

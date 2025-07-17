@@ -9,14 +9,38 @@ public class SpawnEnemies : MonoBehaviour
     [SerializeField] private int _waves, _enemiesPerWave;
     [SerializeField] private Vector2 _boxSize;
 
+    [SerializeField] private int _currentWaves;
+    [SerializeField] protected bool _wasPrizeGotten;
     public static List<GameObject> Enemies = new List<GameObject>();
 
-    private void Start()
+    private void OnEnable()
     {
-        Spawn();
-        StaticValues.WasPrizeGotten = false;
+        _wasPrizeGotten = false;
+
+        GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
+        StaticValues.EnemiesPoint.Clear();
+        foreach (GameObject p in points)
+            StaticValues.EnemiesPoint.Add(p.transform);
+
+        Enemies.Clear();
+
+        _currentWaves = Mathf.CeilToInt(StaticValues.EnemyCount * _waves);
         _enemiesPerWave = Mathf.CeilToInt(StaticValues.EnemyCount * _enemiesPerWave);
-        _waves = Mathf.CeilToInt(StaticValues.EnemyCount * _waves);
+
+        if (_currentWaves > 0)
+            Spawn();
+        else
+        {
+            FindObjectOfType<SpawnPrize>().GivePrize();
+            _wasPrizeGotten = true;
+        }
+    }
+
+    private void OnDisable()
+    {
+        _wasPrizeGotten = false;
+        StaticValues.WasPrizeGotten = false;
+        _currentWaves = Mathf.CeilToInt(StaticValues.EnemyCount * _waves);
     }
 
     private Vector2 RandomPos(int count = 0)
@@ -51,25 +75,26 @@ public class SpawnEnemies : MonoBehaviour
                 RandomCreation(Enemies, enemy);
         }
 
-        _waves--;
+        _currentWaves -= 1;
     }
 
-    bool _wasPrizeGotten = false;
-    private void Update()
+    public void RemoveEnemy(GameObject enemy)
     {
+        if (Enemies.Contains(enemy))
+            Enemies.Remove(enemy);
+
         if (Enemies.Count == 0)
         {
-            if (_waves > 0)
-                Spawn();
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (Enemies.Count <= 0 && _waves <= 0 && !_wasPrizeGotten && !StaticValues.WasPrizeGotten)
-        {
-            FindObjectOfType<SpawnPrize>().GivePrize();
-            _wasPrizeGotten = true;
+            if (_currentWaves > 0)
+            {
+                foreach (var item in FindObjectsOfType<SpawnEnemies>())
+                    item.Spawn();
+            }
+            else if (_currentWaves <= 0 && !_wasPrizeGotten && !StaticValues.WasPrizeGotten)
+            {
+                FindObjectOfType<SpawnPrize>().GivePrize();
+                _wasPrizeGotten = true;
+            }
         }
     }
 

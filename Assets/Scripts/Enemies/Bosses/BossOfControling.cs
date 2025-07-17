@@ -24,8 +24,8 @@ public class BossOfControling : Enemy
 
         if (_currentHp <= maxHp * _hpToCopy && !_wasCopied && _currentHp > 0)
         {
-            GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
-            GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
+            GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach( x => { if (x != gameObject) Destroy(x.gameObject); });
+            GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => { if (x != gameObject) Destroy(x.gameObject); });
 
             foreach (var p in _pointToCopy)
             {
@@ -139,12 +139,29 @@ public class BossOfControling : Enemy
         StaticValues.WasPrizeGotten = false;
         StaticValues.CurrentRoomType = "Boss";
         _currentTime = _timeBtwMelleeAttack;
+
+        _currentHp = maxHp;
+    }
+
+    protected void OnEnable()
+    {
+        if (StaticValues.EnemyMaxHp <= 0) return;
+
+        StaticValues.WasPrizeGotten = false;
+        StaticValues.CurrentRoomType = "Boss";
+        base.Start();
+
+        if (_wasCopied)
+            TakeDamage(0.5f * _currentHp, 0);
     }
 
     protected override void Update()
     {
         _time -= Time.deltaTime;
         _currentTime -= Time.deltaTime;
+
+        if (_isTakingDmg && isActiveAndEnabled)
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
 
         if (_isLaser)
         {
@@ -202,8 +219,6 @@ public class BossOfControling : Enemy
 
     protected override void OnDestroy()
     {
-        base.OnDestroy();
-
         GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
 

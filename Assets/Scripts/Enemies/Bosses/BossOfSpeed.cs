@@ -13,7 +13,7 @@ public class BossOfSpeed : Enemy
     [SerializeField] private List<string> _animNames;
     [SerializeField] private Color _sleepColor;
 
-    private List<FrozenStatue> _statues;
+    private List<FrozenStatue> _statues = new List<FrozenStatue>();
     private Rigidbody2D _rigidbody2D;
     private float _currentTime;
 
@@ -185,15 +185,16 @@ public class BossOfSpeed : Enemy
         _statues.ForEach(statue => statue.Enable());
 
         yield return new WaitForSeconds((_timeBtwDashes + _dashTime) * _numOfRolls + _timeBtwWawes * _numOfWawes + _timeOfCircle + 1);
-        yield return new WaitForSeconds(1);
 
         _statues.ForEach(statue => statue.Disable());
     }
 
     private void Awake() => StaticValues.WasPrizeGotten = false;
 
-    protected override void Start()
+    protected void OnEnable()
     {
+        if (StaticValues.EnemyMaxHp <= 0) return;
+
         base.Start();
         StaticValues.CurrentRoomType = "Boss";
         _transform = transform;
@@ -201,14 +202,20 @@ public class BossOfSpeed : Enemy
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _currentTime = _timeBtwMelleeAttack;
 
-        _statues = FindObjectsOfType<FrozenStatue>().ToList();
-        _statues.ForEach(statue => statue.Disable());
+        if (_statues.Count == 0)
+        {
+            _statues = FindObjectsOfType<FrozenStatue>().ToList();
+            _statues.ForEach(statue => statue.Disable());
+        }
     }
 
     protected override void Update()
     {
         _time -= Time.deltaTime;
         _currentTime -= Time.deltaTime;
+
+        if (_isTakingDmg)
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
 
         if (!_isSleeping && target != null && !_isRolling)
         {
@@ -236,10 +243,10 @@ public class BossOfSpeed : Enemy
                 _animator.Play("MeleeAttack");
                 _currentTime = _timeBtwMelleeAttack;
             }
-            else if (!_isRolling && distance.sqrMagnitude > _randomDistance * _randomDistance && _agent.isActiveAndEnabled)
-                _agent.SetDestination(_currentPos);
-            else if (!_isRolling)
-                FindPoint();
+            else if (!_isRolling && distanceBtwPlayer.sqrMagnitude > _attackDistance * _attackDistance && _agent.isActiveAndEnabled)//distance.sqrMagnitude > _randomDistance * _randomDistance
+                _agent.SetDestination(target.position);
+            //else if (!_isRolling)
+                //FindPoint();
 
             if (_time <= 0)
             {
@@ -264,8 +271,6 @@ public class BossOfSpeed : Enemy
 
     protected override void OnDestroy()
     {
-        base.OnDestroy();
-
         _statues.ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));

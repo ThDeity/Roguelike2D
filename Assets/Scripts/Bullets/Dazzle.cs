@@ -15,7 +15,7 @@ public class Dazzle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out DebuffsEffects effect) && _currentCd <= 0 && isActiveAndEnabled)
+        if (!collision.isTrigger && collision.TryGetComponent(out DebuffsEffects effect) && _currentCd <= 0 && isActiveAndEnabled)
         {
             effect.Dazzle(time);
             _currentCd = cd;

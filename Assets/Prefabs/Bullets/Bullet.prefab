@@ -168,14 +168,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a29cc9f538ef484e96b1657a0719134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1.25
+  damage: 15
   critChance: 5
   lifeTime: 0
   speed: 15
-  lifeSteal: 0
+  lifeSteal: 0.35
   maxDistance: 14
   lifeTimeRange: 0
-  timeTakingDmg: 0
+  timeTakingDmg: 4
   _bulletVector: {x: -1, y: 0}
   isDrillAmmo: 0
 --- !u!114 &-3856076423925009773
@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4457e6d50e8da034b95f7b5ef4d8b030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 1.5
-  speedReduce: 0.6
+  time: 1.8150002
+  speedReduce: 0.7260001
   cd: 1.85
 --- !u!114 &3681185188403950901
 MonoBehaviour:
@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4cc3e47a969b644681256079beda66c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
-  cd: 0
+  time: 0.85
+  cd: 1.1
 --- !u!114 &302041561227381424
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -333,6 +333,7 @@ MonoBehaviour:
   - {fileID: 5787921839004506842}
   - {fileID: 825835485898574613}
   - {fileID: 1299763351369549762}
+  _portals: []
 --- !u!68 &5298761416991739386
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1298,7 +1299,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 5ad46f8bfd716a84996a0951ca790a9c, type: 2}
+      objectReference: {fileID: 23800000, guid: f6f85485d86a79243bd3acc61db1e046, type: 2}
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_OverrideVoxelSize
       value: 0

@@ -114,10 +114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8ebbe8cc995af4788d7570aaad5d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xLeft: -5
-  _xRight: 5
-  _yUp: 6.375
-  _yDown: -6.375
+  _xLeft: -7.5
+  _xRight: 7.5
+  _yUp: 9.5625
+  _yDown: -9.5625
   _enemiesObj:
   - {fileID: 1110484879881881949, guid: c2aede47d6a832949b4f5fcb2ae86da3, type: 3}
   - {fileID: 808640998594183105, guid: 6e4990176178e1e4f95c4d7d3f698742, type: 3}
@@ -128,6 +128,8 @@ MonoBehaviour:
   _waves: 3
   _enemiesPerWave: 2
   _boxSize: {x: 0.1, y: 0.1}
+  _currentWaves: 0
+  _wasPrizeGotten: 0
 --- !u!1 &283238360079269687
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,10 +538,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8ebbe8cc995af4788d7570aaad5d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xLeft: -5
-  _xRight: 5
-  _yUp: 6.375
-  _yDown: -6.375
+  _xLeft: -7.5
+  _xRight: 7.5
+  _yUp: 9.5625
+  _yDown: -9.5625
   _enemiesObj:
   - {fileID: 1110484879881881949, guid: c2aede47d6a832949b4f5fcb2ae86da3, type: 3}
   - {fileID: 808640998594183105, guid: 6e4990176178e1e4f95c4d7d3f698742, type: 3}
@@ -550,6 +552,8 @@ MonoBehaviour:
   _waves: 3
   _enemiesPerWave: 2
   _boxSize: {x: 0.1, y: 0.1}
+  _currentWaves: 0
+  _wasPrizeGotten: 0
 --- !u!1 &870237656736556500
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +914,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5743493095139849733}
@@ -953,6 +957,7 @@ MonoBehaviour:
   - {fileID: 1378265594843199745}
   - {fileID: 5190316661637785806}
   - {fileID: 5871548906162594841}
+  _portals: []
 --- !u!68 &2370692137083412006
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1125,10 +1130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8ebbe8cc995af4788d7570aaad5d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xLeft: -5
-  _xRight: 5
-  _yUp: 6.375
-  _yDown: -6.375
+  _xLeft: -7.5
+  _xRight: 7.5
+  _yUp: 9.5625
+  _yDown: -9.5625
   _enemiesObj:
   - {fileID: 1110484879881881949, guid: c2aede47d6a832949b4f5fcb2ae86da3, type: 3}
   - {fileID: 808640998594183105, guid: 6e4990176178e1e4f95c4d7d3f698742, type: 3}
@@ -1139,6 +1144,8 @@ MonoBehaviour:
   _waves: 3
   _enemiesPerWave: 1
   _boxSize: {x: 0.1, y: 0.1}
+  _currentWaves: 0
+  _wasPrizeGotten: 0
 --- !u!1 &3124245630830907468
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,10 +2009,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8ebbe8cc995af4788d7570aaad5d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xLeft: -5
-  _xRight: 5
-  _yUp: 6.375
-  _yDown: -6.375
+  _xLeft: -7.5
+  _xRight: 7.5
+  _yUp: 9.5625
+  _yDown: -9.5625
   _enemiesObj:
   - {fileID: 1110484879881881949, guid: c2aede47d6a832949b4f5fcb2ae86da3, type: 3}
   - {fileID: 808640998594183105, guid: 6e4990176178e1e4f95c4d7d3f698742, type: 3}
@@ -2016,6 +2023,8 @@ MonoBehaviour:
   _waves: 3
   _enemiesPerWave: 1
   _boxSize: {x: 0.1, y: 0.1}
+  _currentWaves: 0
+  _wasPrizeGotten: 0
 --- !u!1 &7704102646171397152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,10 +2253,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8ebbe8cc995af4788d7570aaad5d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xLeft: -5
-  _xRight: 5
-  _yUp: 6.375
-  _yDown: -6.375
+  _xLeft: -7.5
+  _xRight: 7.5
+  _yUp: 9.5625
+  _yDown: -9.5625
   _enemiesObj:
   - {fileID: 1110484879881881949, guid: c2aede47d6a832949b4f5fcb2ae86da3, type: 3}
   - {fileID: 808640998594183105, guid: 6e4990176178e1e4f95c4d7d3f698742, type: 3}
@@ -2258,6 +2267,8 @@ MonoBehaviour:
   _waves: 3
   _enemiesPerWave: 1
   _boxSize: {x: 0.1, y: 0.1}
+  _currentWaves: 0
+  _wasPrizeGotten: 0
 --- !u!1 &8882513400044099069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,7 +2394,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: fbafec12063ce5d4a879c55f7e588c86, type: 2}
+      objectReference: {fileID: 23800000, guid: 24e1fd1d2e5df894ea3c76bc07eb40a7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

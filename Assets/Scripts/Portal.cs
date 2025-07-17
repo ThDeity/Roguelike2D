@@ -10,23 +10,13 @@ public class Portal : MonoBehaviour
     [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes;
 
-    [SerializeField] private List<GameObject> _areas0;
-    [SerializeField] private List<GameObject> _areas1;
-    [SerializeField] private List<GameObject> _areas2;
-    [SerializeField] private List<GameObject> _bosses;
-
-    private List<List<GameObject>> _areas = new List<List<GameObject>>();
     private GameObject _icon, _buttonE, _currentArea;
     private bool _isPlayerNear, _wasPortal;
 
-    private static int NumOfArea;
+    public static int NumOfArea;
     private void Start()
     {
         _currentArea = FindObjectOfType<SpawnPrize>().gameObject;
-
-        _areas.Add(_areas0);
-        _areas.Add(_areas1);
-        _areas.Add(_areas2);
 
         _buttonE = Instantiate(_buttonIcon, _pointForButton.position, Quaternion.identity);
         _buttonIcon.SetActive(false);
@@ -42,41 +32,39 @@ public class Portal : MonoBehaviour
             {
                 if (p != this)
                     Destroy(p.gameObject);
+                    //p.gameObject.SetActive(false);
             }
 
-            Destroy(_currentArea.gameObject);
+            _currentArea.SetActive(false);
             StaticValues.RoomsBeforeBoss += 1;
 
             if (StaticValues.RoomsBeforeBoss % _roomsPerArea == 0 && StaticValues.RoomsBeforeBoss != 0)
             {
                 StaticValues.CurrentRoomType = StaticValues.RoomTypes[5];
 
-                _currentArea = Instantiate(_bosses[NumOfArea]);
+                _currentArea = StaticValues.Bosses[NumOfArea].gameObject;
 
                 StaticValues.RoomsBeforeBoss = 0;
                 NumOfArea += 1;
             }
-            else if (StaticValues.RoomsBeforeBoss % _roomsPerArea != 0 || StaticValues.RoomsBeforeBoss == 0)
+            else// if (StaticValues.RoomsBeforeBoss % _roomsPerArea != 0 || StaticValues.RoomsBeforeBoss == 0)
             {
                 StaticValues.CurrentRoomType = StaticValues.RoomTypes[_index];
 
-                int index = Random.Range(0, _areas[NumOfArea].Count);
-                if (_areas[NumOfArea][index] != null)
-                    _currentArea = Instantiate(_areas[NumOfArea][index]);
+                int index = StaticValues.RoomsBeforeBoss % StaticValues.Areas[NumOfArea].Length;
+                if (StaticValues.Areas[NumOfArea][index] != null)
+                    _currentArea = StaticValues.Areas[NumOfArea][index].gameObject;
                 else
-                    _currentArea = Instantiate(_bosses[_bosses.Count - 1]);
+                    _currentArea = StaticValues.Bosses[StaticValues.Bosses.Length - 1].gameObject;
             }
 
-            GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
-            StaticValues.EnemiesPoint.Clear();
-            foreach (GameObject p in points)
-                StaticValues.EnemiesPoint.Add(p.transform);
-
+            _currentArea.SetActive(true);
             if (_currentArea.TryGetComponent(out SpawnPrize component))
                 StaticValues.PlayerTransform.position = component.playerPointSpawn == null ? Vector2.zero : component.playerPointSpawn.position;
 
-            StaticValues.PlayerObj.StartCoroutine(StaticValues.PlayerObj.SetImmortal(1.5f));
+            StaticValues.PlayerObj.StartCoroutine(StaticValues.PlayerObj.SetImmortal(1f));
             Destroy(gameObject);
+            //gameObject.SetActive(false);
         }
     }
 
@@ -85,8 +73,8 @@ public class Portal : MonoBehaviour
         _index = index;
 
         _icon = Instantiate(_prizes[index], _pointForPrize.position, Quaternion.identity);
-        gameObject.SetActive(false);
         _icon.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -113,9 +101,17 @@ public class Portal : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        _wasPortal = false;
+
+        if (_icon != null) _icon.SetActive(false);
+        if (_buttonE != null) _buttonE.SetActive(false);
+    }
+
     private void OnDestroy()
     {
-        Destroy(_icon);
-        Destroy(_buttonE);
+        //Destroy(_icon);
+        //Destroy(_buttonE);
     }
 }
