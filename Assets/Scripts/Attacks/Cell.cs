@@ -15,7 +15,7 @@ public class Cell : MonoBehaviour
         if (collision.tag != tag && collision.TryGetComponent(out DebuffsEffects component))
         {
             component.Dazzle(_timeOfDazzle);
-            collision.GetComponent<IDamagable>().TakeDamage(_dmg, 0);
+            collision.GetComponent<IDamagable>().TakeDamage(_dmg, 0, false, 0);
         }
     }
 }

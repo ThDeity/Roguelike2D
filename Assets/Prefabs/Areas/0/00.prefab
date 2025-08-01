@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 983407402722388407}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.029762974, w: 0.999557}
-  m_LocalPosition: {x: -13.04, y: -8.47, z: 0}
+  m_LocalPosition: {x: -9.76, y: -7.95, z: 0}
   m_LocalScale: {x: 5.878408, y: 5.6342816, z: 3.4926}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -440,7 +440,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.27450982, g: 0.2627451, b: 0.25490198, a: 1}
+  m_Color: {r: 0.31764707, g: 0.25490198, b: 0.21176471, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -822,7 +822,7 @@ MonoBehaviour:
   - {fileID: 6150336271840881764, guid: 96b19505428d16e498aa679889330f37, type: 3}
   - {fileID: 246435125922145391, guid: 9725d731453138246aa221f8aa6acfdc, type: 3}
   - {fileID: 246435125922145391, guid: 9725d731453138246aa221f8aa6acfdc, type: 3}
-  _waves: 3
+  _waves: 1
   _enemiesPerWave: 6
   _boxSize: {x: 0.1, y: 0.1}
   _currentWaves: 0
@@ -1289,7 +1289,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 5c39b56f3e207004595dae78f1398bcc, type: 2}
+      objectReference: {fileID: 23800000, guid: 9b748d43005c5ad479b605ecaf2ed363, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

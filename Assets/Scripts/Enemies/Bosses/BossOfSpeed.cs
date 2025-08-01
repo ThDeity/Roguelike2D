@@ -18,9 +18,9 @@ public class BossOfSpeed : Enemy
     private float _currentTime;
 
     bool _wasSleeping, _isSleeping, _isRolling;
-    public override void TakeDamage(float damage, float time)
+    public override void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
-        base.TakeDamage(damage, time);
+        base.TakeDamage(damage, time, isLifesteal, lifesteal);
 
         if (_currentHp <= maxHp * _hpToSleep && !_wasSleeping)
         {
@@ -93,7 +93,7 @@ public class BossOfSpeed : Enemy
     private Vector2 _start, _end;
     private IEnumerator DashCoroutine()
     {
-        if(target == null) yield break;
+        if (target == null) yield break;
 
         _isRolling = true;
 
@@ -152,7 +152,8 @@ public class BossOfSpeed : Enemy
         time = Vector2.Distance(_point, _transform.position) / _dashSpeed;
 
         StartCoroutine(DashCoroutine());
-        _dashVector = (target.position - _transform.position).normalized;
+        _dashVector = (Vector2)(target.position - _transform.position).normalized;
+        Debug.Log((Vector2)(target.position - _transform.position));
 
         _time = _numOfRolls * (_timeBtwDashes + _dashTime);
     }
@@ -215,7 +216,7 @@ public class BossOfSpeed : Enemy
         _currentTime -= Time.deltaTime;
 
         if (_isTakingDmg)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
 
         if (!_isSleeping && target != null && !_isRolling)
         {
@@ -269,8 +270,20 @@ public class BossOfSpeed : Enemy
             FindPoint();
     }
 
+    protected void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (_isRolling && collision.transform.tag != "Player")
+        {
+            StopCoroutine(DashCoroutine());
+            _isRolling = false;
+            _agent.enabled = true;
+        }
+    }
+
     protected override void OnDestroy()
     {
+        StopAllCoroutines();
+
         _statues.ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
-using System.Collections;
 
 public class Slime : Enemy
 {
@@ -11,12 +10,15 @@ public class Slime : Enemy
 
     public int countOfSeparates;
 
-    public override void TakeDamage(float damage, float time)
+    public override void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         if (time == 0)
         {
             _currentHp -= damage;
             _bar.RemoveValue(damage);
+
+            if (isLifesteal)
+                StaticValues.PlayerObj.TakeDamage(-damage * lifesteal, 0, false, 0);
 
             if (_currentHp <= 0)
             {
@@ -31,10 +33,19 @@ public class Slime : Enemy
         else
         {
             _isTakingDmg = true;
-            _damageTaking = damage;
-            _timeTaking = time;
+            _damageTaking += damage;
+            _timeTaking += time;
 
-            StartCoroutine(TakingDamage(time));
+            if (isLifesteal)
+            {
+                _isLifesteal = true;
+                _lifestealToPlayer = lifesteal;
+            }
+
+            if (_timeTaking > 0)
+                StopCoroutine(TakingDamage(time));
+
+            StartCoroutine(TakingDamage(_timeTaking));
         }
 
         if (!_isPlayerNear)
@@ -43,7 +54,7 @@ public class Slime : Enemy
             _rotateToObj = target;
         }
 
-        if (!_hpBar.activeInHierarchy)
+        if (_hpBar != null && !_hpBar.activeInHierarchy)
             _hpBar.SetActive(true);
     }
 

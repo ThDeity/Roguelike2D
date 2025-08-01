@@ -589,7 +589,7 @@ Transform:
   m_GameObject: {fileID: 4718833351471206779}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.32270065, w: 0.9465011}
-  m_LocalPosition: {x: 9.73, y: -6.84, z: 0}
+  m_LocalPosition: {x: 7.32, y: -9.9, z: 0}
   m_LocalScale: {x: 10.689824, y: 0.7487715, z: 3.4926}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1307,7 +1307,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0.3019608, g: 0.14509805, b: 0.3019608, a: 1}
+  m_Color: {r: 0.5137255, g: 0.65882355, b: 0.33333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1388,7 +1388,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: f385a67a22e47e84bb7e273ac29c66db, type: 2}
+      objectReference: {fileID: 23800000, guid: 8427313c8577800469407ff41c187f27, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

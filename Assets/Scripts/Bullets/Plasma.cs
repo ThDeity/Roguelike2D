@@ -10,8 +10,7 @@ public class Plasma : Bullet
         if (currentEnemy != null && collision.tag != transform.tag)
         {
             damage *= Random.Range(0, 100) <= critChance ? 2 : 1;
-            currentEnemy.TakeDamage(damage, timeTakingDmg);
-            StaticValues.PlayerObj.TakeDamage(-damage * lifeSteal, timeTakingDmg);
+            currentEnemy.TakeDamage(damage, timeTakingDmg, true,lifeSteal);
         }
     }
 }

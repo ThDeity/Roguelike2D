@@ -27,7 +27,7 @@ public class CopyOfControlling : Enemy
         _time -= Time.deltaTime;
 
         if (_isTakingDmg)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, false, 0);
 
         if (isCharmed)
             _debuffs.FindEnemy();

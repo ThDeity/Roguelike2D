@@ -229,13 +229,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _xLeft: -22.5
   _xRight: 22.5
-  _yUp: 5
-  _yDown: -5
+  _yUp: 8
+  _yDown: -8
   _enemiesObj:
-  - {fileID: 5116126663941616143, guid: af4161cc5ae81a843afa77bef49b651a, type: 3}
-  - {fileID: 5116126663941616143, guid: af4161cc5ae81a843afa77bef49b651a, type: 3}
+  - {fileID: 8664486658827265195, guid: 973bbcc49f1836941af71568edc3a4e6, type: 3}
+  - {fileID: 8664486658827265195, guid: 973bbcc49f1836941af71568edc3a4e6, type: 3}
   - {fileID: 8813475698137768401, guid: 5ecd4500c0151d3438798e81e87f0460, type: 3}
-  - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
+  - {fileID: 2138434092308321217, guid: a3c5d65d3c10883418b0932d199de101, type: 3}
   _waves: 3
   _enemiesPerWave: 6
   _boxSize: {x: 0.1, y: 0.1}
@@ -303,15 +303,16 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -22.603523, y: -5.0329366}
-  - {x: -0.016716957, y: -5.051396}
-  - {x: 11.218313, y: -24.61934}
-  - {x: 22.531164, y: -4.9804635}
-  - {x: 22.555214, y: 5.0654593}
-  - {x: 0.1058054, y: 5.059321}
-  - {x: -11.259436, y: 24.499104}
-  - {x: -22.585201, y: 4.911687}
-  - {x: -22.589495, y: -5.0177574}
+  - {x: -22.625973, y: -7.616837}
+  - {x: 0.09247136, y: -7.5692596}
+  - {x: 11.239889, y: -26.895508}
+  - {x: 22.398216, y: -7.5665493}
+  - {x: 22.574316, y: -7.566549}
+  - {x: 22.553467, y: 8.3062315}
+  - {x: -0.070292816, y: 8.322104}
+  - {x: -11.215411, y: 27.6527}
+  - {x: -22.540302, y: 8.196484}
+  - {x: -22.56792, y: -7.602095}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -343,7 +344,7 @@ Transform:
   m_GameObject: {fileID: 1851491290615765757}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.5, w: 0.8660254}
-  m_LocalPosition: {x: 11.22, y: -11.47, z: 0}
+  m_LocalPosition: {x: 11.22, y: -13.83, z: 0}
   m_LocalScale: {x: 22.5, y: 22.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -917,8 +918,8 @@ Transform:
   m_GameObject: {fileID: 3647565476590521128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 45, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3601, z: 0}
+  m_LocalScale: {x: 45, y: 15.841578, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1079512310097827460}
@@ -1018,7 +1019,7 @@ Transform:
   m_GameObject: {fileID: 4088537850407422951}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.22, y: 11.5, z: 0}
+  m_LocalPosition: {x: -11.22, y: 14.54, z: 0}
   m_LocalScale: {x: 22.5, y: 22.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1319,7 +1320,7 @@ Transform:
   m_GameObject: {fileID: 7094087548393189821}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.17233962, w: 0.9850376}
-  m_LocalPosition: {x: -12.81, y: 11.8, z: 0}
+  m_LocalPosition: {x: -11.39, y: 15.11, z: 0}
   m_LocalScale: {x: 2.8935344, y: 2.773368, z: 1.7191659}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1465,13 +1466,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7192815518496167589}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.13325185, w: 0.99108225}
-  m_LocalPosition: {x: 7.93, y: -11.86, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.3226357, w: 0.94652325}
+  m_LocalPosition: {x: 10.65, y: -12.48, z: 0}
   m_LocalScale: {x: 5.5205917, y: 0.9833457, z: 1.574521}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1079512310097827460}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15.315}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -37.645}
 --- !u!212 &876752081043071681
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1708,7 +1709,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 099c0532362b704468b3ba3fe4b6ee23, type: 2}
+      objectReference: {fileID: 23800000, guid: 5d56233adab76ac44aea5013404bb12c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

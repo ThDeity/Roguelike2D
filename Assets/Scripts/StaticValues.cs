@@ -79,8 +79,9 @@ public class StaticValues : MonoBehaviour
 
             if (CurrentRoomType == "Boss" && WasPrizeGotten)
             {
-                EnemyMaxHp = EnemySpeed = EnemyDamage = EnemyCrit += 1;
+                EnemyMaxHp = EnemyDamage += 1;
                 EnemyCount += 0.5f;
+                EnemySpeed += 0.1f;
 
                 playerPrefab.transform.localScale = Vector2.one;
             }
@@ -105,6 +106,8 @@ public class StaticValues : MonoBehaviour
 
     private void Start()
     {
+        if (isMenu) return;
+
         if (Areas != null && Areas.Length > 0 && Areas[0].Length > 0 && Areas[0] != null && Areas[0][0] != null)
             Areas[0][0].gameObject.SetActive(true);
         else

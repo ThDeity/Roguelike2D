@@ -24,7 +24,7 @@ public class Implode : MonoBehaviour
                 collider.TryGetComponent(out IDamagable component);
                 if (component != null && collider.tag != "Player" && collider.TryGetComponent(out NavMeshAgent agent))
                 {
-                    component.TakeDamage(damage, 0);
+                    component.TakeDamage(damage, 0, false, 0);
                     agent.Warp(transform.position);
                 }
                 else

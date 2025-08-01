@@ -14,7 +14,7 @@ public class TrailOfFire : MonoBehaviour
         {
             if (!collision.CompareTag(tag) && _currentTime <= 0)
             {
-                component.TakeDamage(damage, timeOfTakingDmg);
+                component.TakeDamage(damage, timeOfTakingDmg, false, 0);
                 _currentTime = timeBtwDamage;
             }
 
@@ -27,7 +27,7 @@ public class TrailOfFire : MonoBehaviour
         if (collision.TryGetComponent(out IDamagable component))
         {
             if (!collision.CompareTag(tag))
-                component.TakeDamage(damage * 0.5f, timeOfTakingDmg);
+                component.TakeDamage(damage * 0.5f, timeOfTakingDmg, false, 0);
         }
     }
 }

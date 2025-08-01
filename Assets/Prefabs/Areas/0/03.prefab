@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.5188679, g: 0.007342457, b: 0.007342457, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -216,7 +216,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.27450982, g: 0.2627451, b: 0.25490198, a: 1}
+  m_Color: {r: 0.31764707, g: 0.25490198, b: 0.21176471, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -395,7 +395,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.27450982, g: 0.2627451, b: 0.25490198, a: 1}
+  m_Color: {r: 0.31764707, g: 0.25490198, b: 0.21176471, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -497,7 +497,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.5188679, g: 0.007342457, b: 0.007342457, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -634,7 +634,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.5188679, g: 0.007342457, b: 0.007342457, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -777,9 +777,9 @@ MonoBehaviour:
   _enemiesObj:
   - {fileID: 246435125922145391, guid: 9725d731453138246aa221f8aa6acfdc, type: 3}
   - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
-  - {fileID: 8813475698137768401, guid: 5ecd4500c0151d3438798e81e87f0460, type: 3}
+  - {fileID: 6150336271840881764, guid: 96b19505428d16e498aa679889330f37, type: 3}
   - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
-  _waves: 3
+  _waves: 1
   _enemiesPerWave: 3
   _boxSize: {x: 0.1, y: 0.1}
   _currentWaves: 0
@@ -1060,11 +1060,11 @@ MonoBehaviour:
   _yUp: 8.5
   _yDown: -8.5
   _enemiesObj:
-  - {fileID: 1110484879881881949, guid: c2aede47d6a832949b4f5fcb2ae86da3, type: 3}
-  - {fileID: 808640998594183105, guid: 6e4990176178e1e4f95c4d7d3f698742, type: 3}
-  - {fileID: 8813475698137768401, guid: 5ecd4500c0151d3438798e81e87f0460, type: 3}
+  - {fileID: 6150336271840881764, guid: 96b19505428d16e498aa679889330f37, type: 3}
+  - {fileID: 246435125922145391, guid: 9725d731453138246aa221f8aa6acfdc, type: 3}
+  - {fileID: 6150336271840881764, guid: 96b19505428d16e498aa679889330f37, type: 3}
   - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
-  _waves: 3
+  _waves: 1
   _enemiesPerWave: 3
   _boxSize: {x: 0.1, y: 0.1}
   _currentWaves: 0

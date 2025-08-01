@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using static UnityEngine.GraphicsBuffer;
 
 public class SpikeBombs : MonoBehaviour, IDamagable
 {
@@ -14,7 +15,7 @@ public class SpikeBombs : MonoBehaviour, IDamagable
     [SerializeField] private Light2D _light2D;
     [SerializeField] private Color _color;
 
-    private float _currentHp, _damageTaking, _timeTaking;
+    private float _currentHp, _damageTaking, _timeTaking, _lifestealToPlayer;
     private GameObject _hpBar;
 
     public float maxHp;
@@ -37,16 +38,19 @@ public class SpikeBombs : MonoBehaviour, IDamagable
     private void Update()
     {
         if (_isTakingDmg)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
     }
 
-    protected bool _isTakingDmg;
-    public virtual void TakeDamage(float damage, float time)
+    protected bool _isTakingDmg, _isLifesteal;
+    public virtual void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         if (time == 0)
         {
             _currentHp -= damage;
             _bar.RemoveValue(damage);
+
+            if (isLifesteal)
+                StaticValues.PlayerObj.TakeDamage(-damage * lifesteal, 0, false, 0);
 
             if (_currentHp <= 0)
                 Destroy(gameObject);
@@ -56,10 +60,19 @@ public class SpikeBombs : MonoBehaviour, IDamagable
         else
         {
             _isTakingDmg = true;
-            _damageTaking = damage;
-            _timeTaking = time;
+            _damageTaking += damage;
+            _timeTaking += time;
 
-            StartCoroutine(TakingDamage(time));
+            if (isLifesteal)
+            {
+                _isLifesteal = true;
+                _lifestealToPlayer = lifesteal;
+            }
+
+            if (_timeTaking > 0)
+                StopCoroutine(TakingDamage(time));
+
+            StartCoroutine(TakingDamage(_timeTaking));
         }
 
         if (_hpBar != null && !_hpBar.activeInHierarchy)
@@ -70,8 +83,8 @@ public class SpikeBombs : MonoBehaviour, IDamagable
     {
         yield return new WaitForSeconds(time);
 
-        _isTakingDmg = false;
-        _damageTaking = 0;
+        _isTakingDmg = _isLifesteal = false;
+        _damageTaking = _lifestealToPlayer = 0;
     }
 
     private IEnumerator Boom()

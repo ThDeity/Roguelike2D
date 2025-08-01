@@ -10,11 +10,15 @@ public class Tentacles : Enemy
     {
         base.Start();
 
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         _secondOffset = Random.Range(_offset - 15, _offset + 15);
     }
 
     protected override void Update()
     {
+        if (_isTakingDmg)
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
+
         _time -= Time.deltaTime;
 
         if (_rotateToObj != null && !_isAttack)

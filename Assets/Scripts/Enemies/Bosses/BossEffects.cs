@@ -32,7 +32,7 @@ public class BossEffects : DebuffsEffects
         isFrozen = true;
         float speed, cd = 1, newCd;
 
-        gameObject.GetComponent<IDamagable>().TakeDamage(damage, 0);
+        gameObject.GetComponent<IDamagable>().TakeDamage(damage, 0, false, 0);
 
         speed = agent.speed;
         agent.speed *= 1 - force;

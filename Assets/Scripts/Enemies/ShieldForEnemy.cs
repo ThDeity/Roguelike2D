@@ -7,14 +7,17 @@ public class ShieldForEnemy : MonoBehaviour, IDamagable
     [SerializeField] private float _hpBonus;
     private float _currentHp, _maxHp;
 
-    protected bool _isTakingDmg;
-    protected float _damageTaking, _timeTaking;
-    public void TakeDamage(float damage, float time)
+    protected bool _isTakingDmg, _isLifesteal;
+    protected float _damageTaking, _timeTaking, _lifestealToPlayer;
+    public void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         if (time == 0)
         {
             _currentHp -= damage;
             _bar.RemoveValue(damage);
+
+            if (isLifesteal)
+                StaticValues.PlayerObj.TakeDamage(-damage * lifesteal, 0, false, 0);
 
             if (_currentHp <= 0)
                 Destroy(gameObject);
@@ -22,10 +25,19 @@ public class ShieldForEnemy : MonoBehaviour, IDamagable
         else
         {
             _isTakingDmg = true;
-            _damageTaking = damage;
-            _timeTaking = time;
+            _damageTaking += damage;
+            _timeTaking += time;
 
-            StartCoroutine(TakingDamage(time));
+            if (isLifesteal)
+            {
+                _isLifesteal = true;
+                _lifestealToPlayer = lifesteal;
+            }
+
+            if (_timeTaking > 0)
+                StopCoroutine(TakingDamage(time));
+
+            StartCoroutine(TakingDamage(_timeTaking));
         }
     }
 
@@ -33,8 +45,8 @@ public class ShieldForEnemy : MonoBehaviour, IDamagable
     {
         yield return new WaitForSeconds(time);
 
-        _isTakingDmg = false;
-        _damageTaking = 0;
+        _isTakingDmg = _isLifesteal = false;
+        _damageTaking = _lifestealToPlayer = 0;
     }
 
     private void OnDestroy()
@@ -53,6 +65,6 @@ public class ShieldForEnemy : MonoBehaviour, IDamagable
     private void Update()
     {
         if (_isTakingDmg)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
     }
 }

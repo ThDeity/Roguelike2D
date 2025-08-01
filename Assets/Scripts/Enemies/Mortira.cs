@@ -23,7 +23,7 @@ public class Mortira : Enemy
         foreach (Collider2D collider in colliders)
         {
             if (collider.transform.tag == target.tag)
-                collider.GetComponent<IDamagable>().TakeDamage(_damage, 0);
+                collider.GetComponent<IDamagable>().TakeDamage(_damage, 0, false, 0);
         }
     }
 
@@ -46,7 +46,7 @@ public class Mortira : Enemy
         _time -= Time.deltaTime;
 
         if (_isTakingDmg)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
 
         if (isCharmed)
             _debuffs.FindEnemy();

@@ -6,7 +6,7 @@ public class BossPrize : Prize
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E) && !StaticValues.WasPrizeGotten)
         {
-            StaticValues.PlayerObj.TakeDamage(-StaticValues.PlayerObj.ChangeMxHp(1), 0);
+            StaticValues.PlayerObj.TakeDamage(-StaticValues.PlayerObj.ChangeMxHp(1), 0, false, 0);
 
             StaticValues.WasPrizeGotten = true;
             Destroy(gameObject);

@@ -9,7 +9,7 @@ public class Hook : MeleeAttack
     {
         if (collision.tag != tag && collision.TryGetComponent(out IDamagable enemy))
         {
-            enemy.TakeDamage(_damage, 0);
+            enemy.TakeDamage(_damage, 0, false, 0);
             collision.TryGetComponent(out DebuffsEffects component);
             if (component != null)
                 component.Dazzle(_timeOfDazzle);

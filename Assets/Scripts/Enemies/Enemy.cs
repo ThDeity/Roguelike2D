@@ -22,16 +22,19 @@ public class Enemy : MonoBehaviour, IDamagable
     public Transform target;
     public bool isCharmed, isBoss;
 
-    protected float _damageTaking, _timeTaking;
+    protected float _damageTaking, _timeTaking, _lifestealToPlayer;
     protected GameObject _hpBar;
 
-    protected bool _isTakingDmg;
-    public virtual void TakeDamage(float damage, float time)
+    protected bool _isTakingDmg, _isLifesteal;
+    public virtual void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         if (time == 0)
         {
             _currentHp -= damage;
             _bar.RemoveValue(damage);
+
+            if (isLifesteal)
+                StaticValues.PlayerObj.TakeDamage(-damage * lifesteal, 0, false, 0);
 
             if (_currentHp <= 0)
                 Destroy(gameObject);
@@ -43,6 +46,12 @@ public class Enemy : MonoBehaviour, IDamagable
             _isTakingDmg = true;
             _damageTaking += damage;
             _timeTaking += time;
+
+            if (isLifesteal)
+            {
+                _isLifesteal = true;
+                _lifestealToPlayer = lifesteal;
+            }
 
             if (_timeTaking > 0)
                 StopCoroutine(TakingDamage(time));
@@ -64,11 +73,15 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         yield return new WaitForSeconds(time);
 
-        _isTakingDmg = false;
-        _damageTaking = 0;
+        _isTakingDmg = _isLifesteal = false;
+        _damageTaking = _lifestealToPlayer = 0;
     }
 
-    protected virtual void OnDestroy() => FindObjectOfType<SpawnEnemies>().RemoveEnemy(gameObject);
+    protected virtual void OnDestroy()
+    {
+        StopAllCoroutines();
+        FindObjectOfType<SpawnEnemies>().RemoveEnemy(gameObject);
+    }
 
     public virtual float ChangeReloadCd(float change)
     {
@@ -130,7 +143,7 @@ public class Enemy : MonoBehaviour, IDamagable
         _time -= Time.deltaTime;
 
         if (_isTakingDmg)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
 
         if (_rotateToObj != null)
         {

@@ -11,7 +11,7 @@ public class BulletsComponents : MonoBehaviour
         foreach (var script in _scripts)
         {
             if (script.GetType() == t)
-                script.enabled = !script.isActiveAndEnabled;
+                script.enabled = true;//!script.isActiveAndEnabled;
         }
     }
 

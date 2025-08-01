@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] protected ValueSystem _bar = new ValueSystem();
     [SerializeField] private float _hpMax, _restorePersent, _immortalTime;
     [SerializeField] private Color _colorAfterDeath;
+    [SerializeField] private GameObject _prize;
     public float currentHp { private set; get; }
 
     public bool IsExploding;
@@ -25,10 +26,11 @@ public class Player : MonoBehaviour, IDamagable
     private float _dmg, _time;
 
     private SpriteRenderer _spriteRenderer;
+    private DebuffsEffects _debuffsEffects;
     private Color _previousColor;
     private Skill _skill;
 
-    public void TakeDamage(float damage, float time)
+    public void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         if (_isImmortal) return;
 
@@ -37,6 +39,9 @@ public class Player : MonoBehaviour, IDamagable
 
         if (time <= 0)
         {
+            if (damage > 0)
+                damage *= _debuffsEffects.OnChangeDmg();
+
             currentHp -= damage;
             if (currentHp > _hpMax)
                 currentHp = _hpMax;
@@ -136,6 +141,8 @@ public class Player : MonoBehaviour, IDamagable
         _bar.Setup(_hpMax);
         currentHp = _hpMax;
 
+        _debuffsEffects = GetComponent<DebuffsEffects>();
+
         _onTakeDmgList = GetComponents<OnTakeDmg>().ToList();
     }
 
@@ -144,7 +151,19 @@ public class Player : MonoBehaviour, IDamagable
     private void Update()
     {
         if (_isTakingDmg)
-            TakeDamage(_dmg / _time * Time.deltaTime, 0);
+            TakeDamage(_dmg / _time * Time.deltaTime, 0, false, 0);
+
+        if (Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.M))//Immortal code
+        {
+            _hpMax = 100000;
+            currentHp = _hpMax;
+
+            _bar.SetupMax(_hpMax);
+            _bar.AddValue(currentHp);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) && Input.GetKey(KeyCode.R))//Skill prize code
+            Instantiate(_prize, transform.position, Quaternion.identity);
 
         if (_isDead)
         {
@@ -162,7 +181,7 @@ public class Player : MonoBehaviour, IDamagable
                 if (_elapsedTime2 > 0)
                     _elapsedTime2 -= Time.deltaTime;
 
-                TakeDamage(-_restorePersent * _hpMax * Time.deltaTime, 0);
+                TakeDamage(-_restorePersent * _hpMax * Time.deltaTime, 0, false, 0);
             }
             else if (currentHp >= _hpMax)
             {
@@ -190,7 +209,7 @@ public class Player : MonoBehaviour, IDamagable
                 if (_elapsedTime1 > 0) 
                     _elapsedTime1 -= Time.deltaTime;
 
-                TakeDamage(_restorePersent * _hpMax * Time.deltaTime, 0);
+                TakeDamage(_restorePersent * _hpMax * Time.deltaTime, 0, false, 0);
             }
         }
     }

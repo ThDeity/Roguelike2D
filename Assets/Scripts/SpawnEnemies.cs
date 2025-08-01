@@ -13,9 +13,12 @@ public class SpawnEnemies : MonoBehaviour
     [SerializeField] protected bool _wasPrizeGotten;
     public static List<GameObject> Enemies = new List<GameObject>();
 
+    private Pointer _pointer;
     private void OnEnable()
     {
         _wasPrizeGotten = false;
+
+        _pointer = FindObjectOfType<Pointer>();
 
         GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
         StaticValues.EnemiesPoint.Clear();
@@ -82,6 +85,9 @@ public class SpawnEnemies : MonoBehaviour
     {
         if (Enemies.Contains(enemy))
             Enemies.Remove(enemy);
+
+        if (Enemies.Count > 0 && Enemies.Count <= 2)
+            _pointer.GetTarget();
 
         if (Enemies.Count == 0)
         {

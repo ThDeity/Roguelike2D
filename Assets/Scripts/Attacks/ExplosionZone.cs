@@ -20,8 +20,8 @@ public class ExplosionZone : MonoBehaviour
     {
         if (collision.tag != tag && collision.TryGetComponent(out IDamagable component) && !_saveZone.collisions.Contains(collision))
         {
-            component.TakeDamage(_firstDmg, 0);
-            component.TakeDamage(_secondDmg, _timeOfTakingDmg);
+            component.TakeDamage(_firstDmg, 0, false, 0);
+            component.TakeDamage(_secondDmg, _timeOfTakingDmg, false, 0);
         }
     }
 

@@ -14,7 +14,7 @@ public class DebuffsEffects : MonoBehaviour
     protected Enemy _enemy;
     protected NavMeshAgent agent;
 
-    [Tooltip("0 - дазл, 1 - заморозка, 2 - оглушение, 3 - щит, 4 - очарование")]
+    [Tooltip("0 - дазл, 1 - заморозка, 2 - оглушение, 3 - щит, 4 - очарование, 5 - хрупкость")]
     [SerializeField] private List<GameObject> _effects;
 
     private void Start()
@@ -44,6 +44,8 @@ public class DebuffsEffects : MonoBehaviour
     {
         if (StaticValues.PlayerObj.IsExploding && !gameObject.TryGetComponent(out Circle enemy))
             Instantiate(StaticValues.PlayerObj.Explosion, transform.position, Quaternion.identity);
+
+        StopAllCoroutines();
     }
 
     public void Fading(float time, float persent) => StartCoroutine(FadingCoroutine(time, persent));
@@ -184,7 +186,7 @@ public class DebuffsEffects : MonoBehaviour
 
         isFrozen = true;
         float speed, cd = 1, newCd;
-        gameObject.GetComponent<IDamagable>().TakeDamage(damage, 0);
+        gameObject.GetComponent<IDamagable>().TakeDamage(damage, 0, false, 0);
         if (_isEnemy)
         {
             TryGetComponent(out Animator anim);
@@ -211,13 +213,15 @@ public class DebuffsEffects : MonoBehaviour
             StaticValues.PlayerAttackList.ForEach(value => { cd = value.reloadTime; value.reloadTime *= 1 - force; });
 
             speed = StaticValues.PlayerMovementObj.speed;
-            StaticValues.PlayerMovementObj.speed *= 1 - force;
+            //StaticValues.PlayerMovementObj.speed *= 1 - force;
+            StaticValues.PlayerMovementObj.ChangeSpeed(1 - force);
 
             yield return new WaitForSeconds(time);
 
             StaticValues.PlayerAttackList.ForEach(value => value.reloadTime = cd);
 
-            StaticValues.PlayerMovementObj.speed = speed;
+            //StaticValues.PlayerMovementObj.speed /= 1 - force;
+            StaticValues.PlayerMovementObj.ChangeSpeed(0,false);
         }
 
         isFrozen = false;
@@ -250,5 +254,41 @@ public class DebuffsEffects : MonoBehaviour
         _enemy.enabled = true;
 
         Destroy(effect);
+    }
+
+    protected int _stacks = 0;
+    protected bool _isChangeDmg;
+    protected float _coefficient;
+    public void ChangeGettingDmg(float time, float coefficient) => StartCoroutine(ChangeGettingDmgCoroutine(time, coefficient));
+
+    protected IEnumerator ChangeGettingDmgCoroutine(float time, float coefficient)
+    {
+        if (_isChangeDmg)
+        {
+            _stacks += 1;
+            _coefficient = coefficient > _coefficient ? coefficient : _coefficient;
+
+            yield break;
+        }
+
+        GameObject effect = SetEffect(5);
+
+        _isChangeDmg = true;
+        _coefficient = coefficient;
+
+        yield return new WaitForSeconds(time);
+
+        _isChangeDmg = false;
+        _coefficient = 1;
+
+        Destroy(effect);
+    }
+
+    public float OnChangeDmg()
+    {
+        if (!_isChangeDmg)
+            return 1f;
+
+        return _coefficient * _stacks;
     }
 }

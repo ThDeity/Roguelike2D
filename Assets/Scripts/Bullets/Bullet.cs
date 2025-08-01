@@ -68,10 +68,7 @@ public class Bullet : MonoBehaviour
         if (currentEnemy != null && collision.tag != transform.tag)
         {
             damage *= Random.Range(0, 100) <= critChance ? 2 : 1;
-            currentEnemy.TakeDamage(damage, timeTakingDmg);
-
-            if (tag == "Player")
-                StaticValues.PlayerObj.TakeDamage(-damage * lifeSteal, timeTakingDmg);
+            currentEnemy.TakeDamage(damage, timeTakingDmg, lifeSteal > 0, lifeSteal);
         }
 
         if (bullet == null)

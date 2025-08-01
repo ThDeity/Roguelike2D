@@ -19,7 +19,7 @@ public class MeleeAttack : MonoBehaviour
         if (collision.TryGetComponent(out IDamagable enemy) && collision.tag != tag)
         {
             float damage = Random.Range(0, 100) <= _critChance ? _damage * 2 : _damage;
-            enemy.TakeDamage(damage, 0);
+            enemy.TakeDamage(damage, 0, false, 0);
         }
     }
 }

@@ -17,7 +17,7 @@ public class Laser : MonoBehaviour
         {
             if (!collision.CompareTag(tag) && _currentTime <= 0)
             {
-                component.TakeDamage(damage, 0);
+                component.TakeDamage(damage, 0, false, 0);
                 _currentTime = timeBtwDamage;
             }
 

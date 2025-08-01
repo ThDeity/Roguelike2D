@@ -18,9 +18,9 @@ public class BossOfControling : Enemy
 
     private float _currentTime;
     bool _wasCopied;
-    public override void TakeDamage(float damage, float time)
+    public override void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
-        base.TakeDamage(damage, time);
+        base.TakeDamage(damage, time, isLifesteal, lifesteal);
 
         if (_currentHp <= maxHp * _hpToCopy && !_wasCopied && _currentHp > 0)
         {
@@ -52,7 +52,8 @@ public class BossOfControling : Enemy
 
     protected virtual Vector2 GeneratePos()
     {
-        if (_points[0] == null)
+        Debug.Log(_points.Count);
+        if (_points == null || _points.Count == 0 || _points[0] == null)
         {
             GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
             StaticValues.EnemiesPoint.Clear();
@@ -152,7 +153,7 @@ public class BossOfControling : Enemy
         base.Start();
 
         if (_wasCopied)
-            TakeDamage(0.5f * _currentHp, 0);
+            TakeDamage(0.5f * _currentHp, 0, false, 0);
     }
 
     protected override void Update()
@@ -161,9 +162,9 @@ public class BossOfControling : Enemy
         _currentTime -= Time.deltaTime;
 
         if (_isTakingDmg && isActiveAndEnabled)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
 
-        if (_isLaser)
+        if (_isLaser && _agent.isActiveAndEnabled && _agent.isOnNavMesh)
         {
             _agent.SetDestination(target.position);
 

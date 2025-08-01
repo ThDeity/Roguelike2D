@@ -24,7 +24,7 @@ public class Explosion : MonoBehaviour
 
                 collider.TryGetComponent(out IDamagable component);
                 if (component != null)
-                    component.TakeDamage(damage, 0);
+                    component.TakeDamage(damage, 0, false, 0);
 
                 collider.TryGetComponent(out NavMeshAgent agent);
                 if (agent != null)
@@ -50,7 +50,7 @@ public class Explosion : MonoBehaviour
                 
                 collider.TryGetComponent(out IDamagable component);
                 if (component != null)
-                    component.TakeDamage(damage, 0);
+                    component.TakeDamage(damage, 0, false, 0);
 
                 float distance = Vector2.Distance(collider.transform.position, transform.position);
                 distance = distance == 0 ? 0.01f : distance;

@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class HomingBullet : MonoBehaviour
@@ -37,7 +36,7 @@ public class HomingBullet : MonoBehaviour
         if (currentEnemy != null && collision.tag != transform.tag)
         {
             damage *= Random.Range(0, 100) <= critChance ? 2 : 1;
-            currentEnemy.TakeDamage(damage, timeTakingDmg);
+            currentEnemy.TakeDamage(damage, timeTakingDmg, false, 0);
         }
 
         if (currentEnemy == null || collision.tag != tag)

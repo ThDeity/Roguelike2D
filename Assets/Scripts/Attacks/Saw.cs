@@ -19,7 +19,7 @@ public class Saw : MonoBehaviour
         {
             if (_currentTime <= 0)
             {
-                enemy.TakeDamage(damage, 0);
+                enemy.TakeDamage(damage, 0, false, 0);
                 _currentTime = intervalBtwDmg;
             }
 

@@ -52,10 +52,8 @@ public class Lifesteal : MonoBehaviour
         {
             if (_currentTime <= 0)
             {
-                enemy.TakeDamage(damage, 0);
+                enemy.TakeDamage(damage, 0, true, 1);
                 _currentTime = intervalBtwDmg;
-
-                StaticValues.PlayerObj.TakeDamage(-damage, 0);
             }
 
             _currentTime -= Time.deltaTime;

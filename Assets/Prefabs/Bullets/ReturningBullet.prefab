@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _critChance: 5
-  _timeOfReturning: 4
+  _timeOfReturning: 2
   _maxSpeed: 18
   _minSpeed: 7
   _timeOfStopping: 1

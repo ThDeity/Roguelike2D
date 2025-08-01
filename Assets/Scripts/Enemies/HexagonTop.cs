@@ -17,7 +17,7 @@ public class HexagonTop : Enemy
         _time -= Time.deltaTime;
 
         if (_isTakingDmg)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal,_lifestealToPlayer);
 
         if (_rotateToObj != null && !_isAttack)
         {

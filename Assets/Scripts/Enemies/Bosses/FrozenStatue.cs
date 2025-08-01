@@ -39,7 +39,7 @@ public class FrozenStatue : Enemy
     protected override void Update()
     {
         if (_isTakingDmg)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
 
         _time -= Time.deltaTime;
 
@@ -56,12 +56,13 @@ public class FrozenStatue : Enemy
 
     protected override void FixedUpdate()
     {
-        if (!_isSleeping && _time <= 0)
+        if (!_isSleeping && _time <= 0 && (target.position - _transform.position).magnitude <= _attackDistance)
         {
             if (!_isNotShotFromPoint)
                 _rangeAttack.ShotFromPoint();
             else
                 _animator.Play("Attack");
+
             _time = _reloadTime;
         }
     }
@@ -95,7 +96,7 @@ public class FrozenStatue : Enemy
     }
 
     bool _isSleeping;
-    public override void TakeDamage(float damage, float time)
+    public override void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         if (_isSleeping) return;
 
@@ -103,6 +104,9 @@ public class FrozenStatue : Enemy
         {
             _currentHp -= damage;
             _bar.RemoveValue(damage);
+
+            if (isLifesteal)
+                StaticValues.PlayerObj.TakeDamage(-damage * lifesteal, 0, false, 0);
 
             if (_currentHp <= 0)
             {
@@ -118,13 +122,19 @@ public class FrozenStatue : Enemy
             _damageTaking += damage;
             _timeTaking += time;
 
+            if (isLifesteal)
+            {
+                _isLifesteal = true;
+                _lifestealToPlayer = lifesteal;
+            }
+
             if (_timeTaking > 0)
                 StopCoroutine(TakingDamage(time));
-            
+
             StartCoroutine(TakingDamage(_timeTaking));
         }
 
-        if (_hpBar != null && !_hpBar.activeInHierarchy && !_isSleeping)
+        if (_hpBar != null && !_hpBar.activeInHierarchy)
             _hpBar.SetActive(true);
     }
 
@@ -132,7 +142,6 @@ public class FrozenStatue : Enemy
     {
         _collider.enabled = false;
         _hpBar.SetActive(false);
-        Debug.Log(_hpBar.activeInHierarchy);
 
         _sprite.color = _color;
 

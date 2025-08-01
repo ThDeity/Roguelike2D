@@ -22,7 +22,7 @@ public class WaveBullet : MonoBehaviour
         if (collision.isTrigger || collision.TryGetComponent(out Bullet bullet)) return;
 
         if (collision.tag != tag && collision.TryGetComponent(out IDamagable component))
-            component.TakeDamage(_damage, 0);
+            component.TakeDamage(_damage, 0, false, 0);
 
         if (collision.TryGetComponent(out DebuffsEffects effects))
             effects.Fading(_timeOfFading, _lightDebuff);

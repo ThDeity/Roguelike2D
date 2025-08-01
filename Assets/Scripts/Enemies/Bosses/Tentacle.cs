@@ -49,7 +49,7 @@ public class Tentacle : MonoBehaviour
         {
             collision.TryGetComponent(out IDamagable damagable);
             if (damagable != null)
-                damagable.TakeDamage(_damage, 0);
+                damagable.TakeDamage(_damage, 0, false, 0);
 
             component.Dazzle(_timeOfStun);
             Destroy(gameObject);

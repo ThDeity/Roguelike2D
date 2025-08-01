@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.27450982, g: 0.2627451, b: 0.25490198, a: 1}
+  m_Color: {r: 0.31764707, g: 0.25490198, b: 0.21176471, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   - {fileID: 6150336271840881764, guid: 96b19505428d16e498aa679889330f37, type: 3}
   - {fileID: 246435125922145391, guid: 9725d731453138246aa221f8aa6acfdc, type: 3}
   - {fileID: 246435125922145391, guid: 9725d731453138246aa221f8aa6acfdc, type: 3}
-  _waves: 3
+  _waves: 1
   _enemiesPerWave: 3
   _boxSize: {x: 0.1, y: 0.1}
   _currentWaves: 0
@@ -329,7 +329,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.27450982, g: 0.2627451, b: 0.25490198, a: 1}
+  m_Color: {r: 0.31764707, g: 0.25490198, b: 0.21176471, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -423,7 +423,7 @@ Transform:
   m_GameObject: {fileID: 3789708939815971751}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.99997264, w: 0.007401775}
-  m_LocalPosition: {x: -0.16750002, y: 0.0415, z: 0}
+  m_LocalPosition: {x: -0.309, y: 0.039, z: 0}
   m_LocalScale: {x: 0.3852476, y: 0.03171277, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -836,8 +836,8 @@ Transform:
   m_GameObject: {fileID: 4860022360740676720}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.3841103, w: 0.9232873}
-  m_LocalPosition: {x: 0.0014999866, y: 1.0065001, z: 0}
-  m_LocalScale: {x: 0.8151836, y: 0.060420234, z: 0}
+  m_LocalPosition: {x: -0.01707, y: 0.98781, z: 0}
+  m_LocalScale: {x: 0.6782352, y: 0.060420234, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8622973403957169060}
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   - {fileID: 1313773208208694298, guid: ee45a85ee4395dc42a9ed9fe9e7388b1, type: 3}
   - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
   - {fileID: 9060506578043150397, guid: e42b645f172be4a46a32a019b54102dc, type: 3}
-  _waves: 3
+  _waves: 1
   _enemiesPerWave: 4
   _boxSize: {x: 0.1, y: 0.1}
   _currentWaves: 0
@@ -1247,7 +1247,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 5829095cf3c231b4d97125e4ffd17088, type: 2}
+      objectReference: {fileID: 23800000, guid: a2c75434e8d52c34ebba46265ac058b5, type: 2}
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_OverrideVoxelSize
       value: 0

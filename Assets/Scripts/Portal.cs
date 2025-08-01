@@ -4,7 +4,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     [SerializeField] private GameObject _buttonIcon;
-    [SerializeField] private int _roomsPerArea, _roomsCount, _index;
+    [SerializeField] private int _roomsPerArea, _index;
     [SerializeField] private Transform _pointForPrize, _pointForButton;
 
     [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]

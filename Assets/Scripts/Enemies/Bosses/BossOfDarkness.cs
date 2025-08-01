@@ -27,12 +27,15 @@ public class BossOfDarkness : Enemy
     protected int _currentCount;
 
     bool _isFurious;
-    public override void TakeDamage(float damage, float time)
+    public override void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         if (time == 0)
         {
             _currentHp -= damage;
             _bar.RemoveValue(damage);
+
+            if (isLifesteal)
+                StaticValues.PlayerObj.TakeDamage(-damage * lifesteal, 0, false, 0);
 
             if (_currentHp <= 0)
                 Destroy(gameObject);
@@ -42,8 +45,14 @@ public class BossOfDarkness : Enemy
         else
         {
             _isTakingDmg = true;
-            _damageTaking = damage;
-            _timeTaking = time;
+            _damageTaking += damage;
+            _timeTaking += time;
+
+            if (isLifesteal)
+            {
+                _isLifesteal = true;
+                _lifestealToPlayer = lifesteal;
+            }
 
             StartCoroutine(TakingDamage(time));
         }
@@ -371,7 +380,7 @@ public class BossOfDarkness : Enemy
         _currentTimeBtwShots -= Time.deltaTime;
 
         if (_isTakingDmg)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
     }
 
     protected override void FixedUpdate()

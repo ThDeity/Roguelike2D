@@ -35,7 +35,7 @@ public class Circle : Enemy
         Destroy(gameObject);
     }
 
-    public override void TakeDamage(float damage, float time)
+    public override void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         Explosion();
         Destroy(gameObject);

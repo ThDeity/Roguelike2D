@@ -15,7 +15,7 @@ public class ActiveSkill : Prize
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && Input.GetKey(KeyCode.E) && !StaticValues.WasPrizeGotten)
+        if (collision.tag == "Player" && Input.GetKey(KeyCode.E))// && !StaticValues.WasPrizeGotten)
         {
             _activeSkillsPanel.SetActive(true);
             _activeSkillsPanel.GetComponent<ActiveSkill>().ShowSkills();

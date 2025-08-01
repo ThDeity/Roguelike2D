@@ -446,8 +446,8 @@ Transform:
   m_GameObject: {fileID: 5058670988123137527}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.36468682, w: 0.9311303}
-  m_LocalPosition: {x: 15.11, y: -0.3, z: 0}
-  m_LocalScale: {x: 8.823022, y: 8.456608, z: 5.242114}
+  m_LocalPosition: {x: 14.03, y: -0.44, z: 0}
+  m_LocalScale: {x: 7.3412833, y: 7.036405, z: 4.3617535}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4004083816293832746}
@@ -678,7 +678,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3019608, g: 0.14509805, b: 0.3019608, a: 1}
+  m_Color: {r: 0.5137255, g: 0.65882355, b: 0.33333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -779,7 +779,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3019608, g: 0.14509805, b: 0.3019608, a: 1}
+  m_Color: {r: 0.5137255, g: 0.65882355, b: 0.33333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -942,7 +942,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3019608, g: 0.14509805, b: 0.3019608, a: 1}
+  m_Color: {r: 0.5137255, g: 0.65882355, b: 0.33333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -996,7 +996,7 @@ Transform:
   m_GameObject: {fileID: 8469890458184678201}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.36468682, w: 0.9311303}
-  m_LocalPosition: {x: -6.1, y: -11.8, z: 0}
+  m_LocalPosition: {x: -0.57, y: -12.52, z: 0}
   m_LocalScale: {x: 1.721727, y: 1.6502248, z: 1.0229477}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1475,7 +1475,7 @@ Transform:
   m_GameObject: {fileID: 9126103214423374888}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.16937715, w: 0.98555136}
-  m_LocalPosition: {x: -1.68, y: -5.15, z: 0}
+  m_LocalPosition: {x: 0.19, y: -5.01, z: 0}
   m_LocalScale: {x: 2.1062806, y: 2.0188081, z: 1.2514265}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1763,7 +1763,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 89fe3c0a029424744a94db60aeabcdc2, type: 2}
+      objectReference: {fileID: 23800000, guid: 964f2c31bebb2a34291a9b7154dac97a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

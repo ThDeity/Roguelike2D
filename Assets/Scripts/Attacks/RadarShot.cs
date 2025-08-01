@@ -15,7 +15,7 @@ public class RadarShot : MonoBehaviour
             collider.TryGetComponent(out IDamagable component);
             if (component != null && collider.tag != "Player" && maxEnemiesCount > 0)
             {
-                component.TakeDamage(damageBoost * bullet.damage, bullet.timeTakingDmg);
+                component.TakeDamage(damageBoost * bullet.damage, bullet.timeTakingDmg, bullet.lifeSteal > 0, bullet.lifeSteal);
                 maxEnemiesCount--;
             }
         }

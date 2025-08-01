@@ -39,7 +39,7 @@ public class Ballista : MonoBehaviour, IDamagable
 
     private bool _isTakingDmg;
     protected float _damageTaking, _timeTaking;
-    public void TakeDamage(float damage, float time)
+    public void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         if (time == 0)
         {
@@ -121,7 +121,7 @@ public class Ballista : MonoBehaviour, IDamagable
         _currentCd -= Time.deltaTime;
 
         if (_isTakingDmg)
-            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0);
+            TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, false, 0);
 
         if (_currentEnemy != null)
         {   

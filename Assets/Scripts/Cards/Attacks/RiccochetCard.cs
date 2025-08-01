@@ -37,6 +37,7 @@ public class RiccochetCard : Card
                     rico.riccochetsCount = _bounceCount;
                     rico.GetComponent<Collider2D>().isTrigger = false;
 
+                    bull.GetComponent<Rigidbody2D>().collisionDetectionMode = CollisionDetectionMode2D.Continuous;
                     bull.enabled = false;
                 }
             }
@@ -44,7 +45,16 @@ public class RiccochetCard : Card
         else
         {
             foreach (var a in StaticValues.PlayerAttackList)
-                a.GetComponent<Ricoshet>().riccochetsCount += _bounceCount;
+            {
+                a.bullet.TryGetComponent(out Ricoshet ricoshet);
+                a.bullet.TryGetComponent(out Bullet bull);
+
+                if (bull != null)
+                    bull.enabled = false;
+
+                if (ricoshet != null)
+                    ricoshet.riccochetsCount += _bounceCount;
+            }
         }
 
         SetAttackParam(_debuffDmg,0,_buffBulletSpeed,_debuffCd, 0,_buffMaxDistance);

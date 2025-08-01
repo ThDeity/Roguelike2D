@@ -8,7 +8,7 @@ public class SpawnPrize : MonoBehaviour
 
     [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes;
-    protected static int Rooms = 2;
+    protected static int Rooms = 5;
 
     [SerializeField] private GameObject _portal;
     [Tooltip("At least 3 points")]
@@ -85,8 +85,6 @@ public class SpawnPrize : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        Debug.Log(_portals.Count);
-
         for (int i = 0; i < _portals.Count; i++)
             _portals[i].SetActive(true);
 
@@ -99,6 +97,8 @@ public class SpawnPrize : MonoBehaviour
     {
         if (WasPrizeSpawn) return;
         WasPrizeSpawn = true;
+
+        Pointer pointer = FindObjectOfType<Pointer>();
 
         string type = StaticValues.CurrentRoomType;
         switch (type)
@@ -122,5 +122,13 @@ public class SpawnPrize : MonoBehaviour
                 StaticValues.WasPrizeGotten = true;
                 break;
         }
+
+        pointer.SetTarget(_prizePoint);
+    }
+
+    public void InstantiatePrize(Vector2 pos, int index)
+    {
+        Instantiate(_prizes[index], pos, Quaternion.identity);
+        Debug.Log("Spawn");
     }
 }

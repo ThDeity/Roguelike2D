@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3225124171637287940}
   - component: {fileID: 7354580697685189680}
-  - component: {fileID: -1390821454493775215}
+  - component: {fileID: 6080899637955470907}
   m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
@@ -276,7 +276,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1390821454493775215
+--- !u!114 &6080899637955470907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3199,8 +3199,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: dcf2997791bd5134884fb4ac1209ac08, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7687,7 +7687,7 @@ GameObject:
   - component: {fileID: 4698034948480750364}
   - component: {fileID: 8940801902187945244}
   - component: {fileID: 5826909062119527502}
-  - component: {fileID: -8115492522383443437}
+  - component: {fileID: 1583939197577317215}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -7790,7 +7790,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &4698034948480750364
 CircleCollider2D:
@@ -7859,6 +7859,7 @@ MonoBehaviour:
   _restorePersent: 0.25
   _immortalTime: 1.2
   _colorAfterDeath: {r: 0.4056604, g: 0.2277056, b: 0.2277056, a: 1}
+  _prize: {fileID: 9221463161419547699, guid: 30d55a9bbf9f5d743b8ce9fa6b73ae88, type: 3}
   IsExploding: 0
   Explosion: {fileID: 0}
   lifesCount: 0
@@ -7882,7 +7883,9 @@ MonoBehaviour:
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
   - {fileID: 2463234329937179597, guid: 62d5e808729071640917f188500ca05f, type: 3}
   - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
---- !u!114 &-8115492522383443437
+  - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
+  - {fileID: 4094485984770549047, guid: 68a3ebd970677e34faffab788d135d7b, type: 3}
+--- !u!114 &1583939197577317215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

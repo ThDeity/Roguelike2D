@@ -14,7 +14,7 @@ public class LightningBullets : MonoBehaviour
         {
             Debug.Log("Hello");
 
-            component.TakeDamage(damage, 0);
+            component.TakeDamage(damage, 0, false, 0);
             collision.gameObject.GetComponent<DebuffsEffects>().Dazzle(dazzleTime);
             maxEnemies -= 1;
 

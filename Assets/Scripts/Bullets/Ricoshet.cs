@@ -38,8 +38,7 @@ public class Ricoshet : Bullet
         if (currentEnemy != null && collision.transform.tag != transform.tag && bullet == null)
         {
             damage *= Random.Range(0, 100) < critChance ? 2 : 1;
-            currentEnemy.TakeDamage(damage, timeTakingDmg);
-            StaticValues.PlayerObj.TakeDamage(-damage * lifeSteal, timeTakingDmg);
+            currentEnemy.TakeDamage(damage, timeTakingDmg, lifeSteal > 0, lifeSteal);
         }
 
         if (currentEnemy != null && isDrillAmmo)
