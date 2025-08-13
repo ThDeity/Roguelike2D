@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class BossOfDarkness : Enemy
 {
@@ -14,7 +15,7 @@ public class BossOfDarkness : Enemy
     [SerializeField] protected int _countOfPoints, _countOfSpikes, _indexOfAttack, _countOfPulses, _countOfTraces, _countOfTentacles, _arrows, _countOfBombs,
                                                                                                 _countOfWaves, _countOfBullets, _countOfCircles;
 
-    [Tooltip("Названия анимаций атак до ярости и после")]
+    [Tooltip("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private List<string> _beforeFurious, _afterFurious;
     [SerializeField] private WaveBullet _shadowBullet;
     [SerializeField] private Light2D _vignette;
@@ -61,7 +62,8 @@ public class BossOfDarkness : Enemy
         {
             _isFurious = true;
             _indexOfAttack = 0;
-            Destroy(_globalLight.gameObject);
+            //Destroy(_globalLight.gameObject);
+            _globalLight.enabled = false;
 
             _minSpeed *= _furiousScale;
             _maxSpeed *= _furiousScale;
@@ -302,7 +304,7 @@ public class BossOfDarkness : Enemy
 
     protected override void FindPoint()
     {
-        if (_points[0] == null)
+        if (_points == null || _points.Count == 0)
         {
             GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
             StaticValues.EnemiesPoint.Clear();
@@ -341,10 +343,12 @@ public class BossOfDarkness : Enemy
 
     protected override void OnDestroy()
     {
-        base.OnDestroy();
+        StopAllCoroutines();
 
-        if (_currentLight != null )
+        if (_currentLight != null)
             Destroy(_currentLight);
+
+        _globalLight.enabled = true;
 
         GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
@@ -354,6 +358,8 @@ public class BossOfDarkness : Enemy
         StaticValues.WasPrizeGotten = true;
 
         StaticValues.PlayerMovementObj.ChangeSpeed(1, false);
+
+        SceneManager.LoadScene(2);
     }
 
     private void Awake() => StaticValues.WasPrizeGotten = false;
@@ -376,8 +382,11 @@ public class BossOfDarkness : Enemy
 
     protected override void Update()
     {
-        _time -= Time.deltaTime;
-        _currentTimeBtwShots -= Time.deltaTime;
+        if (!isCharmed)
+        {
+            _time -= Time.deltaTime;
+            _currentTimeBtwShots -= Time.deltaTime;
+        }
 
         if (_isTakingDmg)
             TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
@@ -385,39 +394,42 @@ public class BossOfDarkness : Enemy
 
     protected override void FixedUpdate()
     {
-        if (_currentTimeBtwShots <= 0 && !_agent.isStopped)
+        if (!isCharmed)
         {
-            Shot();
-            _currentTimeBtwShots = _timeBtwShots;
-        }
-
-        if (_time <= 0)
-        {
-            if (_beforeFurious.Count > 0 && !_isFurious)
-                _animator.Play(_beforeFurious[_indexOfAttack]);
-            else if (_afterFurious.Count > 0)
-                _animator.Play(_afterFurious[_indexOfAttack]);
+            if (_currentTimeBtwShots <= 0 && !_agent.isStopped)
+            {
+                Shot();
+                _currentTimeBtwShots = _timeBtwShots;
+            }
 
             if (_time <= 0)
-                _time = _reloadTime * Random.Range(0.6f, 1);
-            else
-                _time += _reloadTime * Random.Range(0.6f, 1);
-
-            if (!_isFurious)
-                _indexOfAttack = _indexOfAttack > _beforeFurious.Count - 2 ? 0 : _indexOfAttack + 1;
-            else
-                _indexOfAttack = _indexOfAttack > _afterFurious.Count - 2 ? 0 : _indexOfAttack + 1;
-        }
-
-        if (!_agent.isStopped && ((Vector2)_transform.position - _currentPos).sqrMagnitude <= _randomDistance)
-        {
-            FindPoint();
-            _currentCount++;
-
-            if (_currentCount == _countOfPoints)
             {
-                _currentCount = 0;
-                StartCoroutine(Stop());
+                if (_beforeFurious.Count > 0 && !_isFurious)
+                    _animator.Play(_beforeFurious[_indexOfAttack]);
+                else if (_afterFurious.Count > 0)
+                    _animator.Play(_afterFurious[_indexOfAttack]);
+
+                if (_time <= 0)
+                    _time = _reloadTime * Random.Range(0.6f, 1);
+                else
+                    _time += _reloadTime * Random.Range(0.6f, 1);
+
+                if (!_isFurious)
+                    _indexOfAttack = _indexOfAttack > _beforeFurious.Count - 2 ? 0 : _indexOfAttack + 1;
+                else
+                    _indexOfAttack = _indexOfAttack > _afterFurious.Count - 2 ? 0 : _indexOfAttack + 1;
+            }
+
+            if (!_agent.isStopped && ((Vector2)_transform.position - _currentPos).sqrMagnitude <= _randomDistance)
+            {
+                FindPoint();
+                _currentCount++;
+
+                if (_currentCount == _countOfPoints)
+                {
+                    _currentCount = 0;
+                    StartCoroutine(Stop());
+                }
             }
         }
     }

@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
         rollsCount = RollsCount;
     }
 
+    public void ChangeCurrentSpeed(float value) => _currentSpeed *= value;
+
     public void CheckComponents() => _rolls = GetComponents<Roll>().ToList();
 
     private void Awake()
@@ -97,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        speed = _speedBeforeDash;
+        speed = _currentSpeed;
         gameObject.layer = LayerMask.NameToLayer("Player");
 
         _rolls.ForEach(r => r.OnRollFinished());

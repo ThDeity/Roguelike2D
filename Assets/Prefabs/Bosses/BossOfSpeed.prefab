@@ -154,7 +154,7 @@ MonoBehaviour:
   _dashSpeed: 2700
   _timeBtwDashes: 2
   _timeBtwWawes: 1.6
-  _timeBtwMelleeAttack: 5
+  _timeBtwMelleeAttack: 2.5
   _trailTime: 7
   _trailDmg: 15
   _indexOfAttack: 0
@@ -219,10 +219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effectsScale: {x: 3.25, y: 4}
-  _isEnemy: 0
+  _isEnemy: 1
   _effects:
   - {fileID: 7525262866447704441, guid: 0afb168133122ed48845b3261bc73445, type: 3}
-  - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
+  - {fileID: 7484869316336041959, guid: 1d90b591f206aad4daa929af2910e55b, type: 3}
   - {fileID: 2463234329937179597, guid: 62d5e808729071640917f188500ca05f, type: 3}
   - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
   - {fileID: 3715782767700863887, guid: 67da4e390d2582f43b2862522d41ecea, type: 3}

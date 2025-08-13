@@ -26,6 +26,7 @@ public class Param : Prize
     public void ImproveSpeed(float persentPlus)
     {
         StaticValues.PlayerMovementObj.speed *= 1.0f + persentPlus / 100;
+        StaticValues.PlayerMovementObj.ChangeCurrentSpeed(1.0f + persentPlus / 100);
         _paramPanel.SetActive(false);
     }
 

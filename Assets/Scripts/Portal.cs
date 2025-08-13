@@ -111,7 +111,7 @@ public class Portal : MonoBehaviour
 
     private void OnDestroy()
     {
-        //Destroy(_icon);
-        //Destroy(_buttonE);
+        Destroy(_icon);
+        Destroy(_buttonE);
     }
 }

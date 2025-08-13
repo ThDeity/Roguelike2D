@@ -8,7 +8,7 @@ public class SpawnPrize : MonoBehaviour
 
     [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes;
-    protected static int Rooms = 5;
+    protected static int Rooms = 2;
 
     [SerializeField] private GameObject _portal;
     [Tooltip("At least 3 points")]

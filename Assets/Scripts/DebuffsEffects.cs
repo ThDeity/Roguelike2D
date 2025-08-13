@@ -14,7 +14,7 @@ public class DebuffsEffects : MonoBehaviour
     protected Enemy _enemy;
     protected NavMeshAgent agent;
 
-    [Tooltip("0 - дазл, 1 - заморозка, 2 - оглушение, 3 - щит, 4 - очарование, 5 - хрупкость")]
+    [Tooltip("0 - пїЅпїЅпїЅпїЅ, 1 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 2 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 3 - пїЅпїЅпїЅ, 4 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 5 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private List<GameObject> _effects;
 
     private void Start()
@@ -66,16 +66,38 @@ public class DebuffsEffects : MonoBehaviour
     public void FindEnemy()
     {
         float _minDistance = float.MaxValue;
-        foreach (GameObject enemy in SpawnEnemies.Enemies)
-        {
-            if (enemy != gameObject)
-            {
-                float distance = Vector2.Distance(transform.position, enemy.transform.position);
 
-                if (distance < _minDistance)
+        if (StaticValues.CurrentRoomType == "Boss")
+        {
+            Enemy[] enemies = FindObjectsOfType<Enemy>();
+
+            foreach (Enemy enemy in enemies)
+            {
+                if (enemy.gameObject != gameObject)
                 {
-                    _minDistance = distance;
-                    _enemy.target = enemy.transform;
+                    float distance = Vector2.Distance(transform.position, enemy.transform.position);
+
+                    if (distance < _minDistance)
+                    {
+                        _minDistance = distance;
+                        _enemy.target = enemy.transform;
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach (GameObject enemy in SpawnEnemies.Enemies)
+            {
+                if (enemy != gameObject)
+                {
+                    float distance = Vector2.Distance(transform.position, enemy.transform.position);
+
+                    if (distance < _minDistance)
+                    {
+                        _minDistance = distance;
+                        _enemy.target = enemy.transform;
+                    }
                 }
             }
         }
@@ -228,15 +250,17 @@ public class DebuffsEffects : MonoBehaviour
         Destroy(effect);
     }
 
+    protected bool _isSilenced;
     public void Silence(float time)
     {
-        if (!_isEnemy) return;
+        if (!_isEnemy || _isSilenced) return;
 
         StartCoroutine(GetSilence(time));
     }
 
     protected virtual IEnumerator GetSilence(float time)
     {
+        _isSilenced = true;
         GameObject effect = SetEffect(2);
 
         _enemy.enabled = false;
@@ -252,6 +276,7 @@ public class DebuffsEffects : MonoBehaviour
 
         _rangeAttacks.ForEach(attack => attack.enabled = true);
         _enemy.enabled = true;
+        _isSilenced = false;
 
         Destroy(effect);
     }

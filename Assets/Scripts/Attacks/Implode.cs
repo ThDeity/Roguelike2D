@@ -16,7 +16,7 @@ public class Implode : MonoBehaviour
         {
             Collider2D collider = colliders[i];
 
-            if (collider.attachedRigidbody != null)
+            if (collider.attachedRigidbody != null && collider.tag != "Player")
             {
                 Vector3 forceVector = (transform.position - collider.transform.position).normalized;
                 forceVector.z = 0;

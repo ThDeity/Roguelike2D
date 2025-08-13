@@ -154,7 +154,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &-1963866127276539274
 MonoBehaviour:
@@ -168,14 +168,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a29cc9f538ef484e96b1657a0719134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 150
   critChance: 5
   lifeTime: 0
   speed: 14.5
   lifeSteal: 0.1
   maxDistance: 18
   lifeTimeRange: 0
-  timeTakingDmg: 4
+  timeTakingDmg: 3
   _bulletVector: {x: -1, y: 0}
   isDrillAmmo: 0
 --- !u!114 &-3856076423925009773

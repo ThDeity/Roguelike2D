@@ -13,7 +13,7 @@ public class BossOfControling : Enemy
     [SerializeField] private GameObject _zoneOfCell, _laser, _copy, _laserTrace;
     [SerializeField] private List<Transform> _pointToCopy;
 
-    [Tooltip("Называть в той последовательности, в которой будет атака")]
+    [Tooltip("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private List<string> _animNames;
 
     private float _currentTime;
@@ -24,8 +24,18 @@ public class BossOfControling : Enemy
 
         if (_currentHp <= maxHp * _hpToCopy && !_wasCopied && _currentHp > 0)
         {
-            GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach( x => { if (x != gameObject) Destroy(x.gameObject); });
-            GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => { if (x != gameObject) Destroy(x.gameObject); });
+            StopAllCoroutines();
+            if (_isLaser)
+            {
+                DOTween.KillAll();
+                _agent.speed /= _laserSpeedDebuff;
+            }
+            _laser.SetActive(false);
+            _isLaser = false;
+            _laser.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+
+            GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => { if (x != gameObject && !x.transform.IsChildOf(transform) && !x.TryGetComponent(out MeleeAttack component)) Destroy(x.gameObject); });
+            GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => { if (x != gameObject && !x.transform.IsChildOf(transform) && !x.TryGetComponent(out MeleeAttack component)) Destroy(x.gameObject); });
 
             foreach (var p in _pointToCopy)
             {
@@ -52,7 +62,6 @@ public class BossOfControling : Enemy
 
     protected virtual Vector2 GeneratePos()
     {
-        Debug.Log(_points.Count);
         if (_points == null || _points.Count == 0 || _points[0] == null)
         {
             GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
@@ -177,35 +186,46 @@ public class BossOfControling : Enemy
             }
         }
 
-        if (isCharmed)
-            enabled = false;
+        if (!isCharmed)
+        {
+            _time -= Time.deltaTime;
+            _currentTime -= Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("ehehehe");
+            _agent.isStopped = true;
+        }
     }
 
     protected override void FixedUpdate()
     {
-        var distanceBtwPlayer = target.position - _transform.position;
-
-        if (_currentTime <= 0 && distanceBtwPlayer.sqrMagnitude <= _attackDistance * _attackDistance && !_isLaser)
+        if (!isCharmed)
         {
-            _animator.Play("MeleeAttack");
-            _currentTime = _timeBtwMelleeAttack;
-        }
+            var distanceBtwPlayer = target.position - _transform.position;
 
-        if ((_currentPos - (Vector2)_transform.position).sqrMagnitude > _randomDistance * _randomDistance && !_isLaser)
-            _agent.SetDestination(_currentPos);
-        else if (!_isLaser)
-            FindPoint();
-        
-        if (_time <= 0)
-        {
-            _animator.Play(_animNames[_indexOfAttack]);
+            if (_currentTime <= 0 && distanceBtwPlayer.sqrMagnitude <= _attackDistance * _attackDistance && !_isLaser)
+            {
+                _animator.Play("MeleeAttack");
+                _currentTime = _timeBtwMelleeAttack;
+            }
 
+            if ((_currentPos - (Vector2)_transform.position).sqrMagnitude > _randomDistance * _randomDistance && !_isLaser)
+                _agent.SetDestination(_currentPos);
+            else if (!_isLaser)
+                FindPoint();
+            
             if (_time <= 0)
-                _time = _reloadTime * Random.Range(0.6f, 1);
-            else
-                _time += _reloadTime * Random.Range(0.6f, 1);
+            {
+                _animator.Play(_animNames[_indexOfAttack]);
 
-            _indexOfAttack = _indexOfAttack > _animNames.Count - 2 ? 0 : _indexOfAttack + 1;
+                if (_time <= 0)
+                    _time = _reloadTime * Random.Range(0.6f, 1);
+                else
+                    _time += _reloadTime * Random.Range(0.6f, 1);
+
+                _indexOfAttack = _indexOfAttack > _animNames.Count - 2 ? 0 : _indexOfAttack + 1;
+            }
         }
     }
 

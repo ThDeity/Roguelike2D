@@ -9,7 +9,7 @@ public class BossOfSpeed : Enemy
     [SerializeField] private int _indexOfAttack, _numOfRolls, _numOfBullets, _numOfWawes;
     [SerializeField] private GameObject _zoneOfCircle, _bullet, _fireTrail;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [Tooltip("Называть в той последовательности, в которой будет атака")]
+    [Tooltip("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private List<string> _animNames;
     [SerializeField] private Color _sleepColor;
 
@@ -34,10 +34,13 @@ public class BossOfSpeed : Enemy
     private IEnumerator Sleep()
     {
         _spriteRenderer.color = _sleepColor;
+        _rigidbody2D.isKinematic = true;
         _animator.enabled = false;
         _agent.enabled = false;
 
         yield return new WaitForSeconds(_timeOfSleep);
+        
+        _rigidbody2D.isKinematic = false;
         _isSleeping = false;
         _animator.enabled = true;
         _agent.enabled = true;
@@ -212,29 +215,29 @@ public class BossOfSpeed : Enemy
 
     protected override void Update()
     {
-        _time -= Time.deltaTime;
-        _currentTime -= Time.deltaTime;
+        if (!isCharmed)
+        {
+            _time -= Time.deltaTime;
+            _currentTime -= Time.deltaTime;
+        }
 
         if (_isTakingDmg)
             TakeDamage(_damageTaking / _timeTaking * Time.deltaTime, 0, _isLifesteal, _lifestealToPlayer);
 
         if (!_isSleeping && target != null && !_isRolling)
-        {
-            Vector3 difference = target.position - _transform.position;
-            float roatZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            _transform.rotation = Quaternion.Euler(0f, 0f, roatZ + _offset);
+            {
+                Vector3 difference = target.position - _transform.position;
+                float roatZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                _transform.rotation = Quaternion.Euler(0f, 0f, roatZ + _offset);
 
-            if (_agent.isActiveAndEnabled)
-                _agent.SetDestination(target.position);
-
-            if (isCharmed)
-                _debuffs.FindEnemy();
-        }
+                if (_agent.isActiveAndEnabled)
+                    _agent.SetDestination(target.position);
+            }
     }
 
     protected override void FixedUpdate()
     {
-        if (!_isSleeping && target != null)
+        if (!_isSleeping && target != null && !isCharmed)
         {
             var distance = _currentPos - (Vector2) _transform.position;
             var distanceBtwPlayer = target.position - _transform.position;
@@ -290,6 +293,7 @@ public class BossOfSpeed : Enemy
 
         if (_currentHp <= 0)
             FindObjectOfType<SpawnPrize>().GivePrize();
+
         StaticValues.WasPrizeGotten = true;
     }
 }

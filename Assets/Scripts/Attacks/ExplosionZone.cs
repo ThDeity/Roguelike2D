@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ExplosionZone : MonoBehaviour
 {
-    [Tooltip("1 будет сильнее второго")]
+    [Tooltip("1 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private float _firstDmg, _secondDmg;
     [SerializeField] private int _timeOfTakingDmg;
     [SerializeField] private SaveZone _saveZone;
@@ -18,7 +18,10 @@ public class ExplosionZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != tag && collision.TryGetComponent(out IDamagable component) && !_saveZone.collisions.Contains(collision))
+        if (_saveZone != null && _saveZone.collisions.Contains(collision))
+            return;
+
+        if (collision.tag != tag && collision.TryGetComponent(out IDamagable component))
         {
             component.TakeDamage(_firstDmg, 0, false, 0);
             component.TakeDamage(_secondDmg, _timeOfTakingDmg, false, 0);

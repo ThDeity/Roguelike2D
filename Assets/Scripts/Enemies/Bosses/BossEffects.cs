@@ -13,11 +13,8 @@ public class BossEffects : DebuffsEffects
 
         yield return new WaitForSeconds(time);
 
-        if (!_enemy.isActiveAndEnabled)
-            _enemy.enabled = true;
-
         transform.tag = "Enemy";
-        gameObject.layer = LayerMask.NameToLayer("Enemy");
+        gameObject.layer = LayerMask.NameToLayer("Boss");
         _enemy.isCharmed = false;
 
         Destroy(effect);
@@ -30,7 +27,7 @@ public class BossEffects : DebuffsEffects
         GameObject effect = SetEffect(1);
 
         isFrozen = true;
-        float speed, cd = 1, newCd;
+        float speed, cd, newCd;
 
         gameObject.GetComponent<IDamagable>().TakeDamage(damage, 0, false, 0);
 
@@ -45,12 +42,15 @@ public class BossEffects : DebuffsEffects
         _enemy.ChangeReloadCd(cd / newCd);
         agent.speed = speed;
 
-        isFrozen = false;
         Destroy(effect);
+
+        yield return new WaitForSeconds(time);
+        isFrozen = false;
     }
 
     protected override IEnumerator GetSilence(float time)
     {
+        _isSilenced = true;
         GameObject effect = SetEffect(2);
 
         _enemy.enabled = false;
@@ -69,7 +69,11 @@ public class BossEffects : DebuffsEffects
         _enemy.enabled = true;
 
         Destroy(effect);
+        _isSilenced = true;
     }
 
-    protected override void OnDestroy() { }
+    protected override void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
 }

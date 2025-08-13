@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effectsScale: {x: 5, y: 5}
-  _isEnemy: 0
+  _isEnemy: 1
   _effects:
   - {fileID: 7525262866447704441, guid: 0afb168133122ed48845b3261bc73445, type: 3}
   - {fileID: 7162090808065114622, guid: 7d81befa70ae5b449ab930c7a5b531d8, type: 3}
