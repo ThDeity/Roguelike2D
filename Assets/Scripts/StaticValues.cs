@@ -30,7 +30,7 @@ public class StaticValues : MonoBehaviour
 
     public bool isMenu;
 
-    public static int RoomsBeforeBoss;
+    public static int RoomsBeforeBoss, CountOfRerolls = 3, CurrentCountOfRerolls;
     private void Awake()
     {
         if (!isMenu)
@@ -159,6 +159,7 @@ public class StaticValues : MonoBehaviour
 
         RoomsBeforeBoss = 0;
         Portal.NumOfArea = 0;
+        CurrentCountOfRerolls = 0;
 
         SceneManager.LoadScene(1);
     }

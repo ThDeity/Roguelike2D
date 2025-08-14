@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc7b2063b989834399c094a9abceabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 4.3945312
+  maxHp: 4
   radius: 10
   reloadTime: 0.75
   offset: -90

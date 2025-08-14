@@ -305,12 +305,14 @@ EdgeCollider2D:
   m_Points:
   - {x: -22.625973, y: -7.616837}
   - {x: 0.09247136, y: -7.5692596}
-  - {x: 11.239889, y: -26.895508}
-  - {x: 22.398216, y: -7.5665493}
-  - {x: 22.574316, y: -7.566549}
+  - {x: -0.09294891, y: -25.17397}
+  - {x: 22.574436, y: -25.198156}
+  - {x: 22.55082, y: -7.948057}
+  - {x: 22.574316, y: -7.639708}
   - {x: 22.553467, y: 8.3062315}
-  - {x: -0.070292816, y: 8.322104}
-  - {x: -11.215411, y: 27.6527}
+  - {x: 0.02620019, y: 8.322104}
+  - {x: 0.029780693, y: 25.84368}
+  - {x: -22.50484, y: 25.844875}
   - {x: -22.540302, y: 8.196484}
   - {x: -22.56792, y: -7.602095}
   m_AdjacentStartPoint: {x: 0, y: 0}
@@ -343,13 +345,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851491290615765757}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.5, w: 0.8660254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.22, y: -13.83, z: 0}
   m_LocalScale: {x: 22.5, y: 22.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1079512310097827460}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3622761126272934027
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -391,7 +393,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.22352941, g: 0.2509804, b: 0.33333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1066,7 +1068,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.22352941, g: 0.2509804, b: 0.33333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1709,7 +1711,7 @@ PrefabInstance:
     - target: {fileID: 8643332714025024402, guid: 90d602a87de364c40a5dd672bd920fc9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 5d56233adab76ac44aea5013404bb12c, type: 2}
+      objectReference: {fileID: 23800000, guid: 9d0e41e87e26af04dae9ccade4278b23, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

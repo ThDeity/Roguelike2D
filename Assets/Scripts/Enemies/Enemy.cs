@@ -80,7 +80,10 @@ public class Enemy : MonoBehaviour, IDamagable
     protected virtual void OnDestroy()
     {
         StopAllCoroutines();
-        FindObjectOfType<SpawnEnemies>().RemoveEnemy(gameObject);
+
+        SpawnEnemies spawn = FindObjectOfType<SpawnEnemies>();
+        if (spawn != null)
+            spawn.RemoveEnemy(gameObject);
     }
 
     public virtual float ChangeReloadCd(float change)

@@ -29,7 +29,7 @@ public class ActiveSkill : Prize
     {
         if (_skills.Count < _slots.Count)
         {
-            Debug.LogError("Не хватает заклинаний, их количество должно быть больше, либо равно количеству слотов");
+            Debug.LogError("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
             return;
         }
 
@@ -45,4 +45,23 @@ public class ActiveSkill : Prize
     }
 
     public void Escape() => _activeSkillsPanel.SetActive(false);
+
+    Button _rerollButton;
+    public void Reroll(Button button)
+    {
+        if (StaticValues.CurrentCountOfRerolls < StaticValues.CountOfRerolls)
+        {
+            StaticValues.CurrentCountOfRerolls += 1;
+            ShowSkills();
+
+            _rerollButton = button;
+            _rerollButton.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (_rerollButton != null && StaticValues.CurrentCountOfRerolls < StaticValues.CountOfRerolls)
+            _rerollButton.gameObject.SetActive(true);
+    }
 }

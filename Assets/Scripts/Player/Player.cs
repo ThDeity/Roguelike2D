@@ -30,6 +30,8 @@ public class Player : MonoBehaviour, IDamagable
     private Color _previousColor;
     private Skill _skill;
 
+    private static bool WasRevied;
+
     public void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         if (_isImmortal) return;
@@ -224,4 +226,6 @@ public class Player : MonoBehaviour, IDamagable
 
         return _hpMax;
     }
+
+    public void OnDestroy() => FindObjectsOfType<Enemy>().ToList().ForEach(x => Destroy(x.gameObject));
 }

@@ -14,6 +14,19 @@ public class PassiveSkill : Prize
         _epicSkills = new List<GameObject>(), _legendarySkills = new List<GameObject>();
     [SerializeField] private int _usualChance, _rareChance, _epicChance, _legendaryChance;
 
+    GameObject _rerollButton;
+    public void Reroll(GameObject button)
+    {
+        if (StaticValues.CurrentCountOfRerolls < StaticValues.CountOfRerolls)
+        {
+            StaticValues.CurrentCountOfRerolls += 1;
+            ShowSkills();
+
+            _rerollButton = button;
+            _rerollButton.gameObject.SetActive(false);
+        }
+    }
+
     private void Start() => _passiveSkillsPanel = StaticValues.PassiveSkillsPanel;
 
     private void OnTriggerStay2D(Collider2D collision)
