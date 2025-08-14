@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField] protected ValueSystem _bar = new ValueSystem();
-    [SerializeField] private float _hpMax, _restorePersent, _immortalTime;
+    [SerializeField] private float _hpMax, _restorePersent, _immortalTime, _radius;
+    [SerializeField] private GameObject _prize, _revivalPanel;
     [SerializeField] private Color _colorAfterDeath;
-    [SerializeField] private GameObject _prize;
     public float currentHp { private set; get; }
 
     public bool IsExploding;
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour, IDamagable
     private Color _previousColor;
     private Skill _skill;
 
-    private static bool WasRevied;
+    private static bool WasRevived;
 
     public void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
@@ -53,13 +53,13 @@ public class Player : MonoBehaviour, IDamagable
             else
                 _bar.AddValue(-damage);
 
-            if (currentHp <= 0 && lifesCount <= 0 && gameObject != null && !_isDead)
+            if (currentHp <= 0 && lifesCount <= 0 && gameObject != null && !_isDead && WasRevived)
             {
                 StaticValues.ResetStatics();
 
                 SceneManager.LoadScene("Menu");
             }
-            else if (currentHp <= 0 && lifesCount > 0 && !_isDead)
+            else if (currentHp <= 0 && ((lifesCount > 0 && !_isDead) || !WasRevived))
             {
                 lifesCount -= 1;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -76,9 +76,13 @@ public class Player : MonoBehaviour, IDamagable
                     _skill = skill;
                     _skill.enabled = false;
                 }
+
+                if (lifesCount < 0)
+                {
+                    _revivalPanel.SetActive(true);
+                    WasRevived = true;
+                }
             }
-            else if (currentHp > _hpMax)
-                currentHp = _hpMax;
         }
         else
         {
@@ -167,7 +171,7 @@ public class Player : MonoBehaviour, IDamagable
         if (Input.GetKeyDown(KeyCode.P) && Input.GetKey(KeyCode.R))//Skill prize code
             Instantiate(_prize, transform.position, Quaternion.identity);
 
-        if (_isDead)
+        if (_isDead && lifesCount > -1)
         {
             if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyDown(KeyCode.Space))
                 _currentColor = _spriteRenderer.color;
@@ -187,6 +191,13 @@ public class Player : MonoBehaviour, IDamagable
             }
             else if (currentHp >= _hpMax)
             {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _radius);
+                foreach (var collider in colliders)
+                {
+                    if (collider.TryGetComponent(out Enemy enemy) && collider.isTrigger == false)
+                        enemy.TakeDamage(100000f, 0, false, 0);
+                }
+
                 _elapsedTime1 = _elapsedTime2 = 0;
                 _currentColor = _previousColor;
 
@@ -214,6 +225,12 @@ public class Player : MonoBehaviour, IDamagable
                 TakeDamage(_restorePersent * _hpMax * Time.deltaTime, 0, false, 0);
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _radius);
     }
 
     public float ChangeMxHp(float hpChange)
