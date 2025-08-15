@@ -7,7 +7,11 @@ public class SlideCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Slide \n +{(_buffSpeed - 1) * 100}% Speed \n +{(_buffMxHp - 1) * 100}% HP \n -{(_debuffSpeed - 1) * 100}% Speed while attacking\n -{(_reloadCd - 1) * 100}% Reload";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Slide \n +{(_buffSpeed - 1) * 100}% Speed \n +{(_buffMxHp - 1) * 100}% HP \n -{(_debuffSpeed - 1) * 100}% Speed while attacking\n -{(_reloadCd - 1) * 100}% Reload";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Слайд \n +{(_buffSpeed - 1) * 100}% Скорость \n +{(_buffMxHp - 1) * 100}% ХП \n -{(_debuffSpeed - 1) * 100}% Скорость после атаки\n -{(_reloadCd - 1) * 100}% Перез-ка";
     }
 
     public void GivePrize()

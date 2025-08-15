@@ -8,7 +8,11 @@ public class FrozenBurstCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Frozen Burst \n +{_interval}s Interval \n +{_radius}m Radius \n +{_damage}% DMG";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Frozen Burst\n +{_interval}s Interval \n +{_radius}m Radius \n +{_damage}% DMG";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Ледяной Всплеск\n +{_interval}с Интервал\n +{_radius}м Радиус\n +{_damage}% ДМГ";
     }
 
     public void GivePrize()

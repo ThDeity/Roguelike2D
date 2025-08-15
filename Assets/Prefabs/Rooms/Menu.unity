@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 189822613}
   - component: {fileID: 189822615}
   - component: {fileID: 189822614}
+  - component: {fileID: 189822616}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -347,6 +348,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189822612}
   m_CullTransparentMesh: 1
+--- !u!114 &189822616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189822612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &207358866
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,6 +642,7 @@ GameObject:
   - component: {fileID: 464973501}
   - component: {fileID: 464973503}
   - component: {fileID: 464973502}
+  - component: {fileID: 464973504}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -693,6 +711,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464973500}
   m_CullTransparentMesh: 1
+--- !u!114 &464973504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464973500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &483049788
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,6 +946,7 @@ GameObject:
   - component: {fileID: 519653629}
   - component: {fileID: 519653631}
   - component: {fileID: 519653630}
+  - component: {fileID: 519653632}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -980,6 +1015,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519653628}
   m_CullTransparentMesh: 1
+--- !u!114 &519653632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519653628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &558597205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1352,7 @@ GameObject:
   - component: {fileID: 741528615}
   - component: {fileID: 741528617}
   - component: {fileID: 741528616}
+  - component: {fileID: 741528618}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -1369,6 +1421,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741528614}
   m_CullTransparentMesh: 1
+--- !u!114 &741528618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741528614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &770965404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,6 +1610,7 @@ GameObject:
   - component: {fileID: 813719560}
   - component: {fileID: 813719562}
   - component: {fileID: 813719561}
+  - component: {fileID: 813719563}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -1610,6 +1679,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813719559}
   m_CullTransparentMesh: 1
+--- !u!114 &813719563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813719559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &827058349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,6 +1949,7 @@ GameObject:
   - component: {fileID: 867202955}
   - component: {fileID: 867202957}
   - component: {fileID: 867202956}
+  - component: {fileID: 867202958}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -1932,6 +2018,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867202954}
   m_CullTransparentMesh: 1
+--- !u!114 &867202958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867202954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &1090169451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2190,6 +2292,7 @@ GameObject:
   - component: {fileID: 1108652626}
   - component: {fileID: 1108652628}
   - component: {fileID: 1108652627}
+  - component: {fileID: 1108652629}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -2258,6 +2361,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108652625}
   m_CullTransparentMesh: 1
+--- !u!114 &1108652629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108652625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &1175258270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,6 +2622,7 @@ GameObject:
   - component: {fileID: 1274043799}
   - component: {fileID: 1274043801}
   - component: {fileID: 1274043800}
+  - component: {fileID: 1274043802}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -2571,6 +2691,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274043798}
   m_CullTransparentMesh: 1
+--- !u!114 &1274043802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274043798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1001 &1312668859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3135,6 +3271,7 @@ GameObject:
   - component: {fileID: 1874875421}
   - component: {fileID: 1874875423}
   - component: {fileID: 1874875422}
+  - component: {fileID: 1874875424}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -3203,6 +3340,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874875420}
   m_CullTransparentMesh: 1
+--- !u!114 &1874875424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874875420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &1884446679
 GameObject:
   m_ObjectHideFlags: 0

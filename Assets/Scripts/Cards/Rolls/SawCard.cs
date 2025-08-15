@@ -8,7 +8,11 @@ public class SawCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Saw Roll \n +{_rollCdDebuff} Roll CD";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Saw Roll \n +{_rollCdDebuff} Roll CD";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Режущий Рывок\n +{_rollCdDebuff} КД Рывка";
     }
 
     public void GivePrize()

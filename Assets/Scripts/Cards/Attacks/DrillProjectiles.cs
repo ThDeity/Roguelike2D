@@ -5,7 +5,11 @@ public class DrillProjectiles : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Drill Bullets \n Bullets go through enemies";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Drill Bullets\n Bullets go through enemies";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Сквозные Пули\n Пули проходят сквозь врагов";
     }
 
     public void GivePrize()

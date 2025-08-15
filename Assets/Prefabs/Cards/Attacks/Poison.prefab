@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8114743680952464078}
   - component: {fileID: 3004150934874184920}
   - component: {fileID: 6246905466695351670}
+  - component: {fileID: 4978404536488275174}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -79,6 +80,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Poison
+--- !u!114 &4978404536488275174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121416944247390863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &593224310339454209
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +109,7 @@ GameObject:
   - component: {fileID: 4768829058330889047}
   - component: {fileID: 9208074288364725192}
   - component: {fileID: 8015018343018933044}
+  - component: {fileID: -6032195462366644646}
   m_Layer: 6
   m_Name: Poison
   m_TagString: Untagged
@@ -226,7 +244,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: Poisoning and killing. But it takes time.
-  count: {fileID: 0}
+  _titleMeshPro: {fileID: 0}
   _dmgBuff: 1.5
   _cdDebuff: 1.2
   _timeOfTakingDmg: 3
+--- !u!114 &-6032195462366644646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593224310339454209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0

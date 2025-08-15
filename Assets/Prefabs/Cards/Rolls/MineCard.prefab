@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6897509752424726910}
   - component: {fileID: 3183538129333424616}
   - component: {fileID: 2841845003957976344}
+  - component: {fileID: -3451335408418008282}
   m_Layer: 6
   m_Name: MineCard
   m_TagString: Untagged
@@ -147,10 +148,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: 
-  count: {fileID: 0}
+  _titleMeshPro: {fileID: 0}
   _mine: {fileID: 3226639717662612572, guid: d3a1f825f90021646b250c824ecf33f9, type: 3}
   _rollDebuff: 0.25
   _mineSizeBuff: 1.2
+--- !u!114 &-3451335408418008282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667681557832002753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0
 --- !u!1 &3659682296497787336
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +179,7 @@ GameObject:
   - component: {fileID: 922016962974781430}
   - component: {fileID: 1055874815568850817}
   - component: {fileID: 4329450567133787281}
+  - component: {fileID: -425250717668839816}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -230,3 +248,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Mine Roll
+--- !u!114 &-425250717668839816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3659682296497787336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1

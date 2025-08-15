@@ -8,7 +8,11 @@ public class ImplodeCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Implode Roll \n +{_rollCdDebuff} Roll CD \n +{(1 - _hpBuff) * 100}% HP";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Implode Roll \n +{_rollCdDebuff} Roll CD \n +{(1 - _hpBuff) * 100}% HP";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Притягивающий Рывок\n +{_rollCdDebuff} КД Рывка\n +{(1 - _hpBuff) * 100}% ХП";
     }
 
     public void GivePrize()

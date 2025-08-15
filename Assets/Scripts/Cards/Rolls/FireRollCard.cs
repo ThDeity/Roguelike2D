@@ -8,7 +8,11 @@ public class FireRollCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Fire Roll \n +{_rollCdDebuff} Roll CD";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Fire Roll \n +{_rollCdDebuff} Roll CD";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Огненный Рывок\n +{_rollCdDebuff} КД Рывка";
     }
 
     public void GivePrize()

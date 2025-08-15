@@ -9,7 +9,11 @@ public class SpikesCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Spikes \n {_interval}s Interval \n +{_spikesCount} Spikes";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Spikes\n {_interval}s Interval \n +{_spikesCount} Spikes";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Ўипы \n {_interval}с »нтервал\n +{_spikesCount} Ўипов";
     }
 
     public void GivePrize()

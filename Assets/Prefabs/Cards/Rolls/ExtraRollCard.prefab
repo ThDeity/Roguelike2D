@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8220125420419340255}
   - component: {fileID: 7501838876697579524}
   - component: {fileID: 6034155654078823199}
+  - component: {fileID: 5405466882379933517}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -79,6 +80,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Extra Roll
+--- !u!114 &5405466882379933517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552889814599734660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &7259452717949989695
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +109,7 @@ GameObject:
   - component: {fileID: 540658417087544135}
   - component: {fileID: 336180859667354887}
   - component: {fileID: 8155053130116351292}
+  - component: {fileID: 5011943637480338006}
   m_Layer: 6
   m_Name: ExtraRollCard
   m_TagString: Untagged
@@ -226,5 +244,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: 
-  count: {fileID: 0}
+  _titleMeshPro: {fileID: 0}
   _rollCdDebuff: 0.1
+--- !u!114 &5011943637480338006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7259452717949989695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0

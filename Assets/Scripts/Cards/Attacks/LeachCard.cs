@@ -7,7 +7,11 @@ public class LeachCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Leach \n +{_lifeSteal * 100}% Lifesteal \n +{(_mxHpBuff - 1) * 100}% HP";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Leach \n +{_lifeSteal * 100}% Lifesteal \n +{(_mxHpBuff - 1) * 100}% HP";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Лич \n +{_lifeSteal * 100}% Кража ХП \n +{(_mxHpBuff - 1) * 100}% ХП";
     }
 
     public void GivePrize()

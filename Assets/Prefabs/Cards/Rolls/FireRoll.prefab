@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4853045647877146465}
   - component: {fileID: 5977625276456905637}
   - component: {fileID: 3105143468951730052}
+  - component: {fileID: -508794596382284324}
   m_Layer: 6
   m_Name: FireRoll
   m_TagString: Untagged
@@ -147,10 +148,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: 
-  count: {fileID: 0}
+  _titleMeshPro: {fileID: 0}
   _trail: {fileID: -8645998168046745852, guid: 762f5a4e34dd3234e9fdb331822a49c3, type: 3}
   _rollCdDebuff: 0.08
   _radiusBuff: 1.15
+--- !u!114 &-508794596382284324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916966394376375998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0
 --- !u!1 &8622613751359238614
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +179,7 @@ GameObject:
   - component: {fileID: 2546753792829481261}
   - component: {fileID: 8468377888902075253}
   - component: {fileID: 1122747996094572044}
+  - component: {fileID: 216348542721867195}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -230,3 +248,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Fire Roll
+--- !u!114 &216348542721867195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8622613751359238614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1

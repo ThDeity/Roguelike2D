@@ -20,6 +20,11 @@ public class PassiveSkill : Prize
         if (StaticValues.CurrentCountOfRerolls < StaticValues.CountOfRerolls)
         {
             StaticValues.CurrentCountOfRerolls += 1;
+            foreach (Transform slot in _slots)
+            {
+                for (int i = 0; i < slot.childCount; i++)
+                    Destroy(slot.GetChild(i).gameObject);
+            }
             ShowSkills();
 
             _rerollButton = button;

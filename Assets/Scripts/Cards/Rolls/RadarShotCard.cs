@@ -8,7 +8,11 @@ public class RadarShotCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Radar Shot Roll \n +{_rollCdDebuff} Roll CD \n +{(_radarShot.damageBoost - 1) * 100}% Radar DMG from your DMG";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Radar Shot Roll\n +{_rollCdDebuff} Roll CD \n +{(_radarShot.damageBoost - 1) * 100}% Radar DMG from your DMG";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Стреляющий Рывок\n +{_rollCdDebuff} КД Рывка\n +{(_radarShot.damageBoost - 1) * 100}% Увеличение урона от Выстрела";
     }
 
     public void GivePrize()

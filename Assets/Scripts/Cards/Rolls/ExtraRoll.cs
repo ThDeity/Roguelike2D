@@ -7,7 +7,11 @@ public class ExtraRoll : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Extra Roll \n +{_rollCdDebuff} Roll CD";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Extra Roll \n +{_rollCdDebuff} Roll CD";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Дополнительный Рывок\n +{_rollCdDebuff} КД Рывка";
     }
 
     public void GivePrize()

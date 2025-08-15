@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6519162581831207905}
   - component: {fileID: 4550886599254329415}
   - component: {fileID: 466714857014368221}
+  - component: {fileID: -8708199290340305752}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -27,15 +28,15 @@ RectTransform:
   m_GameObject: {fileID: 5926129067047062241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8416613279546351737}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -4.6288, y: 24.3655}
-  m_SizeDelta: {x: -22.7424, y: 42.6485}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -4, y: 25.2}
+  m_SizeDelta: {x: 120, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4550886599254329415
 CanvasRenderer:
@@ -66,18 +67,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3ccb5d2bf5c46d241adb51cadd503cfc, type: 3}
+    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 300
+    m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 0.7
   m_Text: 'Barrage
 
     -40% DMG
@@ -85,6 +86,22 @@ MonoBehaviour:
     -40% Reload
 
     +5 Bullets'
+--- !u!114 &-8708199290340305752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5926129067047062241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &8759374448960228498
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,6 +115,7 @@ GameObject:
   - component: {fileID: 7690412078583648716}
   - component: {fileID: 1574832241178053273}
   - component: {fileID: 8680008365084589869}
+  - component: {fileID: -4263586151990842508}
   m_Layer: 6
   m_Name: Barrage
   m_TagString: Untagged
@@ -231,8 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f94fa0afb297a4e94831fb72b2ade6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Your attack style is changing because now you have a shotgun!
-  _titleMeshPro: {fileID: 0}
+  _titleEng: 
+  _titleRus: 
   _dmgDebuff: 0.6
   _cdDebuff: 1.4
   _anglesOffset: 18.2
@@ -241,3 +259,19 @@ MonoBehaviour:
   _minSpeed: 1.15
   _bulletSpeed: 1.4
   _bulletsCount: 5
+--- !u!114 &-4263586151990842508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759374448960228498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0

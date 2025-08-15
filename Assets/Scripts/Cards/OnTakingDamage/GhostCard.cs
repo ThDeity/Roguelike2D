@@ -8,7 +8,11 @@ public class GhostCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Ghost \n {_timeOf}s Time \n {_interval}s Interval";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Ghost \n {_timeOf}s of Invulnerability\n {_interval}s Interval";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Призрак\n {_timeOf}с Неуязвимости\n {_interval}с Интервал";
     }
 
     public void GivePrize()

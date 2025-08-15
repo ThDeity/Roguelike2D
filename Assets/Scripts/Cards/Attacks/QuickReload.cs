@@ -8,7 +8,11 @@ public class QuickReload : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Quick Reload \n +{(1 - _cdBuff) * 100}% Reload";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Quick Reload \n +{(1 - _cdBuff) * 100}% Reload";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Быстрая Перезарядка \n +{(1 - _cdBuff) * 100}% Перез-ка";
     }
 
     public void GivePrize()

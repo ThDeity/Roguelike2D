@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5706960969848784477}
   - component: {fileID: 5940932071221462092}
   - component: {fileID: 6706434724107716296}
+  - component: {fileID: 5995086414744178689}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -79,6 +80,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Steady Shot
+--- !u!114 &5995086414744178689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51515264434342534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &8163953410234770135
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +109,7 @@ GameObject:
   - component: {fileID: 4627455483391752112}
   - component: {fileID: 2362572750747478742}
   - component: {fileID: 4349301400078459032}
+  - component: {fileID: -3674215358788865736}
   m_Layer: 6
   m_Name: Slide
   m_TagString: Untagged
@@ -225,10 +243,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812d72b0d9c83f040a0a4c7eebb7b00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: The speed is much higher, but much less during the attack (
-  count: {fileID: 0}
+  _titleEng: You're super fast. Until you take a shot...
+  _titleRus: "\u0422\u044B \u0441\u0443\u043F\u0435\u0440 \u0431\u044B\u0441\u0442\u0440\u044B\u0439.
+    \u041F\u043E\u043A\u0430 \u043D\u0435 \u0441\u0434\u0435\u043B\u0430\u0435\u0448\u044C
+    \u0432\u044B\u0441\u0442\u0440\u0435\u043B..."
   _buffSpeed: 2
   _debuffSpeed: 0.6
   _buffMxHp: 1.1
   _reloadCd: 2.5
   _buff: 1.1
+--- !u!114 &-3674215358788865736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8163953410234770135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0

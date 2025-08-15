@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1054558082658007448}
   - component: {fileID: 5868295823700082263}
   - component: {fileID: 5972530504888915748}
+  - component: {fileID: 1014081449888010721}
   m_Layer: 6
   m_Name: Trickster
   m_TagString: Untagged
@@ -146,11 +147,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fa7797378669d49ad7433549246674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: With each bounce, your bullet will become stronger and more dangerous.
-  count: {fileID: 0}
+  _titleEng: Your bullets are ricocheting and amplifying
+  _titleRus: "\u0422\u0432\u043E\u0438 \u043F\u0443\u043B\u0438 \u0440\u0438\u043A\u043E\u0448\u0435\u0442\u044F\u0442
+    \u0438 \u0443\u0441\u0438\u043B\u0438\u0432\u0430\u044E\u0442\u0441\u044F"
   _debuffCd: 1.1
   _bonusDmgPerBounce: 0.25
   _bonusBounces: 2
+--- !u!114 &1014081449888010721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810098483846054837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0
 --- !u!1 &7046718775941667980
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +180,7 @@ GameObject:
   - component: {fileID: 519893279968202842}
   - component: {fileID: 3974928960453169857}
   - component: {fileID: 7561647648560488445}
+  - component: {fileID: -2815856739835926083}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -230,3 +249,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Trickster
+--- !u!114 &-2815856739835926083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046718775941667980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1

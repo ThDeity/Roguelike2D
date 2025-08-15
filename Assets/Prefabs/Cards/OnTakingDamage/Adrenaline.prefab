@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4837496996856586794}
   - component: {fileID: 4240858656103000383}
   - component: {fileID: 6464653983952477986}
+  - component: {fileID: -7410717475391552397}
   m_Layer: 6
   m_Name: Adrenaline
   m_TagString: Untagged
@@ -146,14 +147,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d124c6421bddb459039b958af09e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: You temporarily become stronger after taking damage. Whether out of rage
-    or fear, who knows
-  count: {fileID: 0}
+  _titleEng: When you receive damage, you temporarily strengthen
+  _titleRus: "\u041A\u043E\u0433\u0434\u0430 \u0432\u044B \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u0442\u0435
+    \u0443\u0440\u043E\u043D, \u0432\u044B \u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E
+    \u0443\u0441\u0438\u043B\u0438\u0432\u0430\u0435\u0442\u0435\u0441\u044C"
   _buffTime: 5
   _interval: 9.5
   _buff: 1.5
   _buffCd: 0.75
   _cardBuff: 1.15
+--- !u!114 &-7410717475391552397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111161710296245761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0
 --- !u!1 &8866156854697723360
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +183,7 @@ GameObject:
   - component: {fileID: 6265985893324873995}
   - component: {fileID: 562731498647073869}
   - component: {fileID: 8378462412017157142}
+  - component: {fileID: 7509231605612647881}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -233,3 +252,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Adrenaline
+--- !u!114 &7509231605612647881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8866156854697723360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1

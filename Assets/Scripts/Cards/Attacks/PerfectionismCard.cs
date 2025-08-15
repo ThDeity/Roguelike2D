@@ -8,7 +8,11 @@ public class PerfectionismCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Perfectionism \n +{(_buffDmg - 1) * 100}% DMG\n -{(_debuffCd - 1) * 100}% Reload";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Perfectionism \n +{(_buffDmg - 1) * 100}% DMG\n -{(_debuffCd - 1) * 100}% Reload";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Перфекционист \n +{(_buffDmg - 1) * 100}% ДМГ\n -{(_debuffCd - 1) * 100}% Перез-ка";
     }
 
     public void GivePrize()

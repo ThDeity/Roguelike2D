@@ -7,7 +7,11 @@ public class DazzleCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Dazzle \n -{(_cdDebuff - 1) * 100}% Reload \n {_time}s Of Dazzle";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Dazzle \n -{(_cdDebuff - 1) * 100}% Reload \n {_time}s Of Dazzle";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Оглушение \n -{(_cdDebuff - 1) * 100}% Перез-ка \n {_time}с Оглушения";
     }
 
     public void GivePrize()

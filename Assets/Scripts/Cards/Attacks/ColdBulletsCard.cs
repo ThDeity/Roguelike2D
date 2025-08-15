@@ -7,7 +7,11 @@ public class ColdBulletsCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Cold Bullets \n -{(_cdDebuff - 1) * 100}% Reload \n +{(1 - _speedReduce) * 100}% Speed Reduce";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Cold Bullets \n -{(_cdDebuff - 1) * 100}% Reload \n +{(1 - _speedReduce) * 100}% Speed Reduce";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Ледяные Пули \n -{(_cdDebuff - 1) * 100}% Перез-ка \n +{(1 - _speedReduce) * 100}% Замедления";
     }
 
     public void GiveOrize()

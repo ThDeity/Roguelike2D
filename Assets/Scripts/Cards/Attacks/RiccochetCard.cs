@@ -8,7 +8,11 @@ public class RiccochetCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Riccochet \n +{(_buffBulletSpeed - 1) * 100}% Bullet Speed \n +{(_buffMaxDistance - 1) * 100}% Max distance \n -{(1 - _debuffDmg) * 100}% DMG\n -{(_debuffCd - 1) * 100}% Reload \n +{_bounceCount} Riccochets";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Riccochet\n +{(_buffBulletSpeed - 1) * 100}% Bullet speed\n +{(_buffMaxDistance - 1) * 100}% Max distance\n -{(1 - _debuffDmg) * 100}% DMG\n -{(_debuffCd - 1) * 100}% Reload\n +{_bounceCount} Riccochets";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Рикошет\n +{(_buffBulletSpeed - 1) * 100}% Скорость пули\n +{(_buffMaxDistance - 1) * 100}% Длина выстрела\n -{(1 - _debuffDmg) * 100}% ДМГ\n -{(_debuffCd - 1) * 100}% Перез-ка\n +{_bounceCount} Рикошета";
     }
 
     public void GivePrize()

@@ -9,7 +9,11 @@ public class CollapseCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Collapse \n +{(_buffDmg - 1) * 100}% DMG \n -{(_debuffCd - 1) * 100}% Reload \n +{_bulletsCount} Bullets\n -{_debuffSpeed - 1}% Bullet Speed \n +{(_buffSize - 1) * 100}% Size";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Collapse \n +{(_buffDmg - 1) * 100}% DMG \n -{(_debuffCd - 1) * 100}% Reload \n +{_bulletsCount} Bullets\n -{_debuffSpeed - 1}% Bullet Speed \n +{(_buffSize - 1) * 100}% Size";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Распад \n + {(_buffDmg - 1) * 100} % ДМГ \n - {(_debuffCd - 1) * 100} % Перез-ка \n + {_bulletsCount}  Пуль\n - {_debuffSpeed - 1} % Скорость Пули \n + {(_buffSize - 1) * 100} % Размер";
     }
 
     public void GivePrize()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4010029128349725352}
   - component: {fileID: 456844505827136161}
   - component: {fileID: 5992492265911760712}
+  - component: {fileID: -4744427383865431451}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -79,6 +80,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Radar Shot
+--- !u!114 &-4744427383865431451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5204197328962164724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &8517773125092350215
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +109,7 @@ GameObject:
   - component: {fileID: 7906533523091557680}
   - component: {fileID: 494989734063174770}
   - component: {fileID: 4784825067460720381}
+  - component: {fileID: 7421371878818310973}
   m_Layer: 6
   m_Name: RadarShotCard
   m_TagString: Untagged
@@ -225,9 +243,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e6ddae0940a384fad34b0a8e7610c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: You take a shot at a random opponent nearby
-  count: {fileID: 0}
+  _titleEng: You shoot multiple opponents with reinforced bullets
+  _titleRus: "\u0421\u0442\u0440\u0435\u043B\u044F\u0435\u0448\u044C \u0432 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u0438\u0445
+    \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u044B\u0445 \u0432\u0440\u0430\u0433\u043E\u0432
+    \u0441\u0432\u043E\u0438\u043C\u0438 \u0443\u0441\u0438\u043B\u0435\u043D\u043D\u044B\u043C\u0438
+    \u043F\u0443\u043B\u044F\u043C\u0438"
   _hpBuff: 1.1
   _rollCdDebuff: 0.1
   _radiusBuff: 1.15
   _radarShot: {fileID: 4745514654662978637, guid: 40b94df51ab6dd84290e87a299f223f7, type: 3}
+--- !u!114 &7421371878818310973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8517773125092350215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0

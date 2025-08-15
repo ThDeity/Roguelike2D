@@ -7,7 +7,11 @@ public class BigBulletCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Big Bullet \n -{(_cdDebuff - 1) * 100}% Reload \n +{(_sizeBuff - 1) * 100} Size";
+        
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Big Bullet \n -{(_cdDebuff - 1) * 100}% Reload \n +{(_sizeBuff - 1) * 100} Size";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Большие Пули \n -{(_cdDebuff - 1) * 100}% Перез-ка \n +{(_sizeBuff - 1) * 100} Размер";
     }
 
     public void GivePrize()

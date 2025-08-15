@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8538110204607686613}
   - component: {fileID: 5345385803536041254}
   - component: {fileID: 3089984708636174334}
+  - component: {fileID: -7257708257102251170}
   m_Layer: 6
   m_Name: ColdBullets
   m_TagString: Untagged
@@ -146,13 +147,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59b881cc961b414bb36b39093d5392a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: You can freeze enemies
-  count: {fileID: 0}
+  _titleEng: Your bullets freeze your opponents
+  _titleRus: "\u0422\u0432\u043E\u0438 \u043F\u0443\u043B\u0438 \u0437\u0430\u043C\u043E\u0440\u0430\u0436\u0438\u0432\u0430\u044E\u0442
+    \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u043E\u0432"
   _cdDebuff: 1.05
   _increaseTimeAndForce: 1.1
   _speedReduce: 0.6
   _time: 1.5
   _cd: 1.85
+--- !u!114 &-7257708257102251170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2245526953476821258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0
 --- !u!1 &2897207862477472934
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +182,7 @@ GameObject:
   - component: {fileID: 5697081450058390895}
   - component: {fileID: 8651491650573200129}
   - component: {fileID: 6825376111577443380}
+  - component: {fileID: 3385960247701473477}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -232,3 +251,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Cold Bullets
+--- !u!114 &3385960247701473477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897207862477472934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1

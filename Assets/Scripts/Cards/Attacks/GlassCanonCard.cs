@@ -8,7 +8,11 @@ public class GlassCanonCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Glass Canon \n +{(_buffDmg - 1) * 100}% DMG \n -{(1 - _debufHp) * 100}% HP";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Glass Canon\n +{(_buffDmg - 1) * 100}% DMG\n -{(1 - _debufHp) * 100}% HP";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Стеклянная Пушка\n +{(_buffDmg - 1) * 100}% ДМГ\n -{(1 - _debufHp) * 100}% ХП";
     }
 
     public void GivePrize()

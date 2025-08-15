@@ -8,7 +8,11 @@ public class FastShotCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Fast Shot \n +{(_buffSpeed - 1) * 100}% Bullet's speed \n -{(_debuffCd - 1) * 100}% Reload \n +{(_maxDistanceBuff - 1) * 100}% Max distance";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Fast Shot\n +{(_buffSpeed - 1) * 100}% Bullet's speed\n -{(_debuffCd - 1) * 100}% Reload\n +{(_maxDistanceBuff - 1) * 100}% Max distance";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Быстрый выстрел\n +{(_buffSpeed - 1) * 100}% Скорость пули\n -{(_debuffCd - 1) * 100}% Перез-ка\n +{(_maxDistanceBuff - 1) * 100}% Длина выстрела";
     }
 
     public void GivePrize()

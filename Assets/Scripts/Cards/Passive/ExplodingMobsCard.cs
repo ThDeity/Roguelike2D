@@ -8,7 +8,11 @@ public class ExplodingMobsCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Exploding Mobs \n";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Exploding Mobs \n";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Exploding Mobs \n";
     }
 
     public void GivePrize()

@@ -7,7 +7,11 @@ public class AdrenalineCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Adrenaline \n {(_buffTime - 1) * 100}s Time of buffs \n {_interval}s Interval \n +{(_buff - 1) * 100}% Speed, Dash, DMG\n -{(_buffCd - 1) * 100}% Reload";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Adrenaline\n {(_buffTime - 1) * 100}s Time of buffs\n {_interval}s Interval\n +{(_buff - 1) * 100}% Speed, Dash, DMG\n -{(_buffCd - 1) * 100}% Reload";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Адреналин\n {(_buffTime - 1) * 100}с Время бафа\n {_interval}с Интервал\n +{(_buff - 1) * 100}% Скорости, ДМГ, Дэша\n -{(_buffCd - 1) * 100}% Перез-ка";
     }
 
     public void GivePrize()

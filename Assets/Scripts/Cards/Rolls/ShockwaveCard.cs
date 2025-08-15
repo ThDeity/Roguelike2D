@@ -8,7 +8,11 @@ public class ShockwaveCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Shockwave Roll \n +{_rollCdDebuff} Roll CD \n +{(_hpBuff - 1) * 100}% HP";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Shockwave Roll \n +{_rollCdDebuff} Roll CD \n +{(_hpBuff - 1) * 100}% HP";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Отталкивающий Рывок\n +{_rollCdDebuff} КД Рывка\n +{(_hpBuff - 1) * 100}% ХП";
     }
 
     public void GivePrize()

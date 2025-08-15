@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6768218265548215591}
   - component: {fileID: 3204941173087806626}
   - component: {fileID: 172589010195391308}
+  - component: {fileID: -5847818660525068192}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -79,6 +80,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Saw
+--- !u!114 &-5847818660525068192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428464025999533356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &3253386895324993041
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +109,7 @@ GameObject:
   - component: {fileID: 759094688426436286}
   - component: {fileID: 5898745982401332950}
   - component: {fileID: 1822560366153593790}
+  - component: {fileID: -1680011806474039412}
   m_Layer: 6
   m_Name: SawCard
   m_TagString: Untagged
@@ -226,8 +244,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: 
-  count: {fileID: 0}
+  _titleMeshPro: {fileID: 0}
   _saw: {fileID: 3042668093334922091, guid: 743d3de370cdfff41bae0d9a3b4b8bed, type: 3}
   _rollCdDebuff: -0.1
   _sizeBuff: 1.1
   _intervalBuff: 0.85
+--- !u!114 &-1680011806474039412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3253386895324993041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0

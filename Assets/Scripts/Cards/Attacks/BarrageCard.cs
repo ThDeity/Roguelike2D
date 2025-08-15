@@ -8,7 +8,11 @@ public class BarrageCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Barrage \n -{(1 - _dmgDebuff) * 100}% DMG \n -{(_cdDebuff - 1) * 100}% Reload \n +{_bulletsCount} Bullets";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Barrage \n -{(1 - _dmgDebuff) * 100}% DMG \n -{(_cdDebuff - 1) * 100}% Reload \n +{_bulletsCount} Bullets";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Дробовик \n -{(1 - _dmgDebuff) * 100}% ДМГ \n -{(_cdDebuff - 1) * 100}% Перез-ка \n +{_bulletsCount} Пуль";
     }
 
     public void GivePrize()

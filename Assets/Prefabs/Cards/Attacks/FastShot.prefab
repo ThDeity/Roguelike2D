@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 139325277243504659}
   - component: {fileID: 3328149533059983798}
   - component: {fileID: 263520713621750455}
+  - component: {fileID: 4757997871108320954}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -79,6 +80,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Fast Shot
+--- !u!114 &4757997871108320954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565886450521547372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &4022198405069064899
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +109,7 @@ GameObject:
   - component: {fileID: 2646878004439766834}
   - component: {fileID: 5455005900925382837}
   - component: {fileID: 8421439983806773861}
+  - component: {fileID: -7819869286572261748}
   m_Layer: 6
   m_Name: FastShot
   m_TagString: Untagged
@@ -225,8 +243,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f17fa3769e5ee94ab80f2960e5bea04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: You get fast and far-flying bullets.
-  count: {fileID: 0}
+  _titleEng: Your bullets are flying faster and farther
+  _titleRus: "\u0422\u0432\u043E\u0438 \u043F\u0443\u043B\u0438 \u043B\u0435\u0442\u044F\u0442
+    \u0431\u044B\u0441\u0442\u0440\u0435\u0435 \u0438 \u0434\u0430\u043B\u044C\u0448\u0435"
   _buffSpeed: 1.45
   _debuffCd: 1.5
   _maxDistanceBuff: 1.25
+--- !u!114 &-7819869286572261748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4022198405069064899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0

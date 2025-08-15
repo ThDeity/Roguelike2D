@@ -9,7 +9,11 @@ public class LifestealerCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Lifestealer \n\n";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Lifestealer \n\n";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Похититель Здоровья\n\n";
     }
 
     public void GivePrize()

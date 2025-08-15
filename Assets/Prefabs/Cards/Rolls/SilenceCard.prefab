@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3393184176312336508}
   - component: {fileID: 527441427785002550}
   - component: {fileID: 714693365553342901}
+  - component: {fileID: 8023742924835071110}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
@@ -79,6 +80,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Silence
+--- !u!114 &8023742924835071110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241334710533530671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 1
+  localizeSpriteEnabled: 1
+  localizeAudioClipEnabled: 1
 --- !u!1 &3806968510527836391
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +109,7 @@ GameObject:
   - component: {fileID: 6887372250499868315}
   - component: {fileID: 7296415846130269809}
   - component: {fileID: 3110044419209915051}
+  - component: {fileID: -4475294644920021435}
   m_Layer: 6
   m_Name: SilenceCard
   m_TagString: Untagged
@@ -226,8 +244,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: 
-  count: {fileID: 0}
+  _titleMeshPro: {fileID: 0}
   _hpDebuff: 0.9
   _rollCdDebuff: 0.08
   _radiusBuff: 1.1
   _silence: {fileID: 4185316865277301189, guid: 456d19ab95eba3247893775642c675bd, type: 3}
+--- !u!114 &-4475294644920021435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3806968510527836391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3882067589274664586}
   - component: {fileID: 2360030679261401568}
   - component: {fileID: 6020633119723819193}
+  - component: {fileID: 397411837274256769}
   m_Layer: 6
   m_Name: Charge
   m_TagString: Untagged
@@ -146,12 +147,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66597b130d72474439e0cbbebe728a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: 
+  _titleMeshPro: {fileID: 0}
   _timeToMaximize: 1
   _debuffCd: 1.15
   _dmgBuff: 1.1
   _maxDmgIncrease: 1.5
+  _speedDebuff: 0
   _chargingBullet: {fileID: 4079126797957703293, guid: f006ed13e8d1214409f8ffb7d28cf987, type: 3}
   _maxSize: {x: 0.9, y: 0.9}
+  _keyCode: 0
+--- !u!114 &397411837274256769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061350975324334965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2453b5f2b50351e4cae4c8b7d4a31cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizeStringEnabled: 1
+  localizeTextureEnabled: 0
+  localizeSpriteEnabled: 0
+  localizeAudioClipEnabled: 0
 --- !u!1 &6658703367535842386
 GameObject:
   m_ObjectHideFlags: 0

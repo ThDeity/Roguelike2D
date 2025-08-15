@@ -1,24 +1,23 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using OneClickLocalization;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
-using TMPro;
 
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    protected Text _description, _realDescription;
-    [SerializeField] protected string _title;
+    protected Text _description, _mechanicDescription;
+    protected SystemLanguage _currentLanguage;
+    [SerializeField] protected string _titleEng, _titleRus;
     protected Button _button;
-
-    public TextMeshPro _titleMeshPro;
 
     protected virtual void Start()
     {
-        _titleMeshPro = GetComponent<TextMeshPro>();
+        _currentLanguage = OCL.GetLanguage();
 
         _description = GetComponentInChildren<Text>();
-        _realDescription = StaticValues.PassiveSkillsPanel.GetComponentInChildren<Text>();
+        _mechanicDescription = StaticValues.PassiveSkillsPanel.GetComponentInChildren<Text>();
     }
 
     protected virtual void SetAttackParam(float dmg = 1, float lifeSteal = 0, float bulletSpeed = 1, float cd = 1, int timeOfTakingDmg = 0, float maxDistance = 1, float changeSize = 1)
@@ -51,14 +50,18 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _realDescription.enabled = true;
-        _realDescription.text = _title;
+        _mechanicDescription.enabled = true;
+
+        if (_currentLanguage == SystemLanguage.English)
+            _mechanicDescription.text = _titleEng;
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _mechanicDescription.text = _titleRus;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _realDescription.enabled = false;
-        _realDescription.text = "";
+        _mechanicDescription.enabled = false;
+        _mechanicDescription.text = "";
     }
 
     public void OnDisable()

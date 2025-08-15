@@ -8,7 +8,11 @@ public class TricksterCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Trickster \n +{(_bonusDmgPerBounce - 1) * 100}% DMG per bounce\n -{(_debuffCd - 1) * 100}% Reload\n +{-_bonusBounces} Riccochets";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Trickster\n +{(_bonusDmgPerBounce - 1) * 100}% DMG per bounce\n -{(_debuffCd - 1) * 100}% Reload\n +{-_bonusBounces} Riccochets";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Трикстер\n +{(_bonusDmgPerBounce - 1) * 100}% ДМГ за отскок\n -{(_debuffCd - 1) * 100}% Перез-ки\n +{-_bonusBounces} Рикошета";
     }
 
     public void GivePrize()

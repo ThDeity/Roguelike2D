@@ -8,7 +8,11 @@ public class ParasiteCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Parasite \n +{_lifeSteal * 100}% Lifesteal \n +{(_mxHpBuff - 1) * 100}% HP \n +{(_dmgBuff - 1) * 100}% DMG\n -{(_cdDebuff - 1) * 100}% Reload";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Parasite\n +{_lifeSteal * 100}% Lifesteal\n +{(_mxHpBuff - 1) * 100}% HP\n +{(_dmgBuff - 1) * 100}% DMG\n -{(_cdDebuff - 1) * 100}% Reload";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Паразит\n +{_lifeSteal * 100}% Кражи здоровья\n +{(_mxHpBuff - 1) * 100}% ХП\n +{(_dmgBuff - 1) * 100}% ДМГ\n -{(_cdDebuff - 1) * 100}% Перез-ки";
     }
 
     public void GivePrize()

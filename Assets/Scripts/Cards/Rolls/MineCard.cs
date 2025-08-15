@@ -8,7 +8,11 @@ public class MineCard : Card
     protected override void Start()
     {
         base.Start();
-        _description.text = $"Mine Roll \n +{_rollDebuff} Roll CD";
+
+        if (_currentLanguage == SystemLanguage.English)
+            _description.text = $"Mine Roll \n +{_rollDebuff} Roll CD";
+        else if (_currentLanguage == SystemLanguage.Russian)
+            _description.text = $"Рывок с Миной\n +{_rollDebuff} КД Рывка";
     }
 
     public void GivePrize()
