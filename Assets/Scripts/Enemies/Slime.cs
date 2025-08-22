@@ -7,6 +7,7 @@ public class Slime : Enemy
     [SerializeField] private List<Transform> _pointsToSeparate;
     [SerializeField] private float _decreaseSize;
     [SerializeField] private GameObject _slime;
+    [SerializeField] private AudioClip _separionSound;
 
     public int countOfSeparates;
 
@@ -23,7 +24,12 @@ public class Slime : Enemy
             if (_currentHp <= 0)
             {
                 if (countOfSeparates > 0)
+                {
+                    if (EffectsSource != null)
+                        EffectsSource.PlayOneShot(_separionSound);
+
                     _animator.Play("Separate");
+                }
                 else
                     Destroy(gameObject);
             }

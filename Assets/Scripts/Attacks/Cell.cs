@@ -3,6 +3,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     [SerializeField] private float _timeOfDazzle, _dmg;
+    [SerializeField] private AudioClip _trapSound;
 
     private void Start()
     {
@@ -14,6 +15,9 @@ public class Cell : MonoBehaviour
     {
         if (collision.tag != tag && collision.TryGetComponent(out DebuffsEffects component))
         {
+            if (Enemy.EffectsSource != null)
+                Enemy.EffectsSource.PlayOneShot(_trapSound);
+
             component.Dazzle(_timeOfDazzle);
             collision.GetComponent<IDamagable>().TakeDamage(_dmg, 0, false, 0);
         }

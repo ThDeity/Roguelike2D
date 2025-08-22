@@ -23,6 +23,7 @@ public class IceBurstCard : Skill
         }
 
         IceBurst iceBurst = StaticValues.PlayerObj.gameObject.AddComponent<IceBurst>();
+        iceBurst.skillSound = skillSound;
         iceBurst.zone = _zone;
         iceBurst.reloadTime = _reloadTime;
         iceBurst.freezingTime = _freezingTime;

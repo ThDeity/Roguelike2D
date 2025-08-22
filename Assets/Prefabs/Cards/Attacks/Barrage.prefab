@@ -259,6 +259,7 @@ MonoBehaviour:
   _minSpeed: 1.15
   _bulletSpeed: 1.4
   _bulletsCount: 5
+  _audioClip: {fileID: 8300000, guid: f47efbf58291ece49be5e6b979a9d054, type: 3}
 --- !u!114 &-4263586151990842508
 MonoBehaviour:
   m_ObjectHideFlags: 0

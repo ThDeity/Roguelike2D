@@ -7,7 +7,9 @@ public class Skill : MonoBehaviour, Roll
     private Text _timer;
     public Sprite skillSprite;
     protected bool _isSkillCharged;
+
     [SerializeField] protected bool _isCard;
+    public AudioClip skillSound;
 
     public virtual void OnRollStarted() { _isSkillCharged = false; }
 

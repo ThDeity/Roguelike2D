@@ -21,6 +21,8 @@ public class BossOfDarkness : Enemy
     [SerializeField] private Light2D _vignette;
     [SerializeField] private Color _pulsColor;
 
+    [SerializeField] private AudioClip _furiousSound, _frozenWave, _settingBomb, _shotSound, _shadowCaptivity, _vignetteSound, _tracesSound, _puls;
+
     protected float _timeOfAcceleration, _currentTimeBtwShots;
     protected Light2D _currentLight, _globalLight;
     protected SpriteRenderer _renderer;
@@ -60,6 +62,9 @@ public class BossOfDarkness : Enemy
 
         if (_currentHp <=  maxHp * 0.5f && !_isFurious)
         {
+            if (EffectsSource != null)
+                EffectsSource.PlayOneShot(_furiousSound);
+
             _isFurious = true;
             _indexOfAttack = 0;
             //Destroy(_globalLight.gameObject);
@@ -87,6 +92,8 @@ public class BossOfDarkness : Enemy
 
         for (int i = 0; i < _countOfCircles; i++)
         {
+            EffectsSource.PlayOneShot(_frozenWave);
+
             Instantiate(_frozenCircle, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(_timeBtwCircles);
         }
@@ -99,6 +106,8 @@ public class BossOfDarkness : Enemy
 
         for (int i = 0; i < _countOfBullets; i++)
         {
+            EffectsSource.PlayOneShot(_attackSound);
+
             if (target != null)
             {
                 Vector2 difference = target.position - _transform.position;
@@ -157,6 +166,8 @@ public class BossOfDarkness : Enemy
 
         for (int i = 0; i < _arrows; i++)
         {
+            EffectsSource.PlayOneShot(_shotSound);
+
             Transform b = Instantiate(_arrow, _transform.position, Quaternion.identity).transform;
 
             if (i % 2 == 0 || i == 0)
@@ -168,6 +179,8 @@ public class BossOfDarkness : Enemy
 
     protected IEnumerator ShadowCaptivity()
     {
+        EffectsSource.PlayOneShot(_shadowCaptivity);
+
         _agent.isStopped = true;
         _renderer.enabled = false;
         _animator.enabled = false;
@@ -197,6 +210,8 @@ public class BossOfDarkness : Enemy
     {
         if (StaticValues.PlayerTransform != null)
         {
+            EffectsSource.PlayOneShot(_vignetteSound);
+
             _time = 0;
             StaticValues.PlayerMovementObj.ChangeSpeed(0.6f);
 
@@ -262,6 +277,8 @@ public class BossOfDarkness : Enemy
     {
         _time = _time > 0 ? _time + _timeOfTrace : _timeOfTrace;
 
+        EffectsSource.PlayOneShot(_tracesSound);
+
         Cells(_trace, _timeOfTrace, _countOfTraces);
     }
 
@@ -279,6 +296,8 @@ public class BossOfDarkness : Enemy
 
     protected virtual IEnumerator ShadowCocoon()
     {
+        EffectsSource.PlayOneShot(_puls);
+
         _animator.enabled = false;
         _time = (_timeBtwPuls + _timeOfPuls) * _countOfPulses + _timeOfCocoon;
         for (int i = 0; i < _countOfPulses; i++)
@@ -290,12 +309,16 @@ public class BossOfDarkness : Enemy
             yield return new WaitForSeconds(_timeBtwPuls);
         }
 
+        EffectsSource.PlayOneShot(_shadowCaptivity);
+
         _renderer.enabled = false;
         _agent.isStopped = true;
 
         Spikes();
 
         yield return new WaitForSeconds(_timeOfCocoon);
+
+        EffectsSource.PlayOneShot(_shadowCaptivity);
 
         _animator.enabled = true;
         _agent.isStopped = false;
@@ -335,6 +358,9 @@ public class BossOfDarkness : Enemy
     {
         _agent.isStopped = true;
 
+        if (EffectsSource == null)
+            EffectsSource = GameObject.FindGameObjectWithTag("Effects").GetComponent<AudioSource>();
+
         yield return new WaitForSeconds(_timeOfStopping);
 
         _agent.isStopped = false;
@@ -348,12 +374,13 @@ public class BossOfDarkness : Enemy
         if (_currentLight != null)
             Destroy(_currentLight);
 
-        _globalLight.enabled = true;
+        if (_globalLight != null)
+            _globalLight.enabled = true;
 
         GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
 
-        if (_currentHp <= 0)
+        if (_currentHp <= 0 && gameObject.activeInHierarchy)
             FindObjectOfType<SpawnPrize>().GivePrize();
         StaticValues.WasPrizeGotten = true;
 

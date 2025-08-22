@@ -142,6 +142,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 0}
   maxHp: 180
   target: {fileID: 0}
   isCharmed: 0
@@ -171,6 +172,11 @@ MonoBehaviour:
   - AOE
   - Shot
   _sleepColor: {r: 0.4745098, g: 0.3019608, b: 0.3019608, a: 1}
+  _sleepSound: {fileID: 8300000, guid: a6b6fe06435b3f249ba2c946d9d0bf78, type: 3}
+  _wakeUpSound: {fileID: 8300000, guid: 80b0728ef5bda5f45813fa81e3715720, type: 3}
+  _cellSound: {fileID: 8300000, guid: e402f4a69127c5441978ccf3654751ca, type: 3}
+  _dashSound: {fileID: 8300000, guid: f16216dede954b5498998077931580d5, type: 3}
+  _shotSound: {fileID: 8300000, guid: 34ee38f318f63f04db91d63a9aee4eed, type: 3}
 --- !u!58 &3156555811031108458
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -361,6 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 10
   _critChance: 20
+  _effect: {fileID: 0}
 --- !u!1 &7061375645429270914
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 10
   _critChance: 20
+  _effect: {fileID: 0}
 --- !u!1001 &3257956432112416132
 PrefabInstance:
   m_ObjectHideFlags: 0

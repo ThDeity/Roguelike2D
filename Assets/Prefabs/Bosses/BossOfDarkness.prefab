@@ -112,6 +112,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 8300000, guid: 59ce3240d18cf1441b5e04e194ea0502, type: 3}
   maxHp: 210
   target: {fileID: 0}
   isCharmed: 0
@@ -164,6 +165,14 @@ MonoBehaviour:
   _shadowBullet: {fileID: 1997150863210232743, guid: c6fadbe96ff5055448c9bed0cce0a9c4, type: 3}
   _vignette: {fileID: 4012559985924399170, guid: 7e4730f368a237d48b8c148b2fc0db40, type: 3}
   _pulsColor: {r: 1, g: 0, b: 0.043137256, a: 1}
+  _furiousSound: {fileID: 8300000, guid: 47752942a99684c4ab90ed4b568e7eb2, type: 3}
+  _frozenWave: {fileID: 8300000, guid: 1169e818646e39e4e8ce68819cffea32, type: 3}
+  _settingBomb: {fileID: 8300000, guid: e402f4a69127c5441978ccf3654751ca, type: 3}
+  _shotSound: {fileID: 8300000, guid: 0daa009a430823a43b4cf67174a66e92, type: 3}
+  _shadowCaptivity: {fileID: 8300000, guid: 08f45450d7d1ac54fb135db33b280752, type: 3}
+  _vignetteSound: {fileID: 8300000, guid: d1b81c521aab3c644afe364d3c3a9595, type: 3}
+  _tracesSound: {fileID: 8300000, guid: 482c66ac92f5f7946beb038a1447f0cf, type: 3}
+  _puls: {fileID: 8300000, guid: 5a9bb946a80d25b4980d1434c646862d, type: 3}
 --- !u!58 &3630663215650643120
 CircleCollider2D:
   m_ObjectHideFlags: 0

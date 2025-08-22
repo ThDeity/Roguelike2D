@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class HexagonTop : Enemy
 {
@@ -54,6 +53,9 @@ public class HexagonTop : Enemy
             if (_time <= 0)
             {
                 _animator.Play("Attack");
+                if (EffectsSource != null)
+                    EffectsSource.PlayOneShot(_attackSound);
+
                 _time = _reloadTime;
             }
         }

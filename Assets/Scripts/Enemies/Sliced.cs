@@ -33,6 +33,9 @@ public class Sliced : Enemy
         {
             _agent.isStopped = true;
             _animator.Play("Attack");
+            if (EffectsSource != null)
+                EffectsSource.PlayOneShot(_attackSound);
+
             _time = _reloadTime;
         }
         else if (Vector2.Distance(_currentPos, _transform.position) > _randomDistance)

@@ -29,6 +29,7 @@ public class BallistaCard : Skill
         }
 
         BallistaSkill ballista = StaticValues.PlayerObj.gameObject.AddComponent<BallistaSkill>();
+        ballista.skillSound = skillSound;
         ballista.reloadTime = _reloadTime;
         ballista.hpOfPlayer = _hpOfPlayer;
         ballista.skillSprite = skillSlot;

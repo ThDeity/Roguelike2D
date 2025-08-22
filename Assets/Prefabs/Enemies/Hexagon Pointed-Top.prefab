@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0.2
   _critChance: 0
+  _effect: {fileID: 0}
   _timeOfDazzle: 1.85
 --- !u!1 &6948326548141045860
 GameObject:
@@ -563,6 +564,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 8300000, guid: 0e08498aad45967499c47adbc723b5fe, type: 3}
   maxHp: 5
   target: {fileID: 0}
   isCharmed: 0

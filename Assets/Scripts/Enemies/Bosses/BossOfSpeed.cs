@@ -13,6 +13,8 @@ public class BossOfSpeed : Enemy
     [SerializeField] private List<string> _animNames;
     [SerializeField] private Color _sleepColor;
 
+    [SerializeField] AudioClip _sleepSound, _wakeUpSound, _cellSound, _dashSound, _shotSound, _statuesEffect;
+
     private List<FrozenStatue> _statues = new List<FrozenStatue>();
     private Rigidbody2D _rigidbody2D;
     private float _currentTime;
@@ -38,12 +40,18 @@ public class BossOfSpeed : Enemy
         _animator.enabled = false;
         _agent.enabled = false;
 
+        if (EffectsSource != null)
+            EffectsSource.PlayOneShot(_sleepSound);
+
         yield return new WaitForSeconds(_timeOfSleep);
         
         _rigidbody2D.isKinematic = false;
         _isSleeping = false;
         _animator.enabled = true;
         _agent.enabled = true;
+
+        if (EffectsSource != null)
+            EffectsSource.PlayOneShot(_wakeUpSound);
 
         _spriteRenderer.color = Color.white;
     }
@@ -66,6 +74,8 @@ public class BossOfSpeed : Enemy
 
     protected virtual IEnumerator SetCell(GameObject _zone)
     {
+        EffectsSource.PlayOneShot(_cellSound);
+
         if (_agent.isActiveAndEnabled)
             _agent.isStopped = true;
         GameObject zone = Instantiate(_zone, _transform);
@@ -102,6 +112,8 @@ public class BossOfSpeed : Enemy
 
         for (int i = 0; i < _numOfRolls; i++)
         {
+            EffectsSource.PlayOneShot(_dashSound);
+
             _agent.enabled = false;
             gameObject.layer = LayerMask.NameToLayer("EnemyDash");
 
@@ -171,6 +183,8 @@ public class BossOfSpeed : Enemy
 
         for (int j = 0; j < _numOfWawes; j++)
         {
+            EffectsSource.PlayOneShot(_shotSound);
+
             for (int i = 0; i < _numOfBullets; i++)
             {
                 Transform bullet = Instantiate(_bullet, _transform.position, Quaternion.identity).transform;
@@ -186,6 +200,8 @@ public class BossOfSpeed : Enemy
 
     public virtual IEnumerator AliveStatues()
     {
+        EffectsSource.PlayOneShot(_statuesEffect);
+
         _statues.ForEach(statue => statue.Enable());
 
         yield return new WaitForSeconds((_timeBtwDashes + _dashTime) * _numOfRolls + _timeBtwWawes * _numOfWawes + _timeOfCircle + 1);
@@ -291,7 +307,7 @@ public class BossOfSpeed : Enemy
         GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
 
-        if (_currentHp <= 0)
+        if (_currentHp <= 0 && gameObject.activeInHierarchy)
             FindObjectOfType<SpawnPrize>().GivePrize();
 
         StaticValues.WasPrizeGotten = true;

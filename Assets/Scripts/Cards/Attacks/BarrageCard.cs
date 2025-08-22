@@ -4,6 +4,7 @@ public class BarrageCard : Card
 {
     [SerializeField] private float _dmgDebuff, _cdDebuff, _anglesOffset, _maxDistance, _speedRange, _minSpeed, _bulletSpeed;
     [SerializeField] private int _bulletsCount;
+    [SerializeField] private AudioClip _audioClip;
 
     protected override void Start()
     {
@@ -29,6 +30,7 @@ public class BarrageCard : Card
             barrage.reloadTime = attack.reloadTime;
             barrage.bulletsCount = _bulletsCount;
             barrage.anglesOffset = _anglesOffset;
+            barrage.shotSound = _audioClip;
         }
         else
         {

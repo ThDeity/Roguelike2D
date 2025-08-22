@@ -100,6 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonE: {fileID: 5988368173986191053}
+  _sound: {fileID: 8300000, guid: d8d21e949a911d14480a3d2b46e10298, type: 3}
+  _panel: {fileID: 0}
+  _happyText: 
+  _unhappyText: 
 --- !u!61 &-2227294511022629268
 BoxCollider2D:
   m_ObjectHideFlags: 0

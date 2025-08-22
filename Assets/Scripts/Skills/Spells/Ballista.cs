@@ -8,6 +8,7 @@ public class Ballista : MonoBehaviour, IDamagable
     public Bullet bullet;
 
     [SerializeField] private Transform _point;
+    [SerializeField] private AudioClip _shotSound;
     private float _currentHp, _currentCd;
 
     private Animator _animator;
@@ -132,6 +133,8 @@ public class Ballista : MonoBehaviour, IDamagable
             if (_currentCd <= 0)
             {
                 _currentCd = reloadTime;
+
+                StaticValues.PlayerObj.effectsSource.PlayOneShot(_shotSound);
                 _animator.Play("BallistaAttack");
             }
         }

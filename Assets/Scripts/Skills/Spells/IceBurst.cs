@@ -65,6 +65,8 @@ public class IceBurst : Skill
 
         if (_isSkillCharged && Input.GetMouseButtonUp(1) && _currentTime <= 0)
         {
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(skillSound);
+
             Collider2D[] colliders = Physics2D.OverlapCircleAll(_zone.position, radius);
             Instantiate(effects, _zone.position, effects.transform.rotation);
 

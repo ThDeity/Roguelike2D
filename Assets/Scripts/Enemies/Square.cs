@@ -4,6 +4,7 @@ using UnityEngine;
 public class Square : Enemy
 {
     [SerializeField] protected float _dashForce, _dashCd, _dashRange;
+    [SerializeField] protected AudioClip _dashEffect;
     protected Rigidbody2D _rigidbody2D;
     protected float _dashCdValue;
 
@@ -33,6 +34,9 @@ public class Square : Enemy
             else if (Vector2.Distance(target.position, _transform.position) >= _dashRange && _dashCd <= 0)
             {
                 _animator.Play("Dash");
+                if (_dashEffect != null)
+                    EffectsSource.PlayOneShot(_dashEffect);
+
                 _dashCd = _dashCdValue;
                 _agent.enabled = false;
             }
@@ -45,6 +49,9 @@ public class Square : Enemy
             {
                 _agent.enabled = false;
                 _animator.Play("Attack");
+                if (_attackSound != null)
+                    EffectsSource.PlayOneShot(_dashEffect);
+
                 _time = _reloadTime;
             }
         }

@@ -61,7 +61,10 @@ public class FrozenStatue : Enemy
             if (!_isNotShotFromPoint)
                 _rangeAttack.ShotFromPoint();
             else
+            {
                 _animator.Play("Attack");
+                EffectsSource.PlayOneShot(_attackSound);
+            }
 
             _time = _reloadTime;
         }

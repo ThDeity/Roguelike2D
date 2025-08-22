@@ -5,6 +5,7 @@ using UnityEngine;
 public class FrozenBurst : MonoBehaviour
 {
     public float interval, damage, radius, timeOfFreezing, force;
+    public AudioClip burstSound;
     public GameObject burst;
 
     private float _currentTime;
@@ -16,6 +17,9 @@ public class FrozenBurst : MonoBehaviour
 
         if (_currentTime <= 0)
         {
+            if (Enemy.EffectsSource != null)
+                Enemy.EffectsSource.PlayOneShot(burstSound);
+
             GameObject burstObj = Instantiate(burst, transform);
             List<Collider2D> enemies = Physics2D.OverlapCircleAll(transform.position, radius, gameObject.layer).ToList();
 

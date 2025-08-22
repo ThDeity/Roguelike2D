@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour, IDamagable
 {
     [SerializeField] protected float _attackDistance, _offset, _reloadTime;
     [SerializeField] protected ValueSystem _bar = new ValueSystem();
+    [SerializeField] protected AudioClip _attackSound;
     public float maxHp;
 
     protected List<Transform> _points = new List<Transform>();
@@ -21,6 +22,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public Transform target;
     public bool isCharmed, isBoss;
+
+    public static AudioSource EffectsSource;
 
     protected float _damageTaking, _timeTaking, _lifestealToPlayer;
     protected GameObject _hpBar;
@@ -115,6 +118,9 @@ public class Enemy : MonoBehaviour, IDamagable
 
     protected virtual void Start()
     {
+        if (EffectsSource == null)
+            EffectsSource = GameObject.FindGameObjectWithTag("Effects").GetComponent<AudioSource>();
+
         _debuffs = GetComponent<DebuffsEffects>();
         _time = _reloadTime;
         _transform = transform;
@@ -179,6 +185,10 @@ public class Enemy : MonoBehaviour, IDamagable
             {
                 _agent.isStopped = true;
                 _animator.Play("Attack");
+
+                if (_attackSound != null)
+                    EffectsSource.PlayOneShot(_attackSound);
+
                 _time = _reloadTime;
             }
             else

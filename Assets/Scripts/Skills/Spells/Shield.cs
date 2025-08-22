@@ -54,6 +54,7 @@ public class Shield : Skill, Roll
             _currentTime = reloadTime;
             StartCoroutine(StartTimer((int)reloadTime));
 
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(skillSound);
             StartCoroutine(SetShield());
         }
     }

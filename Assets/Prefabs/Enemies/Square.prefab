@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1.25
   _critChance: 5
+  _effect: {fileID: 8300000, guid: bd6f1ee4041ae1f42b0654cb0a2be161, type: 3}
 --- !u!1 &1231593514276111478
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _critChance: 10
+  _effect: {fileID: 8300000, guid: bd6f1ee4041ae1f42b0654cb0a2be161, type: 3}
 --- !u!1 &3086296589014687389
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +564,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 8300000, guid: 296957c590382ab47badc542c87ac0fe, type: 3}
   maxHp: 3.85
   target: {fileID: 0}
   isCharmed: 0
@@ -569,6 +572,7 @@ MonoBehaviour:
   _dashForce: 800
   _dashCd: 3
   _dashRange: 4.02
+  _dashEffect: {fileID: 8300000, guid: 955cf1c01be96494d996b5f0b130eb80, type: 3}
 --- !u!114 &6381329890489384714
 MonoBehaviour:
   m_ObjectHideFlags: 0

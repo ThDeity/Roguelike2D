@@ -16,6 +16,8 @@ public class BossOfControling : Enemy
     [Tooltip("�������� � ��� ������������������, � ������� ����� �����")]
     [SerializeField] private List<string> _animNames;
 
+    [SerializeField] AudioClip _laserSound, _lasersUnready, _cellSound;
+
     private float _currentTime;
     bool _wasCopied;
     public override void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
@@ -24,6 +26,10 @@ public class BossOfControling : Enemy
 
         if (_currentHp <= maxHp * _hpToCopy && !_wasCopied && _currentHp > 0)
         {
+            EffectsSource.clip = _laserSound;
+            EffectsSource.loop = true;
+            EffectsSource.Play();
+
             StopAllCoroutines();
             if (_isLaser)
             {
@@ -50,6 +56,8 @@ public class BossOfControling : Enemy
 
     public virtual void LasersAttack()
     {
+        EffectsSource.PlayOneShot(_lasersUnready);
+
         for (int i = 0; i < _numOfLasers; i++)
         {
             float x = Random.Range(-_areaRadius, _areaRadius);
@@ -79,6 +87,7 @@ public class BossOfControling : Enemy
     protected virtual IEnumerator SetCell(GameObject _zone, Vector2 pos)
     {
         GameObject zone = Instantiate(_zone, pos, Quaternion.identity);
+        EffectsSource.PlayOneShot(_cellSound);
 
         yield return new WaitForSeconds(_timeBtwZoneActivation);
         zone.GetComponent<SpriteRenderer>().color = Color.white;
@@ -121,6 +130,10 @@ public class BossOfControling : Enemy
         _laser.SetActive(true);
         _laser.transform.DOScaleX(_laser.transform.localScale.x * _laserScale, _timeOfLaser);
 
+        EffectsSource.clip = _laserSound;
+        EffectsSource.loop = true;
+        EffectsSource.Play();
+
         StartCoroutine(Rotation());
 
         _agent.speed *= _laserSpeedDebuff;
@@ -146,6 +159,9 @@ public class BossOfControling : Enemy
 
     private void Awake()
     {
+        if (EffectsSource == null)
+            EffectsSource = GameObject.FindGameObjectWithTag("Effects").GetComponent<AudioSource>();
+
         StaticValues.WasPrizeGotten = false;
         StaticValues.CurrentRoomType = "Boss";
         _currentTime = _timeBtwMelleeAttack;
@@ -156,6 +172,12 @@ public class BossOfControling : Enemy
     protected void OnEnable()
     {
         if (StaticValues.EnemyMaxHp <= 0) return;
+
+        if (EffectsSource.clip == _laserSound)
+        {
+            EffectsSource.loop = false;
+            EffectsSource.clip = null;
+        }
 
         StaticValues.WasPrizeGotten = false;
         StaticValues.CurrentRoomType = "Boss";
@@ -183,6 +205,9 @@ public class BossOfControling : Enemy
                 _agent.speed /= _laserSpeedDebuff;
                 _laser.SetActive(false);
                 _isLaser = false;
+
+                EffectsSource.loop = false;
+                EffectsSource.clip = null;
             }
         }
 

@@ -15,6 +15,9 @@ public class EnemyParam : Prize
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
         {
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
+            Time.timeScale = 0;
+
             _paramPanel = StaticValues.EnemyParamPanel;
             _paramPanel.SetActive(true);
 
@@ -42,6 +45,9 @@ public class EnemyParam : Prize
     {
         if (_button != null && StaticValues.CurrentCountOfRerolls < StaticValues.CountOfRerolls)
             _button.gameObject.SetActive(true);
+
+        if (_buttonE == null)
+            Time.timeScale = 1;
     }
 
     private void WriteResults()

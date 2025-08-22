@@ -5,6 +5,7 @@ public class BlinkingEnemy : Enemy
 {
     [SerializeField] private float _timeBtwBlinks, _timeOfBlinking;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private AudioClip _blinkSound;
     [SerializeField] private Color _color;
 
     private Collider2D _collider;
@@ -35,6 +36,9 @@ public class BlinkingEnemy : Enemy
         _collider.enabled = false;
         _spriteRenderer.color = _color;
         _isBlinking = true;
+
+        if (EffectsSource != null)
+            EffectsSource.PlayOneShot(_blinkSound);
 
         yield return new WaitForSeconds(_timeOfBlinking);
 

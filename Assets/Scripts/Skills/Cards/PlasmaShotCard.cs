@@ -26,6 +26,7 @@ public class PlasmaShotCard : Skill
         }
 
         PlasmaShot shot = StaticValues.PlayerObj.gameObject.AddComponent<PlasmaShot>();
+        shot.skillSound = skillSound;
         shot.dmgIncrease = _dmgIncrease;
         shot.reloadTime = _reloadTime;
         shot.bullet = _bullet;

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerAttack : RangeAttack
 {
+    public AudioClip shotSound;
+
     protected Transform _player;
     [SerializeField] protected float _offset;
 
@@ -42,6 +44,8 @@ public class PlayerAttack : RangeAttack
     {
         if (_time <= 0)
         {
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(shotSound);
+
             Instantiate(bullet, _point.position, _player.rotation);
 
             _time = reloadTime;

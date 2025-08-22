@@ -49,6 +49,8 @@ public class PlasmaShot : Skill
 
         if (_isSkillCharged && Input.GetMouseButtonUp(1) && _zone != null)
         {
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(skillSound);
+
             _currentTime = reloadTime;
             StartCoroutine(StartTimer((int)reloadTime));
 

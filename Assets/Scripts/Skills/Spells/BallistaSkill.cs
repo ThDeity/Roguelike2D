@@ -43,6 +43,8 @@ public class BallistaSkill : Skill
 
         if (_isSkillCharged && Input.GetMouseButtonUp(1) && _currentTime <= 0)
         {
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(skillSound);
+
             Instantiate(ballista.gameObject, _zone.position, Quaternion.identity);
 
             StartCoroutine(StartTimer((int)reloadTime));

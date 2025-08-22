@@ -230,10 +230,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 8300000, guid: 7acc4b73d4507b74ba35d99a7c95cc2a, type: 3}
   maxHp: 0.1
   target: {fileID: 0}
   isCharmed: 0
   isBoss: 0
+  _lastColor: {r: 1, g: 0, b: 0, a: 1}
   _explosion: {fileID: 3037545466010291589, guid: da22a1c1b6e6d5d40a697ba6a37b1856, type: 3}
   _damage: 4
   _lifeTime: 5

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Prize : MonoBehaviour
 {
     [SerializeField] protected GameObject _buttonE;
+    [SerializeField] protected AudioClip _sound;
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {

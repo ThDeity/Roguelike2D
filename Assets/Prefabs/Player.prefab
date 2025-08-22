@@ -313,7 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3225124171637287940}
   - component: {fileID: 7354580697685189680}
-  - component: {fileID: 6080899637955470907}
+  - component: {fileID: 3521546558177887411}
   m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
@@ -389,7 +389,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6080899637955470907
+--- !u!114 &3521546558177887411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -404,6 +404,7 @@ MonoBehaviour:
   reloadTime: 0.4
   bullet: {fileID: 5707264133003760165, guid: 0b937e1b1abdc4f43860e9350df7e5e7, type: 3}
   _point: {fileID: 0}
+  shotSound: {fileID: 8300000, guid: d00346ec5fe316c4a956fb0bac721e24, type: 3}
   _offset: 180
 --- !u!1 &315929372281568387
 GameObject:
@@ -2382,6 +2383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonE: {fileID: 0}
+  _sound: {fileID: 0}
 --- !u!1 &1878523288883753131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,6 +3733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pausePanel: {fileID: 1257612248821119584}
+  _click: {fileID: 8300000, guid: 53384de441f5dd44294df2af999bfe78, type: 3}
   _isMenu: 0
 --- !u!1 &4148315970027676722
 GameObject:
@@ -4615,6 +4618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonE: {fileID: 0}
+  _sound: {fileID: 0}
   _slots:
   - {fileID: 4225292000890824353}
   - {fileID: 7022687363496820173}
@@ -5055,6 +5059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonE: {fileID: 0}
+  _sound: {fileID: 0}
   _slots:
   - {fileID: 6727774116554463618}
   - {fileID: 4092973511153970658}
@@ -6804,6 +6809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonE: {fileID: 0}
+  _sound: {fileID: 0}
   _panel: {fileID: 4741560007972260449}
   _happyText: You're a lucky guy! You did it :)
   _unhappyText: You're unlucky! You failed :(
@@ -10158,7 +10164,7 @@ GameObject:
   - component: {fileID: 4698034948480750364}
   - component: {fileID: 8940801902187945244}
   - component: {fileID: 5826909062119527502}
-  - component: {fileID: 1583939197577317215}
+  - component: {fileID: 6170567204492080933}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -10332,11 +10338,13 @@ MonoBehaviour:
   _radius: 3
   _prize: {fileID: 9221463161419547699, guid: 30d55a9bbf9f5d743b8ce9fa6b73ae88, type: 3}
   _revivalPanel: {fileID: 5497606764698561331}
+  _damagedEffect: {fileID: 8300000, guid: ecf174f4086fed24aad12c9996360479, type: 3}
   _colorAfterDeath: {r: 0.4056604, g: 0.2277056, b: 0.2277056, a: 1}
   IsExploding: 0
   Explosion: {fileID: 0}
   lifesCount: 0
-  hpAfterDeath: 0.75
+  hpAfterDeath: 0
+  effectsSource: {fileID: 0}
 --- !u!114 &5826909062119527502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10358,7 +10366,7 @@ MonoBehaviour:
   - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
   - {fileID: 8355927338127554197, guid: 1ef45cc5d4c6fe847af1c438e63a86c1, type: 3}
   - {fileID: 4094485984770549047, guid: 68a3ebd970677e34faffab788d135d7b, type: 3}
---- !u!114 &1583939197577317215
+--- !u!114 &6170567204492080933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10372,6 +10380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _offset: 180
   _dashSpeed: 25
+  _dashSound: {fileID: 8300000, guid: ac61a22eae3dbbe45ab51c514361f923, type: 3}
   speed: 5
   dashCd: 0.65
   dashTime: 0.25

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Tentacle : MonoBehaviour
 {
     [SerializeField] protected float _timeOfStun, _damage, _lifeTime, _timeBtwStart;
+    [SerializeField] protected AudioClip _sound;
 
     protected static List<Tentacle> Tentacles = new List<Tentacle>();
 
@@ -47,6 +48,9 @@ public class Tentacle : MonoBehaviour
     {
         if (collision != null && collision.tag != tag && collision.TryGetComponent(out DebuffsEffects component))
         {
+            if (Enemy.EffectsSource != null)
+                Enemy.EffectsSource.PlayOneShot(_sound);
+
             collision.TryGetComponent(out IDamagable damagable);
             if (damagable != null)
                 damagable.TakeDamage(_damage, 0, false, 0);

@@ -263,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 2
   _critChance: 0
+  _effect: {fileID: 0}
 --- !u!1 &6590664269764907329
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 2
   _critChance: 0
+  _effect: {fileID: 0}
 --- !u!1 &6590835928735268454
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +695,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 0}
   maxHp: 190
   target: {fileID: 0}
   isCharmed: 0
@@ -725,6 +728,9 @@ MonoBehaviour:
   - LaserTraces
   - CellsAttack
   - ExplosionsAttack
+  _laserSound: {fileID: 8300000, guid: d606a8f5ae0094c459f57b6117ebac48, type: 3}
+  _lasersUnready: {fileID: 8300000, guid: 7a60ff80c8336414eacac6553614edb1, type: 3}
+  _cellSound: {fileID: 8300000, guid: e402f4a69127c5441978ccf3654751ca, type: 3}
 --- !u!114 &-1607308877132336361
 MonoBehaviour:
   m_ObjectHideFlags: 0

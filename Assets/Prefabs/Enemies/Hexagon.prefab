@@ -218,6 +218,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 0}
   maxHp: 5
   target: {fileID: 0}
   isCharmed: 0
@@ -508,6 +509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0.75
   _critChance: 1
+  _effect: {fileID: 8300000, guid: bd6f1ee4041ae1f42b0654cb0a2be161, type: 3}
 --- !u!1 &7211547863030056170
 GameObject:
   m_ObjectHideFlags: 0

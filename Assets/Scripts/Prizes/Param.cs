@@ -10,11 +10,20 @@ public class Param : Prize
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
         {
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
+            Time.timeScale = 0;
+
             _paramPanel.SetActive(true);
 
             StaticValues.WasPrizeGotten = true;
             Destroy(gameObject);
         }
+    }
+
+    private void OnDisable()
+    {
+        if (_buttonE == null)
+            Time.timeScale = 1;
     }
 
     public void ImproveDamage(float damagePersent)

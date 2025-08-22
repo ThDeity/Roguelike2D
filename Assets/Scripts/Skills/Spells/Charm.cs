@@ -48,6 +48,8 @@ public class Charm : Skill
 
         if (_isSkillCharged && Input.GetMouseButtonUp(1))
         {
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(skillSound);
+
             int enemies = 0;
             foreach(var effect in _zone.effects)
             {

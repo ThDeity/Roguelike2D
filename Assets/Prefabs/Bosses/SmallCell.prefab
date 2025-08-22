@@ -135,3 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeOfDazzle: 1.5
   _dmg: 0.5
+  _trapSound: {fileID: 8300000, guid: c93e73873af2df74baa2645bdd3230ee, type: 3}

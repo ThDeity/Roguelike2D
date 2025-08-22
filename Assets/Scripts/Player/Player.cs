@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] protected ValueSystem _bar = new ValueSystem();
     [SerializeField] private float _hpMax, _restorePersent, _immortalTime, _radius;
     [SerializeField] private GameObject _prize, _revivalPanel;
+    [SerializeField] private AudioClip _damagedEffect;
     [SerializeField] private Color _colorAfterDeath;
     public float currentHp { private set; get; }
 
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour, IDamagable
 
     public int lifesCount;
     public float hpAfterDeath;
+
+    public AudioSource effectsSource;
 
     public static Player PlayerObj;
 
@@ -42,7 +45,10 @@ public class Player : MonoBehaviour, IDamagable
         if (time <= 0)
         {
             if (damage > 0)
+            {
+                effectsSource.PlayOneShot(_damagedEffect);
                 damage *= _debuffsEffects.OnChangeDmg();
+            }
 
             currentHp -= damage;
             if (currentHp > _hpMax)
@@ -131,6 +137,8 @@ public class Player : MonoBehaviour, IDamagable
     }
 
     public void CheckComponents() => _onTakeDmgList = GetComponents<OnTakeDmg>().ToList();
+
+    public float GetMaxHp() { return _hpMax; }
 
     private void Awake()
     {

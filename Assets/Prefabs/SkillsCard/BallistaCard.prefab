@@ -244,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillSprite: {fileID: 0}
   _isCard: 1
+  skillSound: {fileID: 8300000, guid: e402f4a69127c5441978ccf3654751ca, type: 3}
   _ballista: {fileID: 244262821863087915, guid: 59f51d9e07b0a834fb12571a340354fd, type: 3}
   _zone: {fileID: 8867089238020802048, guid: d5c3cbf98c463664a9a5f23d9105b602, type: 3}
   _reloadTime: 8.5

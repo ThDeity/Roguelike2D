@@ -4,6 +4,7 @@ public class FrozenBurstCard : Card
 {
     [SerializeField] private float _interval, _freezingTime, _damage, _radius, _force, _increaseParam;
     [SerializeField] private GameObject _burst;
+    [SerializeField] private AudioClip _clip;
 
     protected override void Start()
     {
@@ -20,7 +21,8 @@ public class FrozenBurstCard : Card
         if (!StaticValues.PlayerObj.TryGetComponent(out FrozenBurst burst))
         {
             burst = StaticValues.PlayerObj.gameObject.AddComponent<FrozenBurst>();
-            
+
+            burst.burstSound = _clip;
             burst.interval = _interval;
             burst.timeOfFreezing = _freezingTime;
             burst.radius = _radius;

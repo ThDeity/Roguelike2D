@@ -28,6 +28,7 @@ public class CharmCard : Skill
         }
 
         Charm charm = StaticValues.PlayerObj.gameObject.AddComponent<Charm>();
+        charm.skillSound = skillSound;
         charm.zone = _zone;
         charm.reloadTime = _reloadTime;
         charm.timeOfCharming = _timeOfCharming;

@@ -318,6 +318,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 8300000, guid: e38b4929bde8fe243b0341a239f5534c, type: 3}
   maxHp: 2.5
   target: {fileID: 0}
   isCharmed: 0

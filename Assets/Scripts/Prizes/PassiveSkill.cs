@@ -38,6 +38,9 @@ public class PassiveSkill : Prize
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
         {
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
+            Time.timeScale = 0;
+
             StaticValues.WasPrizeGotten = true;
             _passiveSkillsPanel.SetActive(true);
             _passiveSkillsPanel.GetComponent<PassiveSkill>().ShowSkills();
@@ -104,5 +107,14 @@ public class PassiveSkill : Prize
         rare.Clear();
         epic.Clear();
         legendary.Clear();
+    }
+
+    private void OnDisable()
+    {
+        if (_rerollButton != null && StaticValues.CurrentCountOfRerolls < StaticValues.CountOfRerolls)
+            _rerollButton.gameObject.SetActive(true);
+
+        if (_buttonE == null)
+            Time.timeScale = 1;
     }
 }

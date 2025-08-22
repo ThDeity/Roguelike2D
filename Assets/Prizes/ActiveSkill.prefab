@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonE: {fileID: 5439262760298705254}
+  _sound: {fileID: 8300000, guid: d8d21e949a911d14480a3d2b46e10298, type: 3}
   _slots: []
   skillSlot: {fileID: 0}
   _skills: []

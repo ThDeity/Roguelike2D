@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 public class LaserTrace : MonoBehaviour
 {
     [SerializeField] private float _areaRadius, _timeBtwActivation, _lifeTime;
+    [SerializeField] private AudioClip _lasersReady;
     [SerializeField] private Transform _point;
 
     Transform laser, point;
@@ -37,6 +38,9 @@ public class LaserTrace : MonoBehaviour
         laser.GetComponentInChildren<Collider2D>().enabled = false;
 
         yield return new WaitForSeconds(_timeBtwActivation);
+
+        if (Enemy.EffectsSource != null)
+            Enemy.EffectsSource.PlayOneShot(_lasersReady);
 
         laser.GetComponentInChildren<Collider2D>().enabled = true;
         laser.GetComponentInChildren<SpriteRenderer>().color = Color.white;

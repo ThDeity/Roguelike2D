@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _offset, _dashSpeed;
+    [SerializeField] private AudioClip _dashSound;
+
     private float _time, _dashTimeCd, _currentSpeed;
     private Vector2 _velocity, _dashVector;
     private Rigidbody2D _rigidbody2D;
@@ -79,11 +81,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private float _speedBeforeDash;
     private IEnumerator EnableCollider()
     {
         for (int i = 0; i < rollsCount; i++)
         {
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(_dashSound);
+
             speed = 0f;
             _time = dashTime;
             _rolls.ForEach(r => r.OnRollStarted());
@@ -110,7 +113,6 @@ public class PlayerMovement : MonoBehaviour
         if (_time > 0 || _dashTimeCd > 0 || speed == 0) return;
 
         _dashTimeCd = dashCd;
-        _speedBeforeDash = speed;
 
         if (_velocity.magnitude != 0)
             _dashVector = _velocity.normalized;

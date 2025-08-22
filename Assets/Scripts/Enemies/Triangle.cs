@@ -4,6 +4,7 @@ public class Triangle : Enemy
 {
     [SerializeField] protected float _specialReload;
     [SerializeField] protected Transform _pointOfRay;
+    [SerializeField] protected AudioClip _specialSound;
     protected float _specialTime;
 
     protected override void Start()
@@ -45,11 +46,17 @@ public class Triangle : Enemy
                 if (_specialTime <= 0)
                 {
                     _animator.Play("SpecialAttack");
+                    if (EffectsSource != null)
+                        EffectsSource.PlayOneShot(_specialSound);
+
                     _specialTime = _specialReload;
                 }
                 else if (_time <= 0)
                 {
                     _animator.Play("Attack");
+                    if (EffectsSource != null)
+                        EffectsSource.PlayOneShot(_attackSound);
+
                     _time = _reloadTime;
                 }
             }

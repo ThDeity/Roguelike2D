@@ -23,6 +23,7 @@ public class ShieldCard : Skill
         }
 
         Shield shield = StaticValues.PlayerObj.gameObject.AddComponent<Shield>();
+        shield.skillSound = skillSound;
         shield.reloadTime = _reloadTime;
         shield.activeTime = _activeTime;
         shield.shield = _shield;

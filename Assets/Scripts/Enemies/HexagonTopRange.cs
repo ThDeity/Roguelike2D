@@ -35,6 +35,7 @@ public class HexagonTopRange : Enemy
                 if (_time <= 0)
                 {
                     _animator.Play("Attack");
+                    EffectsSource.PlayOneShot(_attackSound);
                     _time = _reloadTime;
                 }
             }

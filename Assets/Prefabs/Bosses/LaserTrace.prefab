@@ -48,6 +48,7 @@ MonoBehaviour:
   _areaRadius: 20
   _timeBtwActivation: 0.75
   _lifeTime: 1.8
+  _lasersReady: {fileID: 8300000, guid: 8cc87c842de377e42ba6d73df30eff70, type: 3}
   _point: {fileID: 175244708916145188, guid: d19e16e1b7fc47d489849320b9917f68, type: 3}
 --- !u!1001 &6254478058944405137
 PrefabInstance:

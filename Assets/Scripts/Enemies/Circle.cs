@@ -1,7 +1,9 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Circle : Enemy
 {
+    [SerializeField] protected Color _lastColor;
     [SerializeField] protected GameObject _explosion;
     [SerializeField] protected float _damage, _lifeTime;
 
@@ -13,6 +15,8 @@ public class Circle : Enemy
 
         _currentTime = _lifeTime;
         _damage *= StaticValues.EnemyDamage;
+
+        GetComponent<SpriteRenderer>().DOColor(_lastColor, _lifeTime);
     }
 
     protected override void Update()
@@ -32,6 +36,7 @@ public class Circle : Enemy
         exp.tag = tag;
         exp.layer = gameObject.layer;
 
+        AudioSource.PlayClipAtPoint(_attackSound, _transform.position);
         Destroy(gameObject);
     }
 
@@ -39,5 +44,11 @@ public class Circle : Enemy
     {
         Explosion();
         Destroy(gameObject);
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        DOTween.KillAll();
     }
 }

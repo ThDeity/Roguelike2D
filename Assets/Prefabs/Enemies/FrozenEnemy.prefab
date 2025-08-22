@@ -208,6 +208,7 @@ MonoBehaviour:
   radius: 6.2
   timeOfFreezing: 1
   force: 0.3
+  burstSound: {fileID: 8300000, guid: c0604ae6289f3104b93a9eca9c0532b0, type: 3}
   burst: {fileID: 1466060880164351269, guid: 091689e39a67bb34ba78252345a900c0, type: 3}
 --- !u!195 &6033327532257124603
 NavMeshAgent:
@@ -262,6 +263,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 8300000, guid: 960ae308e471f5b4985f711c7f5f99e4, type: 3}
   maxHp: 4.65
   target: {fileID: 0}
   isCharmed: 0
@@ -565,6 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0.8
   _critChance: 0
+  _effect: {fileID: 0}
 --- !u!4 &4757681247548381717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5330397453840754780, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
@@ -662,6 +665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0.8
   _critChance: 0
+  _effect: {fileID: 0}
 --- !u!4 &5078677956794224084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5330397453840754780, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
@@ -759,6 +763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0.8
   _critChance: 0
+  _effect: {fileID: 0}
 --- !u!4 &6627410085073956983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5330397453840754780, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
@@ -856,6 +861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0.8
   _critChance: 0
+  _effect: {fileID: 0}
 --- !u!4 &6041752655232804833 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5330397453840754780, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
@@ -953,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0.8
   _critChance: 0
+  _effect: {fileID: 0}
 --- !u!4 &7910346623430642536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5330397453840754780, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
@@ -1050,6 +1057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0.8
   _critChance: 0
+  _effect: {fileID: 0}
 --- !u!4 &8972771285493543567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5330397453840754780, guid: b52868a9acaf96247a053d7d404c49ae, type: 3}
@@ -1277,6 +1285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0.8
   _critChance: 0
+  _effect: {fileID: 0}
 --- !u!1001 &8643929473059103621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1374,3 +1383,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0.8
   _critChance: 0
+  _effect: {fileID: 0}

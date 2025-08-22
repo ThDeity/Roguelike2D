@@ -17,6 +17,10 @@ public class ActiveSkill : Prize
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))// && !StaticValues.WasPrizeGotten)
         {
+            StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
+            Time.timeScale = 0;
+            Debug.Log(Time.timeScale);
+
             _activeSkillsPanel.SetActive(true);
             _activeSkillsPanel.GetComponent<ActiveSkill>().ShowSkills();
 
@@ -27,6 +31,9 @@ public class ActiveSkill : Prize
 
     public void ShowSkills()
     {
+        Time.timeScale = 0;
+        Debug.Log(Time.timeScale);
+
         if (_skills.Count < _slots.Count)
         {
             Debug.LogError("�� ������� ����������, �� ���������� ������ ���� ������, ���� ����� ���������� ������");
@@ -68,5 +75,8 @@ public class ActiveSkill : Prize
     {
         if (_rerollButton != null && StaticValues.CurrentCountOfRerolls < StaticValues.CountOfRerolls)
             _rerollButton.gameObject.SetActive(true);
+
+        if (_buttonE == null)
+            Time.timeScale = 1;
     }
 }

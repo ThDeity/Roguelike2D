@@ -474,12 +474,14 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
+  _attackSound: {fileID: 8300000, guid: d7d80e4ff133f3543a2f7f197201084b, type: 3}
   maxHp: 5
   target: {fileID: 0}
   isCharmed: 0
   isBoss: 0
   _specialReload: 1.8
   _pointOfRay: {fileID: 811836061350233835}
+  _specialSound: {fileID: 8300000, guid: 3eb2cc4b828df9242b0789f2501aa349, type: 3}
 --- !u!60 &4991096829200812066
 PolygonCollider2D:
   m_ObjectHideFlags: 0

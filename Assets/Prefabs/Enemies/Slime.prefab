@@ -436,6 +436,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 8300000, guid: 83f237bea591bdf478e9b648f9a38d8a, type: 3}
   maxHp: 4
   target: {fileID: 0}
   isCharmed: 0
@@ -445,6 +446,7 @@ MonoBehaviour:
   - {fileID: 2579444625371476169}
   _decreaseSize: 0.8
   _slime: {fileID: 5541648944937238270}
+  _separionSound: {fileID: 8300000, guid: 0ae9f897444c8ae4b832d787f54ebd5b, type: 3}
   countOfSeparates: 2
 --- !u!114 &4126161934553219236
 MonoBehaviour:

@@ -7,6 +7,8 @@ public class Barrage : PlayerAttack
 
     public void CreateBullet(int count)
     {
+        StaticValues.PlayerObj.effectsSource.PlayOneShot(shotSound);
+
         for (int i = 0; i < bulletsCount; i++)
         {
             Vector3 angle = _player.eulerAngles;

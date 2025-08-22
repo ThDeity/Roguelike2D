@@ -163,6 +163,7 @@ MonoBehaviour:
   persentOfDmg: 0.8
   bullet: {fileID: 3043431237874535504, guid: 24a374732d100574d9f0db6621b0c007, type: 3}
   _point: {fileID: 5029053600946489901}
+  _shotSound: {fileID: 8300000, guid: 963a754cc8227ca40beef38b4f5d328a, type: 3}
 --- !u!61 &1138714342565280787
 BoxCollider2D:
   m_ObjectHideFlags: 0
