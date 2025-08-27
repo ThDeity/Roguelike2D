@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 
 public class RevivalPanel : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class RevivalPanel : MonoBehaviour
 
     [Tooltip("Must be non negative & integer")]
     [SerializeField] private float _timeToThink;
+
+    [SerializeField] private string _idAdv;
 
     private void Update()
     {
@@ -26,6 +29,15 @@ public class RevivalPanel : MonoBehaviour
     }
 
     public void Revive()
+    {
+        YG2.RewardedAdvShow(_idAdv, () =>
+        {
+            // Получение вознаграждения
+            SetReward();
+        });
+    }
+
+    protected void SetReward()
     {
         StaticValues.PlayerObj.lifesCount += 1;
 

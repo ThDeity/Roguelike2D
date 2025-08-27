@@ -8,7 +8,7 @@ public class SpawnPrize : MonoBehaviour
 
     [Tooltip("0 - Parametres, 1 - ActiveSkills, 2 - PassiveSkills, 3 - Enemy, 4 - Default, 5 - Boss")]
     [SerializeField] private List<GameObject> _prizes;
-    protected static int Rooms = 5;
+    protected static int Rooms = 6;
 
     [SerializeField] private GameObject _portal;
     [Tooltip("At least 3 points")]
@@ -85,6 +85,29 @@ public class SpawnPrize : MonoBehaviour
 
     private void LoadNextLevel()
     {
+        if (_portals.Count == 0 || _portals[0] == null)
+        {
+            _portals.ForEach(x => Destroy(x.gameObject));
+            _portals.Clear();
+
+            if (StaticValues.RoomsBeforeBoss % Rooms != Rooms - 1)
+            {
+                int numberOfPortals = Random.Range(1, 4);
+                for (int y = 0; y < numberOfPortals; y++)
+                {
+                    GameObject portal = Instantiate(_portal, _portalsPoints[y]);
+                    _portals.Add(portal);
+                }
+            }
+            else
+            {
+                GameObject portal = Instantiate(_portal, _portalsPoints[0].position, Quaternion.identity);
+                _portals.Add(portal);
+
+                portal.GetComponent<Portal>().SetPrize(5);
+            }
+        }
+
         for (int i = 0; i < _portals.Count; i++)
             _portals[i].SetActive(true);
 

@@ -19,17 +19,23 @@ public class PassiveSkill : Prize
     {
         if (StaticValues.CurrentCountOfRerolls < StaticValues.CountOfRerolls)
         {
-            StaticValues.CurrentCountOfRerolls += 1;
-            foreach (Transform slot in _slots)
-            {
-                for (int i = 0; i < slot.childCount; i++)
-                    Destroy(slot.GetChild(i).gameObject);
-            }
-            ShowSkills();
-
             _rerollButton = button;
-            _rerollButton.gameObject.SetActive(false);
+
+            ShowRewardAdv_UseCallback();
         }
+    }
+
+    protected override void SetReward()
+    {
+        StaticValues.CurrentCountOfRerolls += 1;
+        foreach (Transform slot in _slots)
+        {
+            for (int i = 0; i < slot.childCount; i++)
+                Destroy(slot.GetChild(i).gameObject);
+        }
+        ShowSkills();
+
+        _rerollButton.gameObject.SetActive(false);
     }
 
     private void Start() => _passiveSkillsPanel = StaticValues.PassiveSkillsPanel;
@@ -107,6 +113,14 @@ public class PassiveSkill : Prize
         rare.Clear();
         epic.Clear();
         legendary.Clear();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        if (StaticValues.CountOfRerolls <= 0)
+            _rerollButton.gameObject.SetActive(false);
     }
 
     private void OnDisable()

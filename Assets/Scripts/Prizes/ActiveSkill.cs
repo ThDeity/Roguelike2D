@@ -19,7 +19,6 @@ public class ActiveSkill : Prize
         {
             StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
             Time.timeScale = 0;
-            Debug.Log(Time.timeScale);
 
             _activeSkillsPanel.SetActive(true);
             _activeSkillsPanel.GetComponent<ActiveSkill>().ShowSkills();
@@ -32,7 +31,6 @@ public class ActiveSkill : Prize
     public void ShowSkills()
     {
         Time.timeScale = 0;
-        Debug.Log(Time.timeScale);
 
         if (_skills.Count < _slots.Count)
         {
@@ -58,17 +56,31 @@ public class ActiveSkill : Prize
     {
         if (StaticValues.CurrentCountOfRerolls < StaticValues.CountOfRerolls)
         {
-            StaticValues.CurrentCountOfRerolls += 1;
-            foreach (Transform slot in _slots)
-            {
-                for (int i = 0; i < slot.childCount; i++)
-                    Destroy(slot.GetChild(i).gameObject);
-            }
-            ShowSkills();
-
             _rerollButton = button;
-            _rerollButton.gameObject.SetActive(false);
+
+            ShowRewardAdv_UseCallback();
         }
+    }
+
+    protected override void SetReward()
+    {
+        StaticValues.CurrentCountOfRerolls += 1;
+        foreach (Transform slot in _slots)
+        {
+            for (int i = 0; i < slot.childCount; i++)
+                Destroy(slot.GetChild(i).gameObject);
+        }
+        ShowSkills();
+
+        _rerollButton.gameObject.SetActive(false);
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        if (StaticValues.CountOfRerolls <= 0)
+            _rerollButton.gameObject.SetActive(false);
     }
 
     private void OnDisable()

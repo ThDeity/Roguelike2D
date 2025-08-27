@@ -26,19 +26,32 @@ public class EnemyParam : Prize
         }
     }
 
-    private void OnEnable() => chance = Random.Range(0, 2);//
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        chance = Random.Range(0, 2);
+
+        if (StaticValues.CountOfRerolls <= 0)
+            _button.SetActive(false);
+    }
 
     GameObject _button;
     public void HappyChance(GameObject button)
     {
         if (StaticValues.CurrentCountOfRerolls < StaticValues.CountOfRerolls)
         {
-            StaticValues.CurrentCountOfRerolls += 1;
-            chance = 1;
-
             _button = button;
-            _button.SetActive(false);
+
+            ShowRewardAdv_UseCallback();
         }
+    }
+
+    protected override void SetReward()
+    {
+        StaticValues.CurrentCountOfRerolls += 1;
+        chance = 1;
+
+        _button.SetActive(false);
     }
 
     private void OnDisable()
