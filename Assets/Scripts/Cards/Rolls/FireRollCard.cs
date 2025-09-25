@@ -15,8 +15,10 @@ public class FireRollCard : Card
             _description.text = $"Огненный Рывок\n +{_rollCdDebuff} КД Рывка";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out FireRoll fireRoll))
         {
             fireRoll = StaticValues.PlayerObj.gameObject.AddComponent<FireRoll>();

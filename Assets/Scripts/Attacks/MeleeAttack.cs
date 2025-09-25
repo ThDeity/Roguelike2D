@@ -24,7 +24,7 @@ public class MeleeAttack : MonoBehaviour
     {
         if (collision.TryGetComponent(out IDamagable enemy) && collision.tag != tag)
         {
-            if (_effect != null)
+            if (_effect != null && EffectsSource != null)
                 EffectsSource.PlayOneShot(_effect);
 
             float damage = Random.Range(0, 100) <= _critChance ? _damage * 2 : _damage;

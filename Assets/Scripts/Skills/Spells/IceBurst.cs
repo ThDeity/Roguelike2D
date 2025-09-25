@@ -3,7 +3,7 @@ using UnityEngine;
 public class IceBurst : Skill
 {
     public GameObject zone, effects;
-    public float reloadTime, freezingTime, radius, force, damage;
+    public float reloadTime, freezingTime, radius, force, damage, speed;
 
     private float _currentTime;
     private Transform _zone;
@@ -57,13 +57,27 @@ public class IceBurst : Skill
             _isSkillCharged = true;
         }
 
-        if (_zone != null)
+        if (joystick != null && joystick.isDragging && _currentTime <= 0 && _zone == null)
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            _zone.position = new Vector3(pos.x, pos.y, 0);
+            _zone = Instantiate(zone, transform.position, Quaternion.identity).transform;
+            _isSkillCharged = true;
         }
 
-        if (_isSkillCharged && Input.GetMouseButtonUp(1) && _currentTime <= 0)
+        if (_zone != null)
+        {
+            if (joystick == null)
+            {
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                _zone.position = new Vector3(pos.x, pos.y, 0);
+            }
+            else
+            {
+                Vector2 pos = new Vector2(joystick.Horizontal, joystick.Vertical).normalized;
+                _zone.Translate(pos * speed);
+            }
+        }
+
+        if (_isSkillCharged && (Input.GetMouseButtonUp(1) || (joystick != null && !joystick.isDragging)) && _currentTime <= 0)
         {
             StaticValues.PlayerObj.effectsSource.PlayOneShot(skillSound);
 

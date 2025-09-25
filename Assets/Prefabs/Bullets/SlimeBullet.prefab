@@ -210,6 +210,6 @@ MonoBehaviour:
   lifeSteal: 0
   maxDistance: 6
   lifeTimeRange: 0
-  _bulletVector: {x: 1, y: 0}
   timeTakingDmg: 0
+  _bulletVector: {x: 1, y: 0}
   isDrillAmmo: 0

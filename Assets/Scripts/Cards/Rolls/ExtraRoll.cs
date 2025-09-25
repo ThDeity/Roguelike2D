@@ -14,8 +14,10 @@ public class ExtraRoll : Card
             _description.text = $"Дополнительный Рывок\n +{_rollCdDebuff} КД Рывка";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         StaticValues.PlayerMovementObj.rollsCount++;
 
         SetRollParam(_rollCdDebuff);

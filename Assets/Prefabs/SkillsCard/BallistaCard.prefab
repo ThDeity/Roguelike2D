@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 9}
-  m_SizeDelta: {x: 100, y: 90}
+  m_AnchoredPosition: {x: -0.0011464, y: 16.7665}
+  m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1475441865813629716
 CanvasRenderer:
@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
+    m_Font: {fileID: 12800000, guid: 4b10251d8d1a40c4d97edcf51fc6b4ea, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
@@ -134,7 +134,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8660935964912541927
 CanvasRenderer:
@@ -243,10 +243,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillSprite: {fileID: 0}
+  _titleEng: The maximum HP and damage of the ballista depends on the HP and damage
+    of the player
+  _titleRus: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435
+    \u0425\u041F \u0438 \u0443\u0440\u043E\u043D \u0431\u0430\u043B\u043B\u0438\u0441\u0442\u044B
+    \u0437\u0430\u0432\u0438\u0441\u044F\u0442 \u043E\u0442 \u0425\u041F \u0438 \u0443\u0440\u043E\u043D\u0430
+    \u0438\u0433\u0440\u043E\u043A\u0430"
   _isCard: 1
+  joystick: {fileID: 0}
   skillSound: {fileID: 8300000, guid: e402f4a69127c5441978ccf3654751ca, type: 3}
   _ballista: {fileID: 244262821863087915, guid: 59f51d9e07b0a834fb12571a340354fd, type: 3}
   _zone: {fileID: 8867089238020802048, guid: d5c3cbf98c463664a9a5f23d9105b602, type: 3}
-  _reloadTime: 8.5
+  _reloadTime: 5
   _increaseParam: 1.2
   _hpOfPlayer: 0.3
+  _speed: 0.09

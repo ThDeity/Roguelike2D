@@ -16,8 +16,10 @@ public class SpikesCard : Card
             _description.text = $"Ўипы \n {_interval}с »нтервал\n +{_spikesCount} Ўипов";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         if (!StaticValues.PlayerObj.TryGetComponent(out Spikes component))
         {
             component = StaticValues.PlayerObj.gameObject.AddComponent<Spikes>();

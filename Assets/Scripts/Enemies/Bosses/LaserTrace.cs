@@ -42,8 +42,11 @@ public class LaserTrace : MonoBehaviour
         if (Enemy.EffectsSource != null)
             Enemy.EffectsSource.PlayOneShot(_lasersReady);
 
-        laser.GetComponentInChildren<Collider2D>().enabled = true;
-        laser.GetComponentInChildren<SpriteRenderer>().color = Color.white;
-        laser.GetComponentInChildren<Light2D>().enabled = true;
+        if (laser != null)
+        {
+            laser.GetComponentInChildren<Collider2D>().enabled = true;
+            laser.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            laser.GetComponentInChildren<Light2D>().enabled = true;
+        }
     }
 }

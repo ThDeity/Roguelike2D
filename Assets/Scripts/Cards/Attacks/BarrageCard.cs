@@ -16,8 +16,10 @@ public class BarrageCard : Card
             _description.text = $"Дробовик \n -{(1 - _dmgDebuff) * 100}% ДМГ \n -{(_cdDebuff - 1) * 100}% Перез-ка \n +{_bulletsCount} Пуль";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetAttackParam(_dmgDebuff,0,_bulletSpeed,_cdDebuff,0,_maxDistance);
 
         if (!StaticValues.PlayerAttackList[0].gameObject.TryGetComponent(out Barrage barrage))
@@ -31,6 +33,7 @@ public class BarrageCard : Card
             barrage.bulletsCount = _bulletsCount;
             barrage.anglesOffset = _anglesOffset;
             barrage.shotSound = _audioClip;
+            barrage.stick = attack.stick;
         }
         else
         {

@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536a0e3b961faea49ae68959e2a11577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: 
-  _titleMeshPro: {fileID: 0}
+  _titleEng: 
+  _titleRus: 
   _trail: {fileID: -8645998168046745852, guid: 762f5a4e34dd3234e9fdb331822a49c3, type: 3}
   _rollCdDebuff: 0.08
   _radiusBuff: 1.15
@@ -235,7 +235,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4b10251d8d1a40c4d97edcf51fc6b4ea, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1

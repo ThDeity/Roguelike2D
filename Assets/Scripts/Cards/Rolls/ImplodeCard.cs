@@ -15,8 +15,10 @@ public class ImplodeCard : Card
             _description.text = $"Притягивающий Рывок\n +{_rollCdDebuff} КД Рывка\n +{(1 - _hpBuff) * 100}% ХП";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetRollParam(_rollCdDebuff);
         StaticValues.PlayerObj.ChangeMxHp(_hpBuff);
 

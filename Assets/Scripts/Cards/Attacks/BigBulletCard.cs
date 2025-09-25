@@ -14,8 +14,10 @@ public class BigBulletCard : Card
             _description.text = $"Большие Пули \n -{(_cdDebuff - 1) * 100}% Перез-ка \n +{(_sizeBuff - 1) * 100} Размер";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetAttackParam(1,0,1,_cdDebuff,0,1, _sizeBuff);
 
         StaticValues.PassiveSkillsPanel.SetActive(false);

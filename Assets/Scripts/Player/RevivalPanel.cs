@@ -1,3 +1,4 @@
+using RimuruDev;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using YG;
 public class RevivalPanel : MonoBehaviour
 {
     [SerializeField] private Text _timer;
+    [SerializeField] private GameObject _reviveButton;
 
     [Tooltip("Must be non negative & integer")]
     [SerializeField] private float _timeToThink;
@@ -40,6 +42,9 @@ public class RevivalPanel : MonoBehaviour
     protected void SetReward()
     {
         StaticValues.PlayerObj.lifesCount += 1;
+
+        if (FindObjectOfType<DeviceTypeDetector>().CurrentDeviceType == CurrentDeviceType.WebMobile)
+            _reviveButton.SetActive(true);
 
         gameObject.SetActive(false);
     }

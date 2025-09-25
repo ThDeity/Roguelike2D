@@ -1783,6 +1783,7 @@ MonoBehaviour:
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
+  _attackSound: {fileID: 0}
   maxHp: 3
   target: {fileID: 0}
   isCharmed: 0
@@ -2048,6 +2049,7 @@ MonoBehaviour:
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
+  _attackSound: {fileID: 0}
   maxHp: 3
   target: {fileID: 0}
   isCharmed: 0
@@ -2208,6 +2210,7 @@ MonoBehaviour:
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
+  _attackSound: {fileID: 0}
   maxHp: 3
   target: {fileID: 0}
   isCharmed: 0
@@ -2329,17 +2332,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7773062787130913047}
   m_SourcePrefab: {fileID: 100100000, guid: ee45a85ee4395dc42a9ed9fe9e7388b1, type: 3}
---- !u!114 &1127574584482462791 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5649474956100670730, guid: ee45a85ee4395dc42a9ed9fe9e7388b1, type: 3}
-  m_PrefabInstance: {fileID: 4738636275484813645}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f79a353a2cea82b42864a45e8486cb66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2222179110814223938 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6851594299242276623, guid: ee45a85ee4395dc42a9ed9fe9e7388b1, type: 3}
@@ -2369,7 +2361,7 @@ MonoBehaviour:
     ValueChanged:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1127574584482462791}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ValueBar, Assembly-CSharp
           m_MethodName: SetValue
           m_Mode: 0
@@ -2381,6 +2373,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _attackSound: {fileID: 0}
   maxHp: 3
   target: {fileID: 0}
   isCharmed: 0
@@ -2594,6 +2587,7 @@ MonoBehaviour:
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
+  _attackSound: {fileID: 0}
   maxHp: 3
   target: {fileID: 0}
   isCharmed: 0
@@ -2745,6 +2739,7 @@ MonoBehaviour:
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
+  _attackSound: {fileID: 0}
   maxHp: 3
   target: {fileID: 0}
   isCharmed: 0
@@ -2896,6 +2891,7 @@ MonoBehaviour:
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
+  _attackSound: {fileID: 0}
   maxHp: 3
   target: {fileID: 0}
   isCharmed: 0
@@ -3113,6 +3109,7 @@ MonoBehaviour:
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
+  _attackSound: {fileID: 0}
   maxHp: 3
   target: {fileID: 0}
   isCharmed: 0

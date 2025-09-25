@@ -15,8 +15,10 @@ public class RiccochetCard : Card
             _description.text = $"Рикошет\n +{(_buffBulletSpeed - 1) * 100}% Скорость пули\n +{(_buffMaxDistance - 1) * 100}% Длина выстрела\n -{(1 - _debuffDmg) * 100}% ДМГ\n -{(_debuffCd - 1) * 100}% Перез-ка\n +{_bounceCount} Рикошета";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out BulletsComponents components);
         components.SetComponent(typeof(Ricoshet));
 

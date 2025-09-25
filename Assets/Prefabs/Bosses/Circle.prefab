@@ -215,10 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd0d7f930f28a746a7b129335f3c74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstDmg: 100
+  _firstDmg: 2
   _secondDmg: 2
   _timeOfTakingDmg: 4
-  _isExplosion: 0
   _saveZone: {fileID: 1665957718658881739}
 --- !u!58 &4996993400447419110
 CircleCollider2D:

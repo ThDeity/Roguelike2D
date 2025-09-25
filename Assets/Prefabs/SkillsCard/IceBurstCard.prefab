@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6705842851354692388
 CanvasRenderer:
@@ -147,16 +147,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillSprite: {fileID: 0}
+  _titleEng: Freeze and damage the area!
+  _titleRus: "\u0417\u0430\u043C\u043E\u0440\u043E\u0437\u043A\u0430 \u0438 \u0443\u0440\u043E\u043D
+    \u043F\u043E \u043E\u0431\u043B\u0430\u0441\u0442\u0438!"
   _isCard: 1
+  joystick: {fileID: 0}
   skillSound: {fileID: 8300000, guid: 2a826b077e89ff54abdc44a6e101e7f2, type: 3}
   _zone: {fileID: 5954042546461210915, guid: 5d9c10299153cce45b97bef3cb8656a5, type: 3}
   _effects: {fileID: 2084809507604174448, guid: 7d185d80c4efb864292144718edd2863, type: 3}
-  _reloadTime: 8.5
+  _reloadTime: 4.5
   _freezingTime: 1.25
   _radius: 3.5
   _force: 1
   _damage: 3
   _improveSkill: 1.15
+  _speed: 0.115
 --- !u!1 &4409745070814784848
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +198,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 15}
-  m_SizeDelta: {x: 100, y: 90}
+  m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1429716215524010773
 CanvasRenderer:
@@ -224,7 +229,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
+    m_Font: {fileID: 12800000, guid: 4b10251d8d1a40c4d97edcf51fc6b4ea, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1

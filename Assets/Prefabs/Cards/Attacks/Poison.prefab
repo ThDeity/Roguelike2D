@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4b10251d8d1a40c4d97edcf51fc6b4ea, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
@@ -243,11 +243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee67b7ef6378594d8f4aee3a6f47697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Poisoning and killing. But it takes time.
-  _titleMeshPro: {fileID: 0}
+  _titleEng: 
+  _titleRus: 
   _dmgBuff: 1.5
   _cdDebuff: 1.2
-  _timeOfTakingDmg: 3
+  _timeOfTakingDmg: 1.75
 --- !u!114 &-6032195462366644646
 MonoBehaviour:
   m_ObjectHideFlags: 0

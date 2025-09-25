@@ -8,9 +8,9 @@ public class BossOfSpeed : Enemy
     [SerializeField] private float _timeOfCircle, _hpToSleep, _timeOfSleep, _radius, _dashTime, _dashSpeed, _timeBtwDashes, _timeBtwWawes, _timeBtwMelleeAttack, _trailTime, _trailDmg;
     [SerializeField] private int _indexOfAttack, _numOfRolls, _numOfBullets, _numOfWawes;
     [SerializeField] private GameObject _zoneOfCircle, _bullet, _fireTrail;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
     [Tooltip("�������� � ��� ������������������, � ������� ����� �����")]
     [SerializeField] private List<string> _animNames;
+    [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private Color _sleepColor;
 
     [SerializeField] AudioClip _sleepSound, _wakeUpSound, _cellSound, _dashSound, _shotSound, _statuesEffect;
@@ -22,6 +22,16 @@ public class BossOfSpeed : Enemy
     bool _wasSleeping, _isSleeping, _isRolling;
     public override void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
+        if (time <= 0 && damage >= _currentHp)
+        {
+            var prize = FindObjectOfType<SpawnPrize>();
+            if (prize != null)
+            {
+                prize.GivePrize();
+                StaticValues.WasPrizeGotten = true;
+            }
+        }
+        StaticValues.CurrentRoomType = "Boss";
         base.TakeDamage(damage, time, isLifesteal, lifesteal);
 
         if (_currentHp <= maxHp * _hpToSleep && !_wasSleeping)
@@ -35,9 +45,11 @@ public class BossOfSpeed : Enemy
 
     private IEnumerator Sleep()
     {
-        _spriteRenderer.color = _sleepColor;
+        //_animator.enabled = false;
+        //_animator.applyRootMotion = false;
+        //_sprite.color = _sleepColor;
+        _animator.Play("Sleep");
         _rigidbody2D.isKinematic = true;
-        _animator.enabled = false;
         _agent.enabled = false;
 
         if (EffectsSource != null)
@@ -53,7 +65,8 @@ public class BossOfSpeed : Enemy
         if (EffectsSource != null)
             EffectsSource.PlayOneShot(_wakeUpSound);
 
-        _spriteRenderer.color = Color.white;
+        _sprite.color = Color.white;
+        _animator.applyRootMotion = true;
     }
 
     protected virtual Vector2 GeneratePos()
@@ -213,8 +226,26 @@ public class BossOfSpeed : Enemy
 
     protected void OnEnable()
     {
-        if (StaticValues.EnemyMaxHp <= 0) return;
+        if (_currentHp <= 0) return;
 
+        Debug.Log(StaticValues.CurrentRoomType);
+        base.Start();
+        StaticValues.CurrentRoomType = "Boss";
+        _transform = transform;
+
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _currentTime = _timeBtwMelleeAttack;
+
+        if (_statues.Count == 0)
+        {
+            _statues = FindObjectsOfType<FrozenStatue>().ToList();
+            _statues.ForEach(statue => statue.Disable());
+        }
+    }
+
+    protected override void Start()
+    {
+        _spriteRenderer = _sprite;
         base.Start();
         StaticValues.CurrentRoomType = "Boss";
         _transform = transform;
@@ -281,7 +312,10 @@ public class BossOfSpeed : Enemy
             }
 
             if (_isRolling)
+            {
+                Debug.Log($"{_rigidbody2D}, {_transform}");
                 _rigidbody2D.velocity = Time.deltaTime * _dashSpeed * _transform.up;
+            }
         }
         else if (!_isSleeping && target == null && Vector2.Distance(_currentPos, _transform.position) > _randomDistance && !_isRolling)
             _agent.SetDestination(_currentPos);
@@ -306,9 +340,6 @@ public class BossOfSpeed : Enemy
         _statues.ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
-
-        if (_currentHp <= 0 && gameObject.activeInHierarchy)
-            FindObjectOfType<SpawnPrize>().GivePrize();
 
         StaticValues.WasPrizeGotten = true;
     }

@@ -187,13 +187,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a29cc9f538ef484e96b1657a0719134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
+  damage: 2.1
   critChance: 0
   lifeTime: 0
   speed: 13
   lifeSteal: 0
   maxDistance: 19
   lifeTimeRange: 0
-  _bulletVector: {x: 0, y: 1}
   timeTakingDmg: 2
+  _bulletVector: {x: 0, y: 1}
   isDrillAmmo: 0

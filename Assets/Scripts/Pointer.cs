@@ -36,7 +36,7 @@ public class Pointer : MonoBehaviour
 
         foreach (var enemy in SpawnEnemies.Enemies)
         {
-            if (Vector2.Distance(enemy.transform.position, transform.position) < minDistance)
+            if (enemy != null && Vector2.Distance(enemy.transform.position, transform.position) < minDistance)
             {
                 minDistance = Vector2.Distance(enemy.transform.position, transform.position);
                 _target = enemy.transform;

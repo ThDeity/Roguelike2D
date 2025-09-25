@@ -4,14 +4,12 @@ using UnityEngine;
 public class BlinkingEnemy : Enemy
 {
     [SerializeField] private float _timeBtwBlinks, _timeOfBlinking;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private AudioClip _blinkSound;
     [SerializeField] private Color _color;
 
     private Collider2D _collider;
     private float _currentCd;
     private bool _isBlinking;
-    private Color _realColor;
 
     protected override void Start()
     {

@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class ParasiteCard : Card
 {
-    [SerializeField] private float _lifeSteal, _mxHpBuff, _dmgBuff, _cdDebuff;
-    [SerializeField] private int _timeOfTakingDmg;
+    [SerializeField] private float _lifeSteal, _mxHpBuff, _dmgBuff, _cdDebuff, _timeOfTakingDmg;
 
     protected override void Start()
     {
@@ -15,8 +14,10 @@ public class ParasiteCard : Card
             _description.text = $"Паразит\n +{_lifeSteal * 100}% Кражи здоровья\n +{(_mxHpBuff - 1) * 100}% ХП\n +{(_dmgBuff - 1) * 100}% ДМГ\n -{(_cdDebuff - 1) * 100}% Перез-ки";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetAttackParam(_dmgBuff,_lifeSteal,1,_cdDebuff, _timeOfTakingDmg);
         StaticValues.PlayerObj.ChangeMxHp(_mxHpBuff);
 

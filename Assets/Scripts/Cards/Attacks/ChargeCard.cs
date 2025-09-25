@@ -8,8 +8,10 @@ public class ChargeCard : Card
     [SerializeField] private Vector2 _maxSize;
     [SerializeField] private KeyCode _keyCode;
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         Charge charge = StaticValues.PlayerAttackList[0].AddComponent<Charge>();
 
         charge.chargingBullet = _chargingBullet;

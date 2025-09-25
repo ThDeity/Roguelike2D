@@ -15,25 +15,27 @@ public class ExplodingMobsCard : Card
             _description.text = $"Exploding Mobs \n";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         Player player = StaticValues.PlayerObj;
 
         if (!player.IsExploding)
         {
             player.IsExploding = true;
-            player.Explosion = _explosion;
+            player.explosion = _explosion;
         }
         else
         {
-            Explosion explosion = player.Explosion.GetComponent<Explosion>();
+            Explosion explosion = player.explosion.GetComponent<Explosion>();
 
-            Debug.Log(player.Explosion.GetComponent<Explosion>().radius);
+            Debug.Log(player.explosion.GetComponent<Explosion>().radius);
 
             explosion.radius *= _explosionBuff;
             explosion.damage *= _explosionBuff;
 
-            Debug.Log(player.Explosion.GetComponent<Explosion>().radius);
+            Debug.Log(player.explosion.GetComponent<Explosion>().radius);
         }
 
         StaticValues.PassiveSkillsPanel.SetActive(false);

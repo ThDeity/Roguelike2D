@@ -15,8 +15,10 @@ public class PerfectionismCard : Card
             _description.text = $"Перфекционист \n +{(_buffDmg - 1) * 100}% ДМГ\n -{(_debuffCd - 1) * 100}% Перез-ка";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetAttackParam(_buffDmg, 1, 1, _debuffCd);
 
         StaticValues.PassiveSkillsPanel.SetActive(false);

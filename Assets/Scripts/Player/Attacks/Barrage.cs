@@ -26,6 +26,18 @@ public class Barrage : PlayerAttack
     {
         if (Input.GetMouseButtonDown(0) && _time <= 0)
             OnMouseButtonDown();
+
+        if (stick.Direction.sqrMagnitude > 0f)
+        {
+            _stickBackground.color = _usualColor;
+
+            if (stick.Direction.sqrMagnitude > 0.2f && _time <= 0)
+                OnMouseButtonDown();
+            else
+                AutoShot();
+        }
+        else
+            _stickBackground.color = _stickColor;
     }
 
     public override void OnMouseButtonDown()

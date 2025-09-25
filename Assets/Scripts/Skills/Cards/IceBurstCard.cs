@@ -3,7 +3,7 @@ using UnityEngine;
 public class IceBurstCard : Skill
 {
     [SerializeField] private GameObject _zone, _effects;
-    [SerializeField] private float _reloadTime, _freezingTime, _radius, _force, _damage, _improveSkill;
+    [SerializeField] private float _reloadTime, _freezingTime, _radius, _force, _damage, _improveSkill, _speed;
 
     public override void GivePrize(Sprite skillSlot)
     {
@@ -32,5 +32,7 @@ public class IceBurstCard : Skill
         iceBurst.damage = _damage;
         iceBurst.effects = _effects;
         iceBurst.skillSprite = skillSlot;
+        iceBurst.joystick = FindObjectOfType<SkillJoystick>();
+        iceBurst.speed = _speed;
     }
 }

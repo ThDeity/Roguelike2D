@@ -10,12 +10,10 @@ public class FrozenStatue : Enemy
     [SerializeField] private bool _isNotShotFromPoint;
 
     private RangeAttack _rangeAttack;
-    private SpriteRenderer _sprite;
     private Collider2D _collider;
 
     public void Awake()
     {
-        _sprite = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
         _transform = transform;
 
@@ -72,8 +70,9 @@ public class FrozenStatue : Enemy
 
     public void Disable()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _isSleeping = true;
-        _sprite.enabled = false;
+        _spriteRenderer.enabled = false;
         _collider.enabled = false;
 
         _hpBar.SetActive(false);
@@ -84,10 +83,10 @@ public class FrozenStatue : Enemy
     public void Enable()
     {
         _isSleeping = false;
-        _sprite.enabled = true;
+        _spriteRenderer.enabled = true;
         _collider.enabled = true;
 
-        _sprite.color = Color.white;
+        _spriteRenderer.color = Color.white;
         _bar.AddValue(maxHp);
         _currentHp = maxHp;
 
@@ -146,21 +145,16 @@ public class FrozenStatue : Enemy
         _collider.enabled = false;
         _hpBar.SetActive(false);
 
-        _sprite.color = _color;
+        _spriteRenderer.color = _color;
 
         yield return new WaitForSeconds(_timeOfSleeping);
 
         _isSleeping = false;
         _collider.enabled = true;
 
-        _sprite.color = Color.white;
+        _spriteRenderer.color = Color.white;
 
         _bar.AddValue(maxHp);
         _currentHp = maxHp;
-    }
-
-    protected override void OnDestroy()
-    {
-
     }
 }

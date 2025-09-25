@@ -50,8 +50,8 @@ public class Slime : Enemy
 
             if (_timeTaking > 0)
                 StopCoroutine(TakingDamage(time));
-
-            StartCoroutine(TakingDamage(_timeTaking));
+            else
+                StartCoroutine(TakingDamage(_timeTaking));
         }
 
         if (!_isPlayerNear)

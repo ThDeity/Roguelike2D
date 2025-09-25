@@ -15,8 +15,10 @@ public class QuickReload : Card
             _description.text = $"Быстрая Перезарядка \n +{(1 - _cdBuff) * 100}% Перез-ка";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetAttackParam(1, 0, 1, _cdBuff, 0);
 
         StaticValues.PassiveSkillsPanel.SetActive(false);

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6058555880227757023}
   - component: {fileID: 7720624944763843781}
   - component: {fileID: 4236254136029842580}
+  - component: {fileID: 1559110474541825520}
+  - component: {fileID: 4341678698502888375}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -166,3 +168,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8876215208900679854, guid: d2691e327cdd6e048b918ed107e73d3e, type: 3}
   attacks: []
+  isMenu: 0
+--- !u!114 &1559110474541825520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476505938886442326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0290fac033c4f8284ece0ce9813bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentDeviceType>k__BackingField: 0
+  enableDeviceSimulator: 1
+--- !u!114 &4341678698502888375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476505938886442326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dfeb93bafe3274a8ccd9d8f4fb1685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _detector: {fileID: 1559110474541825520}
+  _joysticksPanel: {fileID: 0}
+  _mobileGuide: {fileID: 0}
+  _pcGuide: {fileID: 0}

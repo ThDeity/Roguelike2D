@@ -4,7 +4,7 @@ public class BallistaCard : Skill
 {
     [SerializeField] private Ballista _ballista;
     [SerializeField] private GameObject _zone;
-    [SerializeField] private float _reloadTime, _increaseParam, _hpOfPlayer;
+    [SerializeField] private float _reloadTime, _increaseParam, _hpOfPlayer, _speed;
 
     public override void GivePrize(Sprite skillSlot)
     {
@@ -35,5 +35,7 @@ public class BallistaCard : Skill
         ballista.skillSprite = skillSlot;
         ballista.ballista = _ballista;
         ballista.zone = _zone;
+        ballista.joystick = FindObjectOfType<SkillJoystick>();
+        ballista.speed = _speed;
     }
 }

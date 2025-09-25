@@ -96,6 +96,7 @@ MonoBehaviour:
   _attackDistance: 6
   _offset: 0
   _reloadTime: 7
+  _damagedEffectDuration: 0
   _bar:
     ValueChanged:
       m_PersistentCalls:
@@ -113,7 +114,11 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _attackSound: {fileID: 8300000, guid: 59ce3240d18cf1441b5e04e194ea0502, type: 3}
-  maxHp: 210
+  _damagedSound: {fileID: 8300000, guid: b3138272d8444974cb343a879d26832a, type: 3}
+  _damagedColor: {r: 1, g: 0.3066038, b: 0.3066038, a: 1}
+  _chanceFallingOut: 0
+  _medkit: {fileID: 0}
+  maxHp: 130
   target: {fileID: 0}
   isCharmed: 0
   isBoss: 1
@@ -163,6 +168,7 @@ MonoBehaviour:
   - FuriousBombs
   - FuriousShots
   _shadowBullet: {fileID: 1997150863210232743, guid: c6fadbe96ff5055448c9bed0cce0a9c4, type: 3}
+  _sprite: {fileID: 3842440054009317530}
   _vignette: {fileID: 4012559985924399170, guid: 7e4730f368a237d48b8c148b2fc0db40, type: 3}
   _pulsColor: {r: 1, g: 0, b: 0.043137256, a: 1}
   _furiousSound: {fileID: 8300000, guid: 47752942a99684c4ab90ed4b568e7eb2, type: 3}
@@ -338,11 +344,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 15930585793658694, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 282
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 15930585793658694, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 26
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 15930585793658694, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalScale.z
@@ -350,11 +356,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 15930585793658694, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -141
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 15930585793658694, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -43
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 366305602470619157, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_RenderMode

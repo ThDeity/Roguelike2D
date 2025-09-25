@@ -14,8 +14,10 @@ public class PhoenixCard : Card
             _description.text = $"Феникс\n {(1 - _hpPersentAfterDeath) * 100}% ХП после смерти\n -{(1 - _hpDebuff) * 100}% ХП\n +1 Жизнь";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         Player player = StaticValues.PlayerObj;
 
         player.ChangeMxHp(_hpDebuff);

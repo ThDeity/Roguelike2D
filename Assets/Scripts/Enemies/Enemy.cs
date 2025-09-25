@@ -2,16 +2,23 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour, IDamagable
 {
-    [SerializeField] protected float _attackDistance, _offset, _reloadTime;
+    [SerializeField] protected float _attackDistance, _offset, _reloadTime, _damagedEffectDuration;
     [SerializeField] protected ValueSystem _bar = new ValueSystem();
-    [SerializeField] protected AudioClip _attackSound;
+    [SerializeField] protected AudioClip _attackSound, _damagedSound;
+    [SerializeField] protected Color _damagedColor;
+    [SerializeField] protected SpriteRenderer _spriteEnemy;
+
+    [SerializeField] protected int _chanceFallingOut;
+    [SerializeField] protected GameObject _medkit;
     public float maxHp;
 
     protected List<Transform> _points = new List<Transform>();
+    protected SpriteRenderer _spriteRenderer;
     protected float _time, _currentHp;
     protected DebuffsEffects _debuffs;
     protected Transform _transform;
@@ -19,6 +26,7 @@ public class Enemy : MonoBehaviour, IDamagable
     protected NavMeshAgent _agent;
     protected Animator _animator;
     protected bool _isPlayerNear;
+    protected Color _realColor;
 
     public Transform target;
     public bool isCharmed, isBoss;
@@ -29,10 +37,22 @@ public class Enemy : MonoBehaviour, IDamagable
     protected GameObject _hpBar;
 
     protected bool _isTakingDmg, _isLifesteal;
+    public virtual float GetCurrentHp() { return _currentHp; }
+
     public virtual void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
         if (time == 0)
         {
+            if (!_isTakingDmg)
+            {
+                AudioSource.PlayClipAtPoint(_damagedSound, _transform.position);
+                //EffectsSource.PlayOneShot(_damagedSound);
+
+                DOTween.Kill(_spriteRenderer);
+                _spriteRenderer.color = _damagedColor;
+                _spriteRenderer.DOColor(_realColor, _damagedEffectDuration);
+            }
+
             _currentHp -= damage;
             _bar.RemoveValue(damage);
 
@@ -40,12 +60,31 @@ public class Enemy : MonoBehaviour, IDamagable
                 StaticValues.PlayerObj.TakeDamage(-damage * lifesteal, 0, false, 0);
 
             if (_currentHp <= 0)
+            {
+                StopAllCoroutines();
+                DOTween.KillAll();
+
+                int chance = Random.Range(0, 101);
+                if (chance < _chanceFallingOut)
+                    Instantiate(_medkit, _transform.position, Quaternion.identity);
+
+                SpawnEnemies spawn = FindObjectOfType<SpawnEnemies>();
+                if (spawn != null && gameObject != null)
+                    spawn.RemoveEnemy(gameObject);
+
                 Destroy(gameObject);
+            }
             else if (_currentHp > maxHp)
                 _currentHp = maxHp;
         }
         else
         {
+            DOTween.Kill(_spriteRenderer);
+            AudioSource.PlayClipAtPoint(_damagedSound, _transform.position);
+            //EffectsSource.PlayOneShot(_damagedSound);
+            _spriteRenderer.color = _damagedColor;
+            _spriteRenderer.DOColor(_realColor, _damagedEffectDuration);
+
             _isTakingDmg = true;
             _damageTaking += damage;
             _timeTaking += time;
@@ -58,8 +97,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
             if (_timeTaking > 0)
                 StopCoroutine(TakingDamage(time));
-
-            StartCoroutine(TakingDamage(_timeTaking));
+            else
+                StartCoroutine(TakingDamage(_timeTaking));
         }
 
         if (!_isPlayerNear)
@@ -78,15 +117,6 @@ public class Enemy : MonoBehaviour, IDamagable
 
         _isTakingDmg = _isLifesteal = false;
         _damageTaking = _lifestealToPlayer = 0;
-    }
-
-    protected virtual void OnDestroy()
-    {
-        StopAllCoroutines();
-
-        SpawnEnemies spawn = FindObjectOfType<SpawnEnemies>();
-        if (spawn != null)
-            spawn.RemoveEnemy(gameObject);
     }
 
     public virtual float ChangeReloadCd(float change)
@@ -118,6 +148,14 @@ public class Enemy : MonoBehaviour, IDamagable
 
     protected virtual void Start()
     {
+        if (_spriteEnemy != null)
+            _spriteRenderer = _spriteEnemy;
+
+        if (_spriteRenderer == null)
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (_spriteRenderer != null)
+            _realColor = _spriteRenderer.color;
+
         if (EffectsSource == null)
             EffectsSource = GameObject.FindGameObjectWithTag("Effects").GetComponent<AudioSource>();
 
@@ -197,6 +235,12 @@ public class Enemy : MonoBehaviour, IDamagable
                 _agent.destination = target.position;
             }
         }
+    }
+
+    protected virtual void OnDestroy()
+    {
+        StopAllCoroutines();
+        DOTween.KillAll();
     }
 
     protected virtual void OnDrawGizmosSelected()

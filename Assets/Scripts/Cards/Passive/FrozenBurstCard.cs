@@ -16,8 +16,10 @@ public class FrozenBurstCard : Card
             _description.text = $"Ледяной Всплеск\n +{_interval}с Интервал\n +{_radius}м Радиус\n +{_damage}% ДМГ";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         if (!StaticValues.PlayerObj.TryGetComponent(out FrozenBurst burst))
         {
             burst = StaticValues.PlayerObj.gameObject.AddComponent<FrozenBurst>();

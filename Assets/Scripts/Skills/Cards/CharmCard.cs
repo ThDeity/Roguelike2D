@@ -35,5 +35,6 @@ public class CharmCard : Skill
         charm.increaseParam = _increaseParam;
         charm.maxEnemies = _maxEnemies;
         charm.skillSprite = skillSlot;
+        charm.joystick = FindObjectOfType<SkillJoystick>();
     }
 }

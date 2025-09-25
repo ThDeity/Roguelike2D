@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonE: {fileID: 311471159364201623}
   _sound: {fileID: 8300000, guid: d8d21e949a911d14480a3d2b46e10298, type: 3}
+  _countOfRerolls: {fileID: 0}
+  _idAdv: 
   _slots: []
   _cardsRarity: {fileID: 0}
   _colors: []

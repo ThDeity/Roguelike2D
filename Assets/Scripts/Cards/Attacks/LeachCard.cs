@@ -14,8 +14,10 @@ public class LeachCard : Card
             _description.text = $"Лич \n +{_lifeSteal * 100}% Кража ХП \n +{(_mxHpBuff - 1) * 100}% ХП";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetAttackParam(1, _lifeSteal, 1, 1);
         StaticValues.PlayerObj.ChangeMxHp(_mxHpBuff);
         FindObjectOfType<StaticValues>().playerPrefab.GetComponent<Player>().ChangeMxHp(_mxHpBuff);

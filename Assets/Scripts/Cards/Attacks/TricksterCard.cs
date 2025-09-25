@@ -15,8 +15,10 @@ public class TricksterCard : Card
             _description.text = $"Трикстер\n +{(_bonusDmgPerBounce - 1) * 100}% ДМГ за отскок\n -{(_debuffCd - 1) * 100}% Перез-ки\n +{-_bonusBounces} Рикошета";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out BulletsComponents components);
         components.SetComponent(typeof(Ricoshet));
 

@@ -302,6 +302,7 @@ MonoBehaviour:
   _attackDistance: 7.5
   _offset: 0
   _reloadTime: 1.3
+  _damagedEffectDuration: 1
   _bar:
     ValueChanged:
       m_PersistentCalls:
@@ -319,6 +320,10 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _attackSound: {fileID: 8300000, guid: e38b4929bde8fe243b0341a239f5534c, type: 3}
+  _damagedSound: {fileID: 8300000, guid: b3138272d8444974cb343a879d26832a, type: 3}
+  _damagedColor: {r: 0.87058824, g: 0.23529412, b: 0.23529412, a: 1}
+  _chanceFallingOut: 10
+  _medkit: {fileID: 4721207913670276411, guid: bdc241ac170c0404a82ef30564cc7f92, type: 3}
   maxHp: 2.5
   target: {fileID: 0}
   isCharmed: 0

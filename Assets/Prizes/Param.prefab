@@ -146,6 +146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonE: {fileID: 4349065209083243012}
   _sound: {fileID: 8300000, guid: d8d21e949a911d14480a3d2b46e10298, type: 3}
+  _countOfRerolls: {fileID: 0}
+  _idAdv: 
 --- !u!1001 &8669362298525573128
 PrefabInstance:
   m_ObjectHideFlags: 0

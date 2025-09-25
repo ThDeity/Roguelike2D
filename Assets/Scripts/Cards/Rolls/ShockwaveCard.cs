@@ -15,8 +15,10 @@ public class ShockwaveCard : Card
             _description.text = $"Отталкивающий Рывок\n +{_rollCdDebuff} КД Рывка\n +{(_hpBuff - 1) * 100}% ХП";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base .GivePrize();
+
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out ShockwaveRoll shockwaveRoll))
         {
             shockwaveRoll = StaticValues.PlayerObj.gameObject.AddComponent<ShockwaveRoll>();

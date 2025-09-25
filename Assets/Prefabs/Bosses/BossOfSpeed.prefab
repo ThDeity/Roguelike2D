@@ -126,6 +126,7 @@ MonoBehaviour:
   _attackDistance: 12
   _offset: -90
   _reloadTime: 5
+  _damagedEffectDuration: 0
   _bar:
     ValueChanged:
       m_PersistentCalls:
@@ -143,7 +144,11 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _attackSound: {fileID: 0}
-  maxHp: 180
+  _damagedSound: {fileID: 8300000, guid: b3138272d8444974cb343a879d26832a, type: 3}
+  _damagedColor: {r: 1, g: 0.23921567, b: 0.2542703, a: 1}
+  _chanceFallingOut: 0
+  _medkit: {fileID: 0}
+  maxHp: 120
   target: {fileID: 0}
   isCharmed: 0
   isBoss: 1
@@ -165,18 +170,19 @@ MonoBehaviour:
   _zoneOfCircle: {fileID: 5284312750526953586, guid: 05e6140dce94b724abfa049fdb52d5ee, type: 3}
   _bullet: {fileID: 6149724416203041530, guid: 5f566cfda68d58f4ba038cfccba4b1af, type: 3}
   _fireTrail: {fileID: 7489614582110916648, guid: 762f5a4e34dd3234e9fdb331822a49c3, type: 3}
-  _spriteRenderer: {fileID: 7341945228583826798}
   _animNames:
   - Statues
   - Dashes
   - AOE
   - Shot
+  _sprite: {fileID: 7341945228583826798}
   _sleepColor: {r: 0.4745098, g: 0.3019608, b: 0.3019608, a: 1}
   _sleepSound: {fileID: 8300000, guid: a6b6fe06435b3f249ba2c946d9d0bf78, type: 3}
   _wakeUpSound: {fileID: 8300000, guid: 80b0728ef5bda5f45813fa81e3715720, type: 3}
   _cellSound: {fileID: 8300000, guid: e402f4a69127c5441978ccf3654751ca, type: 3}
   _dashSound: {fileID: 8300000, guid: f16216dede954b5498998077931580d5, type: 3}
   _shotSound: {fileID: 8300000, guid: 34ee38f318f63f04db91d63a9aee4eed, type: 3}
+  _statuesEffect: {fileID: 8300000, guid: 0923c10997439654d99ec475ba670e02, type: 3}
 --- !u!58 &3156555811031108458
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -365,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959f8d60629ec94e905b33c528d30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
+  _damage: 2
   _critChance: 20
   _effect: {fileID: 0}
 --- !u!1 &7061375645429270914
@@ -585,7 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959f8d60629ec94e905b33c528d30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
+  _damage: 2
   _critChance: 20
   _effect: {fileID: 0}
 --- !u!1001 &3257956432112416132
@@ -614,11 +620,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 15930585793658694, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 282
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 15930585793658694, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 26
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 15930585793658694, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_LocalScale.z
@@ -626,11 +632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 15930585793658694, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -141
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 15930585793658694, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -43
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 366305602470619157, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_RenderMode
@@ -639,6 +645,10 @@ PrefabInstance:
     - target: {fileID: 1555390142104432957, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686090100122751760, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
+      propertyPath: m_Color.r
+      value: 0.24705882
       objectReference: {fileID: 0}
     - target: {fileID: 3888454357597340088, guid: 00ecf0d0a921bff44bf0b11fe3b15afe, type: 3}
       propertyPath: m_Layer

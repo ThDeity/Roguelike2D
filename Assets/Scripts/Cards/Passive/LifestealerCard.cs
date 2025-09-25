@@ -16,8 +16,10 @@ public class LifestealerCard : Card
             _description.text = $"Похититель Здоровья\n\n";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         StaticValues.PlayerObj.gameObject.TryGetComponent(out Lifesteal steal);
 
         if (steal == null)

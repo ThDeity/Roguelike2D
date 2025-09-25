@@ -12,6 +12,7 @@ public class BossOfControling : Enemy
     [SerializeField] private int _countOfCells, _indexOfAttack, _numOfLaserRotations, _numOfLasers;
     [SerializeField] private GameObject _zoneOfCell, _laser, _copy, _laserTrace;
     [SerializeField] private List<Transform> _pointToCopy;
+    [SerializeField] private SpriteRenderer _sprite;
 
     [Tooltip("�������� � ��� ������������������, � ������� ����� �����")]
     [SerializeField] private List<string> _animNames;
@@ -22,6 +23,16 @@ public class BossOfControling : Enemy
     bool _wasCopied;
     public override void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
+        if (time <= 0 && damage >= _currentHp && _wasCopied)
+        {
+            var prize = FindObjectOfType<SpawnPrize>();
+            if (prize != null)
+            {
+                prize.GivePrize();
+                StaticValues.WasPrizeGotten = true;
+            }
+        }
+
         base.TakeDamage(damage, time, isLifesteal, lifesteal);
 
         if (_currentHp <= maxHp * _hpToCopy && !_wasCopied && _currentHp > 0)
@@ -157,22 +168,24 @@ public class BossOfControling : Enemy
         }
     }
 
-    private void Awake()
+    protected override void Start()
     {
         if (EffectsSource == null)
             EffectsSource = GameObject.FindGameObjectWithTag("Effects").GetComponent<AudioSource>();
 
         StaticValues.WasPrizeGotten = false;
-        StaticValues.CurrentRoomType = "Boss";
         _currentTime = _timeBtwMelleeAttack;
 
         _currentHp = maxHp;
+        _spriteRenderer = _sprite;
+        base.Start();
     }
 
     protected void OnEnable()
     {
-        if (StaticValues.EnemyMaxHp <= 0) return;
+        if (_currentHp <= 0) return;
 
+        Debug.Log(StaticValues.CurrentRoomType);
         if (EffectsSource.clip == _laserSound)
         {
             EffectsSource.loop = false;
@@ -267,11 +280,5 @@ public class BossOfControling : Enemy
     {
         GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => Destroy(x.gameObject));
         GameObject.FindGameObjectsWithTag(tag).ToList().ForEach(x => Destroy(x.gameObject));
-
-        if (_currentHp <= 0)
-        {
-            FindObjectOfType<SpawnPrize>().GivePrize();
-            StaticValues.WasPrizeGotten = true;
-        }
     }
 }

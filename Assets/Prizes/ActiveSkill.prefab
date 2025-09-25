@@ -146,6 +146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonE: {fileID: 5439262760298705254}
   _sound: {fileID: 8300000, guid: d8d21e949a911d14480a3d2b46e10298, type: 3}
+  _countOfRerolls: {fileID: 0}
+  _idAdv: 
   _slots: []
   skillSlot: {fileID: 0}
   _skills: []
@@ -157,6 +159,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7192003400886037452}
     m_Modifications:
+    - target: {fileID: 1982544869774679830, guid: 9c971a60bea149b4bb2b02a5f8a4a090, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4b10251d8d1a40c4d97edcf51fc6b4ea, type: 3}
     - target: {fileID: 4905889868995709452, guid: 9c971a60bea149b4bb2b02a5f8a4a090, type: 3}
       propertyPath: m_Name
       value: ButtonE

@@ -15,8 +15,10 @@ public class GlassCanonCard : Card
             _description.text = $"Стеклянная Пушка\n +{(_buffDmg - 1) * 100}% ДМГ\n -{(1 - _debufHp) * 100}% ХП";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetAttackParam(_buffDmg, 0, 1, 1);
 
         StaticValues.PlayerObj.ChangeMxHp(_debufHp);

@@ -91,11 +91,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2705ccd728fc842b21181b83c234d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 1.3
   timeBtwDamage: 0.15
   lifeTime: 3
   timeOfTakingDmg: 2
-  _tag: Player
 --- !u!1 &7657154916313124513
 GameObject:
   m_ObjectHideFlags: 0

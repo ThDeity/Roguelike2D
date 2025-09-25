@@ -14,8 +14,10 @@ public class ColdBulletsCard : Card
             _description.text = $"Ледяные Пули \n -{(_cdDebuff - 1) * 100}% Перез-ка \n +{(1 - _speedReduce) * 100}% Замедления";
     }
 
-    public void GiveOrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out BulletsComponents components);
         components.SetComponent(typeof(ColdBullets));
 

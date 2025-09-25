@@ -14,7 +14,6 @@ public class PlasmaShotCard : Skill
         {
             spell.dmgIncrease *= _improveSkill;
             spell.reloadTime *= _improveCd;
-            spell.zone.transform.localScale *= _improveSkill;
             spell.bullet.transform.localScale *= _improveSkill;
 
             return;
@@ -32,5 +31,6 @@ public class PlasmaShotCard : Skill
         shot.bullet = _bullet;
         shot.zone = _zone;
         shot.skillSprite = skillSlot;
+        shot.joystick = FindObjectOfType<SkillJoystick>();
     }
 }

@@ -86,7 +86,7 @@ public class SpawnEnemies : MonoBehaviour
         if (Enemies.Contains(enemy))
             Enemies.Remove(enemy);
 
-        if (Enemies.Count > 0 && Enemies.Count <= 2)
+        if (Enemies.Count > 0 && Enemies.Count <= 2 && _pointer != null)
             _pointer.GetTarget();
 
         if (Enemies.Count == 0)

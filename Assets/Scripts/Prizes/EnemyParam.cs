@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using OneClickLocalization;
 
 public class EnemyParam : Prize
 {
     [SerializeField] private GameObject _panel;
-    [SerializeField] private string _happyText, _unhappyText;
+    [SerializeField] private string _happyEngText, _unhappyEngText, _happyRusText, _unhappyRusText;
     
     private GameObject _paramPanel;
     private int chance;
@@ -14,16 +15,21 @@ public class EnemyParam : Prize
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
-        {
-            StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
-            Time.timeScale = 0;
+            Interact();
+    }
 
-            _paramPanel = StaticValues.EnemyParamPanel;
-            _paramPanel.SetActive(true);
+    public override void Interact()
+    {
+        base.Interact();
 
-            StaticValues.WasPrizeGotten = true;
-            Destroy(gameObject);
-        }
+        StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
+        Time.timeScale = 0;
+
+        _paramPanel = StaticValues.EnemyParamPanel;
+        _paramPanel.SetActive(true);
+
+        StaticValues.WasPrizeGotten = true;
+        Destroy(gameObject);
     }
 
     protected override void OnEnable()
@@ -66,7 +72,11 @@ public class EnemyParam : Prize
     private void WriteResults()
     {
         _panel.SetActive(true);
-        _panel.GetComponentInChildren<Text>().text = chance == 0 ? _unhappyText : _happyText;
+        var currentLanguage = OCL.GetLanguage();
+        if (currentLanguage == SystemLanguage.English)
+            _panel.GetComponentInChildren<Text>().text = chance == 0 ? _unhappyEngText : _happyEngText;
+        else
+            _panel.GetComponentInChildren<Text>().text = chance == 0 ? _unhappyRusText : _happyRusText;
 
         _paramPanel.SetActive(false);
     }

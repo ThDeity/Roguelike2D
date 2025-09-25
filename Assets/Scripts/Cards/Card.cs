@@ -11,6 +11,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     protected SystemLanguage _currentLanguage;
     [SerializeField] protected string _titleEng, _titleRus;
     protected Button _button;
+    protected bool _isChosen;
 
     protected virtual void Start()
     {
@@ -20,7 +21,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _mechanicDescription = StaticValues.PassiveSkillsPanel.GetComponentInChildren<Text>();
     }
 
-    protected virtual void SetAttackParam(float dmg = 1, float lifeSteal = 0, float bulletSpeed = 1, float cd = 1, int timeOfTakingDmg = 0, float maxDistance = 1, float changeSize = 1)
+    protected virtual void SetAttackParam(float dmg = 1, float lifeSteal = 0, float bulletSpeed = 1, float cd = 1, float timeOfTakingDmg = 0, float maxDistance = 1, float changeSize = 1)
     {
         List<PlayerAttack> attacks = StaticValues.PlayerTransform.GetChild(0).GetComponentsInChildren<PlayerAttack>().ToList();
         attacks.ForEach(x => x.reloadTime *= cd);
@@ -48,9 +49,10 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         StaticValues.PassiveSkillsPanel.gameObject.SetActive(false);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    protected virtual void ShowDescription()
     {
         _mechanicDescription.enabled = true;
+        _isChosen = true;
 
         if (_currentLanguage == SystemLanguage.English)
             _mechanicDescription.text = _titleEng;
@@ -58,11 +60,37 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             _mechanicDescription.text = _titleRus;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    protected virtual void HideDescription()
     {
-        _mechanicDescription.enabled = false;
-        _mechanicDescription.text = "";
+        _isChosen = false;
+
+        if (_mechanicDescription != null && _mechanicDescription.isActiveAndEnabled)
+        {
+            _mechanicDescription.enabled = false;
+            _mechanicDescription.text = "";
+        }
     }
+
+    public void OnPointerEnter(PointerEventData eventData) => ShowDescription();
+
+    public void OnPointerExit(PointerEventData eventData) => HideDescription();
+
+    public virtual void GivePrize()
+    {
+        if (!_isChosen)
+        {
+            Chosen();
+            return;
+        }
+    }
+
+    public void Chosen()
+    {
+        StaticValues.ActiveSkillsPanel.GetComponent<PassiveSkill>().currentCards.ForEach(x => x.Unchosen());
+
+        ShowDescription();
+    }
+    public void Unchosen() => HideDescription();
 
     public void OnDisable()
     {

@@ -4,14 +4,19 @@ public class BossPrize : Prize
 {
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && Input.GetKey(KeyCode.E) && !StaticValues.WasPrizeGotten)
-        {
-            StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
+        if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
+            Interact();
+    }
 
-            StaticValues.PlayerObj.TakeDamage(-StaticValues.PlayerObj.ChangeMxHp(1), 0, false, 0);
+    public override void Interact()
+    {
+        base.Interact();
 
-            StaticValues.WasPrizeGotten = true;
-            Destroy(gameObject);
-        }
+        StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
+
+        StaticValues.PlayerObj.TakeDamage(-StaticValues.PlayerObj.ChangeMxHp(1), 0, false, 0);
+
+        StaticValues.WasPrizeGotten = true;
+        Destroy(gameObject);
     }
 }

@@ -29,10 +29,8 @@ public class Mortira : Enemy
 
     protected override void OnDestroy()
     {
-        base.OnDestroy();
-
-        if (_currentZone != null )
-            Destroy(_currentZone.gameObject );
+        if (_currentZone != null && _currentHp <= 0)
+            Destroy(_currentZone.gameObject);
     }
 
     protected override void Start()

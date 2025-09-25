@@ -15,8 +15,10 @@ public class SilenceCard : Card
             _description.text = $"Оглушающий Рывок\n +{_rollCdDebuff} КД Рывка\n -{(1 - _hpDebuff) * 100}% ХП";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out SilenceRoll silenceRoll))
         {
             silenceRoll = StaticValues.PlayerObj.gameObject.AddComponent<SilenceRoll>();

@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _offset, _dashSpeed;
     [SerializeField] private AudioClip _dashSound;
+    [SerializeField] private Joystick _movementJoystick, _rotationJoystick;
+
+    [SerializeField] private SkillJoystick _skillJoystick;
+    private Image _stickBackground;
+    [SerializeField] protected Color _stickColor;
+    protected Color _usualColor;
 
     private float _time, _dashTimeCd, _currentSpeed;
     private Vector2 _velocity, _dashVector;
@@ -20,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     protected static float Speed, DashCd, DashTime, Offset, DashSpeed;
     protected static int RollsCount;
-    public void Reset()
+    public void Reset2()
     {
         _offset = Offset;
         _dashSpeed = DashSpeed;
@@ -36,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        var joysticks = GameObject.FindGameObjectWithTag("Joystick");
+        _movementJoystick = joysticks.transform.GetChild(0).GetComponent<FixedJoystick>();
+        _rotationJoystick = joysticks.transform.GetChild(1).GetComponent<FixedJoystick>();
+        _skillJoystick = joysticks.transform.GetChild(2).GetComponent<SkillJoystick>();
+
         if (DashSpeed == 0)
         {
             Offset = _offset;
@@ -49,6 +61,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        if (_skillJoystick != null)
+        {
+            _stickBackground = _skillJoystick.GetComponent<Image>();
+            _usualColor = _stickBackground.color;
+        }
+
         _rolls = GetComponents<Roll>().ToList();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _time = 0;
@@ -60,24 +78,43 @@ public class PlayerMovement : MonoBehaviour
 
     public void PlusSpeed(float newSpeed, bool isChange = true) => speed = isChange ? _currentSpeed + newSpeed : _currentSpeed;
 
+    Vector3 difference;
     private void FixedUpdate()
     {
-        _velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        if (_movementJoystick.isActiveAndEnabled == false)
+            _velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        else
+            _velocity = new Vector2(_movementJoystick.Horizontal, _movementJoystick.Vertical).normalized;
+
         _rigidbody2D.velocity = _velocity * speed;
 
         _dashTimeCd -= Time.deltaTime;
 
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        if (_rotationJoystick.isActiveAndEnabled == false)
+            difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        else if (!_skillJoystick.isDragging)
+            difference = _rotationJoystick.Direction;
+        else
+            difference = _skillJoystick.Direction;
+
         float roatZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, roatZ + _offset);
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || _movementJoystick.Direction.sqrMagnitude >= 1f)
             Dash();
 
         if (_time > 0)
         {
             _rigidbody2D.AddForce(_dashVector * _dashSpeed, ForceMode2D.Impulse);
             _time -= Time.deltaTime;
+        }
+
+        if (_skillJoystick != null)
+        {
+            if (_skillJoystick.Direction.sqrMagnitude > 0f)
+                _stickBackground.color = _usualColor;
+            else
+                _stickBackground.color = _stickColor;
         }
     }
 

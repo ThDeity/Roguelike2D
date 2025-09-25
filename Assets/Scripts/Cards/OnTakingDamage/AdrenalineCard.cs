@@ -14,8 +14,10 @@ public class AdrenalineCard : Card
             _description.text = $"Адреналин\n {(_buffTime - 1) * 100}с Время бафа\n {_interval}с Интервал\n +{(_buff - 1) * 100}% Скорости, ДМГ, Дэша\n -{(_buffCd - 1) * 100}% Перез-ка";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         if (!StaticValues.PlayerObj.TryGetComponent(out Adrenaline component))
         {
             component = StaticValues.PlayerObj.gameObject.AddComponent<Adrenaline>();

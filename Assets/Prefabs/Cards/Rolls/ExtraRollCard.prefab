@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4b10251d8d1a40c4d97edcf51fc6b4ea, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
@@ -243,8 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705fe1296125d214b84432a177c7ca68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: 
-  _titleMeshPro: {fileID: 0}
+  _titleEng: 
+  _titleRus: 
   _rollCdDebuff: 0.1
 --- !u!114 &5011943637480338006
 MonoBehaviour:

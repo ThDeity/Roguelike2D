@@ -36,8 +36,8 @@ public class ShieldForEnemy : MonoBehaviour, IDamagable
 
             if (_timeTaking > 0)
                 StopCoroutine(TakingDamage(time));
-
-            StartCoroutine(TakingDamage(_timeTaking));
+            else
+                StartCoroutine(TakingDamage(_timeTaking));
         }
     }
 

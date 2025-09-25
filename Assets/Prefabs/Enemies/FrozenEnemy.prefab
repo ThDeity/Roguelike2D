@@ -247,6 +247,7 @@ MonoBehaviour:
   _attackDistance: 4.4
   _offset: 0
   _reloadTime: 1
+  _damagedEffectDuration: 0.85
   _bar:
     ValueChanged:
       m_PersistentCalls:
@@ -264,6 +265,11 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _attackSound: {fileID: 8300000, guid: 960ae308e471f5b4985f711c7f5f99e4, type: 3}
+  _damagedSound: {fileID: 8300000, guid: b3138272d8444974cb343a879d26832a, type: 3}
+  _damagedColor: {r: 0.87058824, g: 0.23529412, b: 0.23529412, a: 1}
+  _spriteEnemy: {fileID: 5785117521787113230}
+  _chanceFallingOut: 20
+  _medkit: {fileID: 4721207913670276411, guid: bdc241ac170c0404a82ef30564cc7f92, type: 3}
   maxHp: 4.65
   target: {fileID: 0}
   isCharmed: 0
@@ -565,7 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959f8d60629ec94e905b33c528d30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0.8
+  _damage: 1
   _critChance: 0
   _effect: {fileID: 0}
 --- !u!4 &4757681247548381717 stripped
@@ -663,7 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959f8d60629ec94e905b33c528d30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0.8
+  _damage: 1
   _critChance: 0
   _effect: {fileID: 0}
 --- !u!4 &5078677956794224084 stripped
@@ -761,7 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959f8d60629ec94e905b33c528d30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0.8
+  _damage: 1
   _critChance: 0
   _effect: {fileID: 0}
 --- !u!4 &6627410085073956983 stripped
@@ -859,7 +865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959f8d60629ec94e905b33c528d30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0.8
+  _damage: 1
   _critChance: 0
   _effect: {fileID: 0}
 --- !u!4 &6041752655232804833 stripped
@@ -957,7 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959f8d60629ec94e905b33c528d30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0.8
+  _damage: 1
   _critChance: 0
   _effect: {fileID: 0}
 --- !u!4 &7910346623430642536 stripped
@@ -1055,7 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959f8d60629ec94e905b33c528d30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0.8
+  _damage: 1
   _critChance: 0
   _effect: {fileID: 0}
 --- !u!4 &8972771285493543567 stripped
@@ -1283,7 +1289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959f8d60629ec94e905b33c528d30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0.8
+  _damage: 1
   _critChance: 0
   _effect: {fileID: 0}
 --- !u!1001 &8643929473059103621
@@ -1381,6 +1387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959f8d60629ec94e905b33c528d30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0.8
+  _damage: 1
   _critChance: 0
   _effect: {fileID: 0}

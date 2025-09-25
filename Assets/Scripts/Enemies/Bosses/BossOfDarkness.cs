@@ -18,6 +18,7 @@ public class BossOfDarkness : Enemy
     [Tooltip("�������� �������� ���� �� ������ � �����")]
     [SerializeField] private List<string> _beforeFurious, _afterFurious;
     [SerializeField] private WaveBullet _shadowBullet;
+    [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private Light2D _vignette;
     [SerializeField] private Color _pulsColor;
 
@@ -232,7 +233,9 @@ public class BossOfDarkness : Enemy
             StaticValues.PlayerMovementObj.ChangeSpeed(1, false);
             _enemyList.ForEach(x => x.gameObject.SetActive(false));
             Destroy(_currentLight.gameObject);
-            _globalLight.enabled = true;
+
+            if (!_isFurious)
+                _globalLight.enabled = true;
         }
         else
         {
@@ -393,6 +396,7 @@ public class BossOfDarkness : Enemy
 
     protected override void Start()
     {
+        _spriteRenderer = _sprite;
         base.Start();
 
         _enemyList = FindObjectsOfType<Enemy>().ToList();
@@ -401,7 +405,6 @@ public class BossOfDarkness : Enemy
 
         _maxSpeed *= StaticValues.EnemySpeed;
         _minSpeed *= StaticValues.EnemySpeed;
-        StaticValues.CurrentRoomType = "Boss";
 
         _globalLight = GameObject.FindGameObjectWithTag("Finish").GetComponent<Light2D>();
         _renderer = _transform.GetComponentInChildren<SpriteRenderer>();

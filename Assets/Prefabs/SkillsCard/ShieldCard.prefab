@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 8.8442}
-  m_SizeDelta: {x: 100, y: 90}
+  m_AnchoredPosition: {x: 0, y: 15.2426}
+  m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3091859595079232547
 CanvasRenderer:
@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
+    m_Font: {fileID: 12800000, guid: 4b10251d8d1a40c4d97edcf51fc6b4ea, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
@@ -134,7 +134,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6022153480126354148
 CanvasRenderer:
@@ -243,10 +243,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillSprite: {fileID: 0}
+  _titleEng: Do I need to explain something?
+  _titleRus: "\u041D\u0430\u0434\u043E \u0447\u0442\u043E-\u0442\u043E \u043E\u0431\u044A\u044F\u0441\u043D\u044F\u0442\u044C?"
   _isCard: 1
+  joystick: {fileID: 0}
   skillSound: {fileID: 8300000, guid: afd02530e56ab1d46a268d2bfe075651, type: 3}
-  _reloadTime: 10
-  _activeTime: 3.5
+  _reloadTime: 7
+  _activeTime: 3
   _improveSkill: 1.2
   _improveCd: 0.95
   _shield: {fileID: 1916954004299628206, guid: 5cd8d802d7c9a904694c9bbce2bd3c21, type: 3}

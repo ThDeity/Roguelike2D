@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine;
+using HeneGames.Sceneloader;
 
 public class StaticValues : MonoBehaviour
 {
@@ -10,11 +10,12 @@ public class StaticValues : MonoBehaviour
     public static Dictionary<string, int> CurrentRoomTypes = new Dictionary<string, int>();
 
     public static GameObject ParamPanel, EnemyParamPanel, PassiveSkillsPanel, ActiveSkillsPanel, SkillsTimer;
-    public static string CurrentRoomType = "PassiveSkills";
+    public static string CurrentRoomType = "ActiveSkills";
     public static bool WasPrizeGotten;
 
     public static List<Transform> EnemiesPoint = new List<Transform>();
     public static List<PlayerAttack> PlayerAttackList;
+    public static InteractButton InteractButtonObj;
     public static PlayerMovement PlayerMovementObj;
     public static Transform PlayerTransform;
     public static Player PlayerObj;
@@ -33,12 +34,14 @@ public class StaticValues : MonoBehaviour
     public static int RoomsBeforeBoss, CountOfRerolls = 3, CurrentCountOfRerolls;
     private void Awake()
     {
+        RoomTypes = new List<string>() { "Parametres", "ActiveSkills", "PassiveSkills", "Enemy", "Default", "Boss" };
         if (!isMenu)
         {
             if (EnemyMaxHp == 0)
                 EnemyMaxHp = EnemySpeed = EnemyDamage = EnemyCount = EnemyCrit = 1;
 
             PlayerObj = FindObjectOfType<Player>();
+            InteractButtonObj = PlayerObj.interactionButton.GetComponent<InteractButton>();
             PlayerTransform = PlayerObj.transform;
             PlayerMovementObj = PlayerObj.GetComponent<PlayerMovement>();
             PlayerAttackList = PlayerObj.transform.GetChild(0).GetComponentsInChildren<PlayerAttack>().ToList();
@@ -65,7 +68,6 @@ public class StaticValues : MonoBehaviour
             Areas = new Transform[][] {  areas0, areas1, areas2 };
             areas0 = areas1 = areas2 = null;
 
-            RoomTypes = new List<string>() { "Parametres", "ActiveSkills", "PassiveSkills", "Enemy", "Default", "Boss" };
             if (CurrentRoomTypes.Count == 0 || CurrentRoomType == "Boss")
             {
                 foreach (var name in RoomTypes)
@@ -106,6 +108,7 @@ public class StaticValues : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(CurrentRoomType);
         if (isMenu) return;
 
         if (Areas != null && Areas.Length > 0 && Areas[0].Length > 0 && Areas[0] != null && Areas[0][0] != null)
@@ -124,7 +127,7 @@ public class StaticValues : MonoBehaviour
     {
         foreach (var script in playerPrefab.GetComponents<MonoBehaviour>())
         {
-            if (script == playerPrefab.GetComponent<Player>() || script == playerPrefab.GetComponent<DebuffsEffects>())
+            if (script == playerPrefab.GetComponent<Player>() || script == playerPrefab.GetComponent<DebuffsEffects>() || script == playerPrefab.GetComponent<PlayerMovement>())
                 continue;
 
             DestroyImmediate(script, true);
@@ -139,7 +142,7 @@ public class StaticValues : MonoBehaviour
                 CurrentRoomTypes.Add(name, 100);
         }
 
-        playerPrefab.AddComponent<PlayerMovement>().Reset();
+        playerPrefab.GetComponent<PlayerMovement>().Reset2();
         playerPrefab.GetComponent<Player>().Reset2();
         playerPrefab.transform.localScale = Vector2.one;
 
@@ -161,7 +164,8 @@ public class StaticValues : MonoBehaviour
         Portal.NumOfArea = 0;
         CurrentCountOfRerolls = 0;
 
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
+        GetComponent<LoadingScreen>().LoadScene(1);
     }
 
     public static void ResetStatics() =>

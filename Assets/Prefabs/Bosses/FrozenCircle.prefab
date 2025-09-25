@@ -244,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 7
   _critChance: 0
+  _effect: {fileID: 0}
 --- !u!114 &5449630777964353525
 MonoBehaviour:
   m_ObjectHideFlags: 0

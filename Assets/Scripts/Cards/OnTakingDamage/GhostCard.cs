@@ -15,8 +15,10 @@ public class GhostCard : Card
             _description.text = $"Призрак\n {_timeOf}с Неуязвимости\n {_interval}с Интервал";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         if (!StaticValues.PlayerObj.TryGetComponent(out Ghost component))
         {
             component = StaticValues.PlayerObj.gameObject.AddComponent<Ghost>();

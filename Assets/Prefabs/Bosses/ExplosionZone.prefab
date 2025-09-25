@@ -188,7 +188,7 @@ MonoBehaviour:
   _firstDmg: 1.3
   _secondDmg: 1
   _timeOfTakingDmg: 3
-  _isExplosion: 0
+  _saveZone: {fileID: 0}
 --- !u!95 &1664171085267301788
 Animator:
   serializedVersion: 5

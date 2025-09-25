@@ -14,8 +14,10 @@ public class DazzleCard : Card
             _description.text = $"Оглушение \n -{(_cdDebuff - 1) * 100}% Перез-ка \n {_time}с Оглушения";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetAttackParam(1,0,1,_cdDebuff);
         StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out BulletsComponents components);
         components.SetComponent(typeof(Dazzle));

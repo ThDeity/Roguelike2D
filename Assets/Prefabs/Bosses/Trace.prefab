@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _critChance: 0
+  _effect: {fileID: 0}
   _timeOfChangingColor: 0.9
   _maxIntensity: 50
   _lifeTime: 0.1

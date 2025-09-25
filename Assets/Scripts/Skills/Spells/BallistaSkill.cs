@@ -4,7 +4,7 @@ public class BallistaSkill : Skill
 {
     public GameObject zone;
     public Ballista ballista;
-    public float reloadTime, hpOfPlayer;
+    public float reloadTime, hpOfPlayer, speed;
 
     private float _currentTime;
     private Transform _zone;
@@ -29,19 +29,33 @@ public class BallistaSkill : Skill
     {
         _currentTime -= Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(1) && _currentTime <= 0 && _zone == null)
+        if (_currentTime < 0 && _zone == null)
         {
-            _zone = Instantiate(zone, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity).transform;
-            _isSkillCharged = true;
+            if (Input.GetMouseButtonDown(1))
+                _zone = Instantiate(zone, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity).transform;
+
+            if (joystick != null && joystick.isDragging)
+                _zone = Instantiate(zone, transform.position, Quaternion.identity).transform;
+
+            if (_zone != null)
+                _isSkillCharged = true;
         }
 
         if (_zone != null)
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            _zone.position = new Vector3(pos.x, pos.y, 0);
+            if (joystick == null)
+            {
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                _zone.position = new Vector3(pos.x, pos.y, 0);
+            }
+            else
+            {
+                Vector2 pos = new Vector2(joystick.Horizontal, joystick.Vertical).normalized;
+                _zone.Translate(pos * speed);
+            }
         }
 
-        if (_isSkillCharged && Input.GetMouseButtonUp(1) && _currentTime <= 0)
+        if (_isSkillCharged && (Input.GetMouseButtonUp(1) || (joystick != null && !joystick.isDragging)) && _currentTime <= 0)
         {
             StaticValues.PlayerObj.effectsSource.PlayOneShot(skillSound);
 

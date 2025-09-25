@@ -15,8 +15,10 @@ public class FastShotCard : Card
             _description.text = $"Быстрый выстрел\n +{(_buffSpeed - 1) * 100}% Скорость пули\n -{(_debuffCd - 1) * 100}% Перез-ка\n +{(_maxDistanceBuff - 1) * 100}% Длина выстрела";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetAttackParam(1,1,_buffSpeed, _debuffCd,0, _maxDistanceBuff);
 
         StaticValues.PassiveSkillsPanel.SetActive(false);

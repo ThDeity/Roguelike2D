@@ -9,15 +9,20 @@ public class Param : Prize
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
-        {
-            StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
-            Time.timeScale = 0;
+            Interact();
+    }
 
-            _paramPanel.SetActive(true);
+    public override void Interact()
+    {
+        base.Interact();
 
-            StaticValues.WasPrizeGotten = true;
-            Destroy(gameObject);
-        }
+        StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
+        Time.timeScale = 0;
+
+        _paramPanel.SetActive(true);
+
+        StaticValues.WasPrizeGotten = true;
+        Destroy(gameObject);
     }
 
     private void OnDisable()

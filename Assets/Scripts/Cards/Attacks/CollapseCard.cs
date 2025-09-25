@@ -16,8 +16,10 @@ public class CollapseCard : Card
             _description.text = $"Распад \n + {(_buffDmg - 1) * 100} % ДМГ \n - {(_debuffCd - 1) * 100} % Перез-ка \n + {_bulletsCount}  Пуль\n - {_debuffSpeed - 1} % Скорость Пули \n + {(_buffSize - 1) * 100} % Размер";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out BulletsComponents components);
         components.SetComponent(typeof(Collapse));
 

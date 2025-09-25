@@ -15,8 +15,10 @@ public class SawCard : Card
             _description.text = $"Режущий Рывок\n +{_rollCdDebuff} КД Рывка";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out SawRoll sawRoll))
         {
             sawRoll = StaticValues.PlayerObj.gameObject.AddComponent<SawRoll>();

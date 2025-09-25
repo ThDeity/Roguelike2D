@@ -175,7 +175,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.8
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 10
   m_AngularSpeed: 120
@@ -202,6 +202,7 @@ MonoBehaviour:
   _attackDistance: 1.22
   _offset: 0
   _reloadTime: 1e+10
+  _damagedEffectDuration: 0.85
   _bar:
     ValueChanged:
       m_PersistentCalls:
@@ -219,6 +220,11 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _attackSound: {fileID: 0}
+  _damagedSound: {fileID: 8300000, guid: b3138272d8444974cb343a879d26832a, type: 3}
+  _damagedColor: {r: 0.87058824, g: 0.23335704, b: 0.23335704, a: 1}
+  _spriteEnemy: {fileID: 6877394151798688214}
+  _chanceFallingOut: 12
+  _medkit: {fileID: 4721207913670276411, guid: bdc241ac170c0404a82ef30564cc7f92, type: 3}
   maxHp: 5
   target: {fileID: 0}
   isCharmed: 0

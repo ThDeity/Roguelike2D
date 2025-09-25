@@ -15,8 +15,10 @@ public class RadarShotCard : Card
             _description.text = $"Стреляющий Рывок\n +{_rollCdDebuff} КД Рывка\n +{(_radarShot.damageBoost - 1) * 100}% Увеличение урона от Выстрела";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out RadarShotRoll radarShotRoll))
         {
             radarShotRoll = StaticValues.PlayerObj.gameObject.AddComponent<RadarShotRoll>();

@@ -28,5 +28,6 @@ public class ShieldCard : Skill
         shield.activeTime = _activeTime;
         shield.shield = _shield;
         shield.skillSprite = skillSlot;
+        shield.joystick = FindObjectOfType<SkillJoystick>();
     }
 }

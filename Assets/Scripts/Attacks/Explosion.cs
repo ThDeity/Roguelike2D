@@ -29,7 +29,7 @@ public class Explosion : MonoBehaviour
                 collider.TryGetComponent(out NavMeshAgent agent);
                 if (agent != null)
                     agent.Warp(forceVector * a);
-                else
+                else if (collider != null && !collider.attachedRigidbody.isKinematic)
                     collider.attachedRigidbody.AddForce(forceVector * a * time);
                     //collider.attachedRigidbody.MovePosition(forceVector * a);
             }

@@ -168,11 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a29cc9f538ef484e96b1657a0719134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1.2
+  damage: 1.6
   critChance: 5
   lifeTime: 0
   speed: 14.5
-  lifeSteal: 0.1
+  lifeSteal: 0
   maxDistance: 15
   lifeTimeRange: 0
   timeTakingDmg: 0

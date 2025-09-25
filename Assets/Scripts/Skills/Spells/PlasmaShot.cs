@@ -41,13 +41,13 @@ public class PlasmaShot : Skill
     {
         _currentTime -= Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(1) && _currentTime <= 0)
+        if ((Input.GetMouseButtonDown(1) || (joystick != null && joystick.isDragging)) && _currentTime <= 0 && !_isSkillCharged)
         {
             _zone = Instantiate(zone, transform).transform;
             _isSkillCharged = true;
         }
 
-        if (_isSkillCharged && Input.GetMouseButtonUp(1) && _zone != null)
+        if (_isSkillCharged && (Input.GetMouseButtonUp(1) || (joystick != null && !joystick.isDragging)) && _zone != null)
         {
             StaticValues.PlayerObj.effectsSource.PlayOneShot(skillSound);
 

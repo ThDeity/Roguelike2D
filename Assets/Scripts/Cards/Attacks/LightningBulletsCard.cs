@@ -7,8 +7,10 @@ public class LightningBulletsCard : Card
     [SerializeField] private float _partOfDmg, _dazzleTime, _maxDistance, _timeOfExistingBolt, _buffCard, _debuffCd;
     [SerializeField] private LightningBoltScript _bolt;
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         if (!StaticValues.PlayerAttackList[0].bullet.TryGetComponent(out LightningBullets component))
         {
             component = StaticValues.PlayerAttackList[0].bullet.AddComponent<LightningBullets>();

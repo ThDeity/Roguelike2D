@@ -15,8 +15,10 @@ public class MineCard : Card
             _description.text = $"Рывок с Миной\n +{_rollDebuff} КД Рывка";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         if (!StaticValues.PlayerMovementObj.TryGetComponent(out MineRoll mineRoll))
         {
             mineRoll = StaticValues.PlayerObj.gameObject.AddComponent<MineRoll>();

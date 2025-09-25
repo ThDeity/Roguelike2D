@@ -43,22 +43,29 @@ public class PassiveSkill : Prize
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))
-        {
-            StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
-            Time.timeScale = 0;
-
-            StaticValues.WasPrizeGotten = true;
-            _passiveSkillsPanel.SetActive(true);
-            _passiveSkillsPanel.GetComponent<PassiveSkill>().ShowSkills();
-
-            Destroy(gameObject);
-        }
+            Interact();
     }
 
+    public override void Interact()
+    {
+        base.Interact();
+
+        StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
+        Time.timeScale = 0;
+
+        StaticValues.WasPrizeGotten = true;
+        _passiveSkillsPanel.SetActive(true);
+        _passiveSkillsPanel.GetComponent<PassiveSkill>().ShowSkills();
+
+        Destroy(gameObject);
+    }
+
+    public List<Card> currentCards {  get; private set; }
     public void ShowSkills()
     {
         List<GameObject> usual = new List<GameObject>(), rare = new List<GameObject>(), epic = new List<GameObject>(), legendary = new List<GameObject>();
         var cards = new List<GameObject>();
+        currentCards = new List<Card>();
 
         for (int i = 0; i < _slots.Count; i++)
         {
@@ -76,7 +83,8 @@ public class PassiveSkill : Prize
 
             int index = Random.Range(0, cards.Count);
             Image image = Instantiate(_cardsRarity, _slots[i]);
-            Instantiate(cards[index], _slots[i]);
+            GameObject c = Instantiate(cards[index], _slots[i]);
+            currentCards.Add(c.GetComponent<Card>());
 
             if (number <= _usualChance)
             {

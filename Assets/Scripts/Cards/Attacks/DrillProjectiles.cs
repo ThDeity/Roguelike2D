@@ -12,8 +12,10 @@ public class DrillProjectiles : Card
             _description.text = $"Сквозные Пули\n Пули проходят сквозь врагов";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         StaticValues.PlayerAttackList.ForEach(x => x.bullet.GetComponent<Bullet>().isDrillAmmo = true);
 
         StaticValues.PassiveSkillsPanel.SetActive(false);

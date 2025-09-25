@@ -1,20 +1,21 @@
-using System.Linq;
-using UnityEngine;
+using RimuruDev;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField] protected ValueSystem _bar = new ValueSystem();
     [SerializeField] private float _hpMax, _restorePersent, _immortalTime, _radius;
-    [SerializeField] private GameObject _prize, _revivalPanel;
+    [SerializeField] private GameObject _prize, _revivalPanel, _reviveButton;
     [SerializeField] private AudioClip _damagedEffect;
     [SerializeField] private Color _colorAfterDeath;
     public float currentHp { private set; get; }
 
     public bool IsExploding;
-    public GameObject Explosion;
+    public GameObject explosion, interactionButton;
 
     public int lifesCount;
     public float hpAfterDeath;
@@ -28,12 +29,42 @@ public class Player : MonoBehaviour, IDamagable
     private bool _isTakingDmg = false, _isDead = false, _isImmortal = false;
     private float _dmg, _time;
 
+    private const float _immortal = 0.4f, _immortalBuffTime = 1.2f;
+
     private SpriteRenderer _spriteRenderer;
     private DebuffsEffects _debuffsEffects;
     private Color _previousColor;
     private Skill _skill;
 
     private static bool WasRevived;
+
+    public void Revive()
+    {
+        TakeDamage(-_hpMax, 0, false, 0);
+        StartCoroutine(SetImmortal(_immortalTime));
+
+        _spriteRenderer.color = _previousColor;
+
+        GetComponent<Rigidbody2D>().isKinematic = false;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _radius);
+        foreach (var collider in colliders)
+        {
+            if (collider.TryGetComponent(out Enemy enemy) && collider.isTrigger == false)
+                enemy.TakeDamage(100000f, 0, false, 0);
+        }
+
+        GetComponent<Collider2D>().enabled = true;
+        StaticValues.PlayerMovementObj.enabled = true;
+
+        transform.GetChild(0).gameObject.SetActive(true);
+
+        _isDead = false;
+        TakeDamage(hpAfterDeath * _hpMax, 0, false, 0);
+
+        if (_skill != null)
+            _skill.enabled = true;
+    }
 
     public void TakeDamage(float damage, float time, bool isLifesteal, float lifesteal)
     {
@@ -67,8 +98,11 @@ public class Player : MonoBehaviour, IDamagable
             }
             else if (currentHp <= 0 && ((lifesCount > 0 && !_isDead) || !WasRevived))
             {
+                currentHp = 0;
                 lifesCount -= 1;
+
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                GetComponent<Rigidbody2D>().isKinematic = true;
                 GetComponent<Collider2D>().enabled = false;
                 StaticValues.PlayerMovementObj.enabled = false;
 
@@ -88,6 +122,9 @@ public class Player : MonoBehaviour, IDamagable
                     _revivalPanel.SetActive(true);
                     WasRevived = true;
                 }
+
+                if (FindObjectOfType<DeviceTypeDetector>().CurrentDeviceType == CurrentDeviceType.WebMobile && lifesCount >= 0)
+                    _reviveButton.SetActive(true);
             }
         }
         else
@@ -98,6 +135,9 @@ public class Player : MonoBehaviour, IDamagable
 
             StartCoroutine(TakingDamage(time));
         }
+
+        if (currentHp <= _immortal * _hpMax && time <= 0 && !_isTakingDmg && damage > 0)
+            SetImmortal(_immortalBuffTime);
     }
 
     private IEnumerator TakingDamage(float time)
@@ -125,7 +165,8 @@ public class Player : MonoBehaviour, IDamagable
 
         currentHp = _hpMax = HpMax;
         IsExploding = false;
-        Explosion = null;
+        WasRevived = false;
+        explosion = null;
 
         lifesCount = 0;
         hpAfterDeath = 0;
@@ -199,6 +240,10 @@ public class Player : MonoBehaviour, IDamagable
             }
             else if (currentHp >= _hpMax)
             {
+                Debug.Log("hehe?");
+
+                GetComponent<Rigidbody2D>().isKinematic = false;
+
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _radius);
                 foreach (var collider in colliders)
                 {
@@ -225,6 +270,8 @@ public class Player : MonoBehaviour, IDamagable
             }
             else if (currentHp > 0 && currentHp < _hpMax)
             {
+                Debug.Log("heee?");
+
                 _spriteRenderer.color = Color.Lerp(_currentColor, _colorAfterDeath, _elapsedTime2 / (_hpMax / (_restorePersent * _hpMax)));
                 _elapsedTime2 += Time.deltaTime;
                 if (_elapsedTime1 > 0) 
@@ -252,5 +299,5 @@ public class Player : MonoBehaviour, IDamagable
         return _hpMax;
     }
 
-    public void OnDestroy() => FindObjectsOfType<Enemy>().ToList().ForEach(x => Destroy(x.gameObject));
+    //public void OnDestroy() => FindObjectsOfType<Enemy>().ToList().ForEach(x => Destroy(x.gameObject));
 }

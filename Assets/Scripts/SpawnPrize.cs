@@ -146,7 +146,8 @@ public class SpawnPrize : MonoBehaviour
                 break;
         }
 
-        pointer.SetTarget(_prizePoint);
+        if (pointer != null)
+            pointer.SetTarget(_prizePoint);
     }
 
     public void InstantiatePrize(Vector2 pos, int index)

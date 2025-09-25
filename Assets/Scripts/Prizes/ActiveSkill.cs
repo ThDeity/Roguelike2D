@@ -16,20 +16,28 @@ public class ActiveSkill : Prize
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player" && Input.GetKey(KeyCode.E))// && !StaticValues.WasPrizeGotten)
-        {
-            StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
-            Time.timeScale = 0;
-
-            _activeSkillsPanel.SetActive(true);
-            _activeSkillsPanel.GetComponent<ActiveSkill>().ShowSkills();
-
-            StaticValues.WasPrizeGotten = true;
-            Destroy(gameObject);
-        }
+            Interact();
     }
 
+    public override void Interact()
+    {
+        base.Interact();
+
+        StaticValues.PlayerObj.effectsSource.PlayOneShot(_sound);
+        Time.timeScale = 0;
+
+        _activeSkillsPanel.SetActive(true);
+        _activeSkillsPanel.GetComponent<ActiveSkill>().ShowSkills();
+
+        StaticValues.WasPrizeGotten = true;
+        Destroy(gameObject);
+    }
+
+    public List<Skill> skills { private set; get; }
     public void ShowSkills()
     {
+        skills = new List<Skill>();
+
         Time.timeScale = 0;
 
         if (_skills.Count < _slots.Count)
@@ -43,7 +51,8 @@ public class ActiveSkill : Prize
         foreach (Transform slot in _slots)
         {
             int index = Random.Range(0, list.Count);
-            Instantiate(list[index], slot);
+            GameObject skill = Instantiate(list[index], slot);
+            skills.Add(skill.GetComponent<Skill>());
 
             list.RemoveAt(index);
         }

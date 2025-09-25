@@ -14,8 +14,10 @@ public class SlideCard : Card
             _description.text = $"Слайд \n +{(_buffSpeed - 1) * 100}% Скорость \n +{(_buffMxHp - 1) * 100}% ХП \n -{(_debuffSpeed - 1) * 100}% Скорость после атаки\n -{(_reloadCd - 1) * 100}% Перез-ка";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         StaticValues.PlayerObj.ChangeMxHp(_buffMxHp);
         StaticValues.PlayerTransform.TryGetComponent(out Slide steal);
 

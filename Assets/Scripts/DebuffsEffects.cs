@@ -42,8 +42,8 @@ public class DebuffsEffects : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        if (StaticValues.PlayerObj.IsExploding && !gameObject.TryGetComponent(out Circle enemy))
-            Instantiate(StaticValues.PlayerObj.Explosion, transform.position, Quaternion.identity);
+        if (_isEnemy && _enemy != null && _enemy.GetCurrentHp() <= 0f && StaticValues.PlayerObj != null && StaticValues.PlayerObj.IsExploding && !gameObject.TryGetComponent(out Circle enemy))
+            Instantiate(StaticValues.PlayerObj.explosion, transform.position, Quaternion.identity);
 
         StopAllCoroutines();
     }

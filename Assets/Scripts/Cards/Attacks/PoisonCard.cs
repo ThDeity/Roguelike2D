@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class PoisonCard : Card
 {
-    [SerializeField] private float _dmgBuff, _cdDebuff;
-    [SerializeField] private int _timeOfTakingDmg;
+    [SerializeField] private float _dmgBuff, _cdDebuff, _timeOfTakingDmg;
 
     protected override void Start()
     {
@@ -15,8 +14,10 @@ public class PoisonCard : Card
             _description.text = $"яд \n +{(_dmgBuff - 1) * 100}% ƒћ√\n -{(_cdDebuff - 1) * 100}% ѕерез-ка\n {_timeOfTakingDmg}с ƒлительность отравлени€";
     }
 
-    public void GivePrize()
+    public override void GivePrize()
     {
+        base.GivePrize();
+
         SetAttackParam(_dmgBuff,0,1,_cdDebuff,_timeOfTakingDmg);
 
         StaticValues.PassiveSkillsPanel.SetActive(false);
